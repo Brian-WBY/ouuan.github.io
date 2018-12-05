@@ -31,10 +31,14 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
 
 
 
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -115,18 +119,18 @@
 
 
 
-  <meta name="description" content="$f_i$ $$f_i$$ $f_{qaq}$  $f_{f_i}$ $\text{测试}$ $\text{测试}$$qaq_{QAQ_{\text{测试}_{\text{测试}}}}$">
-<meta name="keywords" content="测试">
+  <meta name="description" content="$f_i$ $$f_i$$ $f_{qaq}$  $f_{f_i}$ $\text{测试}$ $\text{测试}$QAQ">
+<meta name="keywords" content="测试,QAQ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测试">
 <meta property="og:url" content="http://www.ouuan.com/2018/12/05/test/index.html">
 <meta property="og:site_name" content="ouuan&#39;s blog">
-<meta property="og:description" content="$f_i$ $$f_i$$ $f_{qaq}$  $f_{f_i}$ $\text{测试}$ $\text{测试}$$qaq_{QAQ_{\text{测试}_{\text{测试}}}}$">
+<meta property="og:description" content="$f_i$ $$f_i$$ $f_{qaq}$  $f_{f_i}$ $\text{测试}$ $\text{测试}$QAQ">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T07:14:12.802Z">
+<meta property="og:updated_time" content="2018-12-05T07:48:28.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试">
-<meta name="twitter:description" content="$f_i$ $$f_i$$ $f_{qaq}$  $f_{f_i}$ $\text{测试}$ $\text{测试}$$qaq_{QAQ_{\text{测试}_{\text{测试}}}}$">
+<meta name="twitter:description" content="$f_i$ $$f_i$$ $f_{qaq}$  $f_{f_i}$ $\text{测试}$ $\text{测试}$QAQ">
 
 
 
@@ -417,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2018-12-05 13:40:39 / 修改时间：15:14:12" itemprop="dateCreated datePublished" datetime="2018-12-05T13:40:39+08:00">2018-12-05</time>
+              <time title="创建时间：2018-12-05 13:40:39 / 修改时间：15:48:28" itemprop="dateCreated datePublished" datetime="2018-12-05T13:40:39+08:00">2018-12-05</time>
             
 
             
@@ -449,7 +453,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -461,7 +465,7 @@
 <hr>
 <p>$f_{f_i}$</p>
 <p>$\text{测试}$</p>
-<h2 id="text-测试"><a href="#text-测试" class="headerlink" title="$\text{测试}$"></a><a href="www.codeforces.com">$\text{测试}$</a></h2><p><a href="www.codeforces.com">$qaq_{QAQ_{\text{测试}_{\text{测试}}}}$</a></p>
+<h2 id="text-测试"><a href="#text-测试" class="headerlink" title="$\text{测试}$"></a><a href="www.codeforces.com">$\text{测试}$</a></h2><p><a href="www.codeforces.com">QAQ</a></p>
 
       
     </div>
@@ -485,7 +489,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/测试/" rel="tag"># 测试</a>
+            <a href="/tags/测试/" rel="tag"><i class="fa fa-tag"></i> 测试</a>
+          
+            <a href="/tags/QAQ/" rel="tag"><i class="fa fa-tag"></i> QAQ</a>
           
         </div>
       
@@ -581,7 +587,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -636,7 +644,8 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -648,7 +657,14 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    uv:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    pv:<span id="busuanzi_value_site_pv"></span>
+  </span>
 
 
 
@@ -660,7 +676,7 @@
 
 
 
-
+</div></div>
         
 
 
@@ -805,7 +821,7 @@
           owner: 'ouuan',
           admin: ['ouuan'],
           id: md5(location.pathname),
-          distractionFreeMode: 'true'
+          distractionFreeMode: ''
         })
         gitalk.render('gitalk-container')           
        </script>
@@ -817,7 +833,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
