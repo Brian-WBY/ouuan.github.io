@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[测试]]></title>
-    <url>%2F2018%2F12%2F05%2Ftest%2F</url>
-    <content type="text"><![CDATA[$f_i$ $$f_i$$ $f_{qaq}$ $f_{f_i}$ $\text{测试}$ $\text{测试}$QAQ]]></content>
+    <title><![CDATA[好用的网站]]></title>
+    <url>%2F%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99%2F</url>
+    <content type="text"><![CDATA[$\text{图床}$ $\text{几何}$ $\text{图论}$ $\text{函数}$ $\text{找规律}$ $\text{矩阵运算}$ $\text{在线汇编编译器}$ $\mathrm{C++}$ $\LaTeX\text{公式大全}$ $\LaTeX\text{公式奆全}$ $\text{.tex}$教程 $\text{OI Wiki}$ $\color{red}\mathrm{Wolfram}\color{orange}\mathrm{Alpha}$ $\color{white}\colorbox{black}{oier数据库}$]]></content>
       <tags>
-        <tag>测试</tag>
-        <tag>QAQ</tag>
+        <tag>收藏</tag>
       </tags>
   </entry>
 </search>
