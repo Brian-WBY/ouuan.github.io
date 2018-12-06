@@ -86,7 +86,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -735,9 +735,7 @@
                     
                   
                   
-                    
-                  
-                  <a href="https://github.com/ouuan" title="GitHub &rarr; https://github.com/ouuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/ouuan" title="GitHub &rarr; https://github.com/ouuan" rel="noopener" target="_blank">GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -746,9 +744,7 @@
                     
                   
                   
-                    
-                  
-                  <a href="https://www.luogu.org/space/show?uid=49742" title="洛谷 &rarr; https://www.luogu.org/space/show?uid=49742" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>洛谷</a>
+                  <a href="https://www.luogu.org/space/show?uid=49742" title="洛谷 &rarr; https://www.luogu.org/space/show?uid=49742" rel="noopener" target="_blank">洛谷</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -757,9 +753,7 @@
                     
                   
                   
-                    
-                  
-                  <a href="https://www.codeforces.com/profile/ouuan" title="Codeforces &rarr; https://www.codeforces.com/profile/ouuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-poll"></i>Codeforces</a>
+                  <a href="https://www.codeforces.com/profile/ouuan" title="Codeforces &rarr; https://www.codeforces.com/profile/ouuan" rel="noopener" target="_blank">Codeforces</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -768,9 +762,7 @@
                     
                   
                   
-                    
-                  
-                  <a href="https://space.bilibili.com/11067182" title="b站 &rarr; https://space.bilibili.com/11067182" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>b站</a>
+                  <a href="https://space.bilibili.com/11067182" title="b站 &rarr; https://space.bilibili.com/11067182" rel="noopener" target="_blank">b站</a>
                 </span>
               
             </div>
@@ -780,7 +772,7 @@
 
           
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-globe"></i>
                 友情链接
@@ -825,6 +817,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -883,11 +882,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1344,6 +1338,36 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
   
 
 
