@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://www.ouuan.com/hexo博客搭建指北/nameservers.jpg">
 <meta property="og:image" content="http://www.ouuan.com/hexo博客搭建指北/nameservers2.jpg">
 <meta property="og:image" content="http://www.ouuan.com/hexo博客搭建指北/cname.jpg">
-<meta property="og:updated_time" content="2018-12-06T14:18:47.646Z">
+<meta property="og:updated_time" content="2018-12-06T14:21:50.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客搭建指北">
 <meta name="twitter:description" content="本博客暂未写完QAQ  折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下hexo博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。 实际上，hexo博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。  本篇博客不完全按照顺序撰写，可以通过页面左边的目录跳转阅读。  博客的搭建先推荐两篇比较好的">
@@ -418,7 +418,7 @@
                 
               
 
-              <time title="创建时间：2018-12-06 16:00:37 / 修改时间：22:18:47" itemprop="dateCreated datePublished" datetime="2018-12-06T16:00:37+08:00">2018-12-06</time>
+              <time title="创建时间：2018-12-06 16:00:37 / 修改时间：22:21:50" itemprop="dateCreated datePublished" datetime="2018-12-06T16:00:37+08:00">2018-12-06</time>
             
 
             
@@ -487,36 +487,36 @@
 <p>当然，你也可以使用默认的 landscape 主题，从而不用额外下载主题。</p>
 <p>下载好主题后，用任何一款文本编辑器（记事本也可以），打开根目录下的 <code>_config.yml</code> ，将 <code>theme: landscape</code> 修改为 <code>theme: 你想用的主题名</code> 即可。</p>
 <h2 id="配置-GitHub-仓库"><a href="#配置-GitHub-仓库" class="headerlink" title="配置 GitHub 仓库"></a>配置 GitHub 仓库</h2><p>首先你需要有一个 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 账号。</p>
-<p>然后点击右上角你的头像，打开 “Your repositories”，点击绿色的按钮 “New”。</p>
-<p>在 “Repository name” 一栏填入 <code>yourname.github.io</code> （“yourname” 指你的 GitHub ID，比如我就填 <code>ouuan.github.io</code>），Description 可以随便填也可以不填，然后点绿色的按钮 “Create repository” 。</p>
-<p>然后输入命令 <code>ssh-keygen</code> 来生成SSH，让你输入东西你就按回车（应该要按三次回车）。</p>
+<p>然后点击右上角你的头像，打开“Your repositories”，点击绿色的按钮“New”。</p>
+<p>在”Repository name”一栏填入 <code>yourname.github.io</code> （“yourname”指你的 GitHub ID，比如我就填 <code>ouuan.github.io</code>），”Description”可以随便填也可以不填，然后点绿色的按钮“Create repository”。</p>
+<p>然后输入命令 <code>ssh-keygen</code> 来生成 SSH，让你输入东西你就按回车（应该要按三次回车）。</p>
 <p>然后用任意的文本编辑器打开 <code>C:\Users\电脑用户名\.ssh\id_rsa.pub</code>（如果装了 vim 可以直接输入命令 <code>vim ~/.ssh/id_rsa.pub</code>），复制里面的内容。</p>
-<p>打开 GitHub，点击右上角的头像，打开 “Settings”，选择左边的 “SSH and GPG keys”，点绿色的按钮 “New SSH key”，Title 随便填，下面的 Key 把刚才复制的东西粘贴进去，然后点绿色的按钮 “Add SSH key” 。过程中可能需要输入密码。</p>
+<p>打开 GitHub，点击右上角的头像，打开“Settings”，选择左边的“SSH and GPG keys”，点绿色的按钮“New SSH key”，Title 随便填，下面的 Key 把刚才复制的东西粘贴进去，然后点绿色的按钮“Add SSH key”。过程中可能需要输入密码。</p>
 <p>输入命令 <code>ssh -T git@github.com</code> ，若出现 <code>Hi yourname! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code> 表示 SSH 配置成功。</p>
 <h2 id="将博客上传至-GitHub"><a href="#将博客上传至-GitHub" class="headerlink" title="将博客上传至 GitHub"></a>将博客上传至 GitHub</h2><p>输入命令 <code>npm install hexo-deployer-git --save</code> 安装 deployer 。</p>
 <p>打开根目录下的 <code>_config.yml</code> ，将最后几行改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/yourname/yourname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>当然 “yourname” 要改成你的 GitHub ID 。</p>
+<p>当然”yourname”要改成你的 GitHub ID 。</p>
 <p>依次输入命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>第一次上传可能要输入密码。</p>
 <p>等几分钟，再用浏览器打开 <code>yourname.github.io</code> ，应该就可以看到你的博客了。（此时别人也可以通过这个网址看到你的博客）</p>
 <h1 id="域名的配置"><a href="#域名的配置" class="headerlink" title="域名的配置"></a>域名的配置</h1><p>实际上，自定义域名基本上没有什么用。但是有一个自己的域名还是一件比较爽的事，会感觉摆脱了束缚（实际上你还是用着 GitHub…）。</p>
 <h2 id="域名的获取"><a href="#域名的获取" class="headerlink" title="域名的获取"></a>域名的获取</h2><p>本篇教程只讲解如何免费获取域名（的 $12$ 个月使用权），当然你也可以通过其它方式购买域名。</p>
-<p>打开 <a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">Freenom</a>，输入自己想用的域名，点击 “Check Availability” ，有 “Get it now” 的就是能用的。</p>
-<p>选择好你要的域名后，点右上角的 ”Checkout“ ，Period 选择 “12 Months @ FREE”，然后点 “Continue”，输入邮箱登录或使用其它账号（如 Google 账号）登录（输入邮箱登录经常会出错，而使用其它账号登录需要<a href="https://github.com/XX-net/XX-Net" target="_blank" rel="noopener">科学上网</a>）。</p>
+<p>打开 <a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">Freenom</a>，输入自己想用的域名，点击”Check Availability”，有“Get it now”的就是能用的。</p>
+<p>选择好你要的域名后，点右上角的”Checkout”，Period 选择”12 Months @ FREE”，然后点”Continue”，输入邮箱登录或使用其它账号（如 Google 账号）登录（输入邮箱登录经常会出错，而使用其它账号登录需要<a href="https://github.com/XX-net/XX-Net" target="_blank" rel="noopener">科学上网</a>）。</p>
 <h2 id="DNS-配置"><a href="#DNS-配置" class="headerlink" title="DNS 配置"></a>DNS 配置</h2><p>我使用的是 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">cloudfare</a>，（<del>因为在学校搭建的博客，手机没电了，国内的服务商注册都需要短信验证码</del>），还是比较方便的。</p>
-<p>先注册一个账号，然后点 “Add site”，输入你刚刚获取的域名。</p>
+<p>先注册一个账号，然后点”Add site”，输入你刚刚获取的域名。</p>
 <p>然后进入站点设置里的 DNS 设置，如图添加两条记录：</p>
 <p><img src="/hexo博客搭建指北/www.jpg" alt=""></p>
 <p><img src="/hexo博客搭建指北/at.jpg" alt=""></p>
-<p>当然要记得把 “ouuan” 换成你的 GitHub ID。云从橙色变成灰色是取消 cdn 服务，点一下即可。点击 “Add Record” 添加记录。</p>
+<p>当然要记得把“ouuan”换成你的 GitHub ID。云从橙色变成灰色是取消 cdn 服务，点一下即可。点击”Add Record”添加记录。</p>
 <p>完成后应该是这样的：</p>
 <p><img src="/hexo博客搭建指北/dns.jpg" alt=""></p>
-<h2 id="连接域名和-DNS"><a href="#连接域名和-DNS" class="headerlink" title="连接域名和 DNS"></a>连接域名和 DNS</h2><p>回到 <a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">Freenom</a>，登录网站，点击右上角的 “Services” $\rightarrow$ “My Domains”，找到你刚刚获取的域名，点击 “Manage Domain” $\rightarrow$ “Management Tools” $\rightarrow$ “Nameservers”。</p>
+<h2 id="连接域名和-DNS"><a href="#连接域名和-DNS" class="headerlink" title="连接域名和 DNS"></a>连接域名和 DNS</h2><p>回到 <a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">Freenom</a>，登录网站，点击右上角的“Services” $\rightarrow$ “My Domains”，找到你刚刚获取的域名，点击 “Manage Domain” $\rightarrow$ “Management Tools” $\rightarrow$ “Nameservers”。</p>
 <p>再回到 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">cloudfare</a>，就在刚刚 DNS 设置的下面，有两个域名：</p>
 <p><img src="/hexo博客搭建指北/nameservers.jpg" alt=""></p>
-<p>再回到 <a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">Freenom</a>，把这两个域名复制进去，然后点 “Change Nameservers”。</p>
+<p>再回到 <a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">Freenom</a>，把这两个域名复制进去，然后点”Change Nameservers”。</p>
 <p><img src="/hexo博客搭建指北/nameservers2.jpg" alt=""></p>
 <h2 id="连接域名和-GitHub"><a href="#连接域名和-GitHub" class="headerlink" title="连接域名和 GitHub"></a>连接域名和 GitHub</h2><p>在 hexo 根目录的 <code>source</code> 子目录下新建文件 <code>CNAME</code>（没有后缀名），用文本编辑器打开，输入如下内容：</p>
 <p><img src="/hexo博客搭建指北/cname.jpg" alt=""></p>
