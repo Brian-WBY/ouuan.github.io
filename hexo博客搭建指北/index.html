@@ -108,17 +108,20 @@
 
 
 
-  <meta name="description" content="ouuan的博客">
+  <meta name="description" content="$$\color{red}\text{本博客暂未写完QAQ}$$ 折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下hexo博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。 实际上，hexo博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。  本篇博客不完全按照顺序撰写，可以通过页面左边的目录跳">
+<meta name="keywords" content="技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客搭建指北">
 <meta property="og:url" content="http://www.ouuan.com/hexo博客搭建指北/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="ouuan的博客">
+<meta property="og:description" content="$$\color{red}\text{本博客暂未写完QAQ}$$ 折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下hexo博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。 实际上，hexo博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。  本篇博客不完全按照顺序撰写，可以通过页面左边的目录跳">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-06T08:00:37.185Z">
+<meta property="og:image" content="http://www.ouuan.com/hexo博客搭建指北/newblog.jpg">
+<meta property="og:updated_time" content="2018-12-06T12:54:05.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客搭建指北">
-<meta name="twitter:description" content="ouuan的博客">
+<meta name="twitter:description" content="$$\color{red}\text{本博客暂未写完QAQ}$$ 折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下hexo博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。 实际上，hexo博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。  本篇博客不完全按照顺序撰写，可以通过页面左边的目录跳">
+<meta name="twitter:image" content="http://www.ouuan.com/hexo博客搭建指北/newblog.jpg">
 
 
 
@@ -409,9 +412,13 @@
                 
               
 
-              <time title="创建时间：2018-12-06 16:00:37" itemprop="dateCreated datePublished" datetime="2018-12-06T16:00:37+08:00">2018-12-06</time>
+              <time title="创建时间：2018-12-06 16:00:37 / 修改时间：20:54:05" itemprop="dateCreated datePublished" datetime="2018-12-06T16:00:37+08:00">2018-12-06</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -443,7 +450,31 @@
       
 
       
-        
+        <p>$$\color{red}\text{本博客暂未写完QAQ}$$</p>
+<p>折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下hexo博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。</p>
+<p>实际上，hexo博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。</p>
+<blockquote>
+<p>本篇博客不完全按照顺序撰写，可以通过页面左边的目录跳转阅读。</p>
+</blockquote>
+<h1 id="一、博客的搭建"><a href="#一、博客的搭建" class="headerlink" title="一、博客的搭建"></a>一、博客的搭建</h1><p>先推荐两篇比较好的教程：<a href="https://www.jianshu.com/p/189fd945f38f" target="_blank" rel="noopener">搭建个人博客-hexo+github详细完整步骤</a>，<a href="https://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="noopener">使用github+Hexo人人都能拥有一个美美的博客</a>。</p>
+<p>这部分网上讲的已经比较好了，我在这就简单说一下。</p>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><p>需要安装的软件有：<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>，<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a>。</p>
+<p>装好之后，在本地创建一个文件夹，以后 hexo 博客相关的文件都会放在这个文件夹里，命令行操作时如果没有特殊说明也要cd到这个文件夹，下文中“根目录”也指这个文件夹。命令行操作既可以使用 git bash，也可以使用 cmd 或 powershell 。</p>
+<p>输入命令 <code>npm install -g hexo</code> 来安装 hexo 。</p>
+<p>输入命令 <code>hexo init</code> 来初始化 hexo 。</p>
+<p>输入命令 <code>npm install</code>来安装一些需要的包。</p>
+<p>输入命令 <code>hexo s</code>，并在浏览器打开 <code>localhost:4000</code>，测试 hexo 是否安装正确；如果安装正确，应该看到一个类似于这样的页面：</p>
+<p><img src="/hexo博客搭建指北/newblog.jpg" alt=""></p>
+<blockquote>
+<p>注：命令可以缩写，条件是没有开头几个字母相同的其它命令。<code>hexo s</code> 实际上是 <code>hexo server</code> 的缩写；下文中 <code>hexo d</code> 是 <code>hexo deploy</code> 的缩写，<code>hexo g</code> 是 <code>hexo generate</code> 的缩写；<code>hexo clean</code> 不能缩写为 <code>hexo c</code>，因为存在命令 <code>hexo config</code> ，但是可以缩写为 <code>hexo cl</code> 。</p>
+</blockquote>
+<p>按 Ctrl+C 关闭 server 以继续操作。（若出现类似于 <code>终止批处理操作吗(Y/N)?</code> 的提示，输入 <code>y</code> 即可。）</p>
+<p>接着安装博客的主题，可以在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo 官网</a> 选择主题下载，本篇教程推荐使用 NexT 主题。</p>
+<p>在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo 官网</a> 点击<strong>图片下方蓝色的文字</strong>即可打开主题的 Github 主页，一般来说，一个主题的 Github 主页上是有用于安装的命令以及配置博客的教程的。</p>
+<p>如果没有的话（或者即使有也一样），你应该输入命令 <code>git clone 主题的Github主页地址 themes/主题名</code> 。例如：<code>git clone https://github.com/theme-next/hexo-theme-next themes/next</code> 。</p>
+<p>当然，你也可以使用默认的 landscape 主题，从而不用额外下载主题。</p>
+<p>下载好主题后，用任何一款文本编辑器（记事本也可以），打开根目录下的 <code>_config.yml</code> ，将 <code>theme: landscape</code> 修改为 <code>theme: 你想用的主题名</code> 即可。</p>
+
       
     </div>
 
@@ -463,6 +494,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
+          
+        </div>
       
 
       
@@ -530,8 +567,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -575,7 +621,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -674,6 +722,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、博客的搭建"><span class="nav-number">1.</span> <span class="nav-text">一、博客的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装软件"><span class="nav-number">1.1.</span> <span class="nav-text">安装软件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
