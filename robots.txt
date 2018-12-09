@@ -1,4 +1,3 @@
 User-agent: *
 Disallow: 
-Sitemap: https://www.ouuan.cf/baidusitemap.xml
 Sitemap: https://www.ouuan.cf/sitemap.xml
