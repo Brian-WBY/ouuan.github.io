@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.ouuan.cf/"/>
-  <updated>2018-12-12T14:17:12.409Z</updated>
+  <updated>2018-12-12T15:53:45.329Z</updated>
   <id>https://www.ouuan.cf/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>html实现随机图片</title>
+    <link href="https://www.ouuan.cf/html%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E5%9B%BE%E7%89%87/"/>
+    <id>https://www.ouuan.cf/html实现随机图片/</id>
+    <published>2018-12-12T15:42:17.000Z</published>
+    <updated>2018-12-12T15:53:45.329Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>注：暂时还不知道如何制作能被引用的随机图片，只能查看图片，而不能通过类似于<code>![](图片地址)</code>的方式查看。</p></blockquote><blockquote><p><a href="https://www.ouuan.cf/randpic/people/">demo</a></p><p>欢迎投稿图片：<a href="https://github.com/ouuan/ouuan.github.io/issues/19" target="_blank" rel="noopener">投稿地址</a></p></blockquote><h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"imagelist.json"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var r=Math.floor(Math.random()*images.length)</span></span><br><span class="line"><span class="xml">  document.write("<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"+images[r]+"</span>&gt;</span>")</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>图片列表保存在 <code>imagelist.json</code> 内。</p><h2 id="参考示例"><a href="#参考示例" class="headerlink" title="参考示例"></a>参考示例</h2><p><code>https://www.ouuan.cf/randpic/people/index.html</code>：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"imagelist.json"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>随机图片-人物类<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">type</span>=<span class="string">"image/png"</span> <span class="attr">sizes</span>=<span class="string">"32x32"</span> <span class="attr">href</span>=<span class="string">"/images/favicon32.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">type</span>=<span class="string">"image/png"</span> <span class="attr">sizes</span>=<span class="string">"16x16"</span> <span class="attr">href</span>=<span class="string">"/images/favicon16.png"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    img</span></span><br><span class="line"><span class="undefined">    &#123;</span></span><br><span class="line"><span class="undefined">      width: 100%;</span></span><br><span class="line"><span class="undefined">      height: auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    var r=Math.floor(Math.random()*images.length)</span></span><br><span class="line"><span class="xml">    document.write("<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"+images[r]+"</span>&gt;</span>")</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p><code>https://www.ouuan.cf/randpic/people/imagelist.json</code>：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var images=</span><br><span class="line">[</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/70469686_p0.png"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/69212051_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/64660644_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/61438972_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/60141148_p0.png"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/1200296-20170715113653118-1762611401.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/71631241_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/f0Q5-g62pXkZ5lT3cS1hc-rs.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/36224612_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/64702477_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/64670588_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://z4a.net/images/2018/12/12/61815260_p0.jpg"</span>,</span><br><span class="line">  <span class="string">"https://i.loli.net/2018/12/12/5c10a02b0831b.jpg"</span>,</span><br><span class="line">  <span class="string">"https://i.loli.net/2018/12/12/5c1119665c83a.jpg"</span>,</span><br><span class="line">  <span class="string">"https://i.loli.net/2018/12/12/5c111a8bed8e8.jpg"</span>,</span><br><span class="line">  <span class="string">"https://i.loli.net/2018/12/12/5c111ab43f7cf.jpg"</span>,</span><br><span class="line">  <span class="string">"https://i.loli.net/2018/12/12/5c111ade38590.jpg"</span>,</span><br><span class="line">  <span class="string">"https://i.loli.net/2018/12/12/5c111b8240591.png"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;注：暂时还不知道如何制作能被引用的随机图片，只能查看图片，而不能通过类似于&lt;code&gt;![](图片地址)&lt;/code&gt;的方式查看。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ouu
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://www.ouuan.cf/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>2018~2019冬 广二避寒记</title>
@@ -38,9 +65,9 @@
     </summary>
     
     
-      <category term="集训" scheme="https://www.ouuan.cf/tags/%E9%9B%86%E8%AE%AD/"/>
-    
       <category term="游记" scheme="https://www.ouuan.cf/tags/%E6%B8%B8%E8%AE%B0/"/>
+    
+      <category term="集训" scheme="https://www.ouuan.cf/tags/%E9%9B%86%E8%AE%AD/"/>
     
   </entry>
   
@@ -248,9 +275,9 @@
     </summary>
     
     
-      <category term="集训" scheme="https://www.ouuan.cf/tags/%E9%9B%86%E8%AE%AD/"/>
-    
       <category term="游记" scheme="https://www.ouuan.cf/tags/%E6%B8%B8%E8%AE%B0/"/>
+    
+      <category term="集训" scheme="https://www.ouuan.cf/tags/%E9%9B%86%E8%AE%AD/"/>
     
   </entry>
   
