@@ -65,9 +65,9 @@
     </summary>
     
     
-      <category term="游记" scheme="https://www.ouuan.cf/tags/%E6%B8%B8%E8%AE%B0/"/>
-    
       <category term="集训" scheme="https://www.ouuan.cf/tags/%E9%9B%86%E8%AE%AD/"/>
+    
+      <category term="游记" scheme="https://www.ouuan.cf/tags/%E6%B8%B8%E8%AE%B0/"/>
     
   </entry>
   
@@ -204,6 +204,38 @@
   </entry>
   
   <entry>
+    <title>浅谈邻项交换排序的应用以及需要注意的问题</title>
+    <link href="https://www.ouuan.cf/%E6%B5%85%E8%B0%88%E9%82%BB%E9%A1%B9%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://www.ouuan.cf/浅谈邻项交换排序的应用以及需要注意的问题/</id>
+    <published>2018-11-18T00:05:50.000Z</published>
+    <updated>2018-12-12T16:13:06.085Z</updated>
+    
+    <content type="html"><![CDATA[<div class="row">    <embed src="./paper.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+
+	&lt;div class=&quot;row&quot;&gt;
+    &lt;embed src=&quot;./paper.pdf&quot; width=&quot;100%&quot; height=&quot;550&quot; type=&quot;application/pdf&quot;&gt;
+	&lt;/div&gt;
+
+
+
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="https://www.ouuan.cf/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="贪心" scheme="https://www.ouuan.cf/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NOIp2018提高组游记</title>
     <link href="https://www.ouuan.cf/NOIp2018%E6%8F%90%E9%AB%98%E7%BB%84%E6%B8%B8%E8%AE%B0/"/>
     <id>https://www.ouuan.cf/NOIp2018提高组游记/</id>
@@ -275,9 +307,9 @@
     </summary>
     
     
-      <category term="游记" scheme="https://www.ouuan.cf/tags/%E6%B8%B8%E8%AE%B0/"/>
-    
       <category term="集训" scheme="https://www.ouuan.cf/tags/%E9%9B%86%E8%AE%AD/"/>
+    
+      <category term="游记" scheme="https://www.ouuan.cf/tags/%E6%B8%B8%E8%AE%B0/"/>
     
   </entry>
   
