@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="我写的莫队教程 其实这是一道bzoj上的题（bzoj2639，貌似是权限题，反正我看不了），在YALI做模拟赛的时候遇到了. 然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同… 题目大意给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。 $r,c\le 200,m\le 100000$ 做法简述首先我们要明白，莫队究竟在干什">
+  <meta name="description" content="我写的莫队教程 其实这是一道bzoj上的题（bzoj2639，貌似是权限题，反正我看不了），在YALI做模拟赛的时候遇到了. 然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同… 题目大意给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。 $r,c\le 200,m\le 100000$">
 <meta name="keywords" content="题解,莫队">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二维莫队解题报告">
 <meta property="og:url" content="https://www.ouuan.cf/二维莫队解题报告/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="我写的莫队教程 其实这是一道bzoj上的题（bzoj2639，貌似是权限题，反正我看不了），在YALI做模拟赛的时候遇到了. 然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同… 题目大意给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。 $r,c\le 200,m\le 100000$ 做法简述首先我们要明白，莫队究竟在干什">
+<meta property="og:description" content="我写的莫队教程 其实这是一道bzoj上的题（bzoj2639，貌似是权限题，反正我看不了），在YALI做模拟赛的时候遇到了. 然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同… 题目大意给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。 $r,c\le 200,m\le 100000$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-06T05:47:45.220Z">
+<meta property="og:updated_time" content="2018-12-14T15:01:36.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二维莫队解题报告">
-<meta name="twitter:description" content="我写的莫队教程 其实这是一道bzoj上的题（bzoj2639，貌似是权限题，反正我看不了），在YALI做模拟赛的时候遇到了. 然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同… 题目大意给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。 $r,c\le 200,m\le 100000$ 做法简述首先我们要明白，莫队究竟在干什">
+<meta name="twitter:description" content="我写的莫队教程 其实这是一道bzoj上的题（bzoj2639，貌似是权限题，反正我看不了），在YALI做模拟赛的时候遇到了. 然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同… 题目大意给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。 $r,c\le 200,m\le 100000$">
 
 
 
@@ -446,7 +446,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-06 13:47:45" itemprop="dateModified" datetime="2018-12-06T13:47:45+08:00">2018-12-06</time>
+                <time title="修改时间：2018-12-14 23:01:36" itemprop="dateModified" datetime="2018-12-14T23:01:36+08:00">2018-12-14</time>
               
             
           </span>
@@ -491,6 +491,7 @@
 <p>然后在网上查到了几篇关于这道题的博客，都和我的做法略有不同…</p>
 <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>给你一个 $r*c$ 的矩阵，每个点有一个颜色， $m$ 个询问，每次询问一个子矩阵内，每种颜色出现次数的平方和。</p>
 <p>$r,c\le 200,m\le 100000$</p>
+<a id="more"></a>
 <h2 id="做法简述"><a href="#做法简述" class="headerlink" title="做法简述"></a>做法简述</h2><p>首先我们要明白，莫队究竟在干什么。</p>
 <p>莫队其实就是几个指针在那跳来跳去，每跳一步都需要一定的时间，通过对询问排序使得指针跳的总次数尽量小。</p>
 <p>所以，这题中询问为 $(x_1,y_1,x_2,y_2)$ ，也就是四个指针在那跳，分别分块再排序就可以了，即：</p>
