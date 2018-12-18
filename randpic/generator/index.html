@@ -1,0 +1,104 @@
+<html>
+<head> 
+	<meta charset="UTF-8">
+	<title>随机生成图片</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+</head> 
+<body> 
+	<div id="INPUT">
+		<p>图片宽度：<input type="number" min=1 max=9999 id="WIDTH" value=512>（以像素为单位）</p>
+		<p>图片高度：<input type="number" min=1 max=9999 id="HEIGHT" value=512>（以像素为单位）</p>
+		<p>色块大小：<input type="number" min=1 max=9999 id="BLOCKSIZE" value=75>（不以像素为单位，可以自己尝试一下）</p>
+		<p>点的散度：<input type="number" min=2 max=9999 id="QWQ" value=2>（并不是矢量场里的"散度"，越小越像画刷，越大越像喷漆，必须大于等于2）</p>
+		<p>红色最小值：<input type="number" min=0 max=255 id="MINRED" value=0>（0~255）</p>
+		<p>红色最大值：<input type="number" min=0 max=255 id="MAXRED" value=255>（0~255）</p>
+		<p>绿色最小值：<input type="number" min=0 max=255 id="MINGREEN" value=0>（0~255）</p>
+		<p>绿色最大值：<input type="number" min=0 max=255 id="MAXGREEN" value=255>（0~255）</p>
+		<p>蓝色最小值：<input type="number" min=0 max=255 id="MINBLUE" value=0>（0~255）</p>
+		<p>蓝色最大值：<input type="number" min=0 max=255 id="MAXBLUE" value=255>（0~255）</p>
+		<p>最小不透明：<input type="number" min=0 max=255 id="MINALPHA" value=120>（0~255）</p>
+		<p>最大不透明：<input type="number" min=0 max=255 id="MAXALPHA" value=200>（0~255）</p>
+		<button id="GENERATE" onclick="createPicture()">generate</button>
+	</div>
+	<br>
+	<div id="SHOW">
+	</div>
+	<br>
+	<div id="COPYRIGHT">
+		<p style="text-align: center;">based on <a href="https://codegolf.stackexchange.com/a/35626">Martin Büttner's code</a></p>
+		<p style="text-align: center;">JavaScript by <a href="https://ouuan.github.io/">ouuan</a></p>
+	</div>
+	<script>
+		function createPicture()
+		{
+			var width=document.getElementById('WIDTH').value;
+			var height=document.getElementById('HEIGHT').value;
+			var blocksize=document.getElementById('BLOCKSIZE').value;
+			var qwq=document.getElementById('QWQ').value;
+			var minred=document.getElementById('MINRED').value;
+			var maxred=document.getElementById('MAXRED').value;
+			var mingreen=document.getElementById('MINGREEN').value;
+			var maxgreen=document.getElementById('MAXGREEN').value;
+			var minblue=document.getElementById('MINBLUE').value;
+			var maxblue=document.getElementById('MAXBLUE').value;
+			var minalpha=document.getElementById('MINALPHA').value;
+			var maxalpha=document.getElementById('MAXALPHA').value;
+			var d = document.getElementById('SHOW');
+			d.innerHTML="<canvas id=\"drawing\" width="+width+" height="+height+"></canvas>";
+			var R = new Array();
+			var G = new Array();
+			var B = new Array();
+			var A = new Array();
+			for(var i=0;i<height;++i)
+			{
+				R[i] = new Array();
+				G[i] = new Array();
+				B[i] = new Array();
+				A[i] = new Array();
+				for(var j=0;j<width;++j)
+				{
+					R[i][j] = 0;
+					G[i][j] = 0;
+					B[i][j] = 0;
+					A[i][j] = 0;
+				}
+			}
+			function r(x)
+			{
+				return parseInt(Math.random()*x);
+			}
+			function red(i,j)
+			{
+				return !R[i][j]?R[i][j]=!r(blocksize)?r(256):red((i+r(qwq))%height,(j+r(qwq))%width):R[i][j];
+			}
+			function green(i,j)
+			{
+				return !G[i][j]?G[i][j]=!r(blocksize)?r(256):green((i+r(qwq))%height,(j+r(qwq))%width):G[i][j];
+			}
+			function blue(i,j)
+			{
+				return !B[i][j]?B[i][j]=!r(blocksize)?r(256):blue((i+r(qwq))%height,(j+r(qwq))%width):B[i][j];
+			}
+			function alpha(i,j)
+			{
+				return !A[i][j]?A[i][j]=!r(blocksize)?r(256):alpha((i+r(qwq))%height,(j+r(qwq))%width):A[i][j];
+			}
+			var drawing=document.getElementById("drawing"); 
+			var context=drawing.getContext("2d");
+			var a=context.createImageData(width,height);
+			for(var i=0;i<height;++i)
+			{
+				for(var j=0;j<width;++j)
+				{
+					a.data[(i*width+j)*4]=red(i,j)/255*(maxred-minred)+1*minred;
+					a.data[(i*width+j)*4+1]=green(i,j)*(maxgreen-mingreen)/255+1*mingreen;
+					a.data[(i*width+j)*4+2]=blue(i,j)*(maxblue-minblue)/255+1*minblue;
+					a.data[(i*width+j)*4+3]=alpha(i,j)*(maxalpha-minalpha)/255+1*minalpha;
+				}
+			}
+			context.putImageData(a, 0, 0);
+		}
+	</script> 
+</body> 
+</html> 
