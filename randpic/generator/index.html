@@ -1,49 +1,86 @@
+<!DOCTYPE html>
 <html>
 <head> 
 	<meta charset="UTF-8">
 	<title>随机生成图片</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
 	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
-</head> 
-<body> 
-	<div id="INPUT">
-		<p>图片宽度：<input type="number" min=1 max=9999 id="WIDTH" value=512>（以像素为单位）</p>
-		<p>图片高度：<input type="number" min=1 max=9999 id="HEIGHT" value=512>（以像素为单位）</p>
-		<p>色块大小：<input type="number" min=1 max=9999 id="BLOCKSIZE" value=75>（不以像素为单位，可以自己尝试一下）</p>
-		<p>点的散度：<input type="number" min=2 max=9999 id="QWQ" value=2>（并不是矢量场里的"散度"，越小越像画刷，越大越像喷漆，必须大于等于2）</p>
-		<p>红色最小值：<input type="number" min=0 max=255 id="MINRED" value=0>（0~255）</p>
-		<p>红色最大值：<input type="number" min=0 max=255 id="MAXRED" value=255>（0~255）</p>
-		<p>绿色最小值：<input type="number" min=0 max=255 id="MINGREEN" value=0>（0~255）</p>
-		<p>绿色最大值：<input type="number" min=0 max=255 id="MAXGREEN" value=255>（0~255）</p>
-		<p>蓝色最小值：<input type="number" min=0 max=255 id="MINBLUE" value=0>（0~255）</p>
-		<p>蓝色最大值：<input type="number" min=0 max=255 id="MAXBLUE" value=255>（0~255）</p>
-		<p>最小不透明：<input type="number" min=0 max=255 id="MINALPHA" value=120>（0~255）</p>
-		<p>最大不透明：<input type="number" min=0 max=255 id="MAXALPHA" value=200>（0~255）</p>
-		<button id="GENERATE" onclick="createPicture()">generate</button>
-	</div>
-	<br>
-	<div id="SHOW">
-	</div>
-	<br>
-	<div id="COPYRIGHT">
-		<p style="text-align: center;">based on <a href="https://codegolf.stackexchange.com/a/35626">Martin Büttner's code</a></p>
-		<p style="text-align: center;">JavaScript by <a href="https://ouuan.github.io/">ouuan</a></p>
-	</div>
 	<script>
+		function read(name,dft)
+		{
+			var reg =new RegExp('(^|&)'+ name +'=([^&]*)(&|$)','i');
+			var r = window.location.search.substr(1).match(reg);
+			if(r!=null)
+			{
+				return 1*unescape(r[2]);
+			}
+			return dft;
+		}
+		function getDefault()
+		{
+			var d=document.getElementById('INPUT');
+			d.innerHTML="<p>图片宽度：<input type=\"number\" min=1 max=9999 id=\"WIDTH\" value="+read("width",512)+">（以像素为单位）</p>";
+			d.innerHTML=d.innerHTML+"<p>图片高度：<input type=\"number\" min=1 max=9999 id=\"HEIGHT\" value="+read("height",512)+">（以像素为单位）</p>";
+			d.innerHTML=d.innerHTML+"<p>色块大小：<input type=\"number\" min=1 max=9999 id=\"BLOCKSIZE\" value="+read("blocksize",75)+">（不以像素为单位，可以自己尝试一下）</p>";
+			d.innerHTML=d.innerHTML+"<p>点的散度：<input type=\"number\" min=2 max=9999 id=\"QWQ\" value="+read("qwq",2)+">（并不是矢量场里的\"散度\"，越小越像画刷，越大越像喷漆，<strong>必须大于等于2</strong>）</p>";
+			d.innerHTML=d.innerHTML+"<p>红色最小值：<input type=\"number\" min=0 max=255 id=\"MINRED\" value="+read("minred",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>红色最大值：<input type=\"number\" min=0 max=255 id=\"MAXRED\" value="+read("maxred",255)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>绿色最小值：<input type=\"number\" min=0 max=255 id=\"MINGREEN\" value="+read("mingreen",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>绿色最大值：<input type=\"number\" min=0 max=255 id=\"MAXGREEN\" value="+read("maxgreen",255)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>蓝色最小值：<input type=\"number\" min=0 max=255 id=\"MINBLUE\" value="+read("minblue",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>蓝色最大值：<input type=\"number\" min=0 max=255 id=\"MAXBLUE\" value="+read("maxblue",255)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>最小不透明：<input type=\"number\" min=0 max=255 id=\"MINALPHA\" value="+read("minalpha",120)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>最大不透明：<input type=\"number\" min=0 max=255 id=\"MAXALPHA\" value="+read("maxalpha",200)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<button id=\"GENERATE\" onclick=\"createPicture()\">生成图片</button> ";
+			d.innerHTML=d.innerHTML+"<button id=\"DOWNLOAD\" onclick=\"downloadImg()\">下载图片</button>";
+		}
+		var width;
+		var height;
+		var blocksize;
+		var qwq;
+		var minred;
+		var maxred;
+		var mingreen;
+		var maxgreen;
+		var minblue;
+		var maxblue;
+		var minalpha;
+		var maxalpha;
+		var generated=false;
+		function downloadImg()
+		{
+			if (!generated)
+			{
+				alert('您还没有生成图片！');
+			}
+			else
+			{
+				var canvas = document.getElementById('drawing');
+				var url = canvas.toDataURL('image/png');
+				var a = document.createElement('a');
+				var event = new MouseEvent('click');
+				var dt = new Date();
+				var name='width='+width+'&height='+height+'&blocksize='+blocksize+'&qwq='+qwq+'&minred='+minred+'&maxred='+maxred+'&mingreen='+mingreen+'&maxgreen='+maxgreen+'&minblue='+minblue+'&maxblue='+maxblue+'&minalpha='+minalpha+'&maxalpha='+maxalpha;
+				a.download = name || '下载';
+				a.href = url;
+				a.dispatchEvent(event);
+			}
+		}
 		function createPicture()
 		{
-			var width=document.getElementById('WIDTH').value;
-			var height=document.getElementById('HEIGHT').value;
-			var blocksize=document.getElementById('BLOCKSIZE').value;
-			var qwq=document.getElementById('QWQ').value;
-			var minred=document.getElementById('MINRED').value;
-			var maxred=document.getElementById('MAXRED').value;
-			var mingreen=document.getElementById('MINGREEN').value;
-			var maxgreen=document.getElementById('MAXGREEN').value;
-			var minblue=document.getElementById('MINBLUE').value;
-			var maxblue=document.getElementById('MAXBLUE').value;
-			var minalpha=document.getElementById('MINALPHA').value;
-			var maxalpha=document.getElementById('MAXALPHA').value;
+			generated=true;
+			width=document.getElementById('WIDTH').value;
+			height=document.getElementById('HEIGHT').value;
+			blocksize=document.getElementById('BLOCKSIZE').value;
+			qwq=document.getElementById('QWQ').value;
+			minred=document.getElementById('MINRED').value;
+			maxred=document.getElementById('MAXRED').value;
+			mingreen=document.getElementById('MINGREEN').value;
+			maxgreen=document.getElementById('MAXGREEN').value;
+			minblue=document.getElementById('MINBLUE').value;
+			maxblue=document.getElementById('MAXBLUE').value;
+			minalpha=document.getElementById('MINALPHA').value;
+			maxalpha=document.getElementById('MAXALPHA').value;
 			var d = document.getElementById('SHOW');
 			d.innerHTML="<canvas id=\"drawing\" width="+width+" height="+height+"></canvas>";
 			var R = new Array();
@@ -100,5 +137,17 @@
 			context.putImageData(a, 0, 0);
 		}
 	</script> 
+</head> 
+<body onload="getDefault()"> 
+	<div id="INPUT">
+	</div>
+	<br>
+	<div id="SHOW">
+	</div>
+	<br>
+	<div id="COPYRIGHT">
+		<p style="text-align: center;">based on <a href="https://codegolf.stackexchange.com/a/35626">Martin Büttner's code</a></p>
+		<p style="text-align: center;">JavaScript by <a href="https://ouuan.github.io/">ouuan</a></p>
+	</div>
 </body> 
 </html> 
