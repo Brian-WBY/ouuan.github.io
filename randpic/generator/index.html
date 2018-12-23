@@ -23,14 +23,14 @@
 			d.innerHTML=d.innerHTML+"<p>图片高度：<input type=\"number\" min=1 max=9999 id=\"HEIGHT\" value="+read("height",512)+">（以像素为单位）</p>";
 			d.innerHTML=d.innerHTML+"<p>色块大小：<input type=\"number\" min=1 max=9999 id=\"BLOCKSIZE\" value="+read("blocksize",75)+">（不以像素为单位，可以自己尝试一下）</p>";
 			d.innerHTML=d.innerHTML+"<p>点的散度：<input type=\"number\" min=2 max=9999 id=\"QWQ\" value="+read("qwq",2)+">（并不是矢量场里的\"散度\"，越小越像画刷，越大越像喷漆，<strong>必须大于等于2</strong>）</p>";
-			d.innerHTML=d.innerHTML+"<p>红色最小值：<input type=\"number\" min=0 max=255 id=\"MINRED\" value="+read("minred",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>红色最小值：<input type=\"number\" min=0 max=255 id=\"MINRED\" value="+read("minred",100)+">（0~255）</p>";
 			d.innerHTML=d.innerHTML+"<p>红色最大值：<input type=\"number\" min=0 max=255 id=\"MAXRED\" value="+read("maxred",255)+">（0~255）</p>";
-			d.innerHTML=d.innerHTML+"<p>绿色最小值：<input type=\"number\" min=0 max=255 id=\"MINGREEN\" value="+read("mingreen",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>绿色最小值：<input type=\"number\" min=0 max=255 id=\"MINGREEN\" value="+read("mingreen",100)+">（0~255）</p>";
 			d.innerHTML=d.innerHTML+"<p>绿色最大值：<input type=\"number\" min=0 max=255 id=\"MAXGREEN\" value="+read("maxgreen",255)+">（0~255）</p>";
-			d.innerHTML=d.innerHTML+"<p>蓝色最小值：<input type=\"number\" min=0 max=255 id=\"MINBLUE\" value="+read("minblue",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>蓝色最小值：<input type=\"number\" min=0 max=255 id=\"MINBLUE\" value="+read("minblue",200)+">（0~255）</p>";
 			d.innerHTML=d.innerHTML+"<p>蓝色最大值：<input type=\"number\" min=0 max=255 id=\"MAXBLUE\" value="+read("maxblue",255)+">（0~255）</p>";
-			d.innerHTML=d.innerHTML+"<p>最小不透明：<input type=\"number\" min=0 max=255 id=\"MINALPHA\" value="+read("minalpha",120)+">（0~255）</p>";
-			d.innerHTML=d.innerHTML+"<p>最大不透明：<input type=\"number\" min=0 max=255 id=\"MAXALPHA\" value="+read("maxalpha",200)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>最小不透明：<input type=\"number\" min=0 max=255 id=\"MINALPHA\" value="+read("minalpha",0)+">（0~255）</p>";
+			d.innerHTML=d.innerHTML+"<p>最大不透明：<input type=\"number\" min=0 max=255 id=\"MAXALPHA\" value="+read("maxalpha",255)+">（0~255）</p>";
 			d.innerHTML=d.innerHTML+"<button id=\"GENERATE\" onclick=\"createPicture()\">生成图片</button> ";
 			d.innerHTML=d.innerHTML+"<button id=\"DOWNLOAD\" onclick=\"downloadImg()\">下载图片</button>";
 		}
