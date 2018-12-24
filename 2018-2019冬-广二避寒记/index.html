@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://ouuan.github.io/2018-2019冬-广二避寒记/serious.jpg">
 <meta property="og:image" content="https://ouuan.github.io/2018-2019冬-广二避寒记/wifi1.jpg">
 <meta property="og:image" content="https://ouuan.github.io/2018-2019冬-广二避寒记/wifi2.jpg">
-<meta property="og:updated_time" content="2018-12-23T07:53:22.363Z">
+<meta property="og:updated_time" content="2018-12-24T15:57:25.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018~2019冬 广二避寒记">
 <meta name="twitter:description" content="迎风迈出的步伐更艰难，即使走的不远，但踩得更深。一代人只能做一代人的事，完成这个时代赋予的使命就是英雄，大地也会将他的脚印铭记。  ——乒乓帝国（句子迷上说是《孤杂记》..）  突然就得知了要去广二集训。 然后知道了这次出去可能要一直到 WC，差不多有 $50$ 天。这样一算这个学期我在武汉的时间可能和外出的时间一样多了。 毕竟是去广州，会暖和很多，也许看不到武汉的雪了。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-23 15:53:22" itemprop="dateModified" datetime="2018-12-23T15:53:22+08:00">2018-12-23</time>
+                <time title="修改时间：2018-12-24 23:57:25" itemprop="dateModified" datetime="2018-12-24T23:57:25+08:00">2018-12-24</time>
               
             
           </span>
@@ -603,6 +603,35 @@
 <img src="/2018-2019冬-广二避寒记/wifi2.jpg">
 <p>被夹在了一个没有 wifi 的世界里..</p>
 <p>然后貌似明天还是什么时候开始要打比赛了，然后这篇游记就不会继续真的成“游记”了。</p>
+<h1 id="Day-15"><a href="#Day-15" class="headerlink" title="Day 15"></a>Day 15</h1><p>今天是集训队爷 zjt 出的 <del>集训队互测</del>。</p>
+<h2 id="T1-一道带权带花树好题"><a href="#T1-一道带权带花树好题" class="headerlink" title="T1 一道带权带花树好题"></a>T1 一道带权带花树好题</h2><p>的确是带权带花树裸题（求一般图最大权值匹配），然而不需要输出方案。</p>
+<p>虽然说 OI 题名无正解，然而我还是百度了一下..然后学了一个半小时带花树，没学会！</p>
+<p>然后再一看，$n\le20$ 不会做？</p>
+<p>只好写了二分图的 $20$ 分滚粗..</p>
+<p>然而发现一个严重的问题，这貌似是我第一次写二分图最大权值匹配..百度了一下，发现全是KM算法，没有一篇费用流？然后仔细想了好多遍，感觉费用流应该没问题，就写了。然而一开始写挂了（连图中的边时没判哪个点是起点），幸好后来发现了。</p>
+<p>后来听说这题 std 是一个线代做法，由于不用输出方案码量非常小。具体可以参考2017年集训队论文。然而看不懂鸭…</p>
+<p>这题不卡随机化乱搞.（嘤嘤嘤？）</p>
+<h2 id="T2-一道拉格朗日反演好题"><a href="#T2-一道拉格朗日反演好题" class="headerlink" title="T2 一道拉格朗日反演好题"></a>T2 一道拉格朗日反演好题</h2><p>看到 T1 真的是一般图最大权值匹配的我真的信了题名的鬼话..</p>
+<p>一个 $01$ 序列，初始为空，有三种操作：</p>
+<ol>
+<li>往末尾加个 $0$ .</li>
+<li>删掉一个子序列，包含 $x$ 个 $0$ ，$y$ 个 $1$ ，然后往末尾加个 $1$ 。其中 $x\in A$ 。</li>
+<li>删掉一个子序列，只包含 $x$ 个 $0$ ，然后往末尾加个 $1$ 。其中 $x\in B$ 。</li>
+</ol>
+<p>$A$ 和 $B$ 还有操作总数 $n$ 是给你的，让你求 $n$ 次操作完成后序列长度为 $1$ 的方案数。</p>
+<p>不太会做，好像是转化成一个树上的 dp，然后再算一波式子，分治FFT/牛顿迭代？</p>
+<p>不得不说样例十分lx：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10 10 10</span><br><span class="line">0 1 2 3 4 5 6 7 8 9</span><br><span class="line">0 1 2 3 4 5 6 7 8 9</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">362880</span><br></pre></td></tr></table></figure>
+<p>愉快地拿到了 $|A|=|B|=n$ 这档部分分。</p>
+<h2 id="T3-一道-Top-cactus-好题"><a href="#T3-一道-Top-cactus-好题" class="headerlink" title="T3 一道 Top cactus 好题"></a>T3 一道 Top cactus 好题</h2><p>仙人掌上 $q$ 次询问求经过某个点的路径贡献之和。不在简单环上的边数为 $x$ 的路径贡献为 $v_x$ 。</p>
+<p>部分分第一档，树，$n\le2000$ 。</p>
+<p>woc我只会 $O(n^3)$ ..</p>
+<p>冷静了一下，发现可以枚举路径树上差分..</p>
+<p>愉快地拿到了这 $10$ 分。</p>
+<p>正解好像是树上推式子+NTT。然后搬到圆方树上去。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>队爷出的题就是神仙..<del>之前一直感觉多项式看起来没啥用？请julao们看到这句话别打我..</del>感觉很有必要早点去学多项式全家桶了。</p>
+<p>另外题名里的算法真的 $99\%​$ 不可信。</p>
 
       
     </div>
@@ -902,7 +931,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-0"><span class="nav-number">1.</span> <span class="nav-text">Day 0</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Railway"><span class="nav-number">1.1.</span> <span class="nav-text">Railway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Underground"><span class="nav-number">1.2.</span> <span class="nav-text">Underground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restaurant"><span class="nav-number">1.3.</span> <span class="nav-text">Restaurant</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-2-3"><span class="nav-number">3.</span> <span class="nav-text">Day 2-3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-4"><span class="nav-number">4.</span> <span class="nav-text">Day 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-5"><span class="nav-number">5.</span> <span class="nav-text">Day 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-6-7"><span class="nav-number">6.</span> <span class="nav-text">Day 6-7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-8"><span class="nav-number">7.</span> <span class="nav-text">Day 8</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-9"><span class="nav-number">8.</span> <span class="nav-text">Day 9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-10-11"><span class="nav-number">9.</span> <span class="nav-text">Day 10-11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day"><span class="nav-number">10.</span> <span class="nav-text">Day ?-?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-14"><span class="nav-number">11.</span> <span class="nav-text">Day 14</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-0"><span class="nav-number">1.</span> <span class="nav-text">Day 0</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Railway"><span class="nav-number">1.1.</span> <span class="nav-text">Railway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Underground"><span class="nav-number">1.2.</span> <span class="nav-text">Underground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restaurant"><span class="nav-number">1.3.</span> <span class="nav-text">Restaurant</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-2-3"><span class="nav-number">3.</span> <span class="nav-text">Day 2-3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-4"><span class="nav-number">4.</span> <span class="nav-text">Day 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-5"><span class="nav-number">5.</span> <span class="nav-text">Day 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-6-7"><span class="nav-number">6.</span> <span class="nav-text">Day 6-7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-8"><span class="nav-number">7.</span> <span class="nav-text">Day 8</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-9"><span class="nav-number">8.</span> <span class="nav-text">Day 9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-10-11"><span class="nav-number">9.</span> <span class="nav-text">Day 10-11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day"><span class="nav-number">10.</span> <span class="nav-text">Day ?-?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-14"><span class="nav-number">11.</span> <span class="nav-text">Day 14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-15"><span class="nav-number">12.</span> <span class="nav-text">Day 15</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1-一道带权带花树好题"><span class="nav-number">12.1.</span> <span class="nav-text">T1 一道带权带花树好题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2-一道拉格朗日反演好题"><span class="nav-number">12.2.</span> <span class="nav-text">T2 一道拉格朗日反演好题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3-一道-Top-cactus-好题"><span class="nav-number">12.3.</span> <span class="nav-text">T3 一道 Top cactus 好题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">12.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
