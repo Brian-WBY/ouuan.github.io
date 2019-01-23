@@ -80,9 +80,9 @@
     
       <category term="游记" scheme="https://ouuan.github.io/tags/%E6%B8%B8%E8%AE%B0/"/>
     
-      <category term="题解" scheme="https://ouuan.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    
       <category term="UOJ" scheme="https://ouuan.github.io/tags/UOJ/"/>
+    
+      <category term="题解" scheme="https://ouuan.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
       <category term="通信题" scheme="https://ouuan.github.io/tags/%E9%80%9A%E4%BF%A1%E9%A2%98/"/>
     
@@ -149,9 +149,9 @@
     
       <category term="游记" scheme="https://ouuan.github.io/tags/%E6%B8%B8%E8%AE%B0/"/>
     
-      <category term="CodeForces" scheme="https://ouuan.github.io/tags/CodeForces/"/>
-    
       <category term="AtCoder" scheme="https://ouuan.github.io/tags/AtCoder/"/>
+    
+      <category term="CodeForces" scheme="https://ouuan.github.io/tags/CodeForces/"/>
     
   </entry>
   
