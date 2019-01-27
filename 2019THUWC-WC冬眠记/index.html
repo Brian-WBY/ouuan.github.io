@@ -664,6 +664,15 @@
 
   <aside id="sidebar" class="sidebar">
     
+
+    <div class="sidebar-inner">
+      <div style="font-size: 1em; line-height: 1.4em; text-align:left; color: black; text-indent:2em;" id="hitokoto-content"></div>
+      <div style="text-align: right; margin-top: 15px; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a href="https://hitokoto.cn/">Hitokoto</a></div>
+    </div>
+
+    <div style="height: 15px;"></div>
+
     <div class="sidebar-inner">
 
       
@@ -832,7 +841,7 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://www.cnblogs.com/LJC00118/\" title="https://www.cnblogs.com/LJC00118/\" rel="noopener" target="_blank">wxw</a>
+                    <a href="https://www.cnblogs.com/LJC00118/" title="https://www.cnblogs.com/LJC00118/" rel="noopener" target="_blank">wxw</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -851,7 +860,6 @@
             
           
           
-
         </div>
       </section>
 
@@ -1010,6 +1018,12 @@
   <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
 
 
+<script type="text/javascript">
+	$.get('https://v1.hitokoto.cn/?c=a', function (data) {
+		$('#hitokoto-content').css('display', '').text(data.hitokoto);
+		$('#hitokoto-from').css('display', '').text('——' + data.from);
+	});
+</script>
 
   
   
