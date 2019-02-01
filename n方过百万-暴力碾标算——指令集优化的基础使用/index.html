@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ouuan.github.io/n方过百万-暴力碾标算——指令集优化的基础使用/ojzc1.png">
 <meta property="og:image" content="https://ouuan.github.io/n方过百万-暴力碾标算——指令集优化的基础使用/ojzc2.png">
-<meta property="og:updated_time" content="2019-02-01T08:41:47.734Z">
+<meta property="og:updated_time" content="2019-02-01T08:47:22.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="n方过百万 暴力碾标算——指令集优化的基础使用">
 <meta name="twitter:description" content="感谢 yfz 和 mcfx 在 WC 营员交流上的分享！ 然而只看那个课件来学习指令集好像略有困难..所以我来分享一下我自学一晚上的成果。 希望能帮助大家暴力过题，考场上再也写不出标算。 你问学了指令集之后如何保持对标算的信仰？当然是每天%神橡树 ok不扯了，进入正题…">
@@ -431,7 +431,7 @@
                 
               
 
-              <time title="创建时间：2019-02-01 14:26:52 / 修改时间：16:41:47" itemprop="dateCreated datePublished" datetime="2019-02-01T14:26:52+08:00">2019-02-01</time>
+              <time title="创建时间：2019-02-01 14:26:52 / 修改时间：16:47:22" itemprop="dateCreated datePublished" datetime="2019-02-01T14:26:52+08:00">2019-02-01</time>
             
 
             
@@ -493,7 +493,7 @@
 <p>第二行是告诉编译器你要使用指令集。</p>
 <p>后面两个头文件是 C++ 将指令集封装成了函数，这样就不用在代码中内联汇编了。</p>
 <h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>大约有 <code>__m256i</code> <code>__m256</code> <code>__m256d</code> 三种，分别存储 <code>long long</code>，<code>float</code> 和 <code>double</code>，实际上 <code>__m256i</code> 也可以用来存储 <code>int</code>。</p>
-<p><del>实际使用的时候由于<strong>m256i打起来比较麻烦，建议 typedef </strong>m256i oak</del></p>
+<p><del>实际使用的时候由于<code>__m256i</code>打起来比较麻烦，建议<code>typedef __m256i oak</code></del></p>
 <h2 id="指令使用"><a href="#指令使用" class="headerlink" title="指令使用"></a>指令使用</h2><p>可以在<a href="https://software.intel.com/sites/landingpage/IntrinsicsGuide" target="_blank" rel="noopener">一个神奇的网站</a>查需要的指令，左边选指令集以及指令类型，右边是指令，点开指令可以查看函数原型以及伪代码。</p>
 <p>这里列几条常用指令：</p>
 <p><code>__m256i _mm256_set_epi32 (int e7, int e6, int e5, int e4, int e3, int e2, int e1, int e0)</code>：参数是八个数，也就是一个“分块”里的数，注意是逆序的。返回值是一个含这八个数的“分块”。</p>
