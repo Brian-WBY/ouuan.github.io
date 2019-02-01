@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://ouuan.github.io/n%E6%96%B9%E8%BF%87%E7%99%BE%E4%B8%87-%E6%9A%B4%E5%8A%9B%E7%A2%BE%E6%A0%87%E7%AE%97%E2%80%94%E2%80%94%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BC%98%E5%8C%96%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://ouuan.github.io/about/index.html</loc>
     
-    <lastmod>2019-02-01T09:37:35.893Z</lastmod>
+    <lastmod>2019-02-01T11:14:04.238Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://ouuan.github.io/2019THUWC-WC%E5%86%AC%E7%9C%A0%E8%AE%B0/</loc>
     
-    <lastmod>2019-02-01T08:45:22.607Z</lastmod>
+    <lastmod>2019-02-01T11:12:54.531Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ouuan.github.io/n%E6%96%B9%E8%BF%87%E7%99%BE%E4%B8%87-%E6%9A%B4%E5%8A%9B%E7%A2%BE%E6%A0%87%E7%AE%97%E2%80%94%E2%80%94%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BC%98%E5%8C%96%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2019-02-01T09:37:35.893Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>https://ouuan.github.io/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8C%97/</loc>
     
     <lastmod>2019-01-27T08:52:24.818Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ouuan.github.io/about/index.html</loc>
-    
-    <lastmod>2019-01-23T11:32:24.007Z</lastmod>
     
   </url>
   
