@@ -108,16 +108,20 @@
 
 
 
-  <meta name="description" content="ouuan的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ouuan的博客">
-<meta property="og:url" content="https://ouuan.github.io/archives/2019/01/index.html">
+  <meta name="description" content="题目链接洛谷 darkbzoj 题意简述$n$ 个入栈操作，$m$ 个出栈操作，问合法操作序列数。 简要做法借用一下这篇题解（的图）。 选了 $x$ 个数，$1$ 与 $0$ 个数之差为 $y$，如下图：  不考虑限制条件，方案数为从 $(0,0)$ 到 $(n+m,n-m)$ 的折线数，即从 $n+m$ 次操作中选择 $m$ 次向下： $\binom{n+m}m$。考虑某一种不合法的情况，把这条">
+<meta name="keywords" content="题解,组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【[SCOI2010]生成字符串】(组合数学)">
+<meta property="og:url" content="https://ouuan.github.io/【-SCOI2010-生成字符串】-组合数学/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="ouuan的博客">
+<meta property="og:description" content="题目链接洛谷 darkbzoj 题意简述$n$ 个入栈操作，$m$ 个出栈操作，问合法操作序列数。 简要做法借用一下这篇题解（的图）。 选了 $x$ 个数，$1$ 与 $0$ 个数之差为 $y$，如下图：  不考虑限制条件，方案数为从 $(0,0)$ 到 $(n+m,n-m)$ 的折线数，即从 $n+m$ 次操作中选择 $m$ 次向下： $\binom{n+m}m$。考虑某一种不合法的情况，把这条">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20170826103642649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHl6MzI3Njg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2019-02-12T06:49:50.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ouuan的博客">
-<meta name="twitter:description" content="ouuan的博客">
+<meta name="twitter:title" content="【[SCOI2010]生成字符串】(组合数学)">
+<meta name="twitter:description" content="题目链接洛谷 darkbzoj 题意简述$n$ 个入栈操作，$m$ 个出栈操作，问合法操作序列数。 简要做法借用一下这篇题解（的图）。 选了 $x$ 个数，$1$ 与 $0$ 个数之差为 $y$，如下图：  不考虑限制条件，方案数为从 $(0,0)$ 到 $(n+m,n-m)$ 的折线数，即从 $n+m$ 次操作中选择 $m$ 次向下： $\binom{n+m}m$。考虑某一种不合法的情况，把这条">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170826103642649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHl6MzI3Njg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
@@ -126,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://ouuan.github.io/archives/2019/01/">
+  <link rel="canonical" href="https://ouuan.github.io/【-SCOI2010-生成字符串】-组合数学/">
 
 
 
@@ -136,7 +140,7 @@
   };
 </script>
 
-  <title>归档 | ouuan的博客</title>
+  <title>【[SCOI2010]生成字符串】(组合数学) | ouuan的博客</title>
   
 
 
@@ -185,7 +189,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -277,7 +281,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -364,104 +368,198 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 20 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ouuan.github.io/【-SCOI2010-生成字符串】-组合数学/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ouuan">
+      <meta itemprop="description" content="ouuan的博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ouuan的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019THUWC-WC冬眠记/" itemprop="url">
-              
-                <span itemprop="name">2019THUWC/WC冬眠记</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">【[SCOI2010]生成字符串】(组合数学)
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-20T12:16:15+08:00" content="2019-01-20">
-          01-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2019-02-12 14:22:37 / 修改时间：14:49:50" itemprop="dateCreated datePublished" datetime="2019-02-12T14:22:37+08:00">2019-02-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h1><p><a href="https://www.luogu.org/problemnew/show/P1641" target="_blank" rel="noopener">洛谷</a></p>
+<p><a href="https://darkbzoj.cf/problem/1856" target="_blank" rel="noopener">darkbzoj</a></p>
+<h1 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h1><p>$n$ 个入栈操作，$m$ 个出栈操作，问合法操作序列数。</p>
+<h1 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h1><p>借用一下<a href="https://www.luogu.org/blog/user29936/solution-p1641" target="_blank" rel="noopener">这篇题解</a>（的图）。</p>
+<p>选了 $x$ 个数，$1$ 与 $0$ 个数之差为 $y$，如下图：</p>
+<p><img src="http://img.blog.csdn.net/20170826103642649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHl6MzI3Njg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>不考虑限制条件，方案数为从 $(0,0)$ 到 $(n+m,n-m)$ 的折线数，即从 $n+m$ 次操作中选择 $m$ 次向下： $\binom{n+m}m$。考虑某一种不合法的情况，把这条折线第一次碰到 $y=-1$ 前的部分以 $y=-1$ 为轴翻折，这样就建立了 <strong>从 $(0,0)$ 到 $(n+m,n-m)$ 且碰到了 $y=-1$ 的折线</strong> 与 <strong>从 $(0,-2)$ 到 $(n+m,n-m)$ 的折线</strong> 的一一对应，所以不合法的情况个数为 $\binom{n+m}{m-1}$，答案为 $\binom{n+m}m-\binom{n+m}{m-1}$。</p>
+<p>（<del>上面看懂了这段可以不看，这段是废话证明</del>）为什么这玩意是双射（一一对应）..其实很简单，每条 <strong>从 $(0,0)$ 到 $(n+m,n-m)$ 且碰到了 $y=-1$ 的折线</strong> 在第一次碰到 $y=-1$ 前的部分以 $y=-1$ 为轴翻折可以得到唯一一条 <strong>从 $(0,-2)$ 到 $(n+m,n-m)$ 的折线</strong>，而一条 <strong>从 $(0,-2)$ 到 $(n+m,n-m)$ 的折线</strong> 必然会碰到 $y=-1$，同样可以把它在第一次碰到 $y=-1$ 前的部分以 $y=-1$ 为轴翻折，就会得到唯一一条 <strong>从 $(0,0)$ 到 $(n+m,n-m)$ 且碰到了 $y=-1$ 的折线</strong>。</p>
+<p><del>最后吐槽一句。你谷完全不接受做法相同的题解，无法对已有做法进行阐述，所以并没有尝试在你谷发题解。</del></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">20100403</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> jc[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	</span><br><span class="line">	jc[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+m;++i) jc[i]=(ll)jc[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;(c(n+m,m)-c(n+m,m<span class="number">-1</span>)+mod)%mod;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (y)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (y&amp;<span class="number">1</span>) out=(ll)out*x%mod;</span><br><span class="line">		x=(ll)x*x%mod;</span><br><span class="line">		y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (ll)jc[x]*qpow(jc[y],mod<span class="number">-2</span>)%mod*qpow(jc[x-y],mod<span class="number">-2</span>)%mod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/题解/" rel="tag"><i class="fa fa-tag"></i> 题解</a>
+          
+            <a href="/tags/组合数学/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/n方过百万-暴力碾标算——指令集优化的基础使用/" rel="next" title="n方过百万 暴力碾标算——指令集优化的基础使用">
+                <i class="fa fa-chevron-left"></i> n方过百万 暴力碾标算——指令集优化的基础使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
 
         </div>
         
@@ -495,8 +593,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -678,6 +785,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题意简述"><span class="nav-number">2.</span> <span class="nav-text">题意简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简要做法"><span class="nav-number">3.</span> <span class="nav-text">简要做法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -834,6 +957,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
@@ -856,6 +983,32 @@
 
 
 
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '63f0a945fe08a1c11244',
+          clientSecret: 'e27a1ee43958d42ed5a35ba8e4059318202e14c6',
+          repo: 'ouuan.github.io',
+          owner: 'ouuan',
+          admin: ['ouuan'],
+          id: md5(location.pathname),
+          distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
