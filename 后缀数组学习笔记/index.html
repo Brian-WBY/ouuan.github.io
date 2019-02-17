@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/sark.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/bz.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/TLE.png">
-<meta property="og:updated_time" content="2019-02-17T09:41:23.614Z">
+<meta property="og:updated_time" content="2019-02-17T09:46:32.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀数组学习笔记">
 <meta name="twitter:description" content="后缀数组是一种处理字符串问题的有力工具（废话），本文的主要特点是一步步地由最朴素的后缀数组构建方法逐步优化，而非直接给出最终优化后的代码。 希望这篇文章能让更多的人看懂后缀数组的代码，学会后缀数组。">
@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:41:23" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
+              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:46:32" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
             
 
             
@@ -589,14 +589,14 @@
 <h2 id="O-n-求-height-数组需要的一个引理"><a href="#O-n-求-height-数组需要的一个引理" class="headerlink" title="$O(n)$ 求 $height$ 数组需要的一个引理"></a>$O(n)$ 求 $height$ 数组需要的一个引理</h2><p>$height[rk[i]]\ge height[rk[i-1]]-1$</p>
 <p>证明的话..<del>感性理解</del></p>
 <p>当 $height[rk[i-1]]\le1$ 时，上式显然成立（右边小于等于 $0$ ）。</p>
-<p>当 $height[rk[i-1]]&gt;1$ 时：（小写字母代表一个字符，大写字母代表一个字符串）</p>
-<p>设后缀 $i-1$ 为 $aAD$（$A$ 是一个长度为 $height[rk[i-1]]-1$ 的字符串），那么后缀 $i$ 就是 $AD$。设后缀 $sa[rk[i-1]-1]$ 为 $aAB$ ，那么 $lcp(i-1,sa[rk[i-1]-1])=aA$。由于后缀 $sa[rk[i-1]-1]+1$ 是 $AB$，一定排在后缀 $i$ 的前面，所以后缀 $sa[rk[i]-1]$ 一定含有前缀 $A$，所以 $lcp(i,sa[rk[i]-1])$ 至少是 $height[rk[i-1]]-1$。</p>
+<p>当 $height[rk[i-1]]&gt;1$ 时：</p>
+<p>设后缀 $i-1​$ 为 $aAD​$（$A​$ 是一个长度为 $height[rk[i-1]]-1​$ 的字符串），那么后缀 $i​$ 就是 $AD​$。设后缀 $sa[rk[i-1]-1]​$ 为 $aAB​$ ，那么 $lcp(i-1,sa[rk[i-1]-1])=aA​$。由于后缀 $sa[rk[i-1]-1]+1​$ 是 $AB​$，一定排在后缀 $i​$ 的前面，所以后缀 $sa[rk[i]-1]​$ 一定含有前缀 $A​$，所以 $lcp(i,sa[rk[i]-1])​$ 至少是 $height[rk[i-1]]-1​$。</p>
 <p>简单来说：</p>
 <p>$i-1$：$aAD$</p>
 <p>$i$：$AD$</p>
 <p>$sa[rk[i-1]-1]$：$aAB$</p>
 <p>$sa[rk[i-1]-1]+1$：$AB$</p>
-<p>$sa[rk[i]-1]$：$A[B$~$C]$</p>
+<p>$sa[rk[i]-1]$：$A[B/C]$</p>
 <p>$lcp(i,sa[rk[i]-1])$：$AX$（$X$ 可能为空）</p>
 <h2 id="O-n-求-height-数组的代码实现"><a href="#O-n-求-height-数组的代码实现" class="headerlink" title="$O(n)$ 求 $height$ 数组的代码实现"></a>$O(n)$ 求 $height$ 数组的代码实现</h2><p>利用上面这个引理暴力求即可：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>,k=<span class="number">0</span>;i&lt;=n;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (k) --k;</span><br><span class="line">    <span class="keyword">while</span> (s[i+k]==s[sa[rk[i]<span class="number">-1</span>]+k]) ++k;</span><br><span class="line">    ht[rk[i]]=k; <span class="comment">//height太长了缩写为ht</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
