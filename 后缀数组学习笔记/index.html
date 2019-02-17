@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/sark.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/bz.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/TLE.png">
-<meta property="og:updated_time" content="2019-02-17T09:16:29.507Z">
+<meta property="og:updated_time" content="2019-02-17T09:31:45.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀数组学习笔记">
 <meta name="twitter:description" content="后缀数组是一种处理字符串问题的有力工具（废话），本文的主要特点是一步步地由最朴素的后缀数组构建方法逐步优化，而非直接给出最终优化后的代码。 希望这篇文章能让更多的人看懂后缀数组的代码，学会后缀数组。">
@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:16:29" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
+              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:31:45" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
             
 
             
@@ -532,7 +532,7 @@
 <h2 id="字典序"><a href="#字典序" class="headerlink" title="字典序"></a>字典序</h2><p>以第 $i$ 个字符作为第 $i$ 关键字进行大小比较，空字符小于字符集内任何字符（即：$a&lt;aa$）。</p>
 <h1 id="后缀数组是什么？"><a href="#后缀数组是什么？" class="headerlink" title="后缀数组是什么？"></a>后缀数组是什么？</h1><p>后缀数组主要是两个数组：$sa$ 和 $rk$。</p>
 <p>其中，$sa[i]$ 表示将所有后缀排序后第 $i$ 小的后缀的编号。$rk[i]$ 表示后缀 $i$ 的排名。</p>
-<p>也就是说，$sa[rk[i]]=rk[sa[i]]=i$。</p>
+<p>这两个数组满足性质：$sa[rk[i]]=rk[sa[i]]=i$。</p>
 <p>后缀数组示例：$^{[2]}$</p>
 <img src="/后缀数组学习笔记/sark.png">
 <h1 id="后缀数组怎么求？"><a href="#后缀数组怎么求？" class="headerlink" title="后缀数组怎么求？"></a>后缀数组怎么求？</h1><h2 id="O-n-2-log-n-做法"><a href="#O-n-2-log-n-做法" class="headerlink" title="$O(n^2\log n)$ 做法"></a>$O(n^2\log n)$ 做法</h2><p>我相信这个做法大家还是能自己想到的..用string+sort就可以了。由于比较两个字符串是 $O(n)$ 的，所以排序是 $O(n^2\log n)$ 的。</p>
