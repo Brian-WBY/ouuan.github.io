@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/sark.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/bz.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/TLE.png">
-<meta property="og:updated_time" content="2019-02-17T09:46:32.493Z">
+<meta property="og:updated_time" content="2019-02-17T09:48:24.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀数组学习笔记">
 <meta name="twitter:description" content="后缀数组是一种处理字符串问题的有力工具（废话），本文的主要特点是一步步地由最朴素的后缀数组构建方法逐步优化，而非直接给出最终优化后的代码。 希望这篇文章能让更多的人看懂后缀数组的代码，学会后缀数组。">
@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:46:32" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
+              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:48:24" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
             
 
             
@@ -590,7 +590,7 @@
 <p>证明的话..<del>感性理解</del></p>
 <p>当 $height[rk[i-1]]\le1$ 时，上式显然成立（右边小于等于 $0$ ）。</p>
 <p>当 $height[rk[i-1]]&gt;1$ 时：</p>
-<p>设后缀 $i-1​$ 为 $aAD​$（$A​$ 是一个长度为 $height[rk[i-1]]-1​$ 的字符串），那么后缀 $i​$ 就是 $AD​$。设后缀 $sa[rk[i-1]-1]​$ 为 $aAB​$ ，那么 $lcp(i-1,sa[rk[i-1]-1])=aA​$。由于后缀 $sa[rk[i-1]-1]+1​$ 是 $AB​$，一定排在后缀 $i​$ 的前面，所以后缀 $sa[rk[i]-1]​$ 一定含有前缀 $A​$，所以 $lcp(i,sa[rk[i]-1])​$ 至少是 $height[rk[i-1]]-1​$。</p>
+<p>设后缀 $i-1$ 为 $aAD$（$A$ 是一个长度为 $height[rk[i-1]]-1$ 的字符串），那么后缀 $i$ 就是 $AD$。设后缀 $sa[rk[i-1]-1]$ 为 $aAB$ ，那么 $lcp(i-1,sa[rk[i-1]-1])=aA$。由于后缀 $sa[rk[i-1]-1]+1$ 是 $AB$，一定排在后缀 $i$ 的前面，所以后缀 $sa[rk[i]-1]$ 一定含有前缀 $A$，所以 $lcp(i,sa[rk[i]-1])$ 至少是 $height[rk[i-1]]-1$。</p>
 <p>简单来说：</p>
 <p>$i-1$：$aAD$</p>
 <p>$i$：$AD$</p>
@@ -602,7 +602,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>,k=<span class="number">0</span>;i&lt;=n;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (k) --k;</span><br><span class="line">    <span class="keyword">while</span> (s[i+k]==s[sa[rk[i]<span class="number">-1</span>]+k]) ++k;</span><br><span class="line">    ht[rk[i]]=k; <span class="comment">//height太长了缩写为ht</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><del>利用摊还分析/势能分析可以发现是O(n)的</del>，$k$ 不会超过 $n$，最多减 $n$ 次，所以最多加 $2n$ 次。</p>
 <h2 id="应用-height-数组需要的一个性质"><a href="#应用-height-数组需要的一个性质" class="headerlink" title="应用 $height$ 数组需要的一个性质"></a>应用 $height$ 数组需要的一个性质</h2><p>$lcp(sa[i],sa[j])=\min\{height[i+1..j]\}$</p>
-<p>如果 $height$ 一直大于某个数，前这么多位就一直没变过；反之，由于后缀已经排好序了，不可能变了之后变回来。</p>
+<p>感性理解：如果 $height$ 一直大于某个数，前这么多位就一直没变过；反之，由于后缀已经排好序了，不可能变了之后变回来。</p>
 <p>严格证明可以参考<a href="https://wenku.baidu.com/view/0dc03d2b1611cc7931b765ce0508763230127479.html" target="_blank" rel="noopener">[2004]后缀数组 by.徐智磊</a>。</p>
 <h2 id="height-数组的应用"><a href="#height-数组的应用" class="headerlink" title="$height$ 数组的应用"></a>$height$ 数组的应用</h2><p>$height$ 数组往往用来解决关于字符串公共部分的题目，通常需要和RMQ/单调栈等算法相结合。</p>
 <h3 id="USACO06DEC-Milk-Patterns"><a href="#USACO06DEC-Milk-Patterns" class="headerlink" title="[USACO06DEC]Milk Patterns"></a>[USACO06DEC]Milk Patterns</h3><p><a href="https://www.luogu.org/problemnew/show/P2852" target="_blank" rel="noopener">洛谷</a></p>
