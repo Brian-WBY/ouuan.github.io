@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/sark.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/bz.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀数组学习笔记/TLE.png">
-<meta property="og:updated_time" content="2019-02-17T09:31:45.987Z">
+<meta property="og:updated_time" content="2019-02-17T09:34:33.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀数组学习笔记">
 <meta name="twitter:description" content="后缀数组是一种处理字符串问题的有力工具（废话），本文的主要特点是一步步地由最朴素的后缀数组构建方法逐步优化，而非直接给出最终优化后的代码。 希望这篇文章能让更多的人看懂后缀数组的代码，学会后缀数组。">
@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:31:45" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
+              <time title="创建时间：2019-02-17 13:53:54 / 修改时间：17:34:33" itemprop="dateCreated datePublished" datetime="2019-02-17T13:53:54+08:00">2019-02-17</time>
             
 
             
@@ -582,7 +582,7 @@
 <p><a href="https://darkbzoj.cf/problem/1031" target="_blank" rel="noopener">dark bzoj</a></p>
 <h2 id="USACO07DEC-Best-Cow-Line-Gold"><a href="#USACO07DEC-Best-Cow-Line-Gold" class="headerlink" title="[USACO07DEC]Best Cow Line, Gold"></a>[USACO07DEC]Best Cow Line, Gold</h2><p><a href="https://www.luogu.org/problemnew/show/P2870" target="_blank" rel="noopener">洛谷</a></p>
 <p><a href="https://ouuan.github.io/P2870-USACO07DEC-Best-Cow-Line-Gold%EF%BC%88%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%EF%BC%89/">我的题解</a></p>
-<h1 id="height-数组"><a href="#height-数组" class="headerlink" title="$height$ 数组"></a>$height$ 数组</h1><p>后缀数组的题目往往还是要用到 $height$ 数组的。</p>
+<h1 id="height-数组"><a href="#height-数组" class="headerlink" title="$height$ 数组"></a>$height$ 数组</h1><p>后缀数组的题目往往是要用到 $height$ 数组的。</p>
 <h2 id="lcp（最长公共前缀）"><a href="#lcp（最长公共前缀）" class="headerlink" title="lcp（最长公共前缀）"></a>lcp（最长公共前缀）</h2><p>两个字符串 $S$ 和 $T$ 的 $lcp$ 就是最大的 $x$ 使得 $S_i=T_i (\forall 1\le i\le x)$ 。</p>
 <p>下文中以 $lcp(i,j)$ 表示后缀 $i$ 和后缀 $j$ 的最长公共前缀（的长度）。</p>
 <h2 id="height-数组的定义"><a href="#height-数组的定义" class="headerlink" title="$height$ 数组的定义"></a>$height$ 数组的定义</h2><p>$height[i]=lcp(sa[i],sa[i-1])$，即第 $i$ 名的后缀与它前一名的后缀的最长公共前缀。</p>
