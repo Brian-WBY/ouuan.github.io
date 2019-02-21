@@ -4,6 +4,14 @@
     <title><![CDATA[BZOJ4516 [SDOI2016]生成魔咒（SAM/SA）]]></title>
     <url>%2FBZOJ4516-SDOI2016-%E7%94%9F%E6%88%90%E9%AD%94%E5%92%92%EF%BC%88SAM-SA%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接洛谷 dark bzoj 题意简述给你一个字符串（字符集大小 $10^9$，长度 $10^5$），求每个前缀的本质不同子串数。 后缀数组参考题解，我不太会.. SAM简要做法如果只求整个串的本质不同子串，由于每个本质不同子串可以与SAM上一个状态+串的长度一一对应，所以本质不同子串数就是每个状态的 $maxlen-minlen+1$，也就是 $len-parent.len$。 $parent$ 不改变时，逐个加入字符并计算即可。 考虑 $parent$ 改变的情况，对答案的贡献为 $nq-nq.parent-q+qp+q-nq+np-nq=np-nq$，也是新加入的点的 $len$ 减去 $parent.len$，是一样的。 由于字符集较大，用 map 存边。 参考代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;map&gt;#include &lt;cctype&gt;using namespace std;typedef long long ll;int read()&#123; int out=0; char c; while (!isdigit(c=getchar())); for (;isdigit(c);c=getchar()) out=out*10+c-'0'; return out;&#125;const int N=100010;struct Node&#123; int len,par; map&lt;int,int&gt; ch;&#125; sam[N&lt;&lt;1];void insert(int x);int n,p,tot;ll ans;int main()&#123; int i; n=read(); sam[0].par=-1; for (i=1;i&lt;=n;++i) &#123; insert(read()); printf("%lld\n",ans); &#125; return 0;&#125;void insert(int x)&#123; int np=++tot; sam[np].len=sam[p].len+1; while (~p&amp;&amp;sam[p].ch.find(x)==sam[p].ch.end()) &#123; sam[p].ch[x]=np; p=sam[p].par; &#125; if (p==-1) sam[np].par=0; else &#123; int q=sam[p].ch[x]; if (sam[q].len==sam[p].len+1) sam[np].par=q; else &#123; int nq=++tot; sam[nq].len=sam[p].len+1; sam[nq].ch=sam[q].ch; sam[nq].par=sam[q].par; sam[q].par=sam[np].par=nq; while (~p&amp;&amp;sam[p].ch[x]==q) &#123; sam[p].ch[x]=nq; p=sam[p].par; &#125; &#125; &#125; ans+=sam[np].len-sam[sam[np].par].len; p=np;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>后缀数组</tag>
+        <tag>SAM</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[后缀数组学习笔记]]></title>
