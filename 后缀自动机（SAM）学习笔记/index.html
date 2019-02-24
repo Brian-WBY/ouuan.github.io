@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/triesam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/minsam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/parent.png">
-<meta property="og:updated_time" content="2019-02-23T14:27:53.302Z">
+<meta property="og:updated_time" content="2019-02-24T08:36:59.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀自动机（SAM）学习笔记">
 <meta name="twitter:description" content="后缀自动机是一种处理字符串问题的有力工具（废话），它的码量不比后缀数组大（实际代码难度不比后缀数组小，但也不难），处理问题时的思维难度往往比后缀数组小，虽然常数略大，但复杂度是 $O(n)​$ 的。（实际上，若字符集大小为 $|\Sigma|​$，则：时间复杂度 $O(n)​$，空间复杂度 $O(n|\Sigma|)​$ 或时间复杂度 $O(n\log|\Sigma|)​$，空间复杂度 $O(n)">
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-23 22:27:53" itemprop="dateModified" datetime="2019-02-23T22:27:53+08:00">2019-02-23</time>
+                <time title="修改时间：2019-02-24 16:36:59" itemprop="dateModified" datetime="2019-02-24T16:36:59+08:00">2019-02-24</time>
               
             
           </span>
@@ -616,7 +616,9 @@
 <h2 id="本质不同子串数"><a href="#本质不同子串数" class="headerlink" title="本质不同子串数"></a>本质不同子串数</h2><p>每个状态表示 $maxlen-minlen+1$ 个字符串，而 $minlen=len(parent)+1$，所以一个状态表示的字符串数量就是 $len-parent.len$。求和即可。</p>
 <p>例题：<a href="https://www.luogu.org/problemnew/show/P4070" target="_blank" rel="noopener">[SDOI2016]生成魔咒</a></p>
 <h2 id="第-k-大子串"><a href="#第-k-大子串" class="headerlink" title="第 $k$ 大子串"></a>第 $k$ 大子串</h2><p>预处理每个状态可以转移到多少个不同的子串，然后就可以做了。</p>
-<p>例题：<a href="https://www.luogu.org/problemnew/show/SP7258" target="_blank" rel="noopener">SP7258 SUBLEX</a></p>
+<p>例题：</p>
+<p><a href="https://www.luogu.org/problemnew/show/SP7258" target="_blank" rel="noopener">SP7258 SUBLEX</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P3975" target="_blank" rel="noopener">[TJOI2015]弦论</a></p>
 <h2 id="两串的最长公共子串"><a href="#两串的最长公共子串" class="headerlink" title="两串的最长公共子串"></a>两串的最长公共子串</h2><p>对其中一个串建SAM，从起始状态开始，读入另一个字符串，若有转移则转移，将已匹配长度 $+1$，否则跳到 $parent$（这里和 $kmp$ 有点像），并将已匹配长度修改为 $len(parent)$。过程中最大的已匹配长度就是答案。</p>
 <p>例题：<a href="https://www.luogu.org/problemnew/show/SP1811" target="_blank" rel="noopener">SP1811 LCS</a></p>
 <h2 id="多串的最长公共子串"><a href="#多串的最长公共子串" class="headerlink" title="多串的最长公共子串"></a>多串的最长公共子串</h2><p>还是对其中一个串建SAM，以同样的方式依次读入每个字符串，只不过对每个状态要保存当前字符串的最大匹配长度，所有字符串在某个状态的最大匹配长度的最小值就是这一堆字符串在这个状态能匹配的最大长度。如果能在一个状态匹配，一定能在 $parent$ 处匹配，所以要对子树取 $max$，但也不要忘了对 $len$ 取 $min$。</p>
