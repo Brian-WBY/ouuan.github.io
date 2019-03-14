@@ -138,10 +138,11 @@
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/top.jpg">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/post.jpg">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/cpp.jpg">
+<meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/tutorial.png">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/pic1.jpg">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/pic2.jpg">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/refpic.jpg">
-<meta property="og:updated_time" content="2019-03-12T11:02:36.442Z">
+<meta property="og:updated_time" content="2019-03-14T08:35:59.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客搭建指北">
 <meta name="twitter:description" content="折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下hexo博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。 实际上，hexo博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。">
@@ -488,7 +489,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 19:02:36" itemprop="dateModified" datetime="2019-03-12T19:02:36+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-14 16:35:59" itemprop="dateModified" datetime="2019-03-14T16:35:59+08:00">2019-03-14</time>
               
             
           </span>
@@ -771,6 +772,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;&quot;hello world!&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="更多博文模板"><a href="#更多博文模板" class="headerlink" title="更多博文模板"></a>更多博文模板</h2><p>在 <code>\scaffolds</code> 文件夹中可以增加更多的模板，比如我就搞了一个 <code>\scaffolds\tutorial.md</code>，这样的话，新建博文的时候输入命令 <code>hexo new tutorial &quot;博文标题&quot;</code> 就可以使用模板了。</p>
+<img src="/hexo博客搭建指北/tutorial.png">
 <h2 id="引用本地图片"><a href="#引用本地图片" class="headerlink" title="引用本地图片"></a>引用本地图片</h2><p>引用链接/网络上的图片格式与普通 Markdown 相同（<code>[链接名称](链接地址)</code> 和 <code>![图片描述](图片地址)</code>），引用本地图片需要把 <code>post_asset_folder</code>  设为 <code>true</code> ，然后把图片放在与博客同名的文件夹中，然后只用 <code>![图片描述](图片文件名)</code> 就可以引用了。</p>
 <img src="/hexo博客搭建指北/pic1.jpg">
 <img src="/hexo博客搭建指北/pic2.jpg">
