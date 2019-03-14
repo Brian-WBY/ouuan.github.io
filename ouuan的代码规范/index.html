@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico?v=6.6.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="警告：本文内容可能引起某些人不适。例如：大括号不换行者，运算符必须空格者。  本文介绍 ouuan 的代码规范。">
+<meta name="keywords" content="代码规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ouuan的代码规范">
+<meta property="og:url" content="https://ouuan.github.io/ouuan的代码规范/index.html">
+<meta property="og:site_name" content="ouuan的博客">
+<meta property="og:description" content="警告：本文内容可能引起某些人不适。例如：大括号不换行者，运算符必须空格者。  本文介绍 ouuan 的代码规范。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-14T14:23:31.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ouuan的代码规范">
+<meta name="twitter:description" content="警告：本文内容可能引起某些人不适。例如：大括号不换行者，运算符必须空格者。  本文介绍 ouuan 的代码规范。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ouuan的博客" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://ouuan.github.io/ouuan的代码规范/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ouuan的代码规范 | ouuan的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ouuan的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Codes change the world.</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-图片">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/randpic" rel="section"><i class="menu-item-icon fa fa-fw fa-camera"></i> <br>图片</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ouuan.github.io/ouuan的代码规范/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ouuan">
+      <meta itemprop="description" content="ouuan的博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ouuan的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ouuan的代码规范
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-14 21:06:42 / 修改时间：22:23:31" itemprop="dateCreated datePublished" datetime="2019-03-14T21:06:42+08:00">2019-03-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/其它/" itemprop="url" rel="index"><span itemprop="name">其它</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>警告：本文内容可能引起某些人不适。例如：大括号不换行者，运算符必须空格者。</p>
+</blockquote>
+<p>本文介绍 ouuan 的代码规范。</p>
+<a id="more"></a>
+<h1 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">若干pragma</span><br><span class="line">若干include</span><br><span class="line">若干define</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">需要快读时快读放在这里</span><br><span class="line"></span><br><span class="line">若干typedef</span><br><span class="line"></span><br><span class="line">如果快读需要读入long long也可以放在这里</span><br><span class="line"></span><br><span class="line">若干const</span><br><span class="line"></span><br><span class="line">若干数据结构</span><br><span class="line"></span><br><span class="line">若干函数原型</span><br><span class="line"></span><br><span class="line">若干变量、数组</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    若干代码</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">若干函数代码</span><br></pre></td></tr></table></figure>
+<h1 id="细则"><a href="#细则" class="headerlink" title="细则"></a>细则</h1><h2 id="大括号-换行-空白字符相关"><a href="#大括号-换行-空白字符相关" class="headerlink" title="大括号/换行/空白字符相关"></a>大括号/换行/空白字符相关</h2><p>大括号必须换行。</p>
+<p>只有一条语句的 <code>for</code>, <code>while</code>, <code>if</code> 等，大括号可以省略，此时必须写在一行内，如 <code>for (i=1;i&lt;=n;++i) cin&gt;&gt;a[i];</code>。</p>
+<p>如果出现多层嵌套或因其它原因，按如上所述方式压行一行内代码会过长时，不应当压行。此时，即使只有一条语句，也必须加上大括号。如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议写法</span></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (j=<span class="number">1</span>;j&lt;=n;++j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可接受写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) <span class="keyword">for</span> (j=<span class="number">1</span>;j&lt;=n;++j) <span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br><span class="line"></span><br><span class="line"><span class="comment">//不可接受写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    <span class="keyword">for</span> (j=<span class="number">1</span>;j&lt;=n;++j)</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br></pre></td></tr></table></figure>
+<p>不应使用逗号压行。如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) a[i]=b[i]=read();</span><br><span class="line"></span><br><span class="line"><span class="comment">//可接受写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) b[i]=a[i];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    b[i]=a[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不可接受写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">cin</span>&gt;&gt;a[i],b[i]=a[i];</span><br></pre></td></tr></table></figure>
+<p>逗号只能用在 <code>for</code> 当中，如：<code>for (i=1,j=0;i&lt;=n;i&lt;&lt;=1,++j);</code></p>
+<p>不同代码块（解题的一个个步骤）之间应当使用空行隔开。</p>
+<p><code>for</code>, <code>while</code>, <code>if</code> 后应当有空格。函数名后不应有空格。</p>
+<p>运算符两侧无需空格。</p>
+<h2 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a>pragma</h2><p><code>pragma</code> 在卡常/使用指令集时使用。</p>
+<p>卡常时一般使用 <code>#pragma GCC optimize(&quot;Ofast&quot;)</code>。</p>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p>除打 cf 时，不使用万能头文件。</p>
+<p>能用&lt;&gt;的不用””。</p>
+<p>能用c的不用.h。</p>
+<p>排序方式无严格要求，但一般追求结构美，如上下较长，中间凹进去：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="define"><a href="#define" class="headerlink" title="define"></a>define</h2><p>不用 <code>define</code> 定义常量而应使用 <code>const</code>。</p>
+<p>不用 <code>define</code> 简化类型名称而应使用 <code>typedef</code>。</p>
+<p><code>define</code> 仅用于数据结构中简化部分代码，如： <code>#define ls t[cur&lt;&lt;1]</code> 。</p>
+<h2 id="快读"><a href="#快读" class="headerlink" title="快读"></a>快读</h2><p>快读应在读入量较大/直接使用 <code>read()</code> 的返回值可以简化代码时使用。</p>
+<p>一般有以下两种形式：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c=getchar()));</span><br><span class="line">    <span class="keyword">for</span> (;<span class="built_in">isdigit</span>(c);c=getchar()) out=out*<span class="number">10</span>+c-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">for</span> (c=getchar();!<span class="built_in">isdigit</span>(c)&amp;&amp;c!=<span class="string">'-'</span>;c=getchar());</span><br><span class="line">    <span class="keyword">if</span> (c==<span class="string">'-'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        f=<span class="number">-1</span>;</span><br><span class="line">        c=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h2><p>常用 <code>typedef</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br></pre></td></tr></table></figure>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>数据范围应存为 <code>const</code> 常量（加上 $10$ 或 $5$），如 <code>const int N=100010;</code>。</p>
+<p>一般情况下 <code>const</code> 还可以包括：<code>INF</code>, <code>mod</code>, <code>eps</code> 等。</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>为方便调试，数据结构应当存为结构体，不应使用指针，也不应使用未封装为结构体的数组。</p>
+<p>数据结构相关的函数不应作为结构体的成员函数，除非需要用到多个相同的数据结构，而其函数原型与其它函数原型间可以有空行。</p>
+<p>没有冲突（如只需要一种数据结构）且不知道怎么起名字时结构体名称一般为 <code>Node</code>。</p>
+<p>构造函数的参数如果和成员变量相同，一般命名为 <code>_name</code>。构造函数可以压为一行。</p>
+<p>如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val,ls,rs;</span><br><span class="line">    Node1(<span class="keyword">int</span> _val)&#123;val=_val;&#125;</span><br><span class="line">&#125; a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    </span><br><span class="line">&#125; b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">otherFuctions</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="函数原型"><a href="#函数原型" class="headerlink" title="函数原型"></a>函数原型</h2><p>一般情况下函数应当有原型。各数据结构的函数原型在前，剩下的函数原型没有固定排列顺序。（实际上也有一些定则，但并不严格，难以以文字叙述。）</p>
+<h2 id="变量-数组"><a href="#变量-数组" class="headerlink" title="变量/数组"></a>变量/数组</h2><p>前向星数组应位于第一行。（奇怪的习惯..）</p>
+<p>同一类型的变量/数组应放在同一行（除了前向星），但在过长时/数组的功能、归属可以明显分为几类时可以分行。</p>
+<p>STL 容器应放在 C++ 内置类型之后。</p>
+<p>数组大小一般使用常量，一般不使用数字，特例：线段树 <code>N&lt;&lt;2</code>，前向星无向边 <code>N&lt;&lt;1</code>，倍增/st表 <code>f[N][20]</code>。乘法应尽量使用位运算代替，特例：主席树需要卡空间而需要精确调整节点个数时。</p>
+<h2 id="main-函数"><a href="#main-函数" class="headerlink" title="main 函数"></a>main 函数</h2><p>如有 <code>freopen/srand</code> 应置于开头。</p>
+<p>必须有 <code>return 0;</code></p>
+<p>多组数据的题目应当这样写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>main</code> 函数不应只有<code>init();work();</code>。取而代之，同样使代码结构清晰的，是不同代码块之间的空行。</p>
+<h2 id="函数代码"><a href="#函数代码" class="headerlink" title="函数代码"></a>函数代码</h2><p>函数代码的排序方式可以与函数原型不同，但同一数据结构的代码仍应放在一起。一般情况下，应将自己较为陌生/出错概率较大的函数放在上面，将自己比较熟悉/较为模板的函数放在下面，以方便调试。</p>
+<h2 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h2><p>写较为复杂的数据分治时可使用 <code>namespace</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> subtask1</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> subtask2</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">namespace</span> subtask1;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">namespace</span> subtask2;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时函数可以没有原型。</p>
+<h2 id="Codeforces"><a href="#Codeforces" class="headerlink" title="Codeforces"></a>Codeforces</h2><p>打 CF 时应使用 cf 模板：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> OUUAN</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize (<span class="meta-string">"Ofast"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> For(i,l,r) for (i=l;i&lt;=r;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i,r,l) for (i=r;i&gt;=l;--i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SON(i,u) for (i=head[u];i;i=nxt[i])</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ms(a,x) memset(a,x,sizeof(a))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> X first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Y second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> vi vector<span class="meta-string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> br putchar(<span class="meta-string">'\n'</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sp putchar(<span class="meta-string">' '</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> isinf(x) (x&gt;=INF?-1:x)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f3f3f3f3f</span>ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-8</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c;<span class="keyword">int</span> out=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (c=getchar();!<span class="built_in">isdigit</span>(c)&amp;&amp;c!=<span class="string">'-'</span>;c=getchar());<span class="keyword">if</span> (c==<span class="string">'-'</span>)&#123;f=<span class="number">-1</span>;c=getchar();&#125;</span><br><span class="line">    <span class="keyword">for</span> (;<span class="built_in">isdigit</span>(c);c=getchar())&#123;out=(out&lt;&lt;<span class="number">3</span>)+(out&lt;&lt;<span class="number">1</span>)+c-<span class="string">'0'</span>;&#125;<span class="keyword">return</span> out*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span>&amp; x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c;<span class="keyword">int</span> f=<span class="number">1</span>;x=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (c=getchar();!<span class="built_in">isdigit</span>(c)&amp;&amp;c!=<span class="string">'-'</span>;c=getchar());<span class="keyword">if</span> (c==<span class="string">'-'</span>)&#123;f=<span class="number">-1</span>;c=getchar();&#125;</span><br><span class="line">    <span class="keyword">for</span> (;<span class="built_in">isdigit</span>(c);c=getchar())&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+c-<span class="string">'0'</span>;&#125;x*=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x&lt;<span class="number">0</span>)&#123;<span class="built_in">putchar</span>(<span class="string">'-'</span>);write(-x);<span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span> (x&gt;<span class="number">9</span>)&#123;write(x/<span class="number">10</span>);&#125;<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wts</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;write(x);sp;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wtb</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;write(x);br;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;<span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span>&amp; x,Args&amp;... args)</span></span>&#123;read(x);read(args...);&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;<span class="function"><span class="keyword">void</span> <span class="title">wts</span><span class="params">(<span class="keyword">int</span> x,Args... args)</span></span>&#123;wts(x);wts(args...);&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;<span class="function"><span class="keyword">void</span> <span class="title">wtb</span><span class="params">(<span class="keyword">int</span> x,Args... args)</span></span>&#123;wtb(x);wtb(args...);&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">inline</span> <span class="title">bool</span> <span class="title">up</span>(<span class="title">T</span> &amp;<span class="title">x</span>,<span class="title">const</span> <span class="title">T</span> &amp;<span class="title">y</span>)&#123;</span><span class="keyword">return</span> x&lt;y?x=y,<span class="number">1</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">inline</span> <span class="title">bool</span> <span class="title">dn</span>(<span class="title">T</span> &amp;<span class="title">x</span>,<span class="title">const</span> <span class="title">T</span> &amp;<span class="title">y</span>)&#123;</span><span class="keyword">return</span> x&gt;y?x=y,<span class="number">1</span>:<span class="number">0</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>以<a href="https://ouuan.github.io/BZOJ4003-JLOI2015-%E5%9F%8E%E6%B1%A0%E6%94%BB%E5%8D%A0%EF%BC%88%E5%B7%A6%E5%81%8F%E6%A0%91%EF%BC%89/">我近期写的一份代码</a>为例展示一下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll out=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">for</span> (c=getchar();!<span class="built_in">isdigit</span>(c)&amp;&amp;c!=<span class="string">'-'</span>;c=getchar());</span><br><span class="line">	<span class="keyword">if</span> (c==<span class="string">'-'</span>) f=<span class="number">-1</span>,c=getchar();</span><br><span class="line">	<span class="keyword">for</span> (;<span class="built_in">isdigit</span>(c);c=getchar()) out=out*<span class="number">10</span>+c-<span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">return</span> out*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">300010</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> ls,rs,d;</span><br><span class="line">	ll val,add,mul;</span><br><span class="line">	Node()&#123;ls=rs=add=<span class="number">0</span>;d=mul=<span class="number">1</span>;&#125;</span><br><span class="line">&#125; t[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">madd</span><span class="params">(<span class="keyword">int</span> u,ll x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mmul</span><span class="params">(<span class="keyword">int</span> u,ll x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head[N],nxt[N],to[N],cnt;</span><br><span class="line"><span class="keyword">int</span> n,m,p[N],f[N],a[N],dep[N],c[N],ans1[N],ans2[N];</span><br><span class="line">ll h[N],b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	</span><br><span class="line">	n=read();</span><br><span class="line">	m=read();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) h[i]=read();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">2</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		f[i]=read();</span><br><span class="line">		add(f[i],i);</span><br><span class="line">		a[i]=read();</span><br><span class="line">		b[i]=read();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		t[i].val=read();</span><br><span class="line">		c[i]=read();</span><br><span class="line">		p[c[i]]=merge(i,p[c[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans1[i]);</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=m;++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans2[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,v;</span><br><span class="line">	<span class="keyword">for</span> (i=head[u];i;i=nxt[i])</span><br><span class="line">	&#123;</span><br><span class="line">		v=to[i];</span><br><span class="line">		dep[v]=dep[u]+<span class="number">1</span>;</span><br><span class="line">		dfs(v);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (p[u]&amp;&amp;t[p[u]].val&lt;h[u])</span><br><span class="line">	&#123;</span><br><span class="line">		++ans1[u];</span><br><span class="line">		ans2[p[u]]=dep[c[p[u]]]-dep[u];</span><br><span class="line">		p[u]=pop(p[u]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (a[u]) mmul(p[u],b[u]);</span><br><span class="line">	<span class="keyword">else</span> madd(p[u],b[u]);</span><br><span class="line">	<span class="keyword">if</span> (u&gt;<span class="number">1</span>) p[f[u]]=merge(p[u],p[f[u]]);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">while</span> (p[u])</span><br><span class="line">	&#123;</span><br><span class="line">		ans2[p[u]]=dep[c[p[u]]]+<span class="number">1</span>;</span><br><span class="line">		p[u]=pop(p[u]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	nxt[++cnt]=head[u];</span><br><span class="line">	head[u]=cnt;</span><br><span class="line">	to[cnt]=v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!x||!y) <span class="keyword">return</span> x|y;</span><br><span class="line">	<span class="keyword">if</span> (t[x].val&gt;t[y].val) swap(x,y);</span><br><span class="line">	pushdown(x);</span><br><span class="line">	t[x].rs=merge(t[x].rs,y);</span><br><span class="line">	<span class="keyword">if</span> (t[t[x].rs].d&gt;t[t[x].ls].d) swap(t[x].ls,t[x].rs);</span><br><span class="line">	t[x].d=t[t[x].rs].d+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	pushdown(x);</span><br><span class="line">	<span class="keyword">return</span> merge(t[x].ls,t[x].rs);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">madd</span><span class="params">(<span class="keyword">int</span> u,ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	t[u].val+=x;</span><br><span class="line">	t[u].add+=x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mmul</span><span class="params">(<span class="keyword">int</span> u,ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	t[u].val*=x;</span><br><span class="line">	t[u].add*=x;</span><br><span class="line">	t[u].mul*=x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	mmul(t[x].ls,t[x].mul);</span><br><span class="line">	madd(t[x].ls,t[x].add);</span><br><span class="line">	mmul(t[x].rs,t[x].mul);</span><br><span class="line">	madd(t[x].rs,t[x].add);</span><br><span class="line">	t[x].add=<span class="number">0</span>;</span><br><span class="line">	t[x].mul=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码规范/" rel="tag"><i class="fa fa-tag"></i> 代码规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/BZOJ4665-小w的喜糖（容斥原理，组合数学）/" rel="next" title="BZOJ4665 小w的喜糖（容斥原理，组合数学）">
+                <i class="fa fa-chevron-left"></i> BZOJ4665 小w的喜糖（容斥原理，组合数学）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-inner">
+      <div>
+        <div style="display: table-cell;vertical-align: top; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">“</div>
+        <div style="display: table-cell;text-align: left; vertical-align: middle; text-indent: 2em; padding: 0.8em 0.2em 1em 0.2em"><b><span style="color:burlywood;"><span id="hitokoto-content"></span></span></b></div>
+        <div style="display: table-cell; vertical-align: bottom; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">”</div>
+      </div>
+      <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a href="https://hitokoto.cn/">Hitokoto</a></div>
+    </div>
+
+    <div style="height: 15px"></div>
+
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="ouuan">
+            
+              <p class="site-author-name" itemprop="name">ouuan</p>
+              <p class="site-description motion-element" itemprop="description">ouuan的博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ouuan" title="GitHub &rarr; https://github.com/ouuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.luogu.org/space/show?uid=49742" title="洛谷 &rarr; https://www.luogu.org/space/show?uid=49742" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>洛谷</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.codeforces.com/profile/ouuan" title="Codeforces &rarr; https://www.codeforces.com/profile/ouuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Codeforces</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://space.bilibili.com/11067182" title="b站 &rarr; https://space.bilibili.com/11067182" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>b站</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/EternalAlexander/" title="https://www.luogu.org/blog/EternalAlexander/" rel="noopener" target="_blank">EternalAlexander</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/PinkRabbit/" title="https://www.cnblogs.com/PinkRabbit/" rel="noopener" target="_blank">PinkRabbit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xht37.cnblogs.com/" title="https://xht37.cnblogs.com/" rel="noopener" target="_blank">xht37</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/Sooke/" title="https://www.luogu.org/blog/Sooke/" rel="noopener" target="_blank">Sooke</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/LJC00118/" title="https://www.cnblogs.com/LJC00118/" rel="noopener" target="_blank">wxw</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qaq-am.com/" title="https://qaq-am.com/" rel="noopener" target="_blank">lk</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总体结构"><span class="nav-number">1.</span> <span class="nav-text">总体结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#细则"><span class="nav-number">2.</span> <span class="nav-text">细则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大括号-换行-空白字符相关"><span class="nav-number">2.1.</span> <span class="nav-text">大括号/换行/空白字符相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pragma"><span class="nav-number">2.2.</span> <span class="nav-text">pragma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include"><span class="nav-number">2.3.</span> <span class="nav-text">include</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#define"><span class="nav-number">2.4.</span> <span class="nav-text">define</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快读"><span class="nav-number">2.5.</span> <span class="nav-text">快读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typedef"><span class="nav-number">2.6.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const"><span class="nav-number">2.7.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">2.8.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数原型"><span class="nav-number">2.9.</span> <span class="nav-text">函数原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量-数组"><span class="nav-number">2.10.</span> <span class="nav-text">变量/数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-函数"><span class="nav-number">2.11.</span> <span class="nav-text">main 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数代码"><span class="nav-number">2.12.</span> <span class="nav-text">函数代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namespace"><span class="nav-number">2.13.</span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces"><span class="nav-number">2.14.</span> <span class="nav-text">Codeforces</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-battery-full"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ouuan</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+<script type="text/javascript">
+	$.get('https://v1.hitokoto.cn/?c=a', function (data) {
+		$('#hitokoto-content').css('display', '').text(data.hitokoto);
+		$('#hitokoto-from').css('display', '').text('——' + data.from);
+	});
+</script>
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '63f0a945fe08a1c11244',
+          clientSecret: 'e27a1ee43958d42ed5a35ba8e4059318202e14c6',
+          repo: 'ouuan.github.io',
+          owner: 'ouuan',
+          admin: ['ouuan'],
+          id: md5(location.pathname),
+          distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+  
+
+  
+  
+
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js"></script>
+    <script type="text/javascript">
+    var options = {
+      pdfOpenParams: {
+        navpanes: 0,
+        toolbar: 0,
+        statusbar: 0,
+        pagemode: "thumbs",
+        view: "FitV"
+      },
+      PDFJS_URL: "/lib/pdf/web/viewer.html",
+      height: "500px"
+    };
+    $("#main a").each(function() {
+      var href = $(this).attr("href");
+      if (!href) return;
+      if (href.endsWith(".pdf") || href.endsWith(".pdf/")) {
+        var id = "pdf" + Math.floor(Math.random() * 10000);
+        $(this).after("<div id='" + id + "'></div>").remove();
+        PDFObject.embed(href, "#" + id, options);
+      }
+    });
+    </script>
+    <style>
+    .pdfobject-container {
+      position: relative;
+      overflow: auto;
+      width: 100%;
+      height: 500px;
+    }
+    </style>
+  
+
+
+</body>
+</html>
