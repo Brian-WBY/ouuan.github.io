@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/triesam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/minsam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/parent.png">
-<meta property="og:updated_time" content="2019-03-05T12:32:03.699Z">
+<meta property="og:updated_time" content="2019-03-14T12:16:47.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀自动机（SAM）学习笔记">
 <meta name="twitter:description" content="后缀自动机是一种处理字符串问题的有力工具（废话），它的码量不比后缀数组大（实际代码难度不比后缀数组小，但也不难），处理问题时的思维难度往往比后缀数组小，复杂度更优秀。若字符集大小为 $|\Sigma|$，则：构建时间复杂度 $O(n|\Sigma|)$，转移时间复杂度 $O(1)$，空间复杂度 $O(n|\Sigma|)$ 或 构建时间复杂度 $O(n\log|\Sigma|)$，转移时间复杂度">
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-05 20:32:03" itemprop="dateModified" datetime="2019-03-05T20:32:03+08:00">2019-03-05</time>
+                <time title="修改时间：2019-03-14 20:16:47" itemprop="dateModified" datetime="2019-03-14T20:16:47+08:00">2019-03-14</time>
               
             
           </span>
@@ -652,7 +652,7 @@
 <p>由于DFA是一个DAG，它的任意生成子图都必定有出度为 $0$ 的点。每次找到这些点，然后从中选取尽量多的点，使其映射到同一个状态后满足 $f$ 需要满足的三条性质（也就是，同一字符转移到的状态映射到的状态相同，且没有一个是接受状态另一个不是的情况），然后将这些点从图中删去，重复直至所有点都有了映射后的状态（所有点都被删去）。这样得到的映射 $f​$ 能够将原DFA压缩至最简。</p>
 <h2 id="压缩至最简的证明"><a href="#压缩至最简的证明" class="headerlink" title="压缩至最简的证明"></a>压缩至最简的证明</h2><p>我们先证明每个状态的 $reg$（定义参见上文，表示从一个状态起能识别的字符串集合）两两不等。我们按照拓扑序归纳地证明。</p>
 <p>没有出边的非接受状态可以视作 $null$，而没有出边的接受状态按上文所述方法必定会被映射至同一状态。所以命题对没有出边的状态成立。</p>
-<p>假设一个状态所有出边的对应状态都已被证明，那么转移函数不同就等价于 $reg$ 不同，所有命题成立。</p>
+<p>假设一个状态所有出边的对应状态都已被证明，那么转移函数不同就等价于 $reg$ 不同，所以命题成立。</p>
 <p>接着，我们由 $reg$ 两两不同证明压缩至最简：</p>
 <p>若状态数继续减少，那么必然存在原来 $reg$ 不同的两个状态 $B(s_1)$ 和 $B(s_2)$ 被压缩到了一起，任取一个只在 $reg(B(s_1))$ 或只在 $reg(B(s_2))$ 中的字符串 $t$，原来 $B(s_1+t)\ne B(s_2+t)$，压缩后却使得 $B’(s_1+t)=B’(s_2+t)$，不符合要求。</p>
 
