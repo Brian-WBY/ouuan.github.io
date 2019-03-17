@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2019YALI省选集训垫底记]]></title>
+    <url>%2F2019YALI%E7%9C%81%E9%80%89%E9%9B%86%E8%AE%AD%E5%9E%AB%E5%BA%95%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[时隔半年又来到了YALI。 Day 0中午放学，下午就坐火车走了。 晚上被骗去吃火宫殿.. 然后做了一个 slide. Day 1T1是个字符串，一开始以为可以 $50$，先把 $30$ 写了然后去看后两题，回来发现那 $20$ 没法写..最后因为数组名 $end$ CE了.. T2还是个字符串，只不过是在图上，是道大象题，求期望，要高斯消元，利用非 $0$ 项很少来降低复杂度。一开始先把不用求期望（每个点出度为 $1$）的 $20$ 分写了，然后就去看 $T3$。后来回头发现 $T1$ 的 $20$ 写不出来，就来写这题的 $10$ 分暴力高斯消元，然后调了 $1h$，一开始先是概率各种算错，后来其它的都写对了，结果我脑抽写成了字符串失配跳到 $0$ … T3是zzq最爱的提答，又是给一种计算机。随便玩了 $47$ 分。下午讲题的时候有几位神仙在那快乐地碾了碾标算.. 做题的时候先是看到 ctr zzq，然后往右一看，发现 zzq 就在黑板前的电脑前坐着..之前就听说 _rqy 也要来，做题做到一半的时候看到 _rqy 去找 zzq 报告了两个 bug.. 之前就有猜测过： 然后..下午果然是神仙聊天场，_rqy 现场推多项式三角函数.. 晚上没去机房..游记就是晚上写的qaq]]></content>
+      <categories>
+        <category>游记</category>
+      </categories>
+      <tags>
+        <tag>集训</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BZOJ3622 已经没有什么好害怕的了（二项式反演，组合数学）]]></title>
     <url>%2FBZOJ3622-%E5%B7%B2%E7%BB%8F%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%AE%B3%E6%80%95%E7%9A%84%E4%BA%86%EF%BC%88%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%8F%8D%E6%BC%94%EF%BC%8C%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接洛谷 darkbzoj 题意简述给你两个长为 $n$ 、无重复元素的数列 $a,b$，求将 $b$ 重排后 $\left(\sum\limits_{i=1}^n[a_i&gt;b_i]\right)-\left(\sum\limits_{i=1}^n[a_i&lt;b_i]\right)=k$（$k$ 给定）的方案数。 $n\le2000$。 简要做法首先，$a$ 大于 $b$ 比 $b$ 大于 $a$ 多 $k$ 对可以转化为 $a$ 大于 $b$ 有 $\frac{n+k}2$ 对。 考虑 $dp​$，设 $f(i,j)​$ 为 $a_{1..i}​$ 中选 $j​$ 个数，给这 $j​$ 个数每个数匹配一个小于它的 $b​$ 的方案数。为方便转移，一开始要先对 $a,b​$ 分别从小到大排序，这样的话若 $a_i&gt;b_j​$，必然有 $a_{i+1}&gt;b_j​$。 设比 $a_i$ 大的 $b$ 有 $cnt_i$ 个，转移方程就是 $f(i,j)=f(i-1,j)+(cnt_i-j+1)\times f(i-1,j-1)$。$cnt_i$ 可以二分查找/双指针计算。 考虑这样一个式子：$f(n,i)\times(n-i)!$，它的意义是，先从 $a$ 中选 $i$ 个数，给它们分别匹配一个小于它们的 $b$，再把剩下的 $n-i$ 个数随意匹配。这个式子并不是某种“方案数”，因为它可能会将相同的匹配方案算重。事实上，对于每种恰有 $j$ 对 $a&gt;b$ 的匹配方案，它在 $f(n,i)\times(n-i)!$ 中被计算了 $\binom{j}{i}$ 次。令 $ans_i$ 表示恰好有 $i$ 对 $a$ 大于 $b$ 的方案数，就有 $ans_i=f(n,i)\times(n-i)!-\sum\limits_{j=i+1}^n\binom{j}{i}ans_j$。这样的话，就可以递推地计算答案。 这题还有另一种做法，叫二项式反演。我自己没有太理解清楚这种方法，所以不详细阐述。这种做法可以 $O(n)​$ 地计算某个 $ans_i​$，但不影响总复杂度（$dp​$ 还是 $O(n^2)​$ 的）： $$ans_i=\sum\limits_{j=i}^n(-1)^{j-i}\binom j i f(n,j)\times(n-j)​$$ 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;using namespace std;typedef long long ll;const int N=2010;const int mod=1e9+9;int qpow(int x,int y);int n,k,a[N],b[N],f[N][N],ans[N],c[N][N],fac[N];int main()&#123; int i,j,cnt=0; cin&gt;&gt;n&gt;&gt;k; if ((n&amp;1)!=(k&amp;1)) &#123; cout&lt;&lt;0; return 0; &#125; k=(n+k)/2; for (i=1;i&lt;=n;++i) scanf("%d",a+i); for (i=1;i&lt;=n;++i) scanf("%d",b+i); sort(a+1,a+n+1); sort(b+1,b+n+1); fac[0]=1; for (i=1;i&lt;=n;++i) fac[i]=(ll)fac[i-1]*i%mod; c[0][0]=1; for (i=1;i&lt;=n;++i) &#123; c[i][0]=1; for (j=1;j&lt;=i;++j) c[i][j]=(c[i-1][j-1]+c[i-1][j])%mod; &#125; f[0][0]=1; for (i=1;i&lt;=n;++i) &#123; f[i][0]=1; while (cnt&lt;n&amp;&amp;b[cnt+1]&lt;a[i]) ++cnt; for (j=1;j&lt;=cnt;++j) &#123; f[i][j]=(f[i-1][j]+(ll)f[i-1][j-1]*(cnt-j+1))%mod; &#125; &#125; for (i=n;i&gt;=k;--i) &#123; ans[i]=(ll)f[n][i]*fac[n-i]%mod; for (j=n;j&gt;i;--j) ans[i]=(ans[i]+mod-(ll)ans[j]*c[j][i]%mod)%mod; &#125; cout&lt;&lt;ans[k]; return 0;&#125;int qpow(int x,int y)&#123; int out=1; while (y) &#123; if (y&amp;1) out=(ll)out*x%mod; x=(ll)x*x%mod; y&gt;&gt;=1; &#125; return out;&#125;]]></content>
@@ -219,8 +230,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>CodeForces</tag>
         <tag>AtCoder</tag>
+        <tag>CodeForces</tag>
       </tags>
   </entry>
   <entry>
