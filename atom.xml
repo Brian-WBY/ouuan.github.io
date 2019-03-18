@@ -217,9 +217,9 @@
     
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="后缀数组" scheme="https://ouuan.github.io/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/"/>
-    
       <category term="SAM" scheme="https://ouuan.github.io/tags/SAM/"/>
+    
+      <category term="后缀数组" scheme="https://ouuan.github.io/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -511,9 +511,9 @@
       <category term="游记" scheme="https://ouuan.github.io/categories/%E6%B8%B8%E8%AE%B0/"/>
     
     
-      <category term="CodeForces" scheme="https://ouuan.github.io/tags/CodeForces/"/>
-    
       <category term="AtCoder" scheme="https://ouuan.github.io/tags/AtCoder/"/>
+    
+      <category term="CodeForces" scheme="https://ouuan.github.io/tags/CodeForces/"/>
     
   </entry>
   
