@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ouuan.github.io/about/index.html</loc>
+    
+    <lastmod>2019-04-07T09:18:46.774Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ouuan.github.io/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-04-05T05:23:52.173Z</lastmod>
@@ -180,13 +187,6 @@
     <loc>https://ouuan.github.io/cdq%E5%88%86%E6%B2%BB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-04-02T23:52:40.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ouuan.github.io/about/index.html</loc>
-    
-    <lastmod>2019-04-01T02:44:05.624Z</lastmod>
     
   </url>
   
