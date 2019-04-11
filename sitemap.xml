@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ouuan.github.io/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8C%97/</loc>
+    
+    <lastmod>2019-04-11T06:09:02.819Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ouuan.github.io/%E5%8D%81%E4%BA%8C%E7%9C%81%E8%81%94%E8%80%832019-%E6%B8%B8%E8%AE%B0-%E9%A2%98%E8%A7%A3/</loc>
     
     <lastmod>2019-04-11T04:41:15.341Z</lastmod>
@@ -215,13 +222,6 @@
     <loc>https://ouuan.github.io/%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
     
     <lastmod>2019-03-14T14:17:30.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ouuan.github.io/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8C%97/</loc>
-    
-    <lastmod>2019-03-14T08:35:59.658Z</lastmod>
     
   </url>
   
