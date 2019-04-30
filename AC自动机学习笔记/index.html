@@ -117,7 +117,7 @@
 <meta property="og:description" content="AC 自动机其实我去年就学过了，但当时大约只是会敲模板而已..现在几乎全忘光了。于是复习一下，顺便（较为本质地）讲解一下。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ouuan.github.io/AC自动机学习笔记/lw.png">
-<meta property="og:updated_time" content="2019-04-30T06:26:57.997Z">
+<meta property="og:updated_time" content="2019-04-30T06:33:52.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AC自动机学习笔记">
 <meta name="twitter:description" content="AC 自动机其实我去年就学过了，但当时大约只是会敲模板而已..现在几乎全忘光了。于是复习一下，顺便（较为本质地）讲解一下。">
@@ -464,7 +464,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-30 14:26:57" itemprop="dateModified" datetime="2019-04-30T14:26:57+08:00">2019-04-30</time>
+                <time title="修改时间：2019-04-30 14:33:52" itemprop="dateModified" datetime="2019-04-30T14:33:52+08:00">2019-04-30</time>
               
             
           </span>
@@ -525,7 +525,8 @@
         <p>AC 自动机其实我去年就学过了，但当时大约只是会敲模板而已..现在几乎全忘光了。于是复习一下，顺便（较为本质地）讲解一下。</p>
 <a id="more"></a>
 <h2 id="AC-自动机是什么？"><a href="#AC-自动机是什么？" class="headerlink" title="AC 自动机是什么？"></a>AC 自动机是什么？</h2><p>说到这我真的想喷一下网上的各种教程..连“是什么”都不说清楚就开始讲“有什么用”和”怎么用“，怎能知其所以然？ </p>
-<p>形式上，AC 自动机基于由若干模式串构成的 Trie 树，并在此之上增加了一些 fail 边；本质上，<strong>AC 自动机是一个关于若干模式串的 DFA，接受且仅接受以某一个模式串作为后缀的字符串。</strong>并且，与一般自动机不同的，AC 自动机还有 <strong>关于某个模式串的接受状态</strong>（我自己起的名字..），也就是与某个模式串匹配（以某个模式串为后缀）的那些状态。</p>
+<p>形式上，AC 自动机基于由若干模式串构成的 Trie 树，并在此之上增加了一些 fail 边；本质上，<strong>AC 自动机是一个关于若干模式串的 DFA，接受且仅接受以某一个模式串作为后缀的字符串。</strong></p>
+<p>并且，与一般自动机不同的，AC 自动机还有 <strong>关于某个模式串的接受状态</strong>（我自己起的名字..），也就是与某个模式串匹配（以某个模式串为后缀）的那些状态。</p>
 <p>关于 DFA，我在 <a href="/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88SAM%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88DFA%EF%BC%89">SAM 学习笔记里</a> 已经讲过了。</p>
 <p>引用一下 2006 年集训队论文《王赟–tire图的构造活用及改进》中的一张图：</p>
 <img src="/AC自动机学习笔记/lw.png">
