@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CF494B Obsessive String (KMP,计数dp)]]></title>
+    <url>%2FCF494B-Obsessive-String-KMP-%E8%AE%A1%E6%95%B0dp%2F</url>
+    <content type="text"><![CDATA[题目链接洛谷 CF contest CF problemset 题意简述给你两个字符串 $S$ 和 $T$，你需要在 $S$ 中取若干个（至少一个）不相交的子串，使得每个子串都包含 $T$，求方案数模 $10^9+7$。 字符串长度小于等于 $10^5$。 简要做法首先用某种字符串算法求出 $T$ 在 $S$ 中匹配的所有位置（一般人都会选择 KMP）。 记 $|S|=n$, $|T|=m$。 然后，我们记 $p_i$ 表示 $[i+m,n]$ 中最小的匹配位置（也就是 $S[i+1..n]$ 这个子串第一个匹配的位置），记 $q_i$ 表示 $[1,i]$ 中最大的匹配位置（也就是 $S[1..i]$ 这个子串最后一个匹配的位置）。 然后开始 dp，令 $f_i​$ 表示子串 $S[i+1..n]​$ 的答案。转移时，我们考虑选择下一个子串的右端点和左端点。右端点可以在 $[q_i,n]​$ 中选取，而对于一个右端点 $j​$，可以选择的左端点有 $p_j-m-i+1​$ 个。另外，也可以不继续选择下一个子串。所以可以得到转移方程： $$f_i=1+\sum\limits_{j=q_i}^nf_j(p_j-m-i+1)$$ 如果我们把 $g_i=\sum\limits_{j=i}^nf_jp_j$ 和 $h_i=\sum\limits_{j=i}^nf_j$ 分别存下来，就可以得到 $f_i=1+g_{q_i}-(m+i-1)f_{q_i}$，然后就可以 $\mathcal O(n)$ 计算了。 最后，这样计算的话会把一个子串都不选计入总数，所以答案要减一。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;using namespace std;typedef long long ll;const int N = 100010;const int mod = 1e9 + 7;char s[N], t[N];int n, m, nxt[N], q[N], p[N], f[N], g[N];int main()&#123; int i, k; scanf("%s%s", s + 1, t + 1); n = strlen(s + 1); m = strlen(t + 1); for (i = 2, k = 0; i &lt;= m; ++i) &#123; while (k &amp;&amp; t[i] != t[k + 1]) k = nxt[k]; if (t[i] == t[k + 1]) ++k; nxt[i] = k; &#125; for (i = 1, k = 0; i &lt;= n; ++i) &#123; while (k &amp;&amp; s[i] != t[k + 1]) k = nxt[k]; if (s[i] == t[k + 1]) ++k; if (k == m) q[i - m] = p[i] = i; &#125; for (i = 1; i &lt;= n; ++i) if (!p[i]) p[i] = p[i - 1]; for (i = n; i &gt;= 0; --i) &#123; if (!q[i]) q[i] = q[i + 1]; if (q[i]) f[i] = (1 + g[q[i]] - (ll) f[q[i]] * (m + i - 1) % mod + mod) % mod; else f[i] = 1; g[i] = ((ll) f[i] * p[i] + g[i + 1]) % mod; f[i] = (f[i] + f[i + 1]) % mod; &#125; cout &lt;&lt; (f[0] - f[1] + mod - 1) % mod; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>KMP</tag>
+        <tag>计数dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BZOJ1009 [HNOI2008]GT考试（KMP/AC自动机，矩阵乘法）]]></title>
     <url>%2FBZOJ1009-HNOI2008-GT%E8%80%83%E8%AF%95%EF%BC%88KMP-AC%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%8C%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接洛谷 darkbzoj 题意简述给一个长为 $m$ 的字符串，字符集 $0$ ~ $9$，求长为 $n$ 的字符串中不含给定字符串作为子串的字符串有多少个，对 $k$ 取模。 $n\le10^9$，$m\le20$，$k\le1000$。 简要做法首先用 KMP / AC 自动机搞出转移：$f_{i,j}$ 表示从状态 $i$ （或者说位置 $i$，KMP 里就是位置，AC 自动机里虽然是节点但也和位置差不多）起，在后面加 $j$ 个字符，满足要求的字符串个数，则 $f_{i,j} = \sum\limits_{x=0}^9f_{tr[i][x],j-1}$，其中 $tr[i][x]$ 表示状态 $i$ 的字符 $x$ 转移。AC 自动机中不用解释了，KMP 里面就是 $tr[i][x]=\begin{cases}i+1&amp;(s[i+1]=x)\\tr[next[i]][x]&amp;(s[i+1]\ne x)\end{cases}$。 发现每层（相同的 $j$）的转移都是类似的，实际上可以用矩阵表示两层间的转移： $$A\times\begin{bmatrix}f_{0,j}\\f_{1,j}\\\vdots\\f_{m-1,j}\end{bmatrix}=\begin{bmatrix}f_{0,j+1}\\f_{1,j+1}\\\vdots\\f_{m-1,j+1}\end{bmatrix}$$ （只到 $m-1$ 是因为 $f_{m,j}=0$） 其中 $A​$ 是我们要求的一个矩阵，$A_{i,j}​$ 就是 $\sum\limits_{x=0}^9[tr[i][x]=j]​$，求出来之后矩阵快速幂就好了。 参考代码KMP1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 21;int n, m, mod, nxt[N];char s[N];struct Matrix&#123; int a[N][N]; Matrix() &#123; memset(a, 0, sizeof(a)); &#125; int* operator[](int x) &#123; return a[x]; &#125; Matrix operator*(Matrix &amp; b) &#123; Matrix out; int i, j, k; for (i = 0; i &lt; m; ++i) &#123; for (j = 0; j &lt; m; ++j) &#123; for (k = 0; k &lt; m; ++k) &#123; out[i][j] = (out[i][j] + a[i][k] * b[k][j]) % mod; &#125; &#125; &#125; return out; &#125;&#125;;Matrix qpow(Matrix x, int y);int main()&#123; int i, j, k, ans = 0; Matrix mul; scanf("%d%d%d%s", &amp;n, &amp;m, &amp;mod, s + 1); for (i = 2, k = 0; i &lt; m; ++i) &#123; while (k &amp;&amp; s[i] != s[k + 1]) k = nxt[k]; if (s[i] == s[k + 1]) ++k; nxt[i] = k; &#125; for (i = 0; i &lt; m; ++i) &#123; for (j = 0; j &lt;= 9; ++j) &#123; for (k = i; k &amp;&amp; s[k + 1] - '0' != j; k = nxt[k]); if (s[k + 1] - '0' == j) ++k; ++mul[i][k]; &#125; &#125; mul = qpow(mul, n); for (i = 0; i &lt; m; ++i) ans = (ans + mul[0][i]) % mod; cout &lt;&lt; ans; return 0;&#125;Matrix qpow(Matrix x, int y)&#123; Matrix out; for (int i = 0; i &lt; m; ++i) out[i][i] = 1; while (y) &#123; if (y &amp; 1) out = out * x; x = x * x; y &gt;&gt;= 1; &#125; return out;&#125; AC 自动机如果觉得我的 AC 自动机写法比较清奇可以看看我的 AC 自动机学习笔记.. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 21;int n, m, mod, tr[N][10], fail[N];char s[N];struct Matrix&#123; int a[N][N]; Matrix() &#123; memset(a, 0, sizeof(a)); &#125; int* operator[](int x) &#123; return a[x]; &#125; Matrix operator*(Matrix &amp; b) &#123; Matrix out; int i, j, k; for (i = 0; i &lt; m; ++i) &#123; for (j = 0; j &lt; m; ++j) &#123; for (k = 0; k &lt; m; ++k) &#123; out[i][j] = (out[i][j] + a[i][k] * b[k][j]) % mod; &#125; &#125; &#125; return out; &#125;&#125;;Matrix qpow(Matrix x, int y);int main()&#123; int i, j, ans = 0; Matrix mul; scanf("%d%d%d%s", &amp;n, &amp;m, &amp;mod, s + 2); for (i = 0; i &lt;= 9; ++i) tr[0][i] = 1; for (i = 1; i &lt;= m; ++i) &#123; tr[i][s[i + 1] - '0'] = i + 1; for (j = 0; j &lt;= 9; ++j) &#123; if (s[i + 1] - '0' == j) fail[i + 1] = tr[fail[i]][j]; else tr[i][j] = tr[fail[i]][j]; ++mul[i - 1][tr[i][j] - 1]; &#125; &#125; mul = qpow(mul, n); for (i = 0; i &lt; m; ++i) ans = (ans + mul[0][i]) % mod; cout &lt;&lt; ans; return 0;&#125;Matrix qpow(Matrix x, int y)&#123; Matrix out; for (int i = 0; i &lt; m; ++i) out[i][i] = 1; while (y) &#123; if (y &amp; 1) out = out * x; x = x * x; y &gt;&gt;= 1; &#125; return out;&#125;]]></content>
@@ -159,6 +172,7 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
+        <tag>计数dp</tag>
         <tag>容斥原理</tag>
       </tags>
   </entry>
@@ -346,8 +360,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>CodeForces</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>

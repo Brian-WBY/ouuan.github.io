@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="今天 AT 和 CF 刚好连上了，于是就都打了一下。">
-<meta name="keywords" content="CodeForces,AtCoder">
+  <meta name="description" content="题目链接洛谷 CF contest CF problemset 题意简述给你两个字符串 $S$ 和 $T$，你需要在 $S$ 中取若干个（至少一个）不相交的子串，使得每个子串都包含 $T$，求方案数模 $10^9+7$。 字符串长度小于等于 $10^5$。">
+<meta name="keywords" content="字符串,KMP,计数dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CF edu 56 &amp; AT Grand 029 游记">
-<meta property="og:url" content="https://ouuan.github.io/CF-edu-56-AT-Grand-029-游记/index.html">
+<meta property="og:title" content="CF494B Obsessive String (KMP,计数dp)">
+<meta property="og:url" content="https://ouuan.github.io/CF494B-Obsessive-String-KMP-计数dp/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="今天 AT 和 CF 刚好连上了，于是就都打了一下。">
+<meta property="og:description" content="题目链接洛谷 CF contest CF problemset 题意简述给你两个字符串 $S$ 和 $T$，你需要在 $S$ 中取若干个（至少一个）不相交的子串，使得每个子串都包含 $T$，求方案数模 $10^9+7$。 字符串长度小于等于 $10^5$。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T05:54:19.258Z">
+<meta property="og:updated_time" content="2019-05-05T05:44:46.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CF edu 56 &amp; AT Grand 029 游记">
-<meta name="twitter:description" content="今天 AT 和 CF 刚好连上了，于是就都打了一下。">
+<meta name="twitter:title" content="CF494B Obsessive String (KMP,计数dp)">
+<meta name="twitter:description" content="题目链接洛谷 CF contest CF problemset 题意简述给你两个字符串 $S$ 和 $T$，你需要在 $S$ 中取若干个（至少一个）不相交的子串，使得每个子串都包含 $T$，求方案数模 $10^9+7$。 字符串长度小于等于 $10^5$。">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://ouuan.github.io/CF-edu-56-AT-Grand-029-游记/">
+  <link rel="canonical" href="https://ouuan.github.io/CF494B-Obsessive-String-KMP-计数dp/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>CF edu 56 & AT Grand 029 游记 | ouuan的博客</title>
+  <title>CF494B Obsessive String (KMP,计数dp) | ouuan的博客</title>
   
 
 
@@ -403,7 +403,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ouuan.github.io/CF-edu-56-AT-Grand-029-游记/">
+    <link itemprop="mainEntityOfPage" href="https://ouuan.github.io/CF494B-Obsessive-String-KMP-计数dp/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ouuan">
@@ -420,7 +420,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">CF edu 56 & AT Grand 029 游记
+          <h2 class="post-title" itemprop="name headline">CF494B Obsessive String (KMP,计数dp)
               
             
           </h2>
@@ -445,24 +445,12 @@
                 
               
 
-              <time title="创建时间：2018-12-16 00:29:11" itemprop="dateCreated datePublished" datetime="2018-12-16T00:29:11+08:00">2018-12-16</time>
+              <time title="创建时间：2019-05-05 13:16:44 / 修改时间：13:44:46" itemprop="dateCreated datePublished" datetime="2019-05-05T13:16:44+08:00">2019-05-05</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-14 13:54:19" itemprop="dateModified" datetime="2019-02-14T13:54:19+08:00">2019-02-14</time>
               
             
           </span>
@@ -479,7 +467,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/游记/" itemprop="url" rel="index"><span itemprop="name">游记</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
 
                 
                 
@@ -520,29 +508,20 @@
       
 
       
-        <p>今天 AT 和 CF 刚好连上了，于是就都打了一下。</p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.luogu.org/problemnew/show/CF494B" target="_blank" rel="noopener">洛谷</a></p>
+<p><a href="https://codeforces.com/contest/494/problem/B" target="_blank" rel="noopener">CF contest</a></p>
+<p><a href="http://codeforces.com/problemset/problem/494/B" target="_blank" rel="noopener">CF problemset</a></p>
+<h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你两个字符串 $S$ 和 $T$，你需要在 $S$ 中取若干个（至少一个）不相交的子串，使得每个子串都包含 $T$，求方案数模 $10^9+7$。</p>
+<p>字符串长度小于等于 $10^5$。</p>
 <a id="more"></a>
-<h2 id="关于模板"><a href="#关于模板" class="headerlink" title="关于模板"></a>关于模板</h2><p>今天心血来潮把用于在线比赛的模板换了一下，加了点东西，然后发现 <code>rep(1,l,r)</code> 写起来非常不顺手..保留了部分比较好用的。</p>
-<p>测试的时候忘记开数组了（<del>都是些什么sb错误</del>），然后以为 ll 不能作下标，于是没有 <code>#define long long</code>，然后 CF 挂惨了..</p>
-<h2 id="AtCoder"><a href="#AtCoder" class="headerlink" title="AtCoder"></a>AtCoder</h2><p>上一场打的 Beginner，这场难度正常多了。</p>
-<p>A 是个值域为 $2$ 的逆序对..</p>
-<p>B 用 multiset 乱搞了一下，对于每个数枚举组成的数，然后从大到小匹配，不知道是不是正解，反正过了，而且是 $log^2$ 的。</p>
-<p>C 感觉挺可做的..可能有细节没调出来，赶着回酒店打 CF 就没有继续调了..</p>
-<p>D 一开始还在想博弈论完全不会..然后仔细看了一眼，如果 A 不走，B 就会不走，就结束了；所以 A 一定能走则走。然后就随便做了。</p>
-<p>只不过 AT 的 rating 真的涨的好快..</p>
-<h2 id="Codeforces"><a href="#Codeforces" class="headerlink" title="Codeforces"></a>Codeforces</h2><p>ABC 三道 spj ？？？</p>
-<p>都是随便构造就能做的..</p>
-<p>然而 C 一开始忘开 ll 了…..</p>
-<p>D 黑白染色一下，连通块内两种节点分别有 $a$ 个和 $b$ 个答案就是 $2^a+2^b$ ，把每个连通块的答案加起来就好了。</p>
-<p>由于 $O(nq)$ memset 会爆掉，不能 memset 整个数组，于是愉快地在开了 ll 的情况下 memset(…sizeof(int)…)；发现了之后不小心把开 int 的另一个数组也改成 memset(…sizeof(long long)..) 了.. 开场 $40$ 分钟的时候这 $3$ 个关于 ll 的罚时让我排名翻了三倍…</p>
-<p>于是，A 了 D 之后我就在板子里加上了 <code>#define int long long</code>。</p>
-<p>看了会儿 E 不会做，然后一看 standing，惊奇地发现 G 有一堆（$15$ 个，当时 E $7$ F $1$）人 A 了，然后一看，就是POJ 2926+动态RMQ…</p>
-<p>感觉自己几年没有写过普通线段树了（最近写的全是平衡树/动态开点线段树），写了半个多小时还写错了..毕竟是 CF，应该去复制个模板才对的…一交，MLE 了，<del>woc我好不容易<code>#define int long long</code>了就是这个结果？？</del>改成 int，跑了 $5.4s$，巨方，于是手动开了 O3，$4.8s$ ，但重交竟然没有罚时。应该去找个 BIT 动态求 RMQ 的模板的…</p>
-<p>看到 halyavin 参赛了，感觉自己要 fst ，赶紧把博客写了睡觉去。</p>
-<h2 id="UPD"><a href="#UPD" class="headerlink" title="UPD"></a>UPD</h2><p>halyavin 竟然没有 hack…然而 D 有一堆 memset 整个数组的，我也去 hack 了一个（edu hack $\sqrt{}$）。</p>
-<p>没有 fst，第一次 A $5$ 题，上 $2k$ 了，感觉海星。</p>
-<h2 id="UUPD"><a href="#UUPD" class="headerlink" title="UUPD"></a>UUPD</h2><p><a href="https://www.luogu.org/blog/yyfouuan/solution-cf1093d" target="_blank" rel="noopener">题解 CF1093D 【Beautiful Graph】</a></p>
-<p><a href="https://www.luogu.org/blog/yyfouuan/solution-cf1093g" target="_blank" rel="noopener">题解 CF1093G 【Multidimensional Queries】</a></p>
+<h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><p>首先用某种字符串算法求出 $T$ 在 $S$ 中匹配的所有位置（一般人都会选择 KMP）。</p>
+<p>记 $|S|=n$, $|T|=m$。</p>
+<p>然后，我们记 $p_i$ 表示 $[i+m,n]$ 中最小的匹配位置（也就是 $S[i+1..n]$ 这个子串第一个匹配的位置），记 $q_i$ 表示 $[1,i]$ 中最大的匹配位置（也就是 $S[1..i]$ 这个子串最后一个匹配的位置）。</p>
+<p>然后开始 dp，令 $f_i​$ 表示子串 $S[i+1..n]​$ 的答案。转移时，我们考虑选择下一个子串的右端点和左端点。右端点可以在 $[q_i,n]​$ 中选取，而对于一个右端点 $j​$，可以选择的左端点有 $p_j-m-i+1​$ 个。另外，也可以不继续选择下一个子串。所以可以得到转移方程：</p>
+<p>$$f_i=1+\sum\limits_{j=q_i}^nf_j(p_j-m-i+1)$$</p>
+<p>如果我们把 $g_i=\sum\limits_{j=i}^nf_jp_j$ 和 $h_i=\sum\limits_{j=i}^nf_j$ 分别存下来，就可以得到 $f_i=1+g_{q_i}-(m+i-1)f_{q_i}$，然后就可以 $\mathcal O(n)$ 计算了。</p>
+<p>最后，这样计算的话会把一个子串都不选计入总数，所以答案要减一。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[N], t[N];</span><br><span class="line"><span class="keyword">int</span> n, m, nxt[N], q[N], p[N], f[N], g[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, k;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>, s + <span class="number">1</span>, t + <span class="number">1</span>);</span><br><span class="line">    n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    m = <span class="built_in">strlen</span>(t + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>, k = <span class="number">0</span>; i &lt;= m; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (k &amp;&amp; t[i] != t[k + <span class="number">1</span>]) k = nxt[k];</span><br><span class="line">        <span class="keyword">if</span> (t[i] == t[k + <span class="number">1</span>]) ++k;</span><br><span class="line">        nxt[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>, k = <span class="number">0</span>; i &lt;= n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (k &amp;&amp; s[i] != t[k + <span class="number">1</span>]) k = nxt[k];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == t[k + <span class="number">1</span>]) ++k;</span><br><span class="line">        <span class="keyword">if</span> (k == m) q[i - m] = p[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (!p[i]) p[i] = p[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = n; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!q[i]) q[i] = q[i + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (q[i]) f[i] = (<span class="number">1</span> + g[q[i]] - (ll) f[q[i]] * (m + i - <span class="number">1</span>) % mod + mod) % mod;</span><br><span class="line">        <span class="keyword">else</span> f[i] = <span class="number">1</span>;</span><br><span class="line">        g[i] = ((ll) f[i] * p[i] + g[i + <span class="number">1</span>]) % mod;</span><br><span class="line">        f[i] = (f[i] + f[i + <span class="number">1</span>]) % mod;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (f[<span class="number">0</span>] - f[<span class="number">1</span>] + mod - <span class="number">1</span>) % mod;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -566,9 +545,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CodeForces/" rel="tag"><i class="fa fa-tag"></i> CodeForces</a>
+            <a href="/tags/字符串/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
           
-            <a href="/tags/AtCoder/" rel="tag"><i class="fa fa-tag"></i> AtCoder</a>
+            <a href="/tags/KMP/" rel="tag"><i class="fa fa-tag"></i> KMP</a>
+          
+            <a href="/tags/计数dp/" rel="tag"><i class="fa fa-tag"></i> 计数dp</a>
           
         </div>
       
@@ -581,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/html实现随机图片/" rel="next" title="html实现随机图片">
-                <i class="fa fa-chevron-left"></i> html实现随机图片
+              <a href="/BZOJ1009-HNOI2008-GT考试（KMP-AC自动机，矩阵乘法）/" rel="next" title="BZOJ1009 [HNOI2008]GT考试（KMP/AC自动机，矩阵乘法）">
+                <i class="fa fa-chevron-left"></i> BZOJ1009 [HNOI2008]GT考试（KMP/AC自动机，矩阵乘法）
               </a>
             
           </div>
@@ -590,10 +571,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Avito-Cool-Challenge-2018-游记/" rel="prev" title="Avito Cool Challenge 2018 游记">
-                Avito Cool Challenge 2018 游记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -925,7 +902,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于模板"><span class="nav-number">1.</span> <span class="nav-text">关于模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AtCoder"><span class="nav-number">2.</span> <span class="nav-text">AtCoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces"><span class="nav-number">3.</span> <span class="nav-text">Codeforces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UPD"><span class="nav-number">4.</span> <span class="nav-text">UPD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UUPD"><span class="nav-number">5.</span> <span class="nav-text">UUPD</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意简述"><span class="nav-number">2.</span> <span class="nav-text">题意简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简要做法"><span class="nav-number">3.</span> <span class="nav-text">简要做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
             
 
           </div>
