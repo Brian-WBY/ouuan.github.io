@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[300iq奔北坡]]></title>
+    <url>%2F300iq%E5%A5%94%E5%8C%97%E5%9D%A1%2F</url>
+    <content type="text"><![CDATA[由于实在想不到这次是什么记了，所以就叫 300iq 奔北坡好了。 实际上是一篇 CTS &amp; APIO 2019（可能 &amp; THUSC ）游记。 Arrival因为是去北京所以要二次安检，然后剪刀被收了..一开始还说我有两把剪刀，然后又过了一次安检就没有了..最后的结果是吃方便面的时候撕不开酱料包，用圆规戳开的。 车上先是在熟悉的文章、字符串和 Reverses 三道题上分别自闭，然后开始看题解，看 border 相关论文，然后就开始看 THUPC 的榜，然后不小心被 300iq 看到了 300iq_ben_bei_po。 到了之后，发现 Sooke 就比我们早到一点点——实际上比我们早一趟地铁左右。到酒店的时候办入住排队，Sooke 刚好就在我们几个人前面，然后就愉快地面基了。 下午去试机，现场写了一道我们那场 cf 的题，（证明了如果会做还是可以在场上写出来的）。 然后，从 Sooke 来试机起，简单教了一下 Sooke 用 noilinux，一起吃了晚饭，一起走回酒店，然后发现 Sooke 房间就在我隔壁，然后 Sooke 就待在我房间里了，准备看我打他验的那场 cf。 之前 THUWC 的时候试机坐 pr 右边的右边，这次又是来的时间差不多 + 住隔壁..比较神奇。 晚上智商比较掉线（可能和前一天没睡好略有关系），掉了波分。 CTS Day 1咕了 5min（为什么 cf 每次都是 35 开始） 开考前就注意到 T1 12s，原来是 10 组数据…（ctr：我本机 1.Xs，评测姬 6.Xs，怎么办啊） 第一眼就觉得 T1 的暴力好像不太会做，阶乘会挂。 然后去看 T2，3min 想到三方做法，然后又花了 3min 去掉一维，然后 10min 左右写 + 调完了 48 分。 T3 是个提答，（可能是雅礼集训那道五子棋的原因），我就直接搞了个估价函数，每次枚举所有可能的位置，选估价函数最大的那个。前三个点都是立刻出结果，第二个点只有 9 分，然后就把后面的点挂着跑。发现第四个点非常特殊，所以就数了一下每种块各有几个，然后直接在草稿纸上算出方案，然后若干个 for 循环输出。 然后，本来以为 T2 $m=0, 1, 2$ 的几个点要大力数据分治，然后发现如果 $n\ge d+2m-1$ 直接输出 $d^n$ 就好了.. 然后，发现 T3 后面的一个点跑了 1h 还没跑出来，于是就开始乱搞。先是调循环步长，发现还是跑的特别慢。然后就加了个剪枝，每一行找到第一个可以放的位置就放，快了很多。最后把两个点分别跑出来了 3 分和 4 分。 回去看 T1，发现一个剪枝搜索的方法（实际上和那个七方 dp 思路差不多…），然后写到一半想起来可以打表..最后写了个可以在 1s 内跑完一组的搜索，还是打了个表交上去。 最后是 $10+60+46$，被所有人踩了。 为什么我没想到 T1 的七方 dp 呢..当时脑子里大概是 $12\rightarrow2^n$，然而有三维，要 $2^{nml}$，做不了，不做了…（题解：一看就是指数级多项式算法） CTS Day 2又咕了 5min。 第一眼，T1 计几，考场不能开计几。 第二眼，T2 字符串！woc，还是个计数。 第三眼，T3 这是棵树！这边怎么还有反的.. 看了一圈还是感觉 T1 最可做…然而我先去推了一会儿 T2，没有任何成果。T3 的暴力也不会写.. 冷静了一下想到了 T1 $30​$ 分做法，就写了一个。考场上还算错复杂度了..只不过问题不大。 然后在三题之间轮流自闭，T1 猜到了凸包合并后更优肯定要合并，也写了个两两尝试合并，然而过不去样例三，就没管了。（95 分做法：随机合并，记录过程中最优解，直到快超时。） 快结束的时候写了个 T2 10 分爆搜，发现要跑 4s，然后就写了个字符离散化..实际上可以被类似 bdfhjlnprt 之类的串卡掉，只不过还是过了。 最后是 $10+30+0$，好像还挺大众（ CTS 其它讲题比较自闭..就记得 _rqy 自己上台吐槽两天四道计数，组题人（同时是 D1T3 出题人）说“我要从五道题里面选六道题，我也很无奈啊”。 录了个论文答辩。 最后闭幕式的时候 wh 和 dzd 的讲话还是非常精彩。譬如：知识点涵盖了容斥原理，动态规划，概率论……为什么要去掉这个 C 呢？不收费是干不了这个活的，收的钱还不一定够 在 cf 上抢了个评论。上午答辩完就差不多猜到了名单，然而不敢提前发，就提前写好了评论，一公布立马发出去了。感觉的确可以从答辩判断名单，某个 twr 硬是觉得有黑幕还被 up 了我就很没有办法。 cf 出题组全员 Ag。]]></content>
+      <categories>
+        <category>游记</category>
+      </categories>
+      <tags>
+        <tag>CCF系列赛事</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[回文自动机（PAM）学习笔记]]></title>
+    <url>%2F%E5%9B%9E%E6%96%87%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88PAM%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[PAM 是一种处理回文串相关问题的有力工具。 又是一句废话。 PAM 是什么？首先它是个自动机…PAM 是一个接受且仅接受某个字符串的所有回文子串的中心及右半部分的 DFA。 “中心及右边部分”在奇回文串中就是字面意思，在偶回文串中定义为一个特殊字符加上右边部分。这个定义看起来很奇怪，但它能让 PAM 真正成为一个自动机，而不仅是两棵树。 PAM 的状态及转移PAM 的每个状态都表示一个回文子串，其中包含两个特殊状态，$len$ 分别为 $0$ 和 $-1​$，它们分别作为偶回文子串和奇回文子串两棵树的根。 PAM 的转移表示在串的两侧各加上同一个字符，因此 $len$ 也会加二。PAM 显然是分别以 $0$ 和 $-1$ 为根的两棵树，因为每个状态由唯一的状态转移而来（删掉两端的字符）。 和 SAM / AC 自动机一样，PAM 也有 $fail$ 边，同样表示真后缀中在自动机里的最长状态（也就是最长回文真后缀）。 为了让 PAM 符合自动机的定义，可以在概念上从 $-1$ 到 $0$ 连一条特殊字符边，然后以 $-1$ 作为起始状态。然而在代码实现里没有人会这么做。 PAM 的构建一个性质在一个字符串后添加一个字符，至多增加一个之前没有出现过的回文子串，且该回文子串必定是原串的一个回文真后缀两侧加上新添加的这个字符。 简单证明：如果新添加的字符处在多个回文子串内，找到最长的一个，剩下的都可以沿其中心翻折过去，所以一定出现过。 这个性质既说明了 PAM 的状态数是 $\mathcal O(n)$ 的，也为后文的构建方法提供了依据。 基础构建法这是一个增量算法，即每次以均摊 $\mathcal O(1)$ 的复杂度向 PAM 基于的字符串的末尾添加一个字符。 记上次达到的状态为 $p$，字符串为 $s$，当前添加的字符是字符串中第 $pos$ 位，我们在 $p$ 的 $fail$ 链上找到最长的一个状态满足 $s[pos-len(u)-1]=s[pos]$，那么当前到达的状态就是 $\delta(u,s[pos])$，如果这个转移不存在则新建节点并连 $fail$：在 $fail(p)$ 的 $fail$ 链上找到最长的满足上述条件的状态，其 $s[pos]$ 转移即为新建节点的 $fail$。特别地，如果 $p$ 是特殊状态 $-1$，新建节点的 $fail$ 要设为 $0$。 因为 $p​$ 和 $fail(p)​$ 都是在 $fail​$ 树上爬上爬下，其中每添加一个字符最多向下爬一次，所以复杂度是均摊 $\mathcal O(1)​$ 的。 当然如果用 map 存边复杂度就会带 log。 参考代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 300010;struct PAM&#123; int len, fail, ch[26];&#125; pam[N];void extend();char s[N];int n, p = 2, tot = 2, pos;int main()&#123; scanf("%s", s + 1); n = strlen(s + 1); pam[1].len = -1; pam[2].fail = 1; for (pos = 1; pos &lt;= n; ++pos) extend(); return 0;&#125;void extend()&#123; int x = s[pos] - 'a'; while (s[pos - pam[p].len - 1] != s[pos]) p = pam[p].fail; if (pam[p].ch[x]) p = pam[p].ch[x]; else &#123; int np = ++tot; pam[p].ch[x] = np; pam[np].len = pam[p].len + 2; if (p == 1) pam[np].fail = 2; else &#123; for (p = pam[p].fail; s[pos - pam[p].len - 1] != s[pos]; p = pam[p].fail); pam[np].fail = pam[p].ch[x]; &#125; p = np; &#125;&#125; 其它构建法PAM 还有支持前后端插入删除、复杂度不是均摊的构建方法，但我先咕着..感兴趣的话可以看 2017 国家候选队论文《回文树及其应用 翁文涛》。 一些例题[APIO2014]回文串，裸题。和其它自动机一样通过 fail 树子树和来统计出现次数。 CF835D Palindromic characteristics（注意原题数据范围较小，这题可以线性做），从 fail 链上 len / 2 处转移即可，我比较菜只会倍增所以多个 log。]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>PAM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CF17E Palisection（manacher）]]></title>
     <url>%2FCF17E-Palisection%EF%BC%88manacher%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接洛谷 CF 题意简述给你一个字符串，求有多少对相交的回文子串。（包含算作相交，自交不算） 字符串长度小于等于 $2\times 10^6$。 简要做法首先 manacher 求出每个中心的最长回文串半径。 然后，通过差分可以求出每个位置作为左端点 / 右端点各有多少个回文串（知道每个中心的半径之后就相当于区间加），记为 $l_i$, $r_i$。 最后，我们把问题转化为求不相交的回文子串对数，这样的话就是 $\sum\limits_{i = 2}^n\sum\limits_{j=1}^{i-1}l_ir_j$，预处理一下 $r​$ 的前缀和就可以算了。 参考代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;using namespace std;typedef long long ll;const int N = 2000010;const int mod = 51123987;char s[N &lt;&lt; 1];int n, p[N &lt;&lt; 1], mid, rt, l[N], r[N], pre[N], ans;int main()&#123; int i; scanf("%d%s", &amp;n, s + 1); s[0] = '$'; for (i = n * 2 + 1; i &gt;= 1; --i) &#123; if (i &amp; 1) s[i] = '#'; else s[i] = s[i / 2]; &#125; mid = rt = 1; for (i = 2; i &lt;= n * 2 + 1; ++i) &#123; p[i] = min(rt - i, p[mid * 2 - i]); while (s[i + p[i] + 1] == s[i - p[i] - 1]) ++p[i]; if (i + p[i] &gt; rt) &#123; mid = i; rt = i + p[i]; &#125; ++l[(i - p[i] + 1) &gt;&gt; 1]; --l[(i &gt;&gt; 1) + 1]; ++r[(i + 1) &gt;&gt; 1]; --r[(i + p[i] + 1) &gt;&gt; 1]; ans = (ans + (p[i] + 1) / 2) % mod; &#125; ans = (ll) ans * (ans - 1) % mod * (mod + 1) / 2 % mod; for (i = 1; i &lt;= n; ++i) &#123; l[i] += l[i - 1]; r[i] += r[i - 1]; pre[i] = (pre[i - 1] + r[i]) % mod; ans = (ans - (ll) l[i] * pre[i - 1] % mod + mod) % mod; &#125; cout &lt;&lt; ans; return 0;&#125;]]></content>
@@ -46,8 +69,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>AC自动机</tag>
         <tag>KMP</tag>
+        <tag>AC自动机</tag>
         <tag>矩阵乘法</tag>
       </tags>
   </entry>
@@ -97,8 +120,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>省选</tag>
         <tag>CCF系列赛事</tag>
+        <tag>省选</tag>
       </tags>
   </entry>
   <entry>
@@ -122,8 +145,8 @@
         <category>计划</category>
       </categories>
       <tags>
-        <tag>省选</tag>
         <tag>CCF系列赛事</tag>
+        <tag>省选</tag>
         <tag>题表</tag>
       </tags>
   </entry>
@@ -135,8 +158,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>树状数组</tag>
+        <tag>数据结构</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
@@ -384,8 +407,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>CodeForces</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
