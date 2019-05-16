@@ -171,9 +171,9 @@
     
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
-    
       <category term="KMP" scheme="https://ouuan.github.io/tags/KMP/"/>
+    
+      <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
     
       <category term="矩阵乘法" scheme="https://ouuan.github.io/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     
@@ -285,9 +285,9 @@
       <category term="游记" scheme="https://ouuan.github.io/categories/%E6%B8%B8%E8%AE%B0/"/>
     
     
-      <category term="省选" scheme="https://ouuan.github.io/tags/%E7%9C%81%E9%80%89/"/>
-    
       <category term="CCF系列赛事" scheme="https://ouuan.github.io/tags/CCF%E7%B3%BB%E5%88%97%E8%B5%9B%E4%BA%8B/"/>
+    
+      <category term="省选" scheme="https://ouuan.github.io/tags/%E7%9C%81%E9%80%89/"/>
     
   </entry>
   
@@ -335,9 +335,9 @@
       <category term="计划" scheme="https://ouuan.github.io/categories/%E8%AE%A1%E5%88%92/"/>
     
     
-      <category term="省选" scheme="https://ouuan.github.io/tags/%E7%9C%81%E9%80%89/"/>
-    
       <category term="CCF系列赛事" scheme="https://ouuan.github.io/tags/CCF%E7%B3%BB%E5%88%97%E8%B5%9B%E4%BA%8B/"/>
+    
+      <category term="省选" scheme="https://ouuan.github.io/tags/%E7%9C%81%E9%80%89/"/>
     
       <category term="题表" scheme="https://ouuan.github.io/tags/%E9%A2%98%E8%A1%A8/"/>
     
@@ -362,9 +362,9 @@
       <category term="算法" scheme="https://ouuan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="树状数组" scheme="https://ouuan.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="数据结构" scheme="https://ouuan.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="树状数组" scheme="https://ouuan.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="树套树" scheme="https://ouuan.github.io/tags/%E6%A0%91%E5%A5%97%E6%A0%91/"/>
     
