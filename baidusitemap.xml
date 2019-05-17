@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ouuan.github.io/300iq%E5%A5%94%E5%8C%97%E5%9D%A1/</loc>
-    <lastmod>2019-05-16</lastmod>
+    <lastmod>2019-05-17</lastmod>
+  </url>  <url>
+    <loc>https://ouuan.github.io/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88SAM%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-05-17</lastmod>
   </url>  <url>
     <loc>https://ouuan.github.io/%E5%9B%9E%E6%96%87%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88PAM%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-05-12</lastmod>
@@ -29,9 +32,6 @@
     <lastmod>2019-05-04</lastmod>
   </url>  <url>
     <loc>https://ouuan.github.io/BZOJ1009-HNOI2008-GT%E8%80%83%E8%AF%95%EF%BC%88KMP-AC%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%8C%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%EF%BC%89/</loc>
-    <lastmod>2019-05-03</lastmod>
-  </url>  <url>
-    <loc>https://ouuan.github.io/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88SAM%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-05-03</lastmod>
   </url>  <url>
     <loc>https://ouuan.github.io/BZOJ2434-NOI2011-%E9%98%BF%E7%8B%B8%E7%9A%84%E6%89%93%E5%AD%97%E6%9C%BA%EF%BC%88AC%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%8C%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%EF%BC%89/</loc>

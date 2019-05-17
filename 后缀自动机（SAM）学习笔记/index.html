@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/triesam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/minsam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/parent.png">
-<meta property="og:updated_time" content="2019-05-03T03:36:22.127Z">
+<meta property="og:updated_time" content="2019-05-17T03:03:36.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀自动机（SAM）学习笔记">
 <meta name="twitter:description" content="后缀自动机是一种处理字符串问题的有力工具（废话），它的码量不比后缀数组大（实际代码难度不比后缀数组小，但也不难），处理问题时的思维难度往往比后缀数组小，复杂度更优秀。若字符集大小为 $|\Sigma|$，则：构建时间复杂度 $O(n|\Sigma|)$，转移时间复杂度 $O(1)$，空间复杂度 $O(n|\Sigma|)$ 或 构建时间复杂度 $O(n\log|\Sigma|)$，转移时间复杂度">
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-03 11:36:22" itemprop="dateModified" datetime="2019-05-03T11:36:22+08:00">2019-05-03</time>
+                <time title="修改时间：2019-05-17 11:03:36" itemprop="dateModified" datetime="2019-05-17T11:03:36+08:00">2019-05-17</time>
               
             
           </span>
@@ -582,10 +582,10 @@
 <p>由定义一或定义二，由除起始状态外的状态都有且仅有一条出边并且 $parent$ 连接无环（$right$ 集合大小递增/对应字符串长度递减）可以说明。</p>
 <p>如，醊是串 $abaaabaa$，它的 $parent$ 树：（用 $max(v)$ 代表每个状态）</p>
 <img src="/后缀自动机（SAM）学习笔记/parent.png">
-<p>SAM上的接受状态就是包含 $r_i=n$（字符串长度）的一些 $right$ 集合等价类，也就是 $parent$ 树上 $\{n\}$ 对应的状态及其祖先。因此，可以通过 $parent$ 树确定SAM的接受状态集合。</p>
+<p>SAM上的接受状态就是包含 $r_i=n$（字符串长度）的一些 $right$ 集合等价类，也就是 $parent$ 树上 $\{n\}$ 对应的状态及其祖先。因此，可以通过 $parent​$ 树确定SAM的接受状态集合。</p>
 <h2 id="最简SAM状态数为线性的证明"><a href="#最简SAM状态数为线性的证明" class="headerlink" title="最简SAM状态数为线性的证明"></a>最简SAM状态数为线性的证明</h2><p>其实由后面的线性构造方法可以说明状态数为线性。</p>
 <p>只不过由SAM本身的性质也可以说明。</p>
-<p>考虑 $parent​$ 树，最多有 $n​$ 个叶子节点，而每个非叶子节点至少有两个儿子，类似线段树/堆的节点数，可以证明总节点数不超过 $2n-1​$。</p>
+<p>每次把 $right$ 集合分成 $k$ 部分需要 $k$ 条边，最坏情况下每次都只分成两部分，总共要分成至多 $n$ 部分，所以状态数不会超过 $2n-1$（分 $n-1$ 次最多 $2n-2$ 条边，也就是 $2n-1$ 个点）。</p>
 <h2 id="最简SAM转移数为线性的证明"><a href="#最简SAM转移数为线性的证明" class="headerlink" title="最简SAM转移数为线性的证明"></a>最简SAM转移数为线性的证明</h2><p>考虑SAM的任意一个生成树，那么SAM上的边就会被分成树边和非树边。</p>
 <p>树边最多只有 $2n-2​$ 条。</p>
 <p>对于字符串的每个后缀，将其输入到SAM中都会经过一条终点为接受状态的路径，若经过了一条非树边，则称该后缀对应它经过的<strong>第一条</strong>非树边。</p>
