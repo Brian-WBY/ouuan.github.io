@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://ouuan.github.io/300iq奔北坡/yakusoku.jpg">
 <meta property="og:image" content="https://ouuan.github.io/300iq奔北坡/girl1.jpg">
 <meta property="og:image" content="https://ouuan.github.io/300iq奔北坡/girl2.jpg">
-<meta property="og:updated_time" content="2019-05-22T09:17:37.642Z">
+<meta property="og:updated_time" content="2019-05-26T13:50:43.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="300iq奔北坡">
 <meta name="twitter:description" content="由于实在想不到这次是什么记了，所以就叫 300iq 奔北坡好了。 实际上是一篇 CTS &amp;amp; APIO &amp;amp; THUSC 2019 游记。">
@@ -466,7 +466,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-22 17:17:37" itemprop="dateModified" datetime="2019-05-22T17:17:37+08:00">2019-05-22</time>
+                <time title="修改时间：2019-05-26 21:50:43" itemprop="dateModified" datetime="2019-05-26T21:50:43+08:00">2019-05-26</time>
               
             
           </span>
@@ -579,6 +579,35 @@
 <h2 id="APIO-颁奖"><a href="#APIO-颁奖" class="headerlink" title="APIO 颁奖"></a>APIO 颁奖</h2><p>五页 113 艹，成功压线 Cu。</p>
 <p>四页 203 <font color="gold">Au</font> 比 <font color="silver">Ag</font> 多艹。</p>
 <p><font color="silver">Ag</font> 前几都是神仙艹。</p>
+<h2 id="THUSC-Day-1"><a href="#THUSC-Day-1" class="headerlink" title="THUSC Day -1"></a>THUSC Day -1</h2><p>THUSC 电脑的用户名是 THUSC Day 0-Test、THUSC Day0、THUSC Day1-1 和 THUSC Day1-2。（为什么 Day -1 要提 THUSC 电脑用户名？因为今天是 Day -1。）</p>
+<p>收到选手须知，划重点：WireShark，O3，python，Ubuntu 16.04，没写考试安排。</p>
+<p>学一波 WireShark 好了。</p>
+<p><del>结果颓了一整天</del></p>
+<p>晚上 11 点睡了，好像很久没睡这么早了..</p>
+<h2 id="THUSC-Day-0"><a href="#THUSC-Day-0" class="headerlink" title="THUSC Day 0"></a>THUSC Day 0</h2><p>为什么 tdoj waiting 显示满分啊..一开始我还以为 pt 是假的（</p>
+<p>试机自闭了，sb 字符串二分想了无限假做法，开始怀疑自己的智商。</p>
+<p><del>开营式全是硬广</del>，感觉还是 THUWC 的有意思些，哦不对，那好像是闭幕式…</p>
+<p>一进考场就发生了一件很神奇的事，94 和 96 中间没有 95..于是我换了一台机子。</p>
+<p>比赛咕了 $40min$（<del>传统艺能</del>）。</p>
+<p>开场看 T1，很快发现了（<del>在没有操作 3 时</del>）取空的情况只会发生不超过 $n$ 次，20min 的时候已经完全构思好了正解，然而不知道为什么以为操作 3 会破坏复杂度，就写了个 60 分..第一次尝试在草稿纸上完整地写下要维护哪些量，每个操作各要具体怎么修改怎么询问，写了半张草稿纸，然后写代码极其顺畅，1h 的时候就把 60 分部分分 1A 了。然后发现 $l=r$ 也很水，就写了个 $80$ 分的数据分治，然后各种挂，又过了 $40min$ 才写完，共 $6.2KB$。</p>
+<p>然后看了眼 T2，$k=20\rightarrow2^k$，$\min\rightarrow minmax$ 容斥 $\rightarrow$ 不会做（<del>鬼知道我怎么想的</del>），然后去看 T3，侧信道攻击是什么啊..OI 题名全是骗人的.jpg。往后一看，好像还真是题目背景里说的那回事..好像不太可做，回去看 T2。woc 这不是个 sb 题吗…在最短路上就是 $dis[u][k]+dis[k][v]=dis[u][v]$，然后随手写了个 $3^k$——对每个救援队记录哪些点可以。然后发现改成对每个点记录哪些救援队可以，就可以轻松 $n2^k$ 了..pt 1A，然后就没管了。</p>
+<p>犹豫了一下，决定还是先别侧信道攻击了，回来看 T1。woc 我又 sb 了，操作三不破坏复杂度啊，每次单点加最多把一个空的变成不空，所以还是只会有不超过 $n+m$ 次取空..于是在 $60​$ 分代码的基础上只加一个函数，其它全都不用改，就 pp 了。</p>
+<p>然后去看 T3，这个 $10$ 分，可以枚举 $w$，枚举 $y$，枚举 $q$……诶，询问数超了，那就 <code>get_w()</code>.. woc，直接 <code>for (i = 0; i &lt; 500; ++i) Qs[i] = i;</code> 不就可以了吗，我又 sb 了..把枚举删掉，写上 for 循环，一交，怎么爆零了？woc，没设置 $u$ 和 ​$v$…那后面的分怎么做啊..先 <code>get_w()</code> <code>get_y()</code> 吧..二分一下 $q$..怎么过不了啊..哦，是快速幂，所以 $time$ 并不关于 $q$ 单调..那就以二分结果为中心往两边爆搜吧..$subtask2$ 拿了 $16$，继续各种乱搞，拿不到分了，考试结束了。</p>
+<p>感觉好像比较大众分啊..可能会被 T3（&amp; 可能比较弱的 pt &amp; 把 THUSC 当成 IOI 赛制打的选手）区分出来了。</p>
+<p>大约在宾馆见识到了真正的“抽水马桶”…不是按，不是转，是抽..</p>
+<p>晚上睡得比前一天还早（</p>
+<h2 id="THUSC-Day-1-1"><a href="#THUSC-Day-1-1" class="headerlink" title="THUSC Day 1-1"></a>THUSC Day 1-1</h2><p>94 和 96 中间还是没有 95…</p>
+<p>比赛又咕了 $30min$。</p>
+<p>开场，T1 不是 sb 题吗 $\rightarrow$ 没过 pt $\rightarrow $ 读错题了？$\rightarrow$ 草，只有灯塔可以点亮..（鬼知道我为什么在点亮数轴（大约是以为每个点都有灯塔，只是一部分有游客吧..</p>
+<p>于是 20min 才把 T1 过掉（</p>
+<p>然后去看 T2，前两个 subtask 好像挺好写的..继续看 T3，考场上好像不能开计算几何来着（</p>
+<p>然而我还是开了..emm..这玩意不用取模诶..哦，好像每种本质不同的划分都可以用一条两圆公切线表示。但是，怎么求公切线啊..用各种方法算了一个小时，算出来的结果都很麻烦，感觉会算错，于是就没管了（然而降智的效果已经达到了</p>
+<p>先写了前两个 subtask，然后发现好像可以处理出每个右端点向左种类数增加的地方，然后写了个假做法写自闭了，最后大致上想到了单调栈做法，然后好像是以为假掉了，也可能没太想清楚，最后写了个 $\mathcal O(nm^2)$ 交上去…</p>
+<p>成功被计几 &amp; 自己的假做法降智，被区分了，白给 $48$ 分。</p>
+<h2 id="THUSC-Day-1-2"><a href="#THUSC-Day-1-2" class="headerlink" title="THUSC Day 1-2"></a>THUSC Day 1-2</h2><p>果然是网络题..</p>
+<p>有了 WC 的经验，没仔细阅读学习手册直接开始做，还是写了 $1h$ T1..</p>
+<p>T2 的 $8$ 分是 CRC32，WC 写过，然后..写了 $1h$，WA 了 $1h$。学习手册里的 CRC32 样例过了，输出中间结果 data 转 01 看起来也没什么问题..不知道怎么回事。</p>
+<p>大众分好像是 $48$，㕛被区分了。</p>
 
       
     </div>
@@ -965,7 +994,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrival"><span class="nav-number">1.</span> <span class="nav-text">Arrival</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTS-Day-1"><span class="nav-number">2.</span> <span class="nav-text">CTS Day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTS-Day-2"><span class="nav-number">3.</span> <span class="nav-text">CTS Day 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTS-其它"><span class="nav-number">4.</span> <span class="nav-text">CTS 其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-讲课-Day-1"><span class="nav-number">5.</span> <span class="nav-text">APIO 讲课 Day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-考试"><span class="nav-number">6.</span> <span class="nav-text">APIO 考试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-讲题"><span class="nav-number">7.</span> <span class="nav-text">APIO 讲题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-讲课-Day-2"><span class="nav-number">8.</span> <span class="nav-text">APIO 讲课 Day 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-颁奖"><span class="nav-number">9.</span> <span class="nav-text">APIO 颁奖</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrival"><span class="nav-number">1.</span> <span class="nav-text">Arrival</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTS-Day-1"><span class="nav-number">2.</span> <span class="nav-text">CTS Day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTS-Day-2"><span class="nav-number">3.</span> <span class="nav-text">CTS Day 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTS-其它"><span class="nav-number">4.</span> <span class="nav-text">CTS 其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-讲课-Day-1"><span class="nav-number">5.</span> <span class="nav-text">APIO 讲课 Day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-考试"><span class="nav-number">6.</span> <span class="nav-text">APIO 考试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-讲题"><span class="nav-number">7.</span> <span class="nav-text">APIO 讲题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-讲课-Day-2"><span class="nav-number">8.</span> <span class="nav-text">APIO 讲课 Day 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APIO-颁奖"><span class="nav-number">9.</span> <span class="nav-text">APIO 颁奖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#THUSC-Day-1"><span class="nav-number">10.</span> <span class="nav-text">THUSC Day -1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#THUSC-Day-0"><span class="nav-number">11.</span> <span class="nav-text">THUSC Day 0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#THUSC-Day-1-1"><span class="nav-number">12.</span> <span class="nav-text">THUSC Day 1-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#THUSC-Day-1-2"><span class="nav-number">13.</span> <span class="nav-text">THUSC Day 1-2</span></a></li></ol></div>
             
 
           </div>
