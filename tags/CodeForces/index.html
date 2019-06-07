@@ -111,7 +111,7 @@
   <meta name="description" content="ouuan的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ouuan的博客">
-<meta property="og:url" content="https://ouuan.github.io/tags/CodeForces/index.html">
+<meta property="og:url" content="https://ouuan.github.io/tags/Codeforces/index.html">
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="ouuan的博客">
 <meta property="og:locale" content="zh-CN">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://ouuan.github.io/tags/CodeForces/">
+  <link rel="canonical" href="https://ouuan.github.io/tags/Codeforces/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>标签: CodeForces | ouuan的博客</title>
+  <title>标签: Codeforces | ouuan的博客</title>
   
 
 
@@ -417,7 +417,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>CodeForces<small>标签</small>
+        <h2>Codeforces<small>标签</small>
         </h2>
       </div>
 
@@ -429,43 +429,17 @@
 
       <h3 class="post-title">
         
-            <a class="post-title-link" href="/Avito-Cool-Challenge-2018-游记/" itemprop="url">
+            <a class="post-title-link" href="/Codeforces-Round-564-中文题解/" itemprop="url">
               
-                <span itemprop="name">Avito Cool Challenge 2018 游记</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-17T22:47:17+08:00" content="2018-12-17">
-          12-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/CF-edu-56-AT-Grand-029-游记/" itemprop="url">
-              
-                <span itemprop="name">CF edu 56 & AT Grand 029 游记</span>
+                <span itemprop="name">Codeforces Round #564 中文题解</span>
               
             </a>
         
       </h3>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-16T00:29:11+08:00" content="2018-12-16">
-          12-16
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-07T22:38:47+08:00" content="2019-06-07">
+          06-07
         </time>
       </div>
 
@@ -537,7 +511,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -659,7 +633,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1441,6 +1417,35 @@
         toolbar: 0,
         statusbar: 0,
         pagemode: "thumbs",
+        view: "FitV"
+      },
+      PDFJS_URL: "/lib/pdf/web/viewer.html",
+      height: "500px"
+    };
+    $("#main a").each(function() {
+      var href = $(this).attr("href");
+      if (!href) return;
+      if (href.endsWith(".pdf") || href.endsWith(".pdf/")) {
+        var id = "pdf" + Math.floor(Math.random() * 10000);
+        $(this).after("<div id='" + id + "'></div>").remove();
+        PDFObject.embed(href, "#" + id, options);
+      }
+    });
+    </script>
+    <style>
+    .pdfobject-container {
+      position: relative;
+      overflow: auto;
+      width: 100%;
+      height: 500px;
+    }
+    </style>
+  
+
+
+</body>
+</html>
+s",
         view: "FitV"
       },
       PDFJS_URL: "/lib/pdf/web/viewer.html",
