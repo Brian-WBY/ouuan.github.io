@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ouuan.github.io/"/>
-  <updated>2019-06-14T10:07:13.443Z</updated>
+  <updated>2019-06-14T14:10:24.719Z</updated>
   <id>https://ouuan.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BZOJ2460 [BJWC2011]元素（线性基，贪心）</title>
+    <link href="https://ouuan.github.io/BZOJ2460-BJWC2011-%E5%85%83%E7%B4%A0%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%8C%E8%B4%AA%E5%BF%83%EF%BC%89/"/>
+    <id>https://ouuan.github.io/BZOJ2460-BJWC2011-元素（线性基，贪心）/</id>
+    <published>2019-06-14T14:00:27.000Z</published>
+    <updated>2019-06-14T14:10:24.719Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.luogu.org/problemnew/show/P4570" target="_blank" rel="noopener">洛谷</a></p><p><a href="http://darkbzoj.tk/problem/2460" target="_blank" rel="noopener">darkbzoj</a></p><h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你 $n$ 个带权值的数（数和权值是两个东西），求一个权值最大的异或线性无关子集，即取这个子集的任意一个非空子集，异或和都不为零。</p><p>原题 $n\le1000$，实际上可以轻松 $n\le10^5$。数 $10^{18}$，权值 $10^4$。</p><a id="more"></a><h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><p>看到这题，就随便贪心一下：按权值排序，插入到线性基所在的线性空间的元素集合里（说的这么绕口是因为“插入到线性基里”是一种极不严谨的表述，而且无法和真正的“插入到线性基里”区分开），如果插入到了线性基里，就把答案加上这个数的权值。</p><p>然后…过了？</p><p>仔细一想发现也不难证。</p><p>首先，一堆线性无关的向量中，如果加进来一个线性相关的，一定可以删掉这些向量（包括刚加进来这个）中的某一个（并不是任意一个，但只要一个就可以了），让它们变得线性无关。这个性质在异或中可能不那么显然，但线性相关就相当于方程组中有一个多余的方程（可以由其它方程推出来），这时只要删掉一个方程就不会有多余的方程了，这样就是大家所熟知的了。</p><p>因此，考虑加入一个元素时删掉谁呢？当然是权值小的那一个。如果事先排好序，加不进去的时候不加就好了。</p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, ll&gt; pil; </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line">pil a[N];</span><br><span class="line">ll p[<span class="number">70</span>];</span><br><span class="line"><span class="keyword">int</span> n, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld%d"</span>, &amp;a[i].second, &amp;a[i].first);</span><br><span class="line"></span><br><span class="line">sort(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>; --i)</span><br><span class="line">&#123;</span><br><span class="line">ll x = a[i].second;</span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">59</span>; ~j; --j)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> ((x &gt;&gt; j) &amp; <span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (p[j]) x ^= p[j];</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">p[j] = x;</span><br><span class="line">ans += a[i].first;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot; class=&quot;headerlink&quot; title=&quot;题目链接&quot;&gt;&lt;/a&gt;题目链接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.luogu.org/problemnew/show/P4570&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;洛谷&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://darkbzoj.tk/problem/2460&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;darkbzoj&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;题意简述&quot;&gt;&lt;a href=&quot;#题意简述&quot; class=&quot;headerlink&quot; title=&quot;题意简述&quot;&gt;&lt;/a&gt;题意简述&lt;/h2&gt;&lt;p&gt;给你 $n$ 个带权值的数（数和权值是两个东西），求一个权值最大的异或线性无关子集，即取这个子集的任意一个非空子集，异或和都不为零。&lt;/p&gt;
+&lt;p&gt;原题 $n\le1000$，实际上可以轻松 $n\le10^5$。数 $10^{18}$，权值 $10^4$。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="题解" scheme="https://ouuan.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="线性基" scheme="https://ouuan.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/"/>
+    
+      <category term="贪心" scheme="https://ouuan.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+  </entry>
   
   <entry>
     <title>线性基学习笔记</title>
@@ -267,9 +294,9 @@
     
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
-    
       <category term="KMP" scheme="https://ouuan.github.io/tags/KMP/"/>
+    
+      <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
     
       <category term="矩阵乘法" scheme="https://ouuan.github.io/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     
@@ -515,28 +542,6 @@
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="FFT" scheme="https://ouuan.github.io/tags/FFT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019YALI省选集训垫底记</title>
-    <link href="https://ouuan.github.io/2019YALI%E7%9C%81%E9%80%89%E9%9B%86%E8%AE%AD%E5%9E%AB%E5%BA%95%E8%AE%B0/"/>
-    <id>https://ouuan.github.io/2019YALI省选集训垫底记/</id>
-    <published>2019-03-17T11:36:39.000Z</published>
-    <updated>2019-03-28T13:23:38.721Z</updated>
-    
-    <content type="html"><![CDATA[<p>时隔半年又来到了YALI。</p><a id="more"></a><h1 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h1><p>中午放学，下午就坐火车走了。</p><p>晚上被骗去吃火宫殿..</p><p>然后做了一个 slide.</p><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>T1是个字符串，一开始以为可以 $50$，先把 $30$ 写了然后去看后两题，回来发现那 $20$ 没法写..最后因为数组名 $end$ CE了..</p><p>T2还是个字符串，只不过是在图上，<del>是道大象题</del>，求期望，要高斯消元，利用非 $0​$ 项很少来降低复杂度。一开始先把不用求期望（每个点出度为 $1​$）的 $20​$ 分写了，然后就去看 $T3​$。后来回头发现 $T1​$ 的 $20​$ 写不出来，就来写这题的 $10​$ 分暴力高斯消元，然后调了 $1h​$，一开始先是概率各种算错，后来其它的都写对了，结果我脑抽写成了字符串失配跳到 $0​$ …</p><p>T3是<del>zzq最爱的</del>提答，又是给一种计算机。随便玩了 $47​$ 分。下午讲题的时候有几位神仙在那快乐地碾了碾标算..</p><p>做题的时候先是看到 ctr zzq，然后往右一看，发现 zzq 就在黑板前的电脑前坐着..之前就听说 _rqy 也要来，做题做到一半的时候看到 _rqy 去找 zzq 报告了两个 bug.. </p><p>之前就有猜测过：</p><img src="/2019YALI省选集训垫底记/rqy.png"><p>然后..下午果然是神仙聊天场，_rqy 现场推多项式三角函数..</p><img src="/2019YALI省选集训垫底记/tan.jpg"><p>晚上没去机房..游记就是晚上写的qaq</p><h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h1><p>今天有三种类型的题目，<del>性价比高</del>。</p><p>T1 是道图论交互，只会暴力 $20$..</p><p>T2 是道图论传统题，一开始以为直接欧拉回路就是正解，然后随便一拍就挂了..后来得知欧拉回路是正解的一部分。</p><p>T3 是道扫雷提答，暴力跑了 $4​$ 个点，构造了两个点，下午的时候手玩了一个点..是除了周围雷数还有行/列之和，行/列连续段个数之类的那种。</p><p>下午讲题的时候竟然有人讲<a href="https://www.luogu.org/problemnew/show/P4963" target="_blank" rel="noopener">美樱的颜料</a>..个人认为那题出的不是很好..<del>尤其是Sooke为卡loglogn设的空间限制..</del></p><img src="/2019YALI省选集训垫底记/mio.jpg"><h1 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h1><p>今天是讲题..感觉全场可能就我不会生成函数，只不过感觉好像大概弄明白了。</p><p>晚上把讲题咕咕了，结果不小心错过了 _rqy 的难题选讲..</p><h1 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h1><p>T1 是个数据结构，看了看觉得有 $41$ 分非常可做，先写了个暴力去肝后面两题，最后回来写这题，很快写完了 $30$ 分，然后把 $30$ 分备份了一下去写剩下的 $11$ 分，写的过程中发现 $30$ 分有个地方挂了，就在 $41$ 分代码里面改过来了，后来剩下 $11$ 分没写完，就把备份（没修改那个地方）的代码交上去了..最后连询问数为 $0$ 的 subtask 都挂了，只有 $22$ 分。</p><p>T2 是道<del>小清新0.5KB</del>找规律题。成功找到规律然后 A 掉了..</p><p>T3 是俄罗斯方块提答..搞了三个点，剩下的随机..获得了 $16$ 分的好成绩。之后 _rqy 说自己写了个模拟器手玩，于是我下午就自己写了个模拟器手玩..草，真的又好写又好玩，$1h$ 十几分绝对没问题..</p><h1 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h1><p>今天大众分 $200$..窝愉快垫底了。</p><p>T1 是个数据结构，定义数列中每个数的后继为它后面比它大的第一个数，区间询问跳到后继最多能跳多少步。暴力 $30$ 分滚粗。</p><p>T2 是个树交互，还比较简单吧..然而 std 做法看起来就很麻烦，所以没仔细听具体是怎么做的。</p><p><del>T3 是道 MO 题</del>，全场只有暴力 $15$ 和爆零..然后我考场上愉快地调了 $2h​$ 暴力，RETLEWA……最后还是没调出来。</p><h1 id="Day-6"><a href="#Day-6" class="headerlink" title="Day 6"></a>Day 6</h1><p>今天又是讲题..晚上轮到我难题讨论，讲了下<del>早就被我讲烂了的</del>皇后游戏&amp;由乃大母神原型与偶像崇拜。</p><h1 id="Day-7"><a href="#Day-7" class="headerlink" title="Day 7"></a>Day 7</h1><p>T1 是一个树上的神仙题..把暴力 $68$ 分打满了（$n^2$&amp;链&amp;菊花）。考场上写完菊花之后去看 T2，T3，然后放在那对拍，错了五六次才调对..</p><p>T2 是个神仙博弈论，只写了暴力 $17$ 分..</p><p>T3 是个神仙交互，用随机化搞到了 $66$ 分（期望得分 $67$，脸黑被卡到了 $66.99$），然而没有发现把 subtask3 的代码复制到 subtask4 后面就可以轻松获得 $60\%$ subtask5 的分数..</p><p>这场虽然没 A 题，然而好像是我得分最高的一场？</p><h1 id="Day-8"><a href="#Day-8" class="headerlink" title="Day 8"></a>Day 8</h1><p>T1指令集RE了..只不过写了数据分治还有暴力分。本地比正解跑的还快qaq..ylh用 $\mathcal O(n\sqrt n\log n)$ 艹过去了 Orz.</p><p>T2暴力。</p><p>T3暴力被卡常了。</p><p>垫底..分最低的一次。</p><h1 id="Day-9"><a href="#Day-9" class="headerlink" title="Day 9"></a>Day 9</h1><p>讲课，颓。</p><h1 id="Day-10"><a href="#Day-10" class="headerlink" title="Day 10"></a>Day 10</h1><p>T1暴力，ylh的暴力偏序被卡了。</p><p>T2会求答案不会求方案，结果下午才知道大家都会求答案..</p><p>T3暴力，不会类欧自闭了。</p><h1 id="Day-11"><a href="#Day-11" class="headerlink" title="Day 11"></a>Day 11</h1><p>和第二天互换了，讲课，继续春眠zzz..</p><h1 id="Day-12"><a href="#Day-12" class="headerlink" title="Day 12"></a>Day 12</h1><p>今天 T1 是五子棋互打，想着今天是最后一天，于是就真的写了整场（$3.5h$）的 T1。一开始写了个爆搜，后来发现很蠢，于是就算了个估价函数，然后感觉很对。然而 ctr 乱测..之后我把 ctr 测出来的前 $21$ 名测了一下，和 ctr 测出来的差别还挺大的..只不过我好像在执黑/执白的情况下都打过了其它人写的AI..然而被 ylh（人）击败了..</p><p>T2 题面掉了个关键条件，于是不会做..花 $20min$ 写了 $35$ 分。</p><p>T3 觉得部分分写起来很麻烦，于是最后半个多小时就一直在看自己的 AI 和自己的 AI 下棋..</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>要是省选没有非传统题就要凉凉的感觉…</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;时隔半年又来到了YALI。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="游记" scheme="https://ouuan.github.io/categories/%E6%B8%B8%E8%AE%B0/"/>
-    
-    
-      <category term="集训" scheme="https://ouuan.github.io/tags/%E9%9B%86%E8%AE%AD/"/>
     
   </entry>
   
