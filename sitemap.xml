@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ouuan.github.io/%E7%BA%BF%E6%80%A7%E5%9F%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-06-14T10:00:54.572Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ouuan.github.io/about/index.html</loc>
+    
+    <lastmod>2019-06-13T01:14:05.269Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ouuan.github.io/Codeforces-Round-564-%E4%B8%AD%E6%96%87%E9%A2%98%E8%A7%A3/</loc>
     
     <lastmod>2019-06-11T07:07:48.245Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>https://ouuan.github.io/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8C%97/</loc>
     
     <lastmod>2019-06-04T12:51:30.257Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ouuan.github.io/about/index.html</loc>
-    
-    <lastmod>2019-05-27T11:05:47.231Z</lastmod>
     
   </url>
   
