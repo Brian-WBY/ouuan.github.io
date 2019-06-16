@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="首先，你需要意识到，自己出的题是要给别人做的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-16T09:20:09.848Z">
+<meta property="og:updated_time" content="2019-06-16T10:30:42.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ouuan 的出题规范">
 <meta name="twitter:description" content="首先，你需要意识到，自己出的题是要给别人做的。">
@@ -445,7 +445,7 @@
                 
               
 
-              <time title="创建时间：2019-06-16 11:24:12 / 修改时间：17:20:09" itemprop="dateCreated datePublished" datetime="2019-06-16T11:24:12+08:00">2019-06-16</time>
+              <time title="创建时间：2019-06-16 11:24:12 / 修改时间：18:30:42" itemprop="dateCreated datePublished" datetime="2019-06-16T11:24:12+08:00">2019-06-16</time>
             
 
             
@@ -555,14 +555,14 @@
 <p>一部分偏题中牵涉到了大学物理的内容，导致选手在面对这些从未接触过的物理知识点时变得不知所措，造成了知识上的隔膜。</p>
 <p>—— 王天懿《论偏题的危害》</p>
 </blockquote>
-<p>经典例子：<a href="http://uoj.ac/problem/159" target="_blank" rel="noopener">【清华集训2015】多边形下海</a></p>
+<p>经典例子：<a href="https://uoj.ac/problem/159" target="_blank" rel="noopener">【清华集训2015】多边形下海</a></p>
 <p>不止是物理，OI 题目中不应过多涉及到其它学科的知识，如果涉及应当给予详细的解释，不应使其它学科的知识作为解题的重大障碍。</p>
 <blockquote>
 <p>一道好题无论难度如何，都应该具有自己的思维难度，需要选手去思考并发现一些性质。</p>
 <p>一道好题的代码可以长，但一定不是通过强行嵌套或者增加条件而让代码变长，而是长得自然，让人感觉这个题的代码就应该是这么长。</p>
 <p>—— 王天懿《论偏题的危害》</p>
 </blockquote>
-<p>经典例子：<a href="https://www.luogu.org/problemnew/show/P2482" target="_blank" rel="noopener">[SDOI2010]猪国杀</a>，<a href="http://uoj.ac/problem/98" target="_blank" rel="noopener">【集训队互测2015】未来程序·改</a></p>
+<p>经典例子：<a href="https://www.luogu.org/problemnew/show/P2482" target="_blank" rel="noopener">[SDOI2010]猪国杀</a>，<a href="https://uoj.ac/problem/98" target="_blank" rel="noopener">【集训队互测2015】未来程序·改</a></p>
 <p>在一般的 OI 比赛中，思维难度应占主要部分。当然，如 THUWC / THUSC 的 Day 2+ 那样的工程题也有其存在的道理 —— 毕竟体验营的目的除了考察选手的算法设计能力，还有和大学学习对接的工程代码以及文档学习能力。但在一般的 OI 比赛中，考察更多的应当还是算法设计与思维能力。</p>
 <h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><h3 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h3><p>题目背景最好尽量简短。</p>
 <p>在题目背景较长时，应当与题目描述分开。</p>
@@ -631,7 +631,7 @@
 <p>简而言之，在 Polygon 中，数据要么是手造，要么由 generator 生成。而这个 generator 使用 testlib.h，并且使用命令行参数来设置数据范围、构造类型等参数。</p>
 <p>使用 testlib.h 的好处是，它内置了随机数生成器 <code>rnd.next()</code>，它在不同平台上返回同样的结果，并且其种子是基于整个命令行参数生成的，不用手动设置种子，并且在参数一样时生成的数据总是一样的。</p>
 <p>使用命令行参数的好处是，你可以写一个 .bat 文件（或者 Linux 下的 .sh 文件），把生成数据的命令写进去，可以十分方便地生成数据。</p>
-<p><a href="http://codeforces.com/blog/entry/18291" target="_blank" rel="noopener">更多关于 generator 的教程</a>。</p>
+<p><a href="https://codeforces.com/blog/entry/18291" target="_blank" rel="noopener">更多关于 generator 的教程</a>。</p>
 <p>如果你愿意，还可以写一个 validator。validator 是用来检查数据合法性的，在 cf 赛制中由于 hack 的存在是必备的，而在其它赛制中，validator 相当于给数据上了一道保险锁，个人十分推荐写一个 validator。</p>
 <p><a href="https://codeforces.com/blog/entry/18426" target="_blank" rel="noopener">更多关于 validator 的教程</a>。</p>
 <p>推荐一个我自己经常使用的生成输出文件的 bat：</p>
@@ -640,7 +640,7 @@
 <p>checker 一般使用 testlib.h 编写，<a href="/使用-testlib-h-写-lemon-SPJ/">在 lemon 中也可以使用 testlib.h</a>。一般来说，不使用 testlib.h 是很难写好 checker 的，因为你要应对各种各样的不合法输出，需要极强的鲁棒性。</p>
 <p>编写 checker 需要注意以下两点：</p>
 <ol>
-<li>你需要应对各种不合法的输出，因此，请检查读入的每个变量是否在合法范围中。例如：读入一个在 check 过程中会作为下标的变量时必须检查其范围，否则可能引发数组越界，有时这会导致 RE，有时则可能判为 AC。</li>
+<li>你需要应对各种不合法的输出，因此，请检查读入的每个变量是否在合法范围中（<code>readInt(minvalue, maxvalue)</code>）。例如：读入一个在 check 过程中会作为数组下标的变量时必须检查其范围，否则可能引发数组越界，有时这会导致 RE，有时则可能判为 AC。</li>
 <li>原则上 checker 中不应检查空白字符（即，不应使用 readSpace()、readEoln()、readEof()，值得一提的是，testlib.h 会自动检查是否有多余的输出）。</li>
 </ol>
 <p><a href="https://codeforces.com/blog/entry/18431" target="_blank" rel="noopener">更多关于 checker 的教程</a>。</p>
@@ -651,9 +651,9 @@
 <p>例如：dp 的题解要解释清楚状态的定义。</p>
 <p>再例如：cy 曾经写过一版 <a href="https://codeforces.com/problemset/problem/1172/F" target="_blank" rel="noopener">CF1172F Nauuo and Bug</a> 的题解，其中对“分段函数”没有定义，这是绝对不可取的。</p>
 <h3 id="关于细节"><a href="#关于细节" class="headerlink" title="关于细节"></a>关于细节</h3><p>具体的实现细节如果比较巧妙最好写出来，否则的话“详见代码”也是可以的。如果“详见代码”的话，最好在代码中加上一定的注释。</p>
-<h3 id="标程"><a href="#标程" class="headerlink" title="标程"></a>标程</h3><p>标程中最好去掉冗余部分。比如，有人在题解中保留了完整的 define 模板（为了提高做题速度，包含大量 define 与常用函数），并且其中很大一部分都没有用到，这是不好的。</p>
+<h3 id="标程"><a href="#标程" class="headerlink" title="标程"></a>标程</h3><p>标程中最好去掉冗余部分。比如，有人在题解中保留了完整的 define 模板（为了提高做题速度，包含大量 define 与常用函数，常用于 CF 等在线比赛），并且其中很大一部分都没有用到，这是不好的。</p>
 <p>上文已经说过了，如果涉及到一些题解中没有详细说明的实现细节，最好加上适量的注释。</p>
-<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><h3 id="通知中的题目难度真实"><a href="#通知中的题目难度真实" class="headerlink" title="通知中的题目难度真实"></a>通知中的题目难度真实</h3><p>感觉这个是比赛通知中比较需要注意的一点。</p>
+<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><h3 id="比赛通知中的题目难度需真实"><a href="#比赛通知中的题目难度需真实" class="headerlink" title="比赛通知中的题目难度需真实"></a>比赛通知中的题目难度需真实</h3><p>感觉这个是比赛通知中比较需要注意的一点。</p>
 <p>如果不会评难度可以不评..</p>
 <blockquote>
 <p>Remember that authors tend to underestimate the difficulty of their problems.</p>
@@ -665,7 +665,7 @@
 <h3 id="题目知识点的分配"><a href="#题目知识点的分配" class="headerlink" title="题目知识点的分配"></a>题目知识点的分配</h3><p>一场比赛应尽量涵盖较广的知识点（专题训练赛当然除外）。</p>
 <p>经典反例：涵盖了动态规划、期望、组合计数、容斥原理、多项式等多种知识点的 CTS2019。（<del>组题人：我要从五道题里选六道，我也很无奈啊。</del>）</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="http://vfleaking.blog.uoj.ac/blog/909" target="_blank" rel="noopener">vfk《UOJ精神之源流》</a></li>
+<li><a href="https://vfleaking.blog.uoj.ac/blog/909" target="_blank" rel="noopener">vfk《UOJ精神之源流》</a></li>
 <li><a href="/ouuan-的出题规范/7-王天懿-论偏题的危害.ppt">王天懿《论偏题的危害》</a></li>
 <li><a href="/bad-round-与出题人的坚守/rules.jpg">cf 出题人须知</a></li>
 <li><a href="https://blog.csdn.net/VFleaKing/article/details/90521383" target="_blank" rel="noopener">vfk 博客</a>中的<a href="https://www.luogu.org/paste/sxvu97yz" target="_blank" rel="noopener">CF出题人的自我修养</a></li>
@@ -1060,7 +1060,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目内容"><span class="nav-number">1.</span> <span class="nav-text">题目内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于原题"><span class="nav-number">1.1.</span> <span class="nav-text">关于原题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于毒瘤题"><span class="nav-number">1.2.</span> <span class="nav-text">关于毒瘤题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题面"><span class="nav-number">2.</span> <span class="nav-text">题面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目背景"><span class="nav-number">2.1.</span> <span class="nav-text">题目背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出格式"><span class="nav-number">2.3.</span> <span class="nav-text">输入输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">2.4.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例"><span class="nav-number">2.5.</span> <span class="nav-text">样例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例解释"><span class="nav-number">2.6.</span> <span class="nav-text">样例解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时限、空间限制与部分分"><span class="nav-number">3.</span> <span class="nav-text">时限、空间限制与部分分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据"><span class="nav-number">4.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的多样性与强度"><span class="nav-number">4.1.</span> <span class="nav-text">数据的多样性与强度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果有-pretests"><span class="nav-number">4.2.</span> <span class="nav-text">如果有 pretests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些造数据的技巧"><span class="nav-number">4.3.</span> <span class="nav-text">一些造数据的技巧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Special-Judge"><span class="nav-number">5.</span> <span class="nav-text">Special Judge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">6.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于部分分"><span class="nav-number">6.1.</span> <span class="nav-text">关于部分分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于知识点"><span class="nav-number">6.2.</span> <span class="nav-text">关于知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于定义"><span class="nav-number">6.3.</span> <span class="nav-text">关于定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于细节"><span class="nav-number">6.4.</span> <span class="nav-text">关于细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标程"><span class="nav-number">6.5.</span> <span class="nav-text">标程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比赛"><span class="nav-number">7.</span> <span class="nav-text">比赛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通知中的题目难度真实"><span class="nav-number">7.1.</span> <span class="nav-text">通知中的题目难度真实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目难度的分配"><span class="nav-number">7.2.</span> <span class="nav-text">题目难度的分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目知识点的分配"><span class="nav-number">7.3.</span> <span class="nav-text">题目知识点的分配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目内容"><span class="nav-number">1.</span> <span class="nav-text">题目内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于原题"><span class="nav-number">1.1.</span> <span class="nav-text">关于原题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于毒瘤题"><span class="nav-number">1.2.</span> <span class="nav-text">关于毒瘤题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题面"><span class="nav-number">2.</span> <span class="nav-text">题面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目背景"><span class="nav-number">2.1.</span> <span class="nav-text">题目背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出格式"><span class="nav-number">2.3.</span> <span class="nav-text">输入输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">2.4.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例"><span class="nav-number">2.5.</span> <span class="nav-text">样例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例解释"><span class="nav-number">2.6.</span> <span class="nav-text">样例解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时限、空间限制与部分分"><span class="nav-number">3.</span> <span class="nav-text">时限、空间限制与部分分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据"><span class="nav-number">4.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的多样性与强度"><span class="nav-number">4.1.</span> <span class="nav-text">数据的多样性与强度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果有-pretests"><span class="nav-number">4.2.</span> <span class="nav-text">如果有 pretests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些造数据的技巧"><span class="nav-number">4.3.</span> <span class="nav-text">一些造数据的技巧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Special-Judge"><span class="nav-number">5.</span> <span class="nav-text">Special Judge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">6.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于部分分"><span class="nav-number">6.1.</span> <span class="nav-text">关于部分分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于知识点"><span class="nav-number">6.2.</span> <span class="nav-text">关于知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于定义"><span class="nav-number">6.3.</span> <span class="nav-text">关于定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于细节"><span class="nav-number">6.4.</span> <span class="nav-text">关于细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标程"><span class="nav-number">6.5.</span> <span class="nav-text">标程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比赛"><span class="nav-number">7.</span> <span class="nav-text">比赛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比赛通知中的题目难度需真实"><span class="nav-number">7.1.</span> <span class="nav-text">比赛通知中的题目难度需真实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目难度的分配"><span class="nav-number">7.2.</span> <span class="nav-text">题目难度的分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目知识点的分配"><span class="nav-number">7.3.</span> <span class="nav-text">题目知识点的分配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
