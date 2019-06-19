@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="首先，你需要意识到，自己出的题是要给别人做的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-19T01:59:31.573Z">
+<meta property="og:updated_time" content="2019-06-19T06:25:40.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ouuan 的出题规范">
 <meta name="twitter:description" content="首先，你需要意识到，自己出的题是要给别人做的。">
@@ -462,7 +462,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-19 09:59:31" itemprop="dateModified" datetime="2019-06-19T09:59:31+08:00">2019-06-19</time>
+                <time title="修改时间：2019-06-19 14:25:40" itemprop="dateModified" datetime="2019-06-19T14:25:40+08:00">2019-06-19</time>
               
             
           </span>
@@ -588,7 +588,9 @@
 <p>你需要保证你的题面不能被错误理解而自圆其说，即使这种理解是反常识、没有人会这么去想的。例如：在 <a href="https://codeforces.com/problemset/problem/1172/D" target="_blank" rel="noopener">CF1172D Nauuo and Portals</a> 中，之所以要繁琐地定义 “walk into” 并与 “teleport” 区分，是为了防止这种理解：通过传送门可以到另一个传送门，而到了传送门会传送，因此会反复横跳。</p>
 <p>顺着读题目描述应当能看懂每一句话，并理解题目的任务与要求。至少在紧接着的下一段话中疑惑能够得到解释，而不是需要在若干段后才能得到解释，或者要看了输入输出格式才能明白题意，甚至需要根据样例来猜题意。例如：在 <a href="https://guoj.icu/problem/1171" target="_blank" rel="noopener">「GuOJ Round #1」琪露诺的冰雪宴会</a> 中，在输出格式才第一次出现了题目的目标“雾之湖最终能接收到的最大水量”，再加上“灵梦当然能很快算出来清理完全部小溪的总费用是多少”这句带有误解性质的话，更容易使人读错题意，这是不可取的，应当在题目描述中就对题目的目标进行说明。（在这个例子中还存在题目背景严重影响题意理解的问题。）</p>
 <h3 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h3><p>输入输出格式清晰<strong>完整</strong>即可，没有死板的要求，个人建议参照 CF 的题目来写输入输出格式，具体可以参考 <a href="/bad-round-与出题人的坚守/rules.jpg">cf 出题人须知</a>。</p>
-<p>需要特别注意的是，如果输出中含有小数，请尽量使用 SPJ。如果无法使用 SPJ，请保证标准答案与标准答案四舍五入后的结果之差的绝对值不大于一个值，并在题面中说明（如：四舍五入保留至小数点后三位，保证标准答案与四舍五入后的结果之差的绝对值不大于 $0.000499​$）。</p>
+<p>需要特别注意的是，如果输出中含有小数，请尽量使用 SPJ。如果无法使用 SPJ，请保证对精度的要求是有限的。</p>
+<p>如果没有保证，对精度的要求可能是无限的。例如：要求保留三位小数，实际答案为 $0.0015$，此时只要有任意大小的误差导致计算出的答案小于 $0.0015$，即使计算出的答案是 $0.0014999999999\cdots$ 也会输出错误的答案。</p>
+<p>保证对精度要求有限的例子：请输出答案四舍五入后保留小数点后三位的结果。令标准答案为 $ans$，数据保证对于任意满足 $\frac{|x-ans|}{\max(1,ans)}&lt;10^{-9}$ 的 $x$，四舍五入后结果与 $ans​$ 四舍五入后相同。</p>
 <p>可以参考的一些句子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入的第一行包含三个正整数 $n$, $m$, $k$ ($1\le n,m\le 2\cdot 10^5$, $1\le k\le 100$) — $n$ 表示数列的长度，$m$ 表示操作个数，$k$ 的意义见题目描述。</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入的第二行包含 $n$ 个非负整数 $a_1,a_2,\ldots,a_n$ ($1\le a_i\le 10^9$) — 题目给出的数列。</span><br></pre></td></tr></table></figure>
