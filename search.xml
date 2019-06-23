@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CF708C Centroids（树形dp，up and down）]]></title>
+    <url>%2FCF708C-Centroids%EF%BC%88%E6%A0%91%E5%BD%A2dp%EF%BC%8Cup-and-down%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目链接CF 洛谷 题意简述给你一棵 $n$ 个点的树，对每个点，判断能否删去一条边再加上一条边，使得这个点成为树的重心。（树的重心：将其删去后每个联通块大小不超过 $\frac n 2$） $2\le n\le 4\cdot10^5​$ 简要做法up and down，即用两遍 dfs，第一遍用孩子更新父亲，第二遍用父亲更新孩子，好像也叫做“换根 dp”。 如何修改一条边使一个点成为重心？要把那个点原来最大的子树删掉一条边分成不超过 $\frac n 2$ 的两半，再把切下来那个子树接到这个点上。切下来的那个子树只要不超过 $\frac n 2$ 即可，所以我们希望切下来一个尽可能大的不超过 $\frac n 2$ 的子树，这样剩下来那一半就可以尽量小。 也就是说，我们需要找到以每个点为根的最大子树，以及每个子树（注意是无根树的每个子树）可以切出来的最大的不超过 $\frac n 2$ 的子树。求这个可以使用 up and down 这个技巧，详见代码。 求出这个之后，就可以 $\mathcal O(1)$ 判断每个点是否合法了。 up and down 的过程中有一个小技巧：第二遍 dfs 中用父亲更新孩子时，父亲的 down（父亲的孩子们对父亲的贡献）中要减去当前节点的贡献再更新当前节点的值，所以需要存最大值和次大值，这个可以利用一个小数据结构来简化代码，详见代码中的 struct Node。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;using namespace std;const int N = 400010;struct Node&#123; int fi, se; void insert(int x) // 向最大值和次大值中插入一个值 &#123; if (x &gt; fi) &#123; se = fi; fi = x; &#125; else if (x &gt; se) se = x; &#125; int get(int x) // 得到除了 x 外的最大值 &#123; if (x == fi) return se; else return fi; &#125;&#125; dn[N];int calc(int u);void dfs1(int u);void dfs2(int u);void add(int u, int v);int head[N], nxt[N &lt;&lt; 1], to[N &lt;&lt; 1], cnt;int n, siz[N], fa[N], son[N], up[N];int main()&#123; int i, u, v, mx, sz; scanf("%d", &amp;n); for (i = 1; i &lt; n; ++i) &#123; scanf("%d%d", &amp;u, &amp;v); add(u, v); add(v, u); &#125; dfs1(1); dfs2(1); for (u = 1; u &lt;= n; ++u) &#123; v = son[u]; if (v == fa[u]) &#123; sz = n - siz[u]; mx = up[u]; // 也可以 max(dn[v].get(calc(u)), up[v]) &#125; else &#123; sz = siz[v]; mx = dn[v].fi; // 也可以 calc(v) &#125; printf("%d ", sz - mx &lt;= n / 2); &#125; return 0;&#125;void dfs1(int u)&#123; int i, v; siz[u] = 1; for (i = head[u]; i; i = nxt[i]) &#123; v = to[i]; if (v == fa[u]) continue; fa[v] = u; dfs1(v); siz[u] += siz[v]; dn[u].insert(calc(v)); &#125;&#125;void dfs2(int u)&#123; int i, v; if (n - siz[u] &lt;= n / 2) up[u] = n - siz[u]; else up[u] = max(up[fa[u]], dn[fa[u]].get(calc(u))); for (i = head[u]; i; i = nxt[i]) &#123; v = to[i]; if (v == fa[u]) continue; dfs2(v); if (siz[v] &gt; siz[son[u]]) son[u] = v; // son 是一个节点的最大子树 &#125; if (n - siz[u] &gt; siz[son[u]]) son[u] = fa[u];&#125;int calc(int u) // 计算孩子对父亲的贡献&#123; return siz[u] &lt;= n / 2 ? siz[u] : dn[u].fi;&#125;void add(int u, int v)&#123; nxt[++cnt] = head[u]; head[u] = cnt; to[cnt] = v;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>树形dp</tag>
+        <tag>up and down</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BZOJ2115 [WC2011]最大XOR和路径（线性基，图论）]]></title>
     <url>%2FBZOJ2115-WC2011-%E6%9C%80%E5%A4%A7XOR%E5%92%8C%E8%B7%AF%E5%BE%84%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%8C%E5%9B%BE%E8%AE%BA%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接洛谷 darkbzoj 题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$，边数 $10^5$。 简要做法我们先随便找一条从 $1$ 到 $n$ 的链，然后看能如何修改它。 如果我们不走这条链，从某个位置分叉出去，为了回到这条链上，我们一定是从某条岔路走出去，走一个环，再沿着这条岔路走回来。由于边权异或，这条岔路就不会产生贡献。因此，最终答案可以表示为一条链 + 若干个环的异或和。这条链是可以随便选的，因为一条链可以异或若干个环得到另一条链。 然而，环可能有很多，事实上我们可以得到 dfs 树，只需考虑那些仅包含一条返祖边的环，其它环都可以由若干个这样的环异或得到。代码实现非常简单，具体可以看参考代码。 找到这些环之后用线性基就可以求出答案了。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;using namespace std;typedef long long ll;ll read()&#123; ll out = 0; char c; while (!isdigit(c = getchar())); for (; isdigit(c); c = getchar()) out = out * 10 + c - '0'; return out;&#125;const int N = 50010;const int M = 100010;void add(int u, int v, ll w);void dfs(int u, int fa);void insert(ll x);int n, m, head[N], nxt[M &lt;&lt; 1], to[M &lt;&lt; 1], cnt;ll edge[M &lt;&lt; 1], dis[N], p[70], ans;bool vis[N];int main()&#123; int i, u, v; ll w; n = read(); m = read(); for (i = 0; i &lt; m; ++i) &#123; u = read(); v = read(); w = read(); add(u, v, w); add(v, u, w); &#125; dfs(1, 0); ans = dis[n]; for (i = 59; ~i; --i) &#123; if (!((ans &gt;&gt; i) &amp; 1)) &#123; ans ^= p[i]; &#125; &#125; cout &lt;&lt; ans; return 0;&#125;void insert(ll x)&#123; for (int i = 59; ~i; --i) &#123; if ((x &gt;&gt; i) &amp; 1) &#123; if (p[i]) x ^= p[i]; else &#123; p[i] = x; break; &#125; &#125; &#125;&#125;void dfs(int u, int fa)&#123; ll w; int i, v; vis[u] = true; for (i = head[u]; i; i = nxt[i]) &#123; v = to[i]; w = edge[i]; if (v == fa) continue; if (vis[v]) insert(dis[u] ^ dis[v] ^ w); else &#123; dis[v] = dis[u] ^ w; dfs(v, u); &#125; &#125;&#125;void add(int u, int v, ll w)&#123; nxt[++cnt] = head[u]; head[u] = cnt; to[cnt] = v; edge[cnt] = w;&#125;]]></content>
@@ -149,8 +161,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>KMP</tag>
         <tag>AC自动机</tag>
+        <tag>KMP</tag>
         <tag>矩阵乘法</tag>
       </tags>
   </entry>
