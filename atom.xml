@@ -421,9 +421,9 @@
     
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="KMP" scheme="https://ouuan.github.io/tags/KMP/"/>
-    
       <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
+    
+      <category term="KMP" scheme="https://ouuan.github.io/tags/KMP/"/>
     
       <category term="矩阵乘法" scheme="https://ouuan.github.io/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     
