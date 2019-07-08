@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="今天想更新一下自己的 CF 模板，然后发现由于写法问题可能要给每种整型（int，long，long long，unsigned int，unsigned long long……）分别定义函数，于是尝试搜了一下有没有什么好的代码重用方式，发现了 enable_if，还挺好用的，但去网上搜教程可能比较难学..我乱搞了两三个小时才学会。于是就来分享一下..">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-02T18:20:09.333Z">
+<meta property="og:updated_time" content="2019-07-06T12:29:04.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++11 enable_if 的使用">
 <meta name="twitter:description" content="今天想更新一下自己的 CF 模板，然后发现由于写法问题可能要给每种整型（int，long，long long，unsigned int，unsigned long long……）分别定义函数，于是尝试搜了一下有没有什么好的代码重用方式，发现了 enable_if，还挺好用的，但去网上搜教程可能比较难学..我乱搞了两三个小时才学会。于是就来分享一下..">
@@ -445,12 +445,24 @@
                 
               
 
-              <time title="创建时间：2019-07-03 01:24:13 / 修改时间：02:20:09" itemprop="dateCreated datePublished" datetime="2019-07-03T01:24:13+08:00">2019-07-03</time>
+              <time title="创建时间：2019-07-03 01:24:13" itemprop="dateCreated datePublished" datetime="2019-07-03T01:24:13+08:00">2019-07-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-06 20:29:04" itemprop="dateModified" datetime="2019-07-06T20:29:04+08:00">2019-07-06</time>
               
             
           </span>
@@ -541,7 +553,8 @@
 <p>有关 <code>is_integral</code> 等相关模板类的信息可以参见 <a href="http://www.cplusplus.com/reference/type_traits/" target="_blank" rel="noopener">C++ Reference</a>。</p>
 <p><code>is_integral&lt;T&gt;::value</code> 是一个布尔值，在 <code>T</code> 为整型时为真，否则为假。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;type_traits&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> = <span class="keyword">typename</span> enable_if&lt;is_integral&lt;T&gt;::value, <span class="keyword">void</span>&gt;::type&gt;</span><br><span class="line"><span class="keyword">bool</span> isodd(T x)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; isodd(<span class="number">4</span>) &lt;&lt; <span class="built_in">endl</span> &lt;&lt; isodd(<span class="string">'a'</span>);</span><br><span class="line">    <span class="comment">//cout &lt;&lt; isodd("qwq"); -- compile error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>一个 OutputIterator 的例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> OutputIt, <span class="keyword">typename</span> = <span class="keyword">typename</span> enable_if&lt;is_same&lt;output_iterator_tag, <span class="keyword">typename</span> iterator_traits&lt;OutputIt&gt;::iterator_category&gt;::value || (is_base_of&lt;forward_iterator_tag, <span class="keyword">typename</span> iterator_traits&lt;OutputIt&gt;::iterator_category&gt;::value &amp;&amp; !is_const&lt;OutputIt&gt;::value)&gt;::type&gt;</span><br><span class="line"><span class="keyword">void</span> read(OutputIt __first, OutputIt __last) &#123; <span class="keyword">for</span> (; __first != __last; ++__first) read(*__first); &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
