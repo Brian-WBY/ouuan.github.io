@@ -2657,7 +2657,7 @@
 
 
 <script type="text/javascript">
-	var hitokotoID;
+	var hitokotoID = -1;
 	$.get('https://v1.hitokoto.cn/?c=a', function(data) {
 		hitokotoID = data.id;
 		$('#hitokoto-content').css('display', '').text(data.hitokoto);
@@ -2666,8 +2666,18 @@
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
 	});
 	function hitokotoLike() {
-		$.get('https://hitokoto.cn/Like?ID=' + hitokotoID, function(data) {
-			alert(data.message);
+		$.ajax({
+		    type: "get",
+		    data: "ID="+hitokotoID,
+		    url: "https://hitokoto.cn/Like",
+		    dataType: "jsonp",
+		    jsonp: "callback",
+		    success: function(data) {  //请求成功后返回
+		        alert(data.message);
+		    },
+		    error: function() {  //请求失败后返回
+		        console.log('Hitokoto Like Request Error.');
+		    }
 		});
 	}
 </script>

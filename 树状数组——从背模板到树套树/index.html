@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="这是一篇披着PJ组数据结构外衣的树套树教程。 大约会（尝试着）较为本质地简介一下树状数组？">
-<meta name="keywords" content="树状数组,数据结构,树套树">
+<meta name="keywords" content="数据结构,树状数组,树套树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树状数组——从背模板到树套树">
 <meta property="og:url" content="https://ouuan.github.io/树状数组——从背模板到树套树/index.html">
@@ -591,9 +591,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/树状数组/" rel="tag"><i class="fa fa-tag"></i> 树状数组</a>
-          
             <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          
+            <a href="/tags/树状数组/" rel="tag"><i class="fa fa-tag"></i> 树状数组</a>
           
             <a href="/tags/树套树/" rel="tag"><i class="fa fa-tag"></i> 树套树</a>
           
@@ -1135,7 +1135,7 @@
 
 
 <script type="text/javascript">
-	var hitokotoID;
+	var hitokotoID = -1;
 	$.get('https://v1.hitokoto.cn/?c=a', function(data) {
 		hitokotoID = data.id;
 		$('#hitokoto-content').css('display', '').text(data.hitokoto);
@@ -1144,8 +1144,18 @@
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
 	});
 	function hitokotoLike() {
-		$.get('https://hitokoto.cn/Like?ID=' + hitokotoID, function(data) {
-			alert(data.message);
+		$.ajax({
+		    type: "get",
+		    data: "ID="+hitokotoID,
+		    url: "https://hitokoto.cn/Like",
+		    dataType: "jsonp",
+		    jsonp: "callback",
+		    success: function(data) {  //请求成功后返回
+		        alert(data.message);
+		    },
+		    error: function() {  //请求失败后返回
+		        console.log('Hitokoto Like Request Error.');
+		    }
 		});
 	}
 </script>
