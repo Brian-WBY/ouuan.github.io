@@ -2221,7 +2221,10 @@
         <div style="display: table-cell; vertical-align: bottom; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">”</div>
       </div>
       <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
-      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a id="hitokoto-link" href="https://hitokoto.cn/">Hitokoto</a></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;">
+      	<a id="hitokoto-link" href="https://hitokoto.cn/">Hitokoto</a>&nbsp;&nbsp;&nbsp;
+      	<button onclick="hitokotoLike()"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
+      </div>
     </div>
 
     <div style="height: 15px"></div>
@@ -2657,12 +2660,19 @@
 
 
 <script type="text/javascript">
+	var hitokotoID;
 	$.get('https://v1.hitokoto.cn/?c=a', function(data) {
+		hitokotoID = data.id;
 		$('#hitokoto-content').css('display', '').text(data.hitokoto);
 		$('#hitokoto-from').css('display', '').text('——' + data.from);
 		$('#hitokoto-from').attr('title', '上传者: ' + data.creator);
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
 	});
+	function hitokotoLike() {
+		$.get('https://hitokoto.cn/Like?ID=' + hitokotoID, function(data) {
+			alert(data.message);
+		});
+	}
 </script>
 
   
