@@ -1167,8 +1167,19 @@
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
 	});
 	function hitokotoLike() {
-		$.get('https://hitokoto.cn/Like?ID=' + hitokotoID, function(data) {
-			$('#hitokoto-like').css('color', 'red');
+		$.ajax({
+		    url: "https://hitokoto.cn/Like",
+		    type: "GET",
+		    data: "ID="+hitokotoID,
+		    dataType: "jsonp",
+		    success: function(data) {
+		        alert(data.message);
+		        $('#hitokoto-like').css('color', 'red');
+		    },
+		    error: function() {
+		        console.log('Hitokoto Like Request Error.');
+		        $('#hitokoto-like').css('color', 'red');
+		    }
 		});
 	}
 </script>
