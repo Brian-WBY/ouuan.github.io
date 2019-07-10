@@ -1143,15 +1143,14 @@
 	});
 	function hitokotoLike() {
 		$.ajax({
-		    type: "get",
-		    data: "ID="+hitokotoID,
 		    url: "https://hitokoto.cn/Like",
+		    type: "GET",
+		    data: "ID="+hitokotoID,
 		    dataType: "jsonp",
-		    jsonp: "callback",
-		    success: function(data) {  //请求成功后返回
+		    success: function(data) {
 		        alert(data.message);
 		    },
-		    error: function() {  //请求失败后返回
+		    error: function() {
 		        console.log('Hitokoto Like Request Error.');
 		    }
 		});

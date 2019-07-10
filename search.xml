@@ -285,8 +285,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>树状数组</tag>
+        <tag>数据结构</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
@@ -395,8 +395,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>后缀数组</tag>
         <tag>SAM</tag>
+        <tag>后缀数组</tag>
       </tags>
   </entry>
   <entry>
