@@ -644,7 +644,10 @@
         <div style="display: table-cell; vertical-align: bottom; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">”</div>
       </div>
       <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
-      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a href="https://hitokoto.cn/">Hitokoto</a></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;">
+      	<a id="hitokoto-link" href="https://hitokoto.cn/">Hitokoto</a>&nbsp;&nbsp;&nbsp;
+      	<a id="hitokoto-like-button"><i class="menu-item-icon fa fa-fw fa-heart"></i>&nbsp;<div id="hitokoto-like-number"></div>
+      </a></div>
     </div>
 
     <div style="height: 15px"></div>
@@ -682,7 +685,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -822,7 +825,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1103,9 +1108,15 @@
 
 
 <script type="text/javascript">
-	$.get('https://v1.hitokoto.cn/?c=a', function (data) {
+	$.get('https://v1.hitokoto.cn/?c=a', function(data) {
 		$('#hitokoto-content').css('display', '').text(data.hitokoto);
+		$('#hitokoto-from').attr('title', '上传者: ' + data.creator);
 		$('#hitokoto-from').css('display', '').text('——' + data.from);
+		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
+		$('#hitokoto-like-button').attr('href', 'https://hitokoto.cn/Like?ID=' + data.id);
+		$.get('https://hitokoto.cn/getLike?ID=' + data.id, function(likenumber) {
+			$('#hitokoto-like-number').css('display', '').text(likenumber.data.total);
+		});
 	});
 </script>
 
