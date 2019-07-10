@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="题目链接洛谷 darkbzoj 题意简述给一个长为 $m$ 的字符串，字符集 $0$ ~ $9$，求长为 $n$ 的字符串中不含给定字符串作为子串的字符串有多少个，对 $k$ 取模。 $n\le10^9$，$m\le20$，$k\le1000$。">
-<meta name="keywords" content="字符串,KMP,AC自动机,矩阵乘法">
+<meta name="keywords" content="字符串,AC自动机,KMP,矩阵乘法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ1009 [HNOI2008]GT考试（KMP&#x2F;AC自动机，矩阵乘法）">
 <meta property="og:url" content="https://ouuan.github.io/BZOJ1009-HNOI2008-GT考试（KMP-AC自动机，矩阵乘法）/index.html">
@@ -546,9 +546,9 @@
           
             <a href="/tags/字符串/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
           
-            <a href="/tags/KMP/" rel="tag"><i class="fa fa-tag"></i> KMP</a>
-          
             <a href="/tags/AC自动机/" rel="tag"><i class="fa fa-tag"></i> AC自动机</a>
+          
+            <a href="/tags/KMP/" rel="tag"><i class="fa fa-tag"></i> KMP</a>
           
             <a href="/tags/矩阵乘法/" rel="tag"><i class="fa fa-tag"></i> 矩阵乘法</a>
           
@@ -628,7 +628,7 @@
       <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
       <div style="margin-top: 15px; font-size: 0.8em; color: black;">
       	<a id="hitokoto-link" href="https://hitokoto.cn/">Hitokoto</a>&nbsp;&nbsp;&nbsp;
-      	<button onclick="hitokotoLike()"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
+      	<button onclick="hitokotoLike()" title="通过给句子点赞可以增加其出现概率，由于技术原因并不能在博客中显示赞数与点赞是否成功的信息，如需查看可以点击左边的“Hitokoto”链接。"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
       </div>
     </div>
 
@@ -1099,18 +1099,7 @@
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
 	});
 	function hitokotoLike() {
-		$.ajax({
-		    url: "https://hitokoto.cn/Like",
-		    type: "GET",
-		    data: "ID="+hitokotoID,
-		    dataType: "jsonp",
-		    success: function(data) {
-		        alert(data.message);
-		    },
-		    error: function() {
-		        console.log('Hitokoto Like Request Error.');
-		    }
-		});
+		$.get('https://hitokoto.cn/Like?ID=' + hitokotoID, function(data) {});
 	}
 </script>
 

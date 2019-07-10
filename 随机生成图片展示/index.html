@@ -668,7 +668,7 @@
       <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
       <div style="margin-top: 15px; font-size: 0.8em; color: black;">
       	<a id="hitokoto-link" href="https://hitokoto.cn/">Hitokoto</a>&nbsp;&nbsp;&nbsp;
-      	<button onclick="hitokotoLike()"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
+      	<button onclick="hitokotoLike()" title="通过给句子点赞可以增加其出现概率，由于技术原因并不能在博客中显示赞数与点赞是否成功的信息，如需查看可以点击左边的“Hitokoto”链接。"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
       </div>
     </div>
 
@@ -1114,18 +1114,7 @@
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
 	});
 	function hitokotoLike() {
-		$.ajax({
-		    url: "https://hitokoto.cn/Like",
-		    type: "GET",
-		    data: "ID="+hitokotoID,
-		    dataType: "jsonp",
-		    success: function(data) {
-		        alert(data.message);
-		    },
-		    error: function() {
-		        console.log('Hitokoto Like Request Error.');
-		    }
-		});
+		$.get('https://hitokoto.cn/Like?ID=' + hitokotoID, function(data) {});
 	}
 </script>
 
