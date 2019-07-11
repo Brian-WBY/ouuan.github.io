@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ouuan.github.io/about/index.html</loc>
+    
+    <lastmod>2019-07-11T02:54:10.190Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ouuan.github.io/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8C%97/</loc>
     
     <lastmod>2019-07-10T04:48:13.846Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>https://ouuan.github.io/BZOJ2460-BJWC2011-%E5%85%83%E7%B4%A0%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%8C%E8%B4%AA%E5%BF%83%EF%BC%89/</loc>
     
     <lastmod>2019-06-15T12:45:56.656Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ouuan.github.io/about/index.html</loc>
-    
-    <lastmod>2019-06-14T10:24:06.986Z</lastmod>
     
   </url>
   
