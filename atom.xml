@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ouuan.github.io/"/>
-  <updated>2019-07-15T04:46:02.374Z</updated>
+  <updated>2019-07-15T05:02:32.319Z</updated>
   <id>https://ouuan.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://ouuan.github.io/NIO9102-%E8%90%BD%E9%9B%A8%E5%A4%A7/"/>
     <id>https://ouuan.github.io/NIO9102-落雨大/</id>
     <published>2019-07-15T01:48:38.000Z</published>
-    <updated>2019-07-15T04:46:02.374Z</updated>
+    <updated>2019-07-15T05:02:32.319Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>我也来到 NOI 了，呢。</p></blockquote><a id="more"></a><p style="text-align: center"><font color="red" size="5em"><strong>郑重声明</strong></font></p><p style="text-indent: 2em">本博客内所有与 NOI2019（第 36 届全国青少年信息学奥林匹克竞赛）试题相关之内容，均在对应之机试与复评结束之后发布，详细发布时间与内容可以在 <a href="https://github.com/ouuan/ouuan.github.io/commits/master" target="_blank" rel="noopener">commits</a> 中查看。</p><h2 id="Day-499122177"><a href="#Day-499122177" class="headerlink" title="Day 499122177"></a>Day 499122177</h2><p>广二宿舍还是没有网.</p><p>床边的插座不是一般人能插的..（Orz lbw）</p><p>晚餐有点抽卡的感觉..看名字很难看出拿到手上的到底是什么东西（</p><p>吃完晚饭去自习室水了半小时群，然后打短裙 OJ。</p><p>切完前两题，好像 rk 5..</p><p>然后看 C，问满足一堆条件的个数..一眼容斥..然后真的写了 1h 的容斥 qaq</p><p>好不容易过拍了，提交，又 WA 了..</p><p>在群里一问，woc，p 不是排列…</p><p>5 min 后过了，愉快地垫底了..</p><p>过于自闭，看了眼 D，没秒掉，就懒得去想了。</p><p>赛后听说 C 可以状压，一想，真的可以状压…..学傻了.webp</p><h2 id="Day-557219762"><a href="#Day-557219762" class="headerlink" title="Day 557219762"></a>Day 557219762</h2><p>咕掉早饭把火车上剩的吃了。</p><p>（开幕式竟然没有 wh 讲话）</p><p>（<del>灯光打得好！覆盖方位广！给灯光师点个赞！</del>）</p><p>果然有<del>公开处刑</del>大头照展示，只不过速度比较快，问题不大。</p><p>感觉大家喊的口号都听不太清啊..</p><p><del>明 示 爆 零 ：</del></p><img src="/NIO9102-落雨大/zero0.jpg"><img src="/NIO9102-落雨大/zero1.jpg"><p>dzd 的讲话中，有这么一段话：</p><blockquote><p>无论何种情况，这个竞赛都会继续下去。因为这个竞赛是正当的，是正义的，合法的。</p></blockquote><div><div class="fold_hider"><div class="close hider_title">听到这段话，又想起</div></div><div class="fold"><blockquote><p>但是，我没有后悔，不能后悔，因为，我所做的事情一定没有错！</p></blockquote></div></div><p>NOI 可能真的如 dzd 所说，带有一些“净化灵魂”的成分在吧。</p><p>最后<del>鸽子蛋</del>破不开，<del>明示摆脱不了爆零的命运</del>。</p><p>（离场后目击 dzd 被采访）</p><p>中餐感觉海星..还是得看看别人买到的是什么再选。（千万不要用排除法来选）</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>我也来到 NOI 了，呢。</p></blockquote><a id="more"></a><p style="text-align: center"><font color="red" size="5em"><strong>郑重声明</strong></font></p><p style="text-indent: 2em">本博客内所有与 NOI2019（第 36 届全国青少年信息学奥林匹克竞赛）试题相关之内容，均在对应之机试与复评结束之后发布，详细发布时间与内容可以在 <a href="https://github.com/ouuan/ouuan.github.io/commits/master" target="_blank" rel="noopener">commits</a> 中查看。</p><h2 id="Day-499122177"><a href="#Day-499122177" class="headerlink" title="Day 499122177"></a>Day 499122177</h2><p>广二宿舍还是没有网.</p><p>床边的插座不是一般人能插的..（Orz lbw）</p><p>晚餐有点抽卡的感觉..看名字很难看出拿到手上的到底是什么东西（</p><p>吃完晚饭去自习室水了半小时群，然后打短裙 OJ。</p><p>切完前两题，好像 rk 5..</p><p>然后看 C，问满足一堆条件的个数..一眼容斥..然后真的写了 1h 的容斥 qaq</p><p>好不容易过拍了，提交，又 WA 了..</p><p>在群里一问，woc，p 不是排列…</p><p>5 min 后过了，愉快地垫底了..</p><p>过于自闭，看了眼 D，没秒掉，就懒得去想了。</p><p>赛后听说 C 可以状压，一想，真的可以状压…..学傻了.webp</p><h2 id="Day-557219762"><a href="#Day-557219762" class="headerlink" title="Day 557219762"></a>Day 557219762</h2><p>咕掉早饭把火车上剩的吃了。</p><p>（开幕式竟然没有 wh 讲话）</p><p>（<del>灯光打得好！覆盖方位广！给灯光师点个赞！</del>）</p><p>果然有<del>公开处刑</del>大头照展示，只不过速度比较快，问题不大。</p><p>感觉大家喊的口号都听不太清啊..</p><p><del>明 示 爆 零 ：</del></p><img src="/NIO9102-落雨大/zero0.jpg"><img src="/NIO9102-落雨大/zero1.jpg"><p>dzd 的讲话中，有这么一段话：</p><blockquote><p>无论何种情况，这个竞赛都会继续下去。因为这个竞赛是正当的，是正义的，合法的。</p></blockquote><div><div class="fold_hider"><div class="close hider_title">听到这段话，又想起 ひなた 在桥边含泪喊出的那段话了。</div></div><div class="fold"><blockquote><p>但是，我没有后悔，不能后悔，因为，我所做的事情一定没有错！</p></blockquote></div></div><p>NOI 可能真的如 dzd 所说，带有一些“净化灵魂”的成分在吧。</p><p>最后<del>鸽子蛋</del>破不开，<del>明示摆脱不了爆零的命运</del>。</p><p>（离场后目击 dzd 被采访）</p><p>中餐感觉海星..还是得看看别人买到的是什么再选。（千万不要用排除法来选</p>]]></content>
     
     <summary type="html">
     
