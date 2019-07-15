@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ouuan.github.io/"/>
-  <updated>2019-07-08T14:59:58.098Z</updated>
+  <updated>2019-07-15T04:38:34.805Z</updated>
   <id>https://ouuan.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NIO9102 落雨大</title>
+    <link href="https://ouuan.github.io/NIO9102-%E8%90%BD%E9%9B%A8%E5%A4%A7/"/>
+    <id>https://ouuan.github.io/NIO9102-落雨大/</id>
+    <published>2019-07-15T01:48:38.000Z</published>
+    <updated>2019-07-15T04:38:34.805Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>我也来到 NOI 了，呢。</p></blockquote><a id="more"></a><p style="text-align: center"><font color="red" size="5em"><strong>郑重声明</strong></font></p><p style="text-indent: 2em">本博客内所有与 NOI2019（第 36 届全国青少年信息学奥林匹克竞赛）试题相关之内容，均在对应之机试与复评结束之后发布，详细发布时间与内容可以在 <a href="https://github.com/ouuan/ouuan.github.io/commits/master" target="_blank" rel="noopener">commits</a> 中查看。</p><h2 id="Day-499122177"><a href="#Day-499122177" class="headerlink" title="Day 499122177"></a>Day 499122177</h2><p>广二宿舍还是没有网.</p><p>床边的插座不是一般人能插的..（Orz lbw）</p><p>晚餐有点抽卡的感觉..看名字很难看出拿到手上的到底是什么东西（</p><p>吃完晚饭去自习室水了半小时群，然后打短裙 OJ。</p><p>切完前两题，好像 rk 5..</p><p>然后看 C，问满足一堆条件的个数..一眼容斥..然后真的写了 1h 的容斥 qaq</p><p>好不容易过拍了，提交，又 WA 了..</p><p>在群里一问，woc，p 不是排列…</p><p>5 min 后过了，愉快地垫底了..</p><p>过于自闭，看了眼 D，没秒掉，就懒得去想了。</p><p>赛后听说 C 可以状压，一想，真的可以状压…..学傻了.webp</p><h2 id="Day-557219762"><a href="#Day-557219762" class="headerlink" title="Day 557219762"></a>Day 557219762</h2><p>咕掉早饭把火车上剩的吃了。</p><p>（开幕式竟然没有 wh 讲话）</p><p>（<del>灯光打得好！覆盖方位广！给灯光师点个赞！</del>）</p><p>果然有<del>公开处刑</del>大头照展示，只不过速度比较快，问题不大。</p><p>感觉大家喊的口号都听不太清啊..</p><p><del>明 示 爆 零 ：</del></p><img src="/NIO9102-落雨大/zero0.jpg"><img src="/NIO9102-落雨大/zero1.jpg"><p>dzd 的讲话中，有这么一段话：</p><blockquote><p>无论何种情况，这个竞赛都会继续下去。因为这个竞赛是正当的，是正义的，合法的。</p></blockquote><div><div class="fold_hider"><div class="close hider_title">听到这段话，又想起</div></div><div class="fold"><blockquote><p>但是，我不会后悔，不能后悔，因为，我所做的事情一定没有错！</p></blockquote></div></div><p>NOI 可能真的如 dzd 所说，带有一些“净化灵魂”的成分在吧。</p><p>最后<del>鸽子蛋</del>破不开，<del>明示摆脱不了爆零的命运</del>。</p><p>（离场后目击 dzd 被采访）</p><p>中餐感觉海星..还是得看看别人买到的是什么再选。（千万不要用排除法来选）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我也来到 NOI 了，呢。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="游记" scheme="https://ouuan.github.io/categories/%E6%B8%B8%E8%AE%B0/"/>
+    
+    
+      <category term="CCF系列赛事" scheme="https://ouuan.github.io/tags/CCF%E7%B3%BB%E5%88%97%E8%B5%9B%E4%BA%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>CC JULY19 游记</title>
@@ -445,9 +469,9 @@
     
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="KMP" scheme="https://ouuan.github.io/tags/KMP/"/>
-    
       <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
+    
+      <category term="KMP" scheme="https://ouuan.github.io/tags/KMP/"/>
     
       <category term="矩阵乘法" scheme="https://ouuan.github.io/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
     
@@ -509,35 +533,6 @@
       <category term="字符串" scheme="https://ouuan.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="AC自动机" scheme="https://ouuan.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[NOI2010]航空管制（建反图，拓扑排序，优先队列）</title>
-    <link href="https://ouuan.github.io/NOI2010-%E8%88%AA%E7%A9%BA%E7%AE%A1%E5%88%B6%EF%BC%88%E5%BB%BA%E5%8F%8D%E5%9B%BE%EF%BC%8C%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%EF%BC%8C%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/"/>
-    <id>https://ouuan.github.io/NOI2010-航空管制（建反图，拓扑排序，优先队列）/</id>
-    <published>2019-04-19T05:00:29.000Z</published>
-    <updated>2019-04-19T05:20:35.474Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.luogu.org/problemnew/show/P1954" target="_blank" rel="noopener">洛谷</a></p><h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你一个 DAG，每个点有个值 $k_i$。</p><p>第一问：求一个拓扑排序，使每个点出现的位置不超过 $k_i$。</p><p>第二问：在满足第一问的拓扑排序中，求每个点分别的最早出现位置。</p><a id="more"></a><h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><p>第一眼看到这题，在多少之前 $\rightarrow$ 反过来考虑，因为之前好像做过 PJ 难度的类似题目..</p><p>然而第二眼就变成了：拓扑排序裸题！然后愉快地写了个假贪心..</p><p>不能随便放过自己的直觉啊..</p><p>正解就是建反图，这样一定可以每次选 $k$ 最大的，用优先队列拓扑排序就可以了。</p><p>第二问的话，还是建反图，依次考虑每个点，不把当前考虑的点加入优先队列中，直到无法符合要求便是答案。</p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">10010</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head[N], nxt[M], to[M], cnt;</span><br><span class="line"><span class="keyword">int</span> n, m, k[N], ind[N], in[N], stk[N], top;</span><br><span class="line">priority_queue&lt;pii&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, u, v, x, ans;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, k + i);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        add(v, u);</span><br><span class="line">        ++ind[u];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memcpy</span>(in, ind, <span class="keyword">sizeof</span>(in));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (!in[i]) q.push(pii(k[i], i));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        u = stk[++top] = q.top().second;</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">for</span> (i = head[u]; i; i = nxt[i])</span><br><span class="line">        &#123;</span><br><span class="line">            v = to[i];</span><br><span class="line">            <span class="keyword">if</span> (--in[v] == <span class="number">0</span>) q.push(pii(k[v], v));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (top) <span class="built_in">printf</span>(<span class="string">"%d "</span>,stk[top--]);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (x = <span class="number">1</span>; x &lt;= n; ++x)</span><br><span class="line">    &#123;</span><br><span class="line">        ans = n;</span><br><span class="line">        <span class="built_in">memcpy</span>(in, ind, <span class="keyword">sizeof</span>(in));</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (!in[i]) q.push(pii(k[i], i));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!q.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            u = q.top().second;</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">if</span> (u == x) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (k[u] &lt; ans)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span> (!q.empty()) q.pop();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            --ans;</span><br><span class="line">            <span class="keyword">for</span> (i = head[u]; i; i = nxt[i])</span><br><span class="line">            &#123;</span><br><span class="line">                v = to[i];</span><br><span class="line">                <span class="keyword">if</span> (--in[v] == <span class="number">0</span>) q.push(pii(k[v], v));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    nxt[++cnt] = head[u];</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">    to[cnt] = v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目链接&quot;&gt;&lt;a href=&quot;#题目链接&quot; class=&quot;headerlink&quot; title=&quot;题目链接&quot;&gt;&lt;/a&gt;题目链接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.luogu.org/problemnew/show/P1954&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;洛谷&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;题意简述&quot;&gt;&lt;a href=&quot;#题意简述&quot; class=&quot;headerlink&quot; title=&quot;题意简述&quot;&gt;&lt;/a&gt;题意简述&lt;/h2&gt;&lt;p&gt;给你一个 DAG，每个点有个值 $k_i$。&lt;/p&gt;
-&lt;p&gt;第一问：求一个拓扑排序，使每个点出现的位置不超过 $k_i$。&lt;/p&gt;
-&lt;p&gt;第二问：在满足第一问的拓扑排序中，求每个点分别的最早出现位置。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="题解" scheme="https://ouuan.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
-    
-    
-      <category term="图论" scheme="https://ouuan.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="优先队列" scheme="https://ouuan.github.io/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/"/>
-    
-      <category term="拓扑排序" scheme="https://ouuan.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
