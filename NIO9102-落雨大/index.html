@@ -118,7 +118,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ouuan.github.io/NIO9102-落雨大/zero0.jpg">
 <meta property="og:image" content="https://ouuan.github.io/NIO9102-落雨大/zero1.jpg">
-<meta property="og:updated_time" content="2019-07-16T10:20:47.911Z">
+<meta property="og:image" content="https://ouuan.github.io/NIO9102-落雨大/d1t2.jpg">
+<meta property="og:updated_time" content="2019-07-16T13:12:21.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NIO9102 落雨大">
 <meta name="twitter:description" content="我也来到 NOI 了，呢。">
@@ -465,7 +466,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-16 18:20:47" itemprop="dateModified" datetime="2019-07-16T18:20:47+08:00">2019-07-16</time>
+                <time title="修改时间：2019-07-16 21:12:21" itemprop="dateModified" datetime="2019-07-16T21:12:21+08:00">2019-07-16</time>
               
             
           </span>
@@ -568,13 +569,19 @@
 <h2 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h2><p>看到 T1 就很快想出了 70 分的拆点做法，写完之后几乎一遍过了大样例。</p>
 <p>然后去把 T2 和 T3 的 20 + 28 写了，此时 $1.5h​$ 左右。</p>
 <p>然后去写 T1 $A=0$ 的部分分，各种写挂写了接近 $2h$..</p>
-<p>然后感觉 T2 还是没什么想法，T3 想了几个假贪心，又想了几个假网络流，最后还剩半小时的时候想到了一个考后才叉掉的 $n^3\log​$ 的假贪心，<del>幸好</del>没写完，不然万一过了样例就 GG 了。</p>
+<p>然后感觉 T2 还是没什么想法，T3 想了几个假贪心，又想了几个假网络流，最后还剩半小时的时候想到了一个考后才叉掉的 $n^3\log$ 的假贪心（讲题时发现稍微改动一下就是正确的 40 分做法..），<del>幸好</del>没写完，不然万一过了样例就 GG 了。</p>
 <p>出来之后发现大家都 $148​$ 起步..T1 有正解的，但还有一堆利用数据范围改小的，以及一堆 $70​$ 分算错复杂度的。</p>
 <p>T1 我写的数据分治是不可能 $85​$ 以上的，所以特别怕 $70​$ 分做法最后 $90​$ 或者 $95​$。</p>
 <p>然后下午一看，我自己倒是没挂分，$85+20+28=133​$，可其它和我写一样东西的都是 $100+20+40​$..</p>
 <p>T1 数据范围不知道是不是为了防止爆 int 而改小就算了，复杂度完全错误的 $70​$ 分做法竟然直接 A 了..就很自闭。T3 其他人的 $n^4​$ 常数比我小一截，我也不好说什么..只不过那些“数据有梯度”的出题人凭什么不多给几档部分分啊？</p>
 <p>感觉还是赛制问题啊..没有 Subtask 并且现场评测的 OI 赛制出题人也很无奈吧..</p>
 <p>把 NOI 嘉年华咕了（玩一些体育运动之类的游戏得奖品什么的），回寝室躺了一会儿，又看了一遍 <a href="https://blog.csdn.net/VFleaKing/article/details/90384225" target="_blank" rel="noopener">四色的NOI</a>，感觉自己的心境和 vfk Cu 那年挺像的..只不过就算把 vfk Fe 那年去掉，我也比 vfk 少一年啊..</p>
+<p>讲题的话..放一张 T2 讲题的图吧：</p>
+<img src="/NIO9102-落雨大/d1t2.jpg">
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><del>估计会比较咕</del></p>
+<h3 id="D1T1"><a href="#D1T1" class="headerlink" title="D1T1"></a>D1T1</h3><p>“去年 D1T1 最短路，今年也是呢”选手自闭了。</p>
+<p>出考场听说斜率优化，以为是斜率优化预处理等待时间的连边然后跑最短路。</p>
+<p>看了题解才知道原来这题根本不用最短路，连 DAG 最短路都不用..</p>
 
       
     </div>
@@ -988,7 +995,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-499122177"><span class="nav-number">1.</span> <span class="nav-text">Day 499122177</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-557219762"><span class="nav-number">2.</span> <span class="nav-text">Day 557219762</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-1"><span class="nav-number">3.</span> <span class="nav-text">Day 1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-499122177"><span class="nav-number">1.</span> <span class="nav-text">Day 499122177</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-557219762"><span class="nav-number">2.</span> <span class="nav-text">Day 557219762</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-1"><span class="nav-number">3.</span> <span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">4.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D1T1"><span class="nav-number">4.1.</span> <span class="nav-text">D1T1</span></a></li></ol></li></ol></div>
             
 
           </div>
