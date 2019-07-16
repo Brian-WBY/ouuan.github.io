@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="PAM 是一种处理回文串相关问题的有力工具。 又是一句废话。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-12T13:49:25.409Z">
+<meta property="og:updated_time" content="2019-07-15T09:05:33.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回文自动机（PAM）学习笔记">
 <meta name="twitter:description" content="PAM 是一种处理回文串相关问题的有力工具。 又是一句废话。">
@@ -462,7 +462,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-12 21:49:25" itemprop="dateModified" datetime="2019-05-12T21:49:25+08:00">2019-05-12</time>
+                <time title="修改时间：2019-07-15 17:05:33" itemprop="dateModified" datetime="2019-07-15T17:05:33+08:00">2019-07-15</time>
               
             
           </span>
@@ -525,15 +525,15 @@
 <a id="more"></a>
 <h2 id="PAM-是什么？"><a href="#PAM-是什么？" class="headerlink" title="PAM 是什么？"></a>PAM 是什么？</h2><h3 id="首先它是个自动机…"><a href="#首先它是个自动机…" class="headerlink" title="首先它是个自动机…"></a>首先它是个自动机…</h3><p>PAM 是一个接受且仅接受某个字符串的所有回文子串的<strong>中心及右半部分</strong>的 <a href="/后缀自动机（SAM）学习笔记/#确定有限状态自动机（DFA）">DFA</a>。</p>
 <p>“中心及右边部分”在奇回文串中就是字面意思，在偶回文串中定义为一个特殊字符加上右边部分。这个定义看起来很奇怪，但它能让 PAM 真正成为一个自动机，而不仅是两棵树。</p>
-<h3 id="PAM-的状态及转移"><a href="#PAM-的状态及转移" class="headerlink" title="PAM 的状态及转移"></a>PAM 的状态及转移</h3><p>PAM 的每个状态都表示一个回文子串，其中包含两个特殊状态，$len$ 分别为 $0$ 和 $-1​$，它们分别作为偶回文子串和奇回文子串两棵树的根。</p>
-<p>PAM 的转移表示在串的两侧各加上同一个字符，因此 $len$ 也会加二。PAM 显然是分别以 $0$ 和 $-1$ 为根的两棵树，因为每个状态由唯一的状态转移而来（删掉两端的字符）。</p>
-<p>和 SAM / AC 自动机一样，PAM 也有 $fail$ 边，同样表示真后缀中在自动机里的最长状态（也就是最长回文真后缀）。</p>
-<p>为了让 PAM 符合自动机的定义，可以在概念上从 $-1$ 到 $0$ 连一条特殊字符边，然后以 $-1$ 作为起始状态。然而在代码实现里没有人会这么做。</p>
+<h3 id="PAM-的状态及转移"><a href="#PAM-的状态及转移" class="headerlink" title="PAM 的状态及转移"></a>PAM 的状态及转移</h3><p>PAM 的每个状态都表示一个回文子串，其中包含两个特殊状态，$len​$ 分别为 $0​$ 和 $-1​$，它们分别作为偶回文子串和奇回文子串两棵树的根。</p>
+<p>PAM 的转移表示在串的两侧各加上同一个字符，因此 $len​$ 也会加二。PAM 显然是分别以 $0​$ 和 $-1​$ 为根的两棵树，因为每个状态由唯一的状态转移而来（删掉两端的字符）。</p>
+<p>和 SAM / AC 自动机一样，PAM 也有 $fail​$ 边，同样表示真后缀中在自动机里的最长状态（也就是最长回文真后缀）。</p>
+<p>为了让 PAM 符合自动机的定义，可以在概念上从 $-1​$ 到 $0​$ 连一条特殊字符边，然后以 $-1​$ 作为起始状态。然而在代码实现里没有人会这么做。</p>
 <h2 id="PAM-的构建"><a href="#PAM-的构建" class="headerlink" title="PAM 的构建"></a>PAM 的构建</h2><h3 id="一个性质"><a href="#一个性质" class="headerlink" title="一个性质"></a>一个性质</h3><p>在一个字符串后添加一个字符，至多增加一个之前没有出现过的回文子串，且该回文子串必定是原串的一个回文真后缀两侧加上新添加的这个字符。</p>
 <p>简单证明：如果新添加的字符处在多个回文子串内，找到最长的一个，剩下的都可以沿其中心翻折过去，所以一定出现过。</p>
-<p>这个性质既说明了 PAM 的状态数是 $\mathcal O(n)$ 的，也为后文的构建方法提供了依据。</p>
-<h3 id="基础构建法"><a href="#基础构建法" class="headerlink" title="基础构建法"></a>基础构建法</h3><p>这是一个增量算法，即每次以均摊 $\mathcal O(1)$ 的复杂度向 PAM 基于的字符串的末尾添加一个字符。</p>
-<p>记上次达到的状态为 $p$，字符串为 $s$，当前添加的字符是字符串中第 $pos$ 位，我们在 $p$ 的 $fail$ 链上找到最长的一个状态满足 $s[pos-len(u)-1]=s[pos]$，那么当前到达的状态就是 $\delta(u,s[pos])$，如果这个转移不存在则新建节点并连 $fail$：在 $fail(p)$ 的 $fail$ 链上找到最长的满足上述条件的状态，其 $s[pos]$ 转移即为新建节点的 $fail$。特别地，如果 $p$ 是特殊状态 $-1$，新建节点的 $fail$ 要设为 $0$。</p>
+<p>这个性质既说明了 PAM 的状态数是 $\mathcal O(n)​$ 的，也为后文的构建方法提供了依据。</p>
+<h3 id="基础构建法"><a href="#基础构建法" class="headerlink" title="基础构建法"></a>基础构建法</h3><p>这是一个增量算法，即每次以均摊 $\mathcal O(1)​$ 的复杂度向 PAM 基于的字符串的末尾添加一个字符。</p>
+<p>记上次达到的状态为 $p​$，字符串为 $s​$，当前添加的字符是字符串中第 $pos​$ 位，我们在 $p​$ 的 $fail​$ 链上找到最长的一个状态满足 $s[pos-len(u)-1]=s[pos]​$，那么当前到达的状态就是 $\delta(u,s[pos])​$，如果这个转移不存在则新建节点并连 $fail​$：在 $fail(p)​$ 的 $fail​$ 链上找到最长的满足上述条件的状态，其 $s[pos]​$ 转移即为新建节点的 $fail​$。特别地，如果 $p​$ 是特殊状态 $-1​$，新建节点的 $fail​$ 要设为 $0​$。</p>
 <p>因为 $p​$ 和 $fail(p)​$ 都是在 $fail​$ 树上爬上爬下，其中每添加一个字符最多向下爬一次，所以复杂度是均摊 $\mathcal O(1)​$ 的。</p>
 <p>当然如果用 map 存边复杂度就会带 log。</p>
 <div><div class="fold_hider"><div class="close hider_title">参考代码</div></div><div class="fold">
