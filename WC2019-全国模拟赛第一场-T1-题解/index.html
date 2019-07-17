@@ -642,7 +642,7 @@
       <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
       <div style="margin-top: 15px; font-size: 0.8em; color: black;">
       	<a id="hitokoto-link" href="https://hitokoto.cn/">Hitokoto</a>&nbsp;&nbsp;&nbsp;
-      	<button id="hitokoto-like" onclick="hitokotoLike()" title="通过给句子点赞可以增加其出现概率，由于技术原因并不能在博客中显示赞数与点赞是否成功的信息（红心表示成功发送点赞请求，但如果同 IP 重复点赞就会失败），如需查看可以点击左边的“Hitokoto”链接。"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
+      	<button id="hitokoto-like" title="通过给句子点赞可以增加其出现概率，由于技术原因并不能在博客中显示赞数与点赞是否成功的信息（红心表示成功发送点赞请求，但如果同 IP 重复点赞就会失败），如需查看可以点击左边的“Hitokoto”链接。"><i class="menu-item-icon fa fa-fw fa-heart"></i></button>
       </div>
     </div>
 
@@ -1104,30 +1104,29 @@
 
 
 <script type="text/javascript">
-	var hitokotoID = -1;
+	function hitokotoLike(x, y) {
+		$.ajax({
+		    url: "https://hitokoto.cn/Like",
+		    type: "GET",
+		    data: "ID=" + x,
+		    dataType: "jsonp",
+		    success: function(data) {
+		        alert(data.message);
+		        $(y).css('color', 'red');
+		    },
+		    error: function() {
+		        console.log('Hitokoto Like Request Error.');
+		        $(y).css('color', 'red');
+		    }
+		});
+	}
 	$.get('https://v1.hitokoto.cn/?c=a', function(data) {
-		hitokotoID = data.id;
 		$('#hitokoto-content').css('display', '').text(data.hitokoto);
 		$('#hitokoto-from').css('display', '').text('——' + data.from);
 		$('#hitokoto-from').attr('title', '上传者: ' + data.creator);
 		$('#hitokoto-link').attr('href', 'https://hitokoto.cn/?id=' + data.id);
+		document.getElementById('hitokoto-like').onclick = function() { hitokotoLike(data.id, '#hitokoto-like'); }
 	});
-	function hitokotoLike() {
-		$.ajax({
-		    url: "https://hitokoto.cn/Like",
-		    type: "GET",
-		    data: "ID="+hitokotoID,
-		    dataType: "jsonp",
-		    success: function(data) {
-		        alert(data.message);
-		        $('#hitokoto-like').css('color', 'red');
-		    },
-		    error: function() {
-		        console.log('Hitokoto Like Request Error.');
-		        $('#hitokoto-like').css('color', 'red');
-		    }
-		});
-	}
 	$('.post-body').bind('copy', function() {
 		alert('本博客内容欢迎分享（将本博客的原文地址分享到其它网站），允许部分摘录并在醒目位置附上原文链接，未经许可禁止任何形式的全文转载。');
 	});
