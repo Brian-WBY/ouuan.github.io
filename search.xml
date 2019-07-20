@@ -196,8 +196,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>KMP</tag>
         <tag>AC自动机</tag>
+        <tag>KMP</tag>
         <tag>矩阵乘法</tag>
       </tags>
   </entry>
@@ -346,8 +346,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>计数dp</tag>
         <tag>容斥原理</tag>
+        <tag>计数dp</tag>
       </tags>
   </entry>
   <entry>
@@ -395,8 +395,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>后缀数组</tag>
         <tag>SAM</tag>
+        <tag>后缀数组</tag>
       </tags>
   </entry>
   <entry>
@@ -534,8 +534,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>AtCoder</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
