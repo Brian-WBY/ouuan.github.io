@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ouuan.github.io/bad-round-%E4%B8%8E%E5%87%BA%E9%A2%98%E4%BA%BA%E7%9A%84%E5%9D%9A%E5%AE%88/</loc>
+    <lastmod>2019-08-07</lastmod>
+  </url>  <url>
+    <loc>https://ouuan.github.io/Codeforces-Round-564-%E4%B8%AD%E6%96%87%E9%A2%98%E8%A7%A3/</loc>
+    <lastmod>2019-08-05</lastmod>
+  </url>  <url>
     <loc>https://ouuan.github.io/%E8%8E%AB%E9%98%9F%E3%80%81%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F%E3%80%81%E6%A0%91%E4%B8%8A%E8%8E%AB%E9%98%9F%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2019-07-27</lastmod>
   </url>  <url>
@@ -25,9 +31,6 @@
     <loc>https://ouuan.github.io/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-07-14</lastmod>
   </url>  <url>
-    <loc>https://ouuan.github.io/bad-round-%E4%B8%8E%E5%87%BA%E9%A2%98%E4%BA%BA%E7%9A%84%E5%9D%9A%E5%AE%88/</loc>
-    <lastmod>2019-07-11</lastmod>
-  </url>  <url>
     <loc>https://ouuan.github.io/C-11-enable-if-%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2019-07-06</lastmod>
   </url>  <url>
@@ -44,9 +47,6 @@
     <lastmod>2019-06-20</lastmod>
   </url>  <url>
     <loc>https://ouuan.github.io/BZOJ2115-WC2011-%E6%9C%80%E5%A4%A7XOR%E5%92%8C%E8%B7%AF%E5%BE%84%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%8C%E5%9B%BE%E8%AE%BA%EF%BC%89/</loc>
-    <lastmod>2019-06-16</lastmod>
-  </url>  <url>
-    <loc>https://ouuan.github.io/Codeforces-Round-564-%E4%B8%AD%E6%96%87%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2019-06-16</lastmod>
   </url>  <url>
     <loc>https://ouuan.github.io/BZOJ2460-BJWC2011-%E5%85%83%E7%B4%A0%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%8C%E8%B4%AA%E5%BF%83%EF%BC%89/</loc>

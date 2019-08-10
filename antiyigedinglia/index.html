@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta charset="UTF-8">
+		<title>反一个顶俩</title>
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+	</head>
+	<body>
+		<div id="loading" style="display:block;">
+			<p>数据加载中，请稍候...</p>
+		</div>
+		<div id="main" style="display:none;">
+			<div id="input">
+				<p>起点：<input type="text" id="from-word">（从哪个拼音开始）</p>
+				<p>终点：<input type="text" id="destination-word" value="lia">（接到哪个拼音）</p>
+				<p><input type="submit" id="submit-button" onclick="submit()"></p>
+			</div>
+			<div id="output">
+				<p>最短路：<span id="shortest-path"></span>&nbsp;<button id="copy-shortest" onclick="copyShortest()">复制</button></p>
+				<p>最远下一个：<span id="farthest-next"></span>&nbsp;<button id="copy-farthest" onclick="copyFarthest()">复制</button></p>
+				<p>“最远下一个”是指能接到的下一个成语中离终点最远的那一个。</p>
+			</div>
+			<br>
+			<div id="repo-link">
+				<p><a href="https://github.com/ouuan/Anti-YiGeDingLia">Github Repo</a></p>
+			</div>
+		</div>
+		<script>
+			var copy_shortest = '';
+			var copy_farthest = '';
+			function jsonloaded()
+			{
+				var loadingdiv = document.getElementById('loading');
+				var maindiv = document.getElementById('main');
+				loadingdiv.style.display='none';
+				maindiv.style.display='block';
+			}
+			function submit()
+			{
+				var from = document.getElementById('from-word').value;
+				var to = document.getElementById('destination-word').value;
+				if (!dis.hasOwnProperty(from))
+				{
+					alert('无法识别拼音 ' + from + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
+					return;
+				}
+				if (!dis.hasOwnProperty(to))
+				{
+					alert('无法识别拼音 ' + to + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
+					return;
+				}
+				if (!dis[from].hasOwnProperty(to))
+				{
+					alert('从起点出发无法到达终点。');
+					return;
+				}
+				var shortest_path = '';
+				for (var i = 0; i < dis[from][to]['word'].length; ++i)
+				{
+					if (i > 0) shortest_path += ' → ';
+					shortest_path += dis[from][to]['word'][i]
+				}
+				if (shortest_path == '') shortest_path = '起点与终点相同';
+				var shortest_path_element = document.getElementById('shortest-path');
+				shortest_path_element.innerHTML = shortest_path;
+				if (shortest_path == '起点与终点相同') copy_shortest = '';
+				else copy_shortest = dis[from][to]['word'][0];
+				var farthest = -1;
+				var farthest_v = 0;
+				var farthest_next = '';
+				for (var i = 0; i < graph[from].length; ++i)
+				{
+					var v = graph[from][i];
+					if (dis[v].hasOwnProperty(to) && dis[v][to]['dist'] > farthest)
+					{
+						farthest_v = v;
+						farthest = dis[v][to]['dist'];
+						farthest_next = dis[from][v]['word'][0];
+					}
+				}
+				var farthest_next_element = document.getElementById('farthest-next');
+				if (farthest == -1)
+				{
+					farthest_next_element.innerHTML = '起点与终点相同且从起点出发无法返回起点';
+					copy_farthest = '';
+				}
+				else
+				{
+					shortest_path = '';
+					for (var i = 0; i < dis[farthest_v][to]['word'].length; ++i)
+					{
+						if (i > 0) shortest_path += ' → ';
+						shortest_path += dis[farthest_v][to]['word'][i]
+					}
+					farthest_next_element.innerHTML = farthest_next + " (" + shortest_path + ')';
+					copy_farthest = farthest_next;
+				}
+			}
+			function copyShortest()
+			{
+				var input = document.createElement('input');
+		        input.setAttribute('id', 'copyInput');
+		        input.setAttribute('value', copy_shortest);
+		        document.getElementsByTagName('body')[0].appendChild(input);
+		        document.getElementById('copyInput').select();
+		        document.execCommand('copy');
+		        document.getElementById('copyInput').remove();
+			}
+			function copyFarthest()
+			{
+				var input = document.createElement('input');
+		        input.setAttribute('id', 'copyInput');
+		        input.setAttribute('value', copy_farthest);
+		        document.getElementsByTagName('body')[0].appendChild(input);
+		        document.getElementById('copyInput').select();
+		        document.execCommand('copy');
+		        document.getElementById('copyInput').remove();
+			}
+		</script>
+		<script type="text/javascript" src="yigedinglia.json" onload="jsonloaded()"></script>
+	</body> 
+</html> 
