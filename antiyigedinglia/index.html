@@ -40,6 +40,8 @@
 			{
 				var from = document.getElementById('from-word').value;
 				var to = document.getElementById('destination-word').value;
+				var shortest_path_element = document.getElementById('shortest-path');
+				var farthest_next_element = document.getElementById('farthest-next');
 				if (!dis.hasOwnProperty(from))
 				{
 					alert('无法识别拼音 ' + from + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
@@ -52,20 +54,59 @@
 				}
 				if (!dis[from].hasOwnProperty(to))
 				{
-					alert('从起点出发无法到达终点。');
+					shortest_path_element.innerHTML = '从起点无法到达终点';
+					copy_shortest = '';
+					farthest_next_element.innerHTML = '从起点无法到达终点';
+					copy_farthest = '';
 					return;
 				}
 				var shortest_path = '';
-				for (var i = 0; i < dis[from][to]['word'].length; ++i)
+				if (from == to)
 				{
-					if (i > 0) shortest_path += ' → ';
-					shortest_path += dis[from][to]['word'][i]
+					var shortest_v;
+					var shortest = 114514;
+					var shortest_next = '';
+					for (var i = 0; i < graph[from].length; ++i)
+					{
+						var v = graph[from][i];
+						if (dis[v].hasOwnProperty(from) && dis[v][from]['dist'] < shortest)
+						{
+							shortest_v = v;
+							shortest = dis[v][from]['dist'];
+							shortest_next = dis[from][v]['word'][0];
+						}
+					}
+					if (shortest == 0)
+					{
+						shortest_path_element.innerHTML = copy_shortest = shortest_next;
+					}
+					else if (shortest == 114514)
+					{
+						shortest_path_element.innerHTML = '起点与终点相同且从起点出发无法返回起点';
+						copy_shortest = '';
+					}
+					else
+					{
+						shortest_path = shortest_next;
+						for (var i = 0; i < dis[shortest_v][from]['word'].length; ++i)
+						{
+							shortest_path += ' → ';
+							shortest_path += dis[shortest_v][from]['word'][i]
+						}
+						shortest_path_element.innerHTML = shortest_path;
+						copy_shortest = shortest_next;
+					}
 				}
-				if (shortest_path == '') shortest_path = '起点与终点相同';
-				var shortest_path_element = document.getElementById('shortest-path');
-				shortest_path_element.innerHTML = shortest_path;
-				if (shortest_path == '起点与终点相同') copy_shortest = '';
-				else copy_shortest = dis[from][to]['word'][0];
+				else
+				{
+					for (var i = 0; i < dis[from][to]['word'].length; ++i)
+					{
+						if (i > 0) shortest_path += ' → ';
+						shortest_path += dis[from][to]['word'][i]
+					}
+					shortest_path_element.innerHTML = shortest_path;
+					copy_shortest = dis[from][to]['word'][0];
+				}
 				var farthest = -1;
 				var farthest_v = 0;
 				var farthest_next = '';
@@ -79,11 +120,14 @@
 						farthest_next = dis[from][v]['word'][0];
 					}
 				}
-				var farthest_next_element = document.getElementById('farthest-next');
 				if (farthest == -1)
 				{
 					farthest_next_element.innerHTML = '起点与终点相同且从起点出发无法返回起点';
 					copy_farthest = '';
+				}
+				else if (farthest_v == from)
+				{
+					farthest_next_element.innerHTML = copy_farthest = farthest_next;
 				}
 				else
 				{
