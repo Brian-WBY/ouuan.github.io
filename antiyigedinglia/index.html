@@ -5,40 +5,50 @@
 		<title>反一个顶俩</title>
 		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
 		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
-	</head>
-	<body>
-		<div id="loading" style="display:block;">
-			<p>数据加载中，请稍候...</p>
-		</div>
-		<div id="main" style="display:none;">
-			<div id="input">
-				<p>起点：<input type="text" id="from-word">（从哪个拼音开始）</p>
-				<p>终点：<input type="text" id="destination-word" value="lia">（接到哪个拼音）</p>
-				<p><input type="submit" id="submit-button" onclick="submit()"></p>
-			</div>
-			<div id="output">
-				<p>最短路：<span id="shortest-path"></span>&nbsp;<button id="copy-shortest" onclick="copyShortest()">复制</button></p>
-				<p>最远下一个：<span id="farthest-next"></span>&nbsp;<button id="copy-farthest" onclick="copyFarthest()">复制</button></p>
-				<p>“最远下一个”是指能接到的下一个成语中离终点最远的那一个。</p>
-			</div>
-			<br>
-			<div id="repo-link">
-				<p><a href="https://github.com/ouuan/Anti-YiGeDingLia">Github Repo</a></p>
-			</div>
-			<div id="return-blog">
-				<p><a href="/">返回博客首页</a></p>
-			</div>
-		</div>
-		<script>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+		<link href="primer.css" rel="stylesheet">
+		<script type="text/javascript">
 			var copy_shortest = '';
 			var copy_farthest = '';
 			function jsonloaded()
 			{
+				new ClipboardJS('.shortest-btn', {
+				    text: function(trigger) {
+				        return copy_shortest;
+				    }
+				});
+				new ClipboardJS('.farthest-btn', {
+				    text: function(trigger) {
+				        return copy_farthest;
+				    }
+				});
 				var loadingdiv = document.getElementById('loading');
 				var maindiv = document.getElementById('main');
 				loadingdiv.style.display='none';
 				maindiv.style.display='block';
+				document.getElementById("from-word").focus();
 			}
+			$(function()
+			{
+			    $('#from-word').bind('keypress', function(event)
+			    {
+			        if (event.keyCode == "13")    
+			        {
+			        	document.getElementById('destination-word').focus();
+			        }
+			    });
+			});
+			$(function()
+			{
+			    $('#destination-word').bind('keypress', function(event)
+			    {
+			        if (event.keyCode == "13")    
+			        {
+			        	submit();
+			        }
+			    });
+			});
 			function submit()
 			{
 				var from = document.getElementById('from-word').value;
@@ -57,9 +67,9 @@
 				}
 				if (!dis[from].hasOwnProperty(to))
 				{
-					shortest_path_element.innerHTML = '从起点无法到达终点';
+					shortest_path_element.value = '从起点无法到达终点';
 					copy_shortest = '';
-					farthest_next_element.innerHTML = '从起点无法到达终点';
+					farthest_next_element.value = '从起点无法到达终点';
 					copy_farthest = '';
 					return;
 				}
@@ -81,11 +91,11 @@
 					}
 					if (shortest == 0)
 					{
-						shortest_path_element.innerHTML = copy_shortest = shortest_next;
+						shortest_path_element.value = copy_shortest = shortest_next;
 					}
 					else if (shortest == 114514)
 					{
-						shortest_path_element.innerHTML = '起点与终点相同且从起点出发无法返回起点';
+						shortest_path_element.value = '起点与终点相同且从起点出发无法返回起点';
 						copy_shortest = '';
 					}
 					else
@@ -96,7 +106,7 @@
 							shortest_path += ' → ';
 							shortest_path += dis[shortest_v][from]['word'][i]
 						}
-						shortest_path_element.innerHTML = shortest_path;
+						shortest_path_element.value = shortest_path;
 						copy_shortest = shortest_next;
 					}
 				}
@@ -107,7 +117,7 @@
 						if (i > 0) shortest_path += ' → ';
 						shortest_path += dis[from][to]['word'][i]
 					}
-					shortest_path_element.innerHTML = shortest_path;
+					shortest_path_element.value = shortest_path;
 					copy_shortest = dis[from][to]['word'][0];
 				}
 				var farthest = -1;
@@ -125,12 +135,12 @@
 				}
 				if (farthest == -1)
 				{
-					farthest_next_element.innerHTML = '起点与终点相同且从起点出发无法返回起点';
+					farthest_next_element.value = '起点与终点相同且从起点出发无法返回起点';
 					copy_farthest = '';
 				}
 				else if (farthest_v == from)
 				{
-					farthest_next_element.innerHTML = copy_farthest = farthest_next;
+					farthest_next_element.value = copy_farthest = farthest_next;
 				}
 				else
 				{
@@ -140,31 +150,64 @@
 						if (i > 0) shortest_path += ' → ';
 						shortest_path += dis[farthest_v][to]['word'][i]
 					}
-					farthest_next_element.innerHTML = farthest_next + " (" + shortest_path + ')';
+					farthest_next_element.value = farthest_next + " (" + shortest_path + ')';
 					copy_farthest = farthest_next;
 				}
 			}
-			function copyShortest()
-			{
-				var input = document.createElement('input');
-		        input.setAttribute('id', 'copyInput');
-		        input.setAttribute('value', copy_shortest);
-		        document.getElementsByTagName('body')[0].appendChild(input);
-		        document.getElementById('copyInput').select();
-		        document.execCommand('copy');
-		        document.getElementById('copyInput').remove();
-			}
-			function copyFarthest()
-			{
-				var input = document.createElement('input');
-		        input.setAttribute('id', 'copyInput');
-		        input.setAttribute('value', copy_farthest);
-		        document.getElementsByTagName('body')[0].appendChild(input);
-		        document.getElementById('copyInput').select();
-		        document.execCommand('copy');
-		        document.getElementById('copyInput').remove();
-			}
 		</script>
+	</head>
+	<body style="margin-left: 20px; margin-top: 20px;">
+		<div id="loading" style="display:block;">
+			<p>数据加载中，请稍候...</p>
+		</div>
+		<div id="main" style="display:none;">
+			<div id="input-part" style="border-radius: 4px 4px 0 0; border: 1px solid #ddd; white-space: nowrap; display: inline-block;">
+				<div style="display: inline-block; margin-left: 10px; margin-right: 10px;">
+					<p>起点：<input type="text" id="from-word" >（从哪个拼音开始）</p>
+					<p>终点：<input type="text" id="destination-word" value="lia">（接到哪个拼音）</p>
+					<p><button class="btn" id="submit-button" onclick="submit()">提交 (Press Enter)</button></p>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div id="output-part" style="width: 500px; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">
+				<div style="margin-left: 10px; margin-right: 10px;">
+					<p>
+						<div style="display: table; width: 100%">
+							<div style="display: table-cell; vertical-align: middle; text-align: center; width: 80px;">最短路：</div>
+							<div class="input-group" style="width: 100%">
+								<input id="shortest-path" type="text" readonly="readonly">
+								<span class="input-group-button">
+									<button class="btn shortest-btn" type="button">
+										<img class="clippy" src="clippy.svg" width="13" alt="复制">
+									</button>
+								</span>
+							</div>
+						</div>
+					</p>
+					<p>
+						<div style="display: table; width: 100%">
+							<div style="display: table-cell; vertical-align: middle; text-align: center; width: 80px;">最远下一个：</div>
+							<div class="input-group" style="width: 100%">
+								<input id="farthest-next" type="text" readonly="readonly">
+								<span class="input-group-button">
+									<button class="btn farthest-btn" type="button">
+										<img class="clippy" src="clippy.svg" width="13" alt="复制">
+									</button>
+								</span>
+							</div>
+						</div>
+					</p>
+					<p>tips: “最远下一个”是指能接到的下一个成语中离终点最远的那一个。</p>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div id="links">
+				<p><a href="https://github.com/ouuan/Anti-YiGeDingLia">Github Repo</a></p>
+				<p><a href="/">返回博客首页</a></p>
+			</div>
+		</div>
 		<script type="text/javascript" src="yigedinglia.json" onload="jsonloaded()"></script>
 	</body> 
 </html> 
