@@ -7,20 +7,42 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
 		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+		<link href="https://cdn.bootcss.com/hint.css/2.6.0/hint.base.min.css" rel="stylesheet">
 		<link href="primer.css" rel="stylesheet">
 		<script type="text/javascript">
 			var copy_shortest = '';
 			var copy_farthest = '';
 			function jsonloaded()
 			{
-				new ClipboardJS('.shortest-btn', {
+				var shortestClipboard = new ClipboardJS('.shortest-btn', {
 				    text: function(trigger) {
 				        return copy_shortest;
 				    }
 				});
-				new ClipboardJS('.farthest-btn', {
+				var farthestClipboard = new ClipboardJS('.farthest-btn', {
 				    text: function(trigger) {
 				        return copy_farthest;
+				    }
+				});
+				function showTooltip(elem, msg) {
+					if (!elem.classList.contains('hint--right')) {
+					    var classNames = elem.className;
+					    elem.setAttribute('class', classNames + ' hint--right');
+					    elem.setAttribute('aria-label', msg);
+					    setTimeout(function () {
+					        elem.setAttribute('class', classNames);
+					        elem.removeAttribute('aria-label');
+					    }, 1200);
+					}
+				}
+				shortestClipboard.on('success', event => {
+				    if (event.text) {
+				        showTooltip(event.trigger, 'Copied!');
+				    }
+				});
+				farthestClipboard.on('success', event => {
+				    if (event.text) {
+				        showTooltip(event.trigger, 'Copied!');
 				    }
 				});
 				var loadingdiv = document.getElementById('loading');
