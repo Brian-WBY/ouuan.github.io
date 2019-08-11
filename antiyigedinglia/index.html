@@ -132,12 +132,12 @@
 				var farthest_next_element = document.getElementById('farthest-next');
 				if (!graph.hasOwnProperty(from))
 				{
-					alert('无法识别拼音 ' + from + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
+					alert('无法识别拼音 "' + from + '"，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
 				if (!graph.hasOwnProperty(to))
 				{
-					alert('无法识别拼音 ' + to + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
+					alert('无法识别拼音 "' + to + '"，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
 				if (!dis[from].hasOwnProperty(to))
