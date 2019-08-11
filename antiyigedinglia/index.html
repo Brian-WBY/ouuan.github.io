@@ -12,6 +12,33 @@
 		<script type="text/javascript">
 			var copy_shortest = '';
 			var copy_farthest = '';
+			var dis = [], pre = [];
+			function getdis()
+			{
+				for (var from in graph)
+				{
+					dis[from] = [];
+					pre[from] = [];
+					dis[from][from] = 0;
+					var q = new Array();
+					var ql = 0, qr = 0;
+					q.push(from);
+					while (ql <= qr)
+					{
+						var u = q[ql++];
+						for (var v in graph[u])
+						{
+							if (!dis[from].hasOwnProperty(v))
+							{
+								dis[from][v] = dis[from][u] + 1;
+								pre[from][v] = u;
+								q.push(v);
+								++qr;
+							}
+						}
+					}
+				}
+			}
 			function jsonloaded()
 			{
 				var shortestClipboard = new ClipboardJS('.shortest-btn', {
@@ -45,146 +72,145 @@
 				        showTooltip(event.trigger, 'Copied!');
 				    }
 				});
+				$(function()
+				{
+				    $('#from-word').bind('keydown', function(event)
+				    {
+				        if (event.keyCode == "13" || event.keyCode == "40")    
+				        {
+				        	document.getElementById('destination-word').focus();
+				        }
+				    });
+				});
+				$(function()
+				{
+				    $('#destination-word').bind('keydown', function(event)
+				    {
+				        if (event.keyCode == "13")
+				        {
+				        	submit();
+				        	document.getElementById('shortest-path').focus();
+				        }
+				        else if (event.keyCode == "38") document.getElementById('from-word').focus();
+				        else if (event.keyCode == "40") document.getElementById('shortest-path').focus();
+				    });
+				});
+				$(function()
+				{
+				    $('#shortest-path').bind('keydown', function(event)
+				    {
+				        if (event.keyCode == "38") document.getElementById('destination-word').focus();
+				        else if (event.keyCode == "40" || event.keyCode == "13") document.getElementById('farthest-next').focus();
+				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
+				    });
+				});
+				$(function()
+				{
+				    $('#farthest-next').bind('keydown', function(event)
+				    {
+				        if (event.keyCode == "38") document.getElementById('shortest-path').focus();
+				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
+				    });
+				});
+				getdis();
 				var loadingdiv = document.getElementById('loading');
 				var maindiv = document.getElementById('main');
 				loadingdiv.style.display='none';
 				maindiv.style.display='block';
 				document.getElementById("from-word").focus();
 			}
-			$(function()
+			function getShortestPath(from, to)
 			{
-			    $('#from-word').bind('keypress', function(event)
-			    {
-			        if (event.keyCode == "13")    
-			        {
-			        	document.getElementById('destination-word').focus();
-			        }
-			    });
-			});
-			$(function()
-			{
-			    $('#destination-word').bind('keypress', function(event)
-			    {
-			        if (event.keyCode == "13")    
-			        {
-			        	submit();
-			        }
-			    });
-			});
+				if (graph[from].hasOwnProperty(to)) return graph[from][to];
+				return getShortestPath(from, pre[from][to]) + ' → ' + graph[pre[from][to]][to];
+			}
 			function submit()
 			{
 				var from = document.getElementById('from-word').value;
 				var to = document.getElementById('destination-word').value;
 				var shortest_path_element = document.getElementById('shortest-path');
 				var farthest_next_element = document.getElementById('farthest-next');
-				if (!dis.hasOwnProperty(from))
+				if (!graph.hasOwnProperty(from))
 				{
 					alert('无法识别拼音 ' + from + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
-				if (!dis.hasOwnProperty(to))
+				if (!graph.hasOwnProperty(to))
 				{
 					alert('无法识别拼音 ' + to + '，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
 				if (!dis[from].hasOwnProperty(to))
 				{
-					shortest_path_element.value = '从起点无法到达终点';
-					copy_shortest = '';
-					farthest_next_element.value = '从起点无法到达终点';
-					copy_farthest = '';
+					shortest_path_element.value = farthest_next_element.value = '从起点无法到达终点';
 					return;
 				}
-				var shortest_path = '';
 				if (from == to)
 				{
-					var shortest_v;
 					var shortest = 114514;
-					var shortest_next = '';
-					for (var i = 0; i < graph[from].length; ++i)
+					var shortest_v = 0;
+					var farthest = -1;
+					var farthest_v = 0;
+					for (var v in graph[from])
 					{
-						var v = graph[from][i];
-						if (dis[v].hasOwnProperty(from) && dis[v][from]['dist'] < shortest)
+						if (dis[v].hasOwnProperty(from))
 						{
-							shortest_v = v;
-							shortest = dis[v][from]['dist'];
-							shortest_next = dis[from][v]['word'][0];
+							if (dis[v][from] > farthest)
+							{
+								farthest = dis[v][from];
+								farthest_v = v;
+							}
+							if (dis[v][from] < shortest)
+							{
+								shortest = dis[v][from];
+								shortest_v = v;
+							}
 						}
 					}
-					if (shortest == 0)
-					{
-						shortest_path_element.value = copy_shortest = shortest_next;
-					}
-					else if (shortest == 114514)
-					{
-						shortest_path_element.value = '起点与终点相同且从起点出发无法返回起点';
-						copy_shortest = '';
-					}
+					if (shortest_v == 0) shortest_path_element.value = farthest_next_element.value = '起点与终点相同且离开起点后无法返回';
 					else
 					{
-						shortest_path = shortest_next;
-						for (var i = 0; i < dis[shortest_v][from]['word'].length; ++i)
+						if (shortest == 0) shortest_path_element.value = graph[from][from];
+						else shortest_path_element.value = graph[from][shortest_v] + ' (' + getShortestPath(shortest_v, from) + ')';
+						if (farthest == 0) farthest_next_element.value = graph[from][from];
+						else farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, from) + ')';
+					}
+				}
+				else
+				{
+					shortest_path_element.value = getShortestPath(from, to);
+					var farthest = -1;
+					var farthest_v = 0;
+					for (var v in graph[from])
+					{
+						if (dis[v].hasOwnProperty(to))
 						{
-							shortest_path += ' → ';
-							shortest_path += dis[shortest_v][from]['word'][i]
+							if (dis[v][to] > farthest)
+							{
+								farthest = dis[v][to];
+								farthest_v = v;
+							}
 						}
-						shortest_path_element.value = shortest_path;
-						copy_shortest = shortest_next;
 					}
-				}
-				else
-				{
-					for (var i = 0; i < dis[from][to]['word'].length; ++i)
-					{
-						if (i > 0) shortest_path += ' → ';
-						shortest_path += dis[from][to]['word'][i]
-					}
-					shortest_path_element.value = shortest_path;
-					copy_shortest = dis[from][to]['word'][0];
-				}
-				var farthest = -1;
-				var farthest_v = 0;
-				var farthest_next = '';
-				for (var i = 0; i < graph[from].length; ++i)
-				{
-					var v = graph[from][i];
-					if (dis[v].hasOwnProperty(to) && dis[v][to]['dist'] > farthest)
-					{
-						farthest_v = v;
-						farthest = dis[v][to]['dist'];
-						farthest_next = dis[from][v]['word'][0];
-					}
-				}
-				if (farthest == -1)
-				{
-					farthest_next_element.value = '起点与终点相同且从起点出发无法返回起点';
-					copy_farthest = '';
-				}
-				else if (farthest_v == from)
-				{
-					farthest_next_element.value = copy_farthest = farthest_next;
-				}
-				else
-				{
-					shortest_path = '';
-					for (var i = 0; i < dis[farthest_v][to]['word'].length; ++i)
-					{
-						if (i > 0) shortest_path += ' → ';
-						shortest_path += dis[farthest_v][to]['word'][i]
-					}
-					farthest_next_element.value = farthest_next + " (" + shortest_path + ')';
-					copy_farthest = farthest_next;
+					farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, to) + ')';
 				}
 			}
 		</script>
 		<style>
-			input[type="text"]
+			.clippy
 			{
-				font-size: 0.84em;
+				vertical-align: middle;
+			}
+			.before-input-group
+			{
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				width: 84px;
 			}
 		</style>
 	</head>
-	<body style="margin-left: 20px; margin-top: 20px; font-size: 1em;">
+	<body style="margin-left: 20px; margin-top: 20px; font-size: 14px;">
 		<div id="loading" style="display:block;">
 			<p>数据加载中，请稍候...</p>
 		</div>
@@ -198,11 +224,11 @@
 			</div>
 			<br>
 			<br>
-			<div id="output-part" style="width: 33em; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">
+			<div id="output-part" style="width: 500px; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">
 				<div style="margin-left: 10px; margin-right: 10px;">
 					<p>
 						<div style="display: table; width: 100%">
-							<div style="display: table-cell; vertical-align: middle; text-align: center; width: 6em;">最短路：</div>
+							<div class="before-input-group">最短路：</div>
 							<div class="input-group" style="width: 100%">
 								<input id="shortest-path" type="text" readonly="readonly">
 								<span class="input-group-button">
@@ -215,7 +241,7 @@
 					</p>
 					<p>
 						<div style="display: table; width: 100%">
-							<div style="display: table-cell; vertical-align: middle; text-align: center; width: 6em;">最远下一个：</div>
+							<div class="before-input-group">最远下一个：</div>
 							<div class="input-group" style="width: 100%">
 								<input id="farthest-next" type="text" readonly="readonly">
 								<span class="input-group-button">
@@ -232,6 +258,7 @@
 			<br>
 			<br>
 			<div id="links">
+				<p><a href="https://github.com/ouuan/Anti-YiGeDingLia/issues">有 bug?</a></p>
 				<p><a href="https://github.com/ouuan/Anti-YiGeDingLia">Github Repo</a></p>
 				<p><a href="/">返回博客首页</a></p>
 			</div>
