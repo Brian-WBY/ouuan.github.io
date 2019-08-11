@@ -89,6 +89,11 @@
 				        return copy_farthest;
 				    }
 				});
+				var loopClipboard = new ClipboardJS('.loop-btn', {
+				    text: function(trigger) {
+				        return copy_loop;
+				    }
+				});
 				function showTooltip(elem, msg) {
 					if (!elem.classList.contains('hint--right')) {
 					    var classNames = elem.className;
@@ -106,6 +111,11 @@
 				    }
 				});
 				farthestClipboard.on('success', event => {
+				    if (event.text) {
+				        showTooltip(event.trigger, 'Copied!');
+				    }
+				});
+				loopClipboard.on('success', event => {
 				    if (event.text) {
 				        showTooltip(event.trigger, 'Copied!');
 				    }
@@ -147,6 +157,15 @@
 				    $('#farthest-next').bind('keydown', function(event)
 				    {
 				        if (event.keyCode == "38") document.getElementById('shortest-path').focus();
+				        else if (event.keyCode == "40" || event.keyCode == "13") document.getElementById('nearest-loop').focus();
+				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
+				    });
+				});
+				$(function()
+				{
+				    $('#nearest-loop').bind('keydown', function(event)
+				    {
+				        if (event.keyCode == "38") document.getElementById('farthest-next').focus();
 				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
 				    });
 				});
