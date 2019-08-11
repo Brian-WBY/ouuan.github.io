@@ -13,10 +13,35 @@
 			var copy_shortest = '';
 			var copy_farthest = '';
 			var copy_loop = '';
-			var nodis = [], nopre = [];
-			var loopdis = [], looppre = [];
-			var igraph = [];
+			var dis = [], pre = [];
+			var igraph = [], loopdis = [], looppre = [];
 			function getdis()
+			{
+				for (var from in graph)
+				{
+					dis[from] = [];
+					pre[from] = [];
+					dis[from][from] = 0;
+					var q = new Array();
+					var ql = 0, qr = 0;
+					q.push(from);
+					while (ql <= qr)
+					{
+						var u = q[ql++];
+						for (var v in graph[u])
+						{
+							if (!dis[from].hasOwnProperty(v))
+							{
+								dis[from][v] = dis[from][u] + 1;
+								pre[from][v] = u;
+								q.push(v);
+								++qr;
+							}
+						}
+					}
+				}
+			}
+			function getloop()
 			{
 				for (var u in graph) igraph[u] = [];
 				for (var u in graph)
@@ -28,37 +53,9 @@
 				}
 				var q = new Array();
 				var ql = 0, qr = -1;
-				for (var u in graph)
+				for (var u in igraph)
 				{
-					if (Object.keys(igraph[u]).length == 0)
-					{
-						nodis[u] = 0;
-						q.push(u);
-						++qr;
-					}
-				}
-				while (ql <= qr)
-				{
-					var u = q[ql++];
-					for (var v in graph[u])
-					{
-						if (!nodis.hasOwnProperty(v))
-						{
-							nodis[v] = nodis[u] + 1;
-							nopre[v] = u;
-							q.push(v);
-							++qr;
-						}
-					}
-				}
-			}
-			function getloop()
-			{
-				var q = new Array();
-				var ql = 0, qr = -1;
-				for (var u in graph)
-				{
-					if (graph[u].hasOwnProperty(u))
+					if (igraph[u].hasOwnProperty(u))
 					{
 						loopdis[u] = 0;
 						q.push(u);
@@ -68,7 +65,7 @@
 				while (ql <= qr)
 				{
 					var u = q[ql++];
-					for (var v in graph[u])
+					for (var v in igraph[u])
 					{
 						if (!loopdis.hasOwnProperty(v))
 						{
@@ -127,37 +124,48 @@
 				{
 				    $('#from-word').bind('keydown', function(event)
 				    {
+				        if (event.keyCode == "13" || event.keyCode == "40")    
+				        {
+				        	document.getElementById('destination-word').focus();
+				        }
+				    });
+				});
+				$(function()
+				{
+				    $('#destination-word').bind('keydown', function(event)
+				    {
 				        if (event.keyCode == "13")
 				        {
 				        	submit();
-				        	document.getElementById('shortest-result').focus();
+				        	document.getElementById('shortest-path').focus();
 				        }
-				        if (event.keyCode == "40") document.getElementById('shortest-result').focus();
+				        else if (event.keyCode == "38") document.getElementById('from-word').focus();
+				        else if (event.keyCode == "40") document.getElementById('shortest-path').focus();
 				    });
 				});
 				$(function()
 				{
-				    $('#shortest-result').bind('keydown', function(event)
+				    $('#shortest-path').bind('keydown', function(event)
 				    {
-				        if (event.keyCode == "38") document.getElementById('from-word').focus();
-				        else if (event.keyCode == "40" || event.keyCode == "13") document.getElementById('farthest-result').focus();
+				        if (event.keyCode == "38") document.getElementById('destination-word').focus();
+				        else if (event.keyCode == "40" || event.keyCode == "13") document.getElementById('farthest-next').focus();
 				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
 				    });
 				});
 				$(function()
 				{
-				    $('#farthest-result').bind('keydown', function(event)
+				    $('#farthest-next').bind('keydown', function(event)
 				    {
-				        if (event.keyCode == "38") document.getElementById('shortest-result').focus();
-				        else if (event.keyCode == "40" || event.keyCode == "13") document.getElementById('loop-result').focus();
+				        if (event.keyCode == "38") document.getElementById('shortest-path').focus();
+				        else if (event.keyCode == "40" || event.keyCode == "13") document.getElementById('nearest-loop').focus();
 				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
 				    });
 				});
 				$(function()
 				{
-				    $('#loop-result').bind('keydown', function(event)
+				    $('#nearest-loop').bind('keydown', function(event)
 				    {
-				        if (event.keyCode == "38") document.getElementById('farthest-result').focus();
+				        if (event.keyCode == "38") document.getElementById('farthest-next').focus();
 				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
 				    });
 				});
@@ -169,53 +177,108 @@
 				maindiv.style.display='block';
 				document.getElementById("from-word").focus();
 			}
-			function getShortest(from)
+			function getShortestPath(from, to)
 			{
-				if (nodis[from] == 0) return '已经无法接下去了';
-				if (nodis[from] == 1) return graph[nopre[from]][from];
-				return graph[nopre[from]][from] + ' → ' + getShortest(nopre[from]);
+				if (graph[from].hasOwnProperty(to)) return graph[from][to];
+				return getShortestPath(from, pre[from][to]) + ' → ' + graph[pre[from][to]][to];
 			}
-			function getFarthest(from)
+			function getNearestLoop(from)
 			{
-				var farthest = -1;
-				var farthest_v = 0;
-				for (v in igraph[from])
-				{
-					if (nodis[v] > farthest)
-					{
-						farthest = nodis[v];
-						farthest_v = v;
-					}
-				}
-				return igraph[from][farthest_v] + ' (' + getShortest(farthest_v) + ')';
-			}
-			function getLoop(from)
-			{
-				if (loopdis[from] == 0) return graph[from][from];
-				return graph[looppre[from]][from] + ' → ' + getLoop(looppre[from]);
+				if (graph[from].hasOwnProperty(from)) return graph[from][from];
+				return graph[from][looppre[from]] + ' → ' + getNearestLoop(looppre[from]);
 			}
 			function submit()
 			{
 				var from = document.getElementById('from-word').value;
+				var to = document.getElementById('destination-word').value;
+				var shortest_path_element = document.getElementById('shortest-path');
+				var farthest_next_element = document.getElementById('farthest-next');
+				var nearest_loop_element = document.getElementById('nearest-loop');
 				if (!graph.hasOwnProperty(from))
 				{
 					alert('无法识别拼音 "' + from + '"，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
-				if (nodis[from] == 0)
+				if (!graph.hasOwnProperty(to))
 				{
-					document.getElementById('shortest-result').value = '已经无法接下去了';
-					document.getElementById('farthest-result').value = '已经无法接下去了';
-					document.getElementById('loop-result').value = '已经无法接下去了';
-					copy_loop = copy_farthest = copy_shortest = '';
+					alert('无法识别拼音 "' + to + '"，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
-				document.getElementById('shortest-result').value = getShortest(from);
-				document.getElementById('farthest-result').value = getFarthest(from);
-				document.getElementById('loop-result').value = getLoop(from);
-				copy_shortest = document.getElementById('shortest-result').value.split(' ')[0];
-				copy_farthest = document.getElementById('farthest-result').value.split(' ')[0];
-				copy_loop = document.getElementById('loop-result').value.split(' ')[0];
+				if (!dis[from].hasOwnProperty(to))
+				{
+					shortest_path_element.value = farthest_next_element.value = '从起点无法到达终点';
+					copy_shortest = copy_farthest = '';
+				}
+				else
+				{
+					if (from == to)
+					{
+						var shortest = 114514;
+						var shortest_v = 0;
+						var farthest = -1;
+						var farthest_v = 0;
+						for (var v in graph[from])
+						{
+							if (dis[v].hasOwnProperty(from))
+							{
+								if (dis[v][from] > farthest)
+								{
+									farthest = dis[v][from];
+									farthest_v = v;
+								}
+								if (dis[v][from] < shortest)
+								{
+									shortest = dis[v][from];
+									shortest_v = v;
+								}
+							}
+						}
+						if (shortest_v == 0)
+						{
+							shortest_path_element.value = farthest_next_element.value = '起点与终点相同且离开起点后无法返回';
+							copy_shortest = copy_farthest = '';
+						}
+						else
+						{
+							if (shortest == 0) shortest_path_element.value = graph[from][from];
+							else shortest_path_element.value = graph[from][shortest_v] + ' → ' + getShortestPath(shortest_v, from);
+							if (farthest == 0) farthest_next_element.value = graph[from][from];
+							else farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, from) + ')';
+							copy_shortest = graph[from][shortest_v];
+							copy_farthest = graph[from][farthest_v];
+						}
+					}
+					else
+					{
+						var farthest = -1;
+						var farthest_v = 0;
+						for (var v in graph[from])
+						{
+							if (dis[v].hasOwnProperty(to))
+							{
+								if (dis[v][to] > farthest)
+								{
+									farthest = dis[v][to];
+									farthest_v = v;
+								}
+							}
+						}
+						var shortest_path = shortest_path_element.value = getShortestPath(from, to);
+						copy_shortest = shortest_path.split(' ')[0];
+						farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, to) + ')';
+						copy_farthest = graph[from][farthest_v];
+					}
+				}
+				if (!loopdis.hasOwnProperty(from))
+				{
+					nearest_loop_element.value = '从起点出发无法到达任何循环';
+					copy_loop = '';
+				}
+				else
+				{
+					nearest_loop_element.value = getNearestLoop(from);
+					copy_loop = nearest_loop_element.value.split(' ')[0];
+				}
 			}
 		</script>
 		<style>
@@ -239,7 +302,8 @@
 		<div id="main" style="display:none;">
 			<div id="input-part" style="border-radius: 4px 4px 0 0; border: 1px solid #ddd; white-space: nowrap; display: inline-block;">
 				<div style="display: inline-block; margin-left: 10px; margin-right: 10px;">
-					<p>当前拼音：<input type="text" id="from-word" ></p>
+					<p>起点：<input type="text" id="from-word" > （从哪个拼音开始）</p>
+					<p>终点：<input type="text" id="destination-word" value="lia"> （接到哪个拼音）</p>
 					<p><button class="btn" id="submit-button" onclick="submit()">提交 (Press Enter)</button></p>
 				</div>
 			</div>
@@ -249,9 +313,9 @@
 				<div style="margin-left: 10px; margin-right: 10px;">
 					<p>
 						<div style="display: table; width: 100%">
-							<div class="before-input-group">最近无法接：</div>
+							<div class="before-input-group">最短路：</div>
 							<div class="input-group" style="width: 100%">
-								<input id="shortest-result" type="text" readonly="readonly">
+								<input id="shortest-path" type="text" readonly="readonly">
 								<span class="input-group-button">
 									<button class="btn shortest-btn" type="button">
 										<img class="clippy" src="clippy.svg" width="13" alt="复制">
@@ -262,9 +326,9 @@
 					</p>
 					<p>
 						<div style="display: table; width: 100%">
-							<div class="before-input-group">最远无法接：</div>
+							<div class="before-input-group">最远下一个：</div>
 							<div class="input-group" style="width: 100%">
-								<input id="farthest-result" type="text" readonly="readonly">
+								<input id="farthest-next" type="text" readonly="readonly">
 								<span class="input-group-button">
 									<button class="btn farthest-btn" type="button">
 										<img class="clippy" src="clippy.svg" width="13" alt="复制">
@@ -277,7 +341,7 @@
 						<div style="display: table; width: 100%">
 							<div class="before-input-group">最近循环：</div>
 							<div class="input-group" style="width: 100%">
-								<input id="loop-result" type="text" readonly="readonly">
+								<input id="nearest-loop" type="text" readonly="readonly">
 								<span class="input-group-button">
 									<button class="btn loop-btn" type="button">
 										<img class="clippy" src="clippy.svg" width="13" alt="复制">
@@ -286,6 +350,7 @@
 							</div>
 						</div>
 					</p>
+					<p>tips: “最远下一个”是指能接到的下一个成语中离终点最远的那一个。</p>
 				</div>
 			</div>
 			<br>
