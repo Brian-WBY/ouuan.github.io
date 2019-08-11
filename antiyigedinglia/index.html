@@ -171,7 +171,7 @@
 					else
 					{
 						if (shortest == 0) shortest_path_element.value = graph[from][from];
-						else shortest_path_element.value = graph[from][shortest_v] + ' (' + getShortestPath(shortest_v, from) + ')';
+						else shortest_path_element.value = graph[from][shortest_v] + ' → ' + getShortestPath(shortest_v, from);
 						if (farthest == 0) farthest_next_element.value = graph[from][from];
 						else farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, from) + ')';
 					}
