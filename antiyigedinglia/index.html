@@ -12,7 +12,9 @@
 		<script type="text/javascript">
 			var copy_shortest = '';
 			var copy_farthest = '';
+			var copy_loop = '';
 			var dis = [], pre = [];
+			var igraph = [], loopdis = [], looppre = [];
 			function getdis()
 			{
 				for (var from in graph)
@@ -35,6 +37,42 @@
 								q.push(v);
 								++qr;
 							}
+						}
+					}
+				}
+			}
+			function getloop()
+			{
+				for (var u in graph) igraph[u] = [];
+				for (var u in graph)
+				{
+					for (var v in graph[u])
+					{
+						igraph[v][u] = graph[u][v];
+					}
+				}
+				var q = new Array();
+				var ql = 0, qr = -1;
+				for (var u in igraph)
+				{
+					if (igraph[u].hasOwnProperty(u))
+					{
+						loopdis[u] = 0;
+						q.push(u);
+						++qr;
+					}
+				}
+				while (ql <= qr)
+				{
+					var u = q[ql++];
+					for (var v in igraph[u])
+					{
+						if (!loopdis.hasOwnProperty(v))
+						{
+							loopdis[v] = loopdis[u] + 1;
+							looppre[v] = u;
+							q.push(v);
+							++qr;
 						}
 					}
 				}
@@ -113,6 +151,7 @@
 				    });
 				});
 				getdis();
+				getloop();
 				var loadingdiv = document.getElementById('loading');
 				var maindiv = document.getElementById('main');
 				loadingdiv.style.display='none';
@@ -124,12 +163,18 @@
 				if (graph[from].hasOwnProperty(to)) return graph[from][to];
 				return getShortestPath(from, pre[from][to]) + ' → ' + graph[pre[from][to]][to];
 			}
+			function getNearestLoop(from)
+			{
+				if (graph[from].hasOwnProperty(from)) return graph[from][from];
+				return graph[from][looppre[from]] + ' → ' + getNearestLoop(looppre[from]);
+			}
 			function submit()
 			{
 				var from = document.getElementById('from-word').value;
 				var to = document.getElementById('destination-word').value;
 				var shortest_path_element = document.getElementById('shortest-path');
 				var farthest_next_element = document.getElementById('farthest-next');
+				var nearest_loop_element = document.getElementById('nearest-loop');
 				if (!graph.hasOwnProperty(from))
 				{
 					alert('无法识别拼音 "' + from + '"，可能是因为数据库中没有以此拼音开头或结尾的成语。');
@@ -144,64 +189,76 @@
 				{
 					shortest_path_element.value = farthest_next_element.value = '从起点无法到达终点';
 					copy_shortest = copy_farthest = '';
-					return;
-				}
-				if (from == to)
-				{
-					var shortest = 114514;
-					var shortest_v = 0;
-					var farthest = -1;
-					var farthest_v = 0;
-					for (var v in graph[from])
-					{
-						if (dis[v].hasOwnProperty(from))
-						{
-							if (dis[v][from] > farthest)
-							{
-								farthest = dis[v][from];
-								farthest_v = v;
-							}
-							if (dis[v][from] < shortest)
-							{
-								shortest = dis[v][from];
-								shortest_v = v;
-							}
-						}
-					}
-					if (shortest_v == 0)
-					{
-						shortest_path_element.value = farthest_next_element.value = '起点与终点相同且离开起点后无法返回';
-						copy_shortest = copy_farthest = '';
-					}
-					else
-					{
-						if (shortest == 0) shortest_path_element.value = graph[from][from];
-						else shortest_path_element.value = graph[from][shortest_v] + ' → ' + getShortestPath(shortest_v, from);
-						if (farthest == 0) farthest_next_element.value = graph[from][from];
-						else farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, from) + ')';
-						copy_shortest = graph[from][shortest_v];
-						copy_farthest = graph[from][farthest_v];
-					}
 				}
 				else
 				{
-					var farthest = -1;
-					var farthest_v = 0;
-					for (var v in graph[from])
+					if (from == to)
 					{
-						if (dis[v].hasOwnProperty(to))
+						var shortest = 114514;
+						var shortest_v = 0;
+						var farthest = -1;
+						var farthest_v = 0;
+						for (var v in graph[from])
 						{
-							if (dis[v][to] > farthest)
+							if (dis[v].hasOwnProperty(from))
 							{
-								farthest = dis[v][to];
-								farthest_v = v;
+								if (dis[v][from] > farthest)
+								{
+									farthest = dis[v][from];
+									farthest_v = v;
+								}
+								if (dis[v][from] < shortest)
+								{
+									shortest = dis[v][from];
+									shortest_v = v;
+								}
 							}
 						}
+						if (shortest_v == 0)
+						{
+							shortest_path_element.value = farthest_next_element.value = '起点与终点相同且离开起点后无法返回';
+							copy_shortest = copy_farthest = '';
+						}
+						else
+						{
+							if (shortest == 0) shortest_path_element.value = graph[from][from];
+							else shortest_path_element.value = graph[from][shortest_v] + ' → ' + getShortestPath(shortest_v, from);
+							if (farthest == 0) farthest_next_element.value = graph[from][from];
+							else farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, from) + ')';
+							copy_shortest = graph[from][shortest_v];
+							copy_farthest = graph[from][farthest_v];
+						}
 					}
-					var shortest_path = shortest_path_element.value = getShortestPath(from, to);
-					copy_shortest = shortest_path.split(' ')[0];
-					farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, to) + ')';
-					copy_farthest = graph[from][farthest_v];
+					else
+					{
+						var farthest = -1;
+						var farthest_v = 0;
+						for (var v in graph[from])
+						{
+							if (dis[v].hasOwnProperty(to))
+							{
+								if (dis[v][to] > farthest)
+								{
+									farthest = dis[v][to];
+									farthest_v = v;
+								}
+							}
+						}
+						var shortest_path = shortest_path_element.value = getShortestPath(from, to);
+						copy_shortest = shortest_path.split(' ')[0];
+						farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, to) + ')';
+						copy_farthest = graph[from][farthest_v];
+					}
+				}
+				if (!loopdis.hasOwnProperty(from))
+				{
+					nearest_loop_element.value = '从起点出发无法到达任何循环';
+					copy_loop = '';
+				}
+				else
+				{
+					nearest_loop_element.value = getNearestLoop(from);
+					copy_loop = nearest_loop_element.value.split(' ')[0];
 				}
 			}
 		</script>
@@ -255,6 +312,19 @@
 								<input id="farthest-next" type="text" readonly="readonly">
 								<span class="input-group-button">
 									<button class="btn farthest-btn" type="button">
+										<img class="clippy" src="clippy.svg" width="13" alt="复制">
+									</button>
+								</span>
+							</div>
+						</div>
+					</p>
+					<p>
+						<div style="display: table; width: 100%">
+							<div class="before-input-group">最快循环：</div>
+							<div class="input-group" style="width: 100%">
+								<input id="nearest-loop" type="text" readonly="readonly">
+								<span class="input-group-button">
+									<button class="btn loop-btn" type="button">
 										<img class="clippy" src="clippy.svg" width="13" alt="复制">
 									</button>
 								</span>
