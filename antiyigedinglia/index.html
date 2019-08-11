@@ -143,6 +143,7 @@
 				if (!dis[from].hasOwnProperty(to))
 				{
 					shortest_path_element.value = farthest_next_element.value = '从起点无法到达终点';
+					copy_shortest = copy_farthest = '';
 					return;
 				}
 				if (from == to)
@@ -167,18 +168,23 @@
 							}
 						}
 					}
-					if (shortest_v == 0) shortest_path_element.value = farthest_next_element.value = '起点与终点相同且离开起点后无法返回';
+					if (shortest_v == 0)
+					{
+						shortest_path_element.value = farthest_next_element.value = '起点与终点相同且离开起点后无法返回';
+						copy_shortest = copy_farthest = '';
+					}
 					else
 					{
 						if (shortest == 0) shortest_path_element.value = graph[from][from];
 						else shortest_path_element.value = graph[from][shortest_v] + ' → ' + getShortestPath(shortest_v, from);
 						if (farthest == 0) farthest_next_element.value = graph[from][from];
 						else farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, from) + ')';
+						copy_shortest = graph[from][shortest_v];
+						copy_farthest = graph[from][farthest_v];
 					}
 				}
 				else
 				{
-					shortest_path_element.value = getShortestPath(from, to);
 					var farthest = -1;
 					var farthest_v = 0;
 					for (var v in graph[from])
@@ -192,7 +198,10 @@
 							}
 						}
 					}
+					var shortest_path = shortest_path_element.value = getShortestPath(from, to);
+					copy_shortest = shortest_path.split(' ')[0];
 					farthest_next_element.value = graph[from][farthest_v] + ' (' + getShortestPath(farthest_v, to) + ')';
+					copy_farthest = graph[from][farthest_v];
 				}
 			}
 		</script>
