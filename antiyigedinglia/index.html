@@ -13,73 +13,6 @@
 			var copy_shortest = '';
 			var copy_farthest = '';
 			var copy_loop = '';
-			var nodis = [], nopre = [];
-			var loopdis = [], looppre = [];
-			var igraph = [];
-			function getdis()
-			{
-				for (var u in graph) igraph[u] = [];
-				for (var u in graph)
-				{
-					for (var v in graph[u])
-					{
-						igraph[v][u] = graph[u][v];
-					}
-				}
-				var q = new Array();
-				var ql = 0, qr = -1;
-				for (var u in graph)
-				{
-					if (Object.keys(igraph[u]).length == 0)
-					{
-						nodis[u] = 0;
-						q.push(u);
-						++qr;
-					}
-				}
-				while (ql <= qr)
-				{
-					var u = q[ql++];
-					for (var v in graph[u])
-					{
-						if (!nodis.hasOwnProperty(v))
-						{
-							nodis[v] = nodis[u] + 1;
-							nopre[v] = u;
-							q.push(v);
-							++qr;
-						}
-					}
-				}
-			}
-			function getloop()
-			{
-				var q = new Array();
-				var ql = 0, qr = -1;
-				for (var u in graph)
-				{
-					if (graph[u].hasOwnProperty(u))
-					{
-						loopdis[u] = 0;
-						q.push(u);
-						++qr;
-					}
-				}
-				while (ql <= qr)
-				{
-					var u = q[ql++];
-					for (var v in graph[u])
-					{
-						if (!loopdis.hasOwnProperty(v))
-						{
-							loopdis[v] = loopdis[u] + 1;
-							looppre[v] = u;
-							q.push(v);
-							++qr;
-						}
-					}
-				}
-			}
 			function jsonloaded()
 			{
 				var shortestClipboard = new ClipboardJS('.shortest-btn', {
@@ -113,14 +46,29 @@
 				        showTooltip(event.trigger, 'Copied!');
 				    }
 				});
+				shortestClipboard.on('error', event => {
+				    if (event.text) {
+				    	alert('复制失败，请尝试使用 Ctrl + C 复制。');
+				    }
+				});
 				farthestClipboard.on('success', event => {
 				    if (event.text) {
 				        showTooltip(event.trigger, 'Copied!');
 				    }
 				});
+				farthestClipboard.on('error', event => {
+				    if (event.text) {
+				    	alert('复制失败，请尝试使用 Ctrl + C 复制。');
+				    }
+				});
 				loopClipboard.on('success', event => {
 				    if (event.text) {
 				        showTooltip(event.trigger, 'Copied!');
+				    }
+				});
+				loopClipboard.on('error', event => {
+				    if (event.text) {
+				    	alert('复制失败，请尝试使用 Ctrl + C 复制。');
 				    }
 				});
 				$(function()
@@ -157,61 +105,29 @@
 				        else if (event.ctrlKey && event.keyCode == "65") $(this).select();
 				    });
 				});
-				getdis();
-				getloop();
 				var loadingdiv = document.getElementById('loading');
 				var maindiv = document.getElementById('main');
 				loadingdiv.style.display='none';
 				maindiv.style.display='block';
 				document.getElementById("from-word").focus();
 			}
-			function getShortest(from)
-			{
-				if (nodis[from] == 0) return '已经无法接下去了';
-				if (nodis[from] == 1) return graph[nopre[from]][from];
-				return graph[nopre[from]][from] + ' → ' + getShortest(nopre[from]);
-			}
-			function getFarthest(from)
-			{
-				var farthest = -1;
-				var farthest_v = 0;
-				for (v in igraph[from])
-				{
-					if (nodis[v] > farthest)
-					{
-						farthest = nodis[v];
-						farthest_v = v;
-					}
-				}
-				return igraph[from][farthest_v] + ' (' + getShortest(farthest_v) + ')';
-			}
-			function getLoop(from)
-			{
-				if (loopdis[from] == 0) return graph[from][from];
-				return graph[looppre[from]][from] + ' → ' + getLoop(looppre[from]);
-			}
 			function submit()
 			{
 				var from = document.getElementById('from-word').value;
-				if (!graph.hasOwnProperty(from))
+				if (!shortest.hasOwnProperty(from))
 				{
 					alert('无法识别拼音 "' + from + '"，可能是因为数据库中没有以此拼音开头或结尾的成语。');
 					return;
 				}
-				if (nodis[from] == 0)
-				{
-					document.getElementById('shortest-result').value = '已经无法接下去了';
-					document.getElementById('farthest-result').value = '已经无法接下去了';
-					document.getElementById('loop-result').value = '已经无法接下去了';
-					copy_loop = copy_farthest = copy_shortest = '';
-					return;
-				}
-				document.getElementById('shortest-result').value = getShortest(from);
-				document.getElementById('farthest-result').value = getFarthest(from);
-				document.getElementById('loop-result').value = getLoop(from);
-				copy_shortest = document.getElementById('shortest-result').value.split(' ')[0];
-				copy_farthest = document.getElementById('farthest-result').value.split(' ')[0];
-				copy_loop = document.getElementById('loop-result').value.split(' ')[0];
+				document.getElementById('shortest-result').value = shortest[from];
+				document.getElementById('farthest-result').value = farthest[from];
+				document.getElementById('loop-result').value = loop[from];
+				if (shortest[from] == '已经无法接下去了') copy_shortest = '';
+				else copy_shortest = shortest[from].split(' ')[0];
+				if (farthest[from] == '已经无法接下去了') copy_farthest = '';
+				else copy_farthest = farthest[from].split(' ')[0];
+				if (loop[from] == '无法接到任何循环') copy_loop = '';
+				else copy_loop = loop[from].split(' ')[0];
 			}
 		</script>
 		<style>
