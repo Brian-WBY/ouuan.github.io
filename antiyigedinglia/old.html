@@ -129,12 +129,6 @@
 				if (loop[from] == '无法接到任何循环') copy_loop = '';
 				else copy_loop = loop[from].split(' ')[0];
 			}
-			function change()
-			{
-				var from = document.getElementById('from-word').value;
-				if (!shortest.hasOwnProperty(from)) return;
-				submit();
-			}
 		</script>
 		<style>
 			.clippy
@@ -157,7 +151,7 @@
 		<div id="main" style="display:none;">
 			<div id="input-part" style="border-radius: 4px 4px 0 0; border: 1px solid #ddd; white-space: nowrap; display: inline-block;">
 				<div style="display: inline-block; margin-left: 10px; margin-right: 10px;">
-					<p>当前拼音：<input type="text" id="from-word" oninput="change()"></p>
+					<p>当前拼音：<input type="text" id="from-word" ></p>
 					<p><button class="btn" id="submit-button" onclick="submit()">提交 (Press Enter)</button></p>
 				</div>
 			</div>
