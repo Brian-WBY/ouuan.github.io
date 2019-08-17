@@ -132,7 +132,14 @@
 			function change()
 			{
 				var from = document.getElementById('from-word').value;
-				if (!shortest.hasOwnProperty(from)) return;
+				if (!shortest.hasOwnProperty(from))
+				{
+					document.getElementById('shortest-result').value = '';
+					document.getElementById('farthest-result').value = '';
+					document.getElementById('loop-result').value = '';
+					copy_shortest = copy_farthest = copy_loop = '';
+					return;
+				}
 				submit();
 			}
 		</script>
@@ -155,16 +162,16 @@
 			<p>数据加载中，请稍候...</p>
 		</div>
 		<div id="main" style="display:none;">
-			<div id="input-part" style="border-radius: 4px 4px 0 0; border: 1px solid #ddd; white-space: nowrap; display: inline-block;">
-				<div style="display: inline-block; margin-left: 10px; margin-right: 10px;">
-					<p>当前拼音：<input type="text" id="from-word" oninput="change()"></p>
-					<p><button class="btn" id="submit-button" onclick="submit()">提交 (Press Enter)</button></p>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div id="output-part" style="width: 500px; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">
+			<div style="width: 500px; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">
 				<div style="margin-left: 10px; margin-right: 10px;">
+					<p>
+						<div style="display: table; width: 100%">
+							<div class="before-input-group">当前拼音：</div>
+							<div class="input-group" style="width: 100%">
+								<input id="from-word" type="text" oninput="change()">
+							</div>
+						</div>
+					</p>
 					<p>
 						<div style="display: table; width: 100%">
 							<div class="before-input-group">最近无法接：</div>
