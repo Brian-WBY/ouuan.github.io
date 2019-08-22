@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ouuan.github.io/%E7%BA%BF%E6%80%A7%E5%9F%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-08-19</lastmod>
+  </url>  <url>
     <loc>https://ouuan.github.io/%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</loc>
     <lastmod>2019-08-18</lastmod>
   </url>  <url>
@@ -54,9 +57,6 @@
   </url>  <url>
     <loc>https://ouuan.github.io/CF708C-Centroids%EF%BC%88%E6%A0%91%E5%BD%A2dp%EF%BC%8Cup-and-down%EF%BC%89/</loc>
     <lastmod>2019-06-23</lastmod>
-  </url>  <url>
-    <loc>https://ouuan.github.io/%E7%BA%BF%E6%80%A7%E5%9F%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2019-06-20</lastmod>
   </url>  <url>
     <loc>https://ouuan.github.io/BZOJ2115-WC2011-%E6%9C%80%E5%A4%A7XOR%E5%92%8C%E8%B7%AF%E5%BE%84%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%8C%E5%9B%BE%E8%AE%BA%EF%BC%89/</loc>
     <lastmod>2019-06-16</lastmod>
