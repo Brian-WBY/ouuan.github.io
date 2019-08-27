@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="题目链接洛谷 darkbzoj 题意简述给你两个长为 $n$ 、无重复元素的数列 $a,b$，求将 $b$ 重排后 $\left(\sum\limits_{i=1}^n[a_i&amp;gt;b_i]\right)-\left(\sum\limits_{i=1}^n[a_i&amp;lt;b_i]\right)=k$（$k$ 给定）的方案数。 $n\le2000$。">
-<meta name="keywords" content="组合数学,二项式反演">
+  <meta name="description" content="题目链接CF 洛谷 题意简述给定 $n$ 和 $k$，你需要在圆上画 $k$ 个不超过 $n$ 条边的正多边形，求顶点去重后至少有多少个。 $3\le n\le10^6$，$1\le k\le n-2$。">
+<meta name="keywords" content="数论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BZOJ3622 已经没有什么好害怕的了（二项式反演，组合数学）">
-<meta property="og:url" content="https://ouuan.github.io/BZOJ3622-已经没有什么好害怕的了（二项式反演，组合数学）/index.html">
+<meta property="og:title" content="CF1208G Polygons（数论）">
+<meta property="og:url" content="https://ouuan.github.io/CF1208G-Polygons（数论）/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="题目链接洛谷 darkbzoj 题意简述给你两个长为 $n$ 、无重复元素的数列 $a,b$，求将 $b$ 重排后 $\left(\sum\limits_{i=1}^n[a_i&amp;gt;b_i]\right)-\left(\sum\limits_{i=1}^n[a_i&amp;lt;b_i]\right)=k$（$k$ 给定）的方案数。 $n\le2000$。">
+<meta property="og:description" content="题目链接CF 洛谷 题意简述给定 $n$ 和 $k$，你需要在圆上画 $k$ 个不超过 $n$ 条边的正多边形，求顶点去重后至少有多少个。 $3\le n\le10^6$，$1\le k\le n-2$。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-05T05:23:52.140Z">
+<meta property="og:updated_time" content="2019-08-27T12:34:02.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BZOJ3622 已经没有什么好害怕的了（二项式反演，组合数学）">
-<meta name="twitter:description" content="题目链接洛谷 darkbzoj 题意简述给你两个长为 $n$ 、无重复元素的数列 $a,b$，求将 $b$ 重排后 $\left(\sum\limits_{i=1}^n[a_i&amp;gt;b_i]\right)-\left(\sum\limits_{i=1}^n[a_i&amp;lt;b_i]\right)=k$（$k$ 给定）的方案数。 $n\le2000$。">
+<meta name="twitter:title" content="CF1208G Polygons（数论）">
+<meta name="twitter:description" content="题目链接CF 洛谷 题意简述给定 $n$ 和 $k$，你需要在圆上画 $k$ 个不超过 $n$ 条边的正多边形，求顶点去重后至少有多少个。 $3\le n\le10^6$，$1\le k\le n-2$。">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://ouuan.github.io/BZOJ3622-已经没有什么好害怕的了（二项式反演，组合数学）/">
+  <link rel="canonical" href="https://ouuan.github.io/CF1208G-Polygons（数论）/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>BZOJ3622 已经没有什么好害怕的了（二项式反演，组合数学） | ouuan的博客</title>
+  <title>CF1208G Polygons（数论） | ouuan的博客</title>
   
 
 
@@ -403,7 +403,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ouuan.github.io/BZOJ3622-已经没有什么好害怕的了（二项式反演，组合数学）/">
+    <link itemprop="mainEntityOfPage" href="https://ouuan.github.io/CF1208G-Polygons（数论）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ouuan">
@@ -420,7 +420,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">BZOJ3622 已经没有什么好害怕的了（二项式反演，组合数学）
+          <h2 class="post-title" itemprop="name headline">CF1208G Polygons（数论）
               
             
           </h2>
@@ -445,24 +445,12 @@
                 
               
 
-              <time title="创建时间：2019-03-15 12:48:17" itemprop="dateCreated datePublished" datetime="2019-03-15T12:48:17+08:00">2019-03-15</time>
+              <time title="创建时间：2019-08-27 20:08:56 / 修改时间：20:34:02" itemprop="dateCreated datePublished" datetime="2019-08-27T20:08:56+08:00">2019-08-27</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-05 13:23:52" itemprop="dateModified" datetime="2019-04-05T13:23:52+08:00">2019-04-05</time>
               
             
           </span>
@@ -520,19 +508,23 @@
       
 
       
-        <h1 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h1><p><a href="https://www.luogu.org/problemnew/show/P4859" target="_blank" rel="noopener">洛谷</a></p>
-<p><a href="https://darkbzoj.tk/problem/3622" target="_blank" rel="noopener">darkbzoj</a></p>
-<h1 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h1><p>给你两个长为 $n$ 、无重复元素的数列 $a,b$，求将 $b$ 重排后 $\left(\sum\limits_{i=1}^n[a_i&gt;b_i]\right)-\left(\sum\limits_{i=1}^n[a_i&lt;b_i]\right)=k$（$k$ 给定）的方案数。</p>
-<p>$n\le2000$。</p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="http://codeforces.com/contest/1208/problem/G" target="_blank" rel="noopener">CF</a></p>
+<p><a href="https://www.luogu.org/problem/CF1208G" target="_blank" rel="noopener">洛谷</a></p>
+<h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给定 $n$ 和 $k$，你需要在圆上画 $k$ 个不超过 $n$ 条边的正多边形，求顶点去重后至少有多少个。</p>
+<p>$3\le n\le10^6$，$1\le k\le n-2$。</p>
 <a id="more"></a>
-<h1 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h1><p>首先，$a$ 大于 $b$ 比 $b$ 大于 $a$ 多 $k$ 对可以转化为 $a$ 大于 $b$ 有 $\frac{n+k}2$ 对。</p>
-<p>考虑 $dp​$，设 $f(i,j)​$ 为 $a_{1..i}​$ 中选 $j​$ 个数，给这 $j​$ 个数每个数匹配一个小于它的 $b​$ 的方案数。为方便转移，一开始要先对 $a,b​$ 分别从小到大排序，这样的话若 $a_i&gt;b_j​$，必然有 $a_{i+1}&gt;b_j​$。</p>
-<p>设比 $a_i$ 大的 $b$ 有 $cnt_i$ 个，转移方程就是 $f(i,j)=f(i-1,j)+(cnt_i-j+1)\times f(i-1,j-1)$。$cnt_i$ 可以二分查找/双指针计算。</p>
-<p>考虑这样一个式子：$f(n,i)\times(n-i)!$，它的意义是，先从 $a$ 中选 $i$ 个数，给它们分别匹配一个小于它们的 $b$，再把剩下的 $n-i$ 个数随意匹配。这个式子并不是某种“方案数”，因为它可能会将相同的匹配方案算重。事实上，对于每种恰有 $j$ 对 $a&gt;b$ 的匹配方案，它在 $f(n,i)\times(n-i)!$ 中被计算了 $\binom{j}{i}$ 次。令 $ans_i$ 表示恰好有 $i$ 对 $a$ 大于 $b$ 的方案数，就有 $ans_i=f(n,i)\times(n-i)!-\sum\limits_{j=i+1}^n\binom{j}{i}ans_j$。这样的话，就可以递推地计算答案。</p>
-<p>这题还有另一种做法，叫二项式反演。我自己没有太理解清楚这种方法，所以不详细阐述。这种做法可以 $O(n)​$ 地计算某个 $ans_i​$，但不影响总复杂度（$dp​$ 还是 $O(n^2)​$ 的）：</p>
-<p>$$ans_i=\sum\limits_{j=i}^n(-1)^{j-i}\binom j i f(n,j)\times(n-j)​$$</p>
-<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,a[N],b[N],f[N][N],ans[N],c[N][N],fac[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,cnt=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((n&amp;<span class="number">1</span>)!=(k&amp;<span class="number">1</span>)) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    k=(n+k)/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,a+i);</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,b+i);</span><br><span class="line"></span><br><span class="line">    sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    sort(b+<span class="number">1</span>,b+n+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i) fac[i]=(ll)fac[i<span class="number">-1</span>]*i%mod;</span><br><span class="line"></span><br><span class="line">    c[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        c[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">1</span>;j&lt;=i;++j) c[i][j]=(c[i<span class="number">-1</span>][j<span class="number">-1</span>]+c[i<span class="number">-1</span>][j])%mod;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        f[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (cnt&lt;n&amp;&amp;b[cnt+<span class="number">1</span>]&lt;a[i]) ++cnt;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">1</span>;j&lt;=cnt;++j)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i][j]=(f[i<span class="number">-1</span>][j]+(ll)f[i<span class="number">-1</span>][j<span class="number">-1</span>]*(cnt-j+<span class="number">1</span>))%mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i=n;i&gt;=k;--i)</span><br><span class="line">    &#123;</span><br><span class="line">        ans[i]=(ll)f[n][i]*fac[n-i]%mod;</span><br><span class="line">        <span class="keyword">for</span> (j=n;j&gt;i;--j) ans[i]=(ans[i]+mod-(ll)ans[j]*c[j][i]%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans[k];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (y&amp;<span class="number">1</span>) out=(ll)out*x%mod;</span><br><span class="line">        x=(ll)x*x%mod;</span><br><span class="line">        y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><ol>
+<li><p>所有正多边形至少有一个公共顶点。可以感性理解，也可以看 <a href="https://codeforces.com/blog/entry/69357?#comment-538545" target="_blank" rel="noopener">imp 的评论</a>。</p>
+</li>
+<li><p>选了 $x$ 边形就选了 $x$ 的所有约数（除了 $1$ 和 $2$）边形一定最优，因为选因数相当于是免费的。</p>
+</li>
+</ol>
+<p>那么，我们可以把 $x$ 边形的第 $y$ 个顶点看成分数 $\dfrac y x$，这样的话，在已经选了 $x$ 的所有约数的前提下，选 $x$ 边形的代价就是 $\varphi(x)$。这样的话，问题就变成了求最小的 $k$ 个 $\varphi$ 之和。</p>
+<p>但是，一边形和二边形是不存在的，需要特殊考虑。</p>
+<p>“一边形”其实就是那个所有正多边形的公共点，只需要在计算答案时加一即可。</p>
+<p>“二边形”会且仅会影响偶数边形，相当于“一旦选了某个偶数边形，答案加一”。因为 $\varphi(x)=1$ 的 $x$ 只有 $1$ 和 $2$， 而 $\varphi(x)=2$ 的 $x$ 只有 $3$, $4$, $6$，所以只有仅选择正三角形这种情况会受到影响。特判 $k=1$ 输出 $3$ 即可。</p>
+<p>用线性筛 + nth_element（值域不大，其实也可以线性排序）即可做到 $O(n)$。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n, k, p[N], tot, phi[N];</span><br><span class="line"><span class="keyword">bool</span> np[N];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (k == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"3"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!np[i])</span><br><span class="line">		&#123;</span><br><span class="line">			p[++tot] = i;</span><br><span class="line">			phi[i] = i - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * p[j] &lt;= n; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x = i * p[j];</span><br><span class="line">			np[x] = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">if</span> (i % p[j]) phi[x] = phi[i] * (p[j] - <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				phi[x] = phi[i] * p[j];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	nth_element(phi + <span class="number">1</span>, phi + k + <span class="number">3</span>, phi + n + <span class="number">1</span>); <span class="comment">// 选了最小的 k+2 个，其中前两个是“一边形”和“二边形”的代价</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k + <span class="number">2</span>; ++i) ans += phi[i];</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -555,9 +547,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/组合数学/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
-          
-            <a href="/tags/二项式反演/" rel="tag"><i class="fa fa-tag"></i> 二项式反演</a>
+            <a href="/tags/数论/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
           
         </div>
       
@@ -570,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/BZOJ4665-小w的喜糖（容斥原理，组合数学）/" rel="next" title="BZOJ4665 小w的喜糖（容斥原理，组合数学）">
-                <i class="fa fa-chevron-left"></i> BZOJ4665 小w的喜糖（容斥原理，组合数学）
+              <a href="/一些注意事项/" rel="next" title="一些注意事项">
+                <i class="fa fa-chevron-left"></i> 一些注意事项
               </a>
             
           </div>
@@ -579,10 +569,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019YALI省选集训垫底记/" rel="prev" title="2019YALI省选集训垫底记">
-                2019YALI省选集训垫底记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -965,7 +951,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题意简述"><span class="nav-number">2.</span> <span class="nav-text">题意简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简要做法"><span class="nav-number">3.</span> <span class="nav-text">简要做法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意简述"><span class="nav-number">2.</span> <span class="nav-text">题意简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简要做法"><span class="nav-number">3.</span> <span class="nav-text">简要做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
             
 
           </div>
