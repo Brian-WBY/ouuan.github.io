@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[CF1208G Polygons（数论）]]></title>
     <url>%2FCF1208G-Polygons%EF%BC%88%E6%95%B0%E8%AE%BA%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[题目链接CF 洛谷 题意简述给定 $n$ 和 $k$，你需要在圆上画 $k$ 个不超过 $n$ 条边的正多边形，求顶点去重后至少有多少个。 $3\le n\le10^6$，$1\le k\le n-2$。 简要做法 所有正多边形至少有一个公共顶点。可以感性理解，也可以看 imp 的评论。 选了 $x$ 边形就选了 $x$ 的所有约数（除了 $1$ 和 $2$）边形一定最优，因为选因数相当于是免费的。 那么，我们可以把 $x$ 边形的第 $y$ 个顶点看成分数 $\dfrac y x$，这样的话，在已经选了 $x$ 的所有约数的前提下，选 $x$ 边形的代价就是 $\varphi(x)$。这样的话，问题就变成了求最小的 $k$ 个 $\varphi$ 之和。 但是，一边形和二边形是不存在的，需要特殊考虑。 “一边形”其实就是那个所有正多边形的公共点，只需要在计算答案时加一即可。 “二边形”会且仅会影响偶数边形，相当于“一旦选了某个偶数边形，答案加一”。因为 $\varphi(x)=1$ 的 $x$ 只有 $1$ 和 $2$， 而 $\varphi(x)=2$ 的 $x$ 只有 $3$, $4$, $6$，所以只有仅选择正三角形这种情况会受到影响。特判 $k=1$ 输出 $3$ 即可。 用线性筛 + nth_element（值域不大，其实也可以线性排序）即可做到 $O(n)$。 参考代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt; using namespace std;const int N = 1000010; int n, k, p[N], tot, phi[N];bool np[N]; int main()&#123; cin &gt;&gt; n &gt;&gt; k; if (k == 1) &#123; puts("3"); return 0; &#125; phi[1] = 1; for (int i = 2; i &lt;= n; ++i) &#123; if (!np[i]) &#123; p[++tot] = i; phi[i] = i - 1; &#125; for (int j = 1; j &lt;= tot &amp;&amp; i * p[j] &lt;= n; ++j) &#123; int x = i * p[j]; np[x] = true; if (i % p[j]) phi[x] = phi[i] * (p[j] - 1); else &#123; phi[x] = phi[i] * p[j]; break; &#125; &#125; &#125; nth_element(phi + 1, phi + k + 3, phi + n + 1); // 选了最小的 k+2 个，其中前两个是“一边形”和“二边形”的代价 long long ans = 0; for (int i = 1; i &lt;= k + 2; ++i) ans += phi[i]; cout &lt;&lt; ans; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[题目链接CF 洛谷 题意简述给定 $n$ 和 $k$，你需要在圆上画 $k$ 个不超过 $n$ 条边的正多边形，求顶点去重后至少有多少个。 $3\le n\le10^6$，$1\le k\le n-2$。 简要做法 所有正多边形至少有一个公共顶点。可以感性理解，也可以看 imp 的评论。 选了 $x$ 边形就选了 $x$ 的所有约数（除了 $1$ 和 $2$）边形一定最优，因为选约数相当于是免费的。 那么，我们可以把 $x$ 边形的第 $y$ 个顶点看成分数 $\dfrac y x$，这样的话，在已经选了 $x$ 的所有约数的前提下，选 $x$ 边形的代价就是 $\varphi(x)$，问题就变成了求最小的 $k$ 个 $\varphi$ 之和。 但是，一边形和二边形是不存在的，需要特殊考虑。 “一边形”其实就是那个所有正多边形的公共顶点，只需要在计算答案时加一即可。 “二边形”会且仅会影响偶数边形，相当于“一旦选了某个偶数边形，答案加一”。因为 $\varphi(x)=1$ 的 $x$ 只有 $1$ 和 $2$， 而 $\varphi(x)=2$ 的 $x$ 只有 $3$, $4$, $6$，所以只有仅选择正三角形这种情况会受到影响。特判 $k=1$ 输出 $3$ 即可。 用线性筛 + nth_element（值域不大，其实也可以线性排序）即可做到 $O(n)$。 参考代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt; using namespace std;const int N = 1000010; int n, k, p[N], tot, phi[N];bool np[N]; int main()&#123; cin &gt;&gt; n &gt;&gt; k; if (k == 1) &#123; puts("3"); return 0; &#125; phi[1] = 1; for (int i = 2; i &lt;= n; ++i) &#123; if (!np[i]) &#123; p[++tot] = i; phi[i] = i - 1; &#125; for (int j = 1; j &lt;= tot &amp;&amp; i * p[j] &lt;= n; ++j) &#123; int x = i * p[j]; np[x] = true; if (i % p[j]) phi[x] = phi[i] * (p[j] - 1); else &#123; phi[x] = phi[i] * p[j]; break; &#125; &#125; &#125; nth_element(phi + 1, phi + k + 3, phi + n + 1); // 选了最小的 k+2 个，其中前两个是“一边形”和“二边形”的代价 long long ans = 0; for (int i = 1; i &lt;= k + 2; ++i) ans += phi[i]; cout &lt;&lt; ans; return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
       </categories>
@@ -240,8 +240,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>计数dp</tag>
         <tag>KMP</tag>
+        <tag>计数dp</tag>
       </tags>
   </entry>
   <entry>
@@ -253,8 +253,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>AC自动机</tag>
         <tag>KMP</tag>
+        <tag>AC自动机</tag>
         <tag>矩阵乘法</tag>
       </tags>
   </entry>
@@ -591,8 +591,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>AtCoder</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
