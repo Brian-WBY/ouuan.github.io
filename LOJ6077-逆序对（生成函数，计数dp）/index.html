@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="题目链接LOJ 题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。 $1\le n, k\le 10^5$，$k\le \binom n 2$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-04T01:23:54.555Z">
+<meta property="og:updated_time" content="2019-09-04T01:51:38.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LOJ6077 逆序对（生成函数，计数dp）">
 <meta name="twitter:description" content="题目链接LOJ 题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。 $1\le n, k\le 10^5$，$k\le \binom n 2$">
@@ -445,7 +445,7 @@
                 
               
 
-              <time title="创建时间：2019-09-04 09:22:32 / 修改时间：09:23:54" itemprop="dateCreated datePublished" datetime="2019-09-04T09:22:32+08:00">2019-09-04</time>
+              <time title="创建时间：2019-09-04 09:22:32 / 修改时间：09:51:38" itemprop="dateCreated datePublished" datetime="2019-09-04T09:22:32+08:00">2019-09-04</time>
             
 
             
@@ -516,7 +516,7 @@
 <p>上下同时乘上 $(1-x)^n$，即求：<br>$$<br>\frac{(1-x)(1-x^2)\cdots(1-x^n)}{(1-x)^n}<br>$$<br>（不约分是为了方便求。）</p>
 <p>分母 $\frac{1}{(1-x)^n}=\sum\limits_{i\ge 0}\binom{n-1+i}{n-1}x^i$，<del>是一个大家熟知的结论</del>，可以利用 $(1+x+x^2+\cdots)^n$ 的组合意义说明。</p>
 <p>分子的 $x^i$ 项系数的组合意义为：考虑从 $1,2,\ldots,n$ 中选若干个和为 $i$ 的数（每个数只能选一遍）的所有方案，若选了奇数个数贡献为 $-1$，若选了偶数个数贡献为 $1$。</p>
-<p>这个东西可以用类似 <a href="/LOJ6089">LOJ6089</a> 的方法求：</p>
+<p>这个东西可以用类似 <a href="/LOJ6089-小Y的背包计数问题（根号分治，计数dp）">LOJ6089</a> 的方法求：</p>
 <p>令 $f_{i,j}$ 表示选 $i$ 个数和为 $j$ 的方案数。</p>
 <p>由于选择的数两两不同，第一维的大小是 $O(\sqrt k)$ 的。</p>
 <p>转移有两种方式：</p>
