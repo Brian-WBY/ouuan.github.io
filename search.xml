@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LOJ6519 魔力环（Burnside引理，容斥原理）]]></title>
+    <url>%2FLOJ6519-%E9%AD%94%E5%8A%9B%E7%8E%AF%EF%BC%88Burnside%E5%BC%95%E7%90%86%EF%BC%8C%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目链接LOJ 洛谷 题意简述你需要给 $n$ 颗珠子的项链染 $m$ 颗黑色，$n-m$ 颗白色，不能有连续的一串黑色珠子长度超过 $k$，求旋转同构下本质不同的染色方案数。 $1\le m,k\le n\le10^5$ 简要做法首先套用 Burnside 引理，以及位移为 $r$ 的旋转周期为 $\gcd(r, n)$ 的结论，得到答案的式子：$$\begin{aligned}answer&amp;=\frac 1 n\sum\limits_{i=1}^nf\left(\frac n{\gcd(i,n)}\right)\\&amp;=\frac 1 n\sum\limits_{d|n}\varphi(d)f(d)\end{aligned}$$其中 $f(x)$ 表示在一个长为 $\frac n x$ 的项链上，染 $\frac{m}{x}$ 个黑珠子，$\frac{n-m}x$ 个白珠子，不能有连续的一串黑色珠子长度超过 $k$ 的方案数（在不旋转的意义下计数）。 可以看出只有 $d|m$ 时 $f(d)$ 可能不为零，如果用 $f(x, y)$ 表示在一个长为 $x+y$ 的项链上，染 $x$ 个黑珠子，$y$ 个白珠子，不能有连续的一串黑色珠子长度超过 $k$ 的方案数（在不旋转的意义下计数），答案的式子可以写成： $$answer=\frac 1 n\sum\limits_{d|\gcd(n, m)}\varphi(d)f\left(\frac m d, \frac{n-m}d\right)$$ 现在的问题转化成了快速求 $f(x, y)$。 首先，特判掉两种情况： $k=n$ $y\ne 0$ 且 $x\le k$ 这两种情况下 $f(x, y)=\binom{x+y}x$ 由于是在环上不好处理，枚举两侧的黑珠子个数，就可以转化为序列上的问题。 而序列上的问题，就相当于求方程 $x_1+x_2+\cdots+x_{y+1}=x (0\le x_i\le k)$ 的解的个数。 考虑容斥，枚举至少有 $i$ 个变量的值大于 $k$（实际上是枚举大小为 $i$ 的子集都大于 $k$），解的个数为 $\binom{x+y-i(k+1)}y$。 这样的话，枚举两侧黑珠子个数最多枚举到 $k$，容斥复杂度为 $O(\frac{x+y}k)$，计算 $f(x,y)$ 的复杂度为 $O(x+y)$，整道题的复杂度就是 $O(\text{预处理组合数}+\sigma(n))$，其中 $\sigma(n)$ 表示 $n$ 的所有约数之和，在数据范围内最大为 $403200$。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;typedef long long ll;const int N = 100005;const int mod = 998244353;int n, m, k, p[N], ptot, phi[N], fact[N], invf[N];bool np[N];int qpow(int x, int y)&#123; int out = 1; while (y) &#123; if (y &amp; 1) out = (ll) out * x % mod; x = (ll) x * x % mod; y &gt;&gt;= 1; &#125; return out;&#125;int c(int x, int y)&#123; if (y &gt; x || y &lt; 0) return 0; return (ll) fact[x] * invf[y] % mod * invf[x - y] % mod;&#125;int calc(int x, int y)&#123; int out = 0; for (int i = 0; i * (k + 1) &lt;= x + y; ++i) &#123; out = (out + (i &amp; 1 ? -1ll : 1ll) * c(x + y - (k + 1) * i, y) * c(y + 1, i) % mod + mod) % mod; &#125; return out;&#125;int f(int x, int y)&#123; if (k == n || y != 0 &amp;&amp; x &lt;= k) return c(x + y, x); int out = 0; for (int i = 0; i &lt;= x &amp;&amp; i &lt;= k; ++i) &#123; out = (out + (ll) (i + 1) * calc(x - i, y - 2)) % mod; &#125; return out;&#125;int gcd(int x, int y)&#123; return y ? gcd(y, x % y) : x;&#125;int main()&#123; cin &gt;&gt; n &gt;&gt; m &gt;&gt; k; fact[0] = invf[0] = 1; for (int i = 1; i &lt;= n; ++i) fact[i] = (ll) fact[i - 1] * i % mod; invf[n] = qpow(fact[n], mod - 2); for (int i = n - 1; i &gt;= 1; --i) invf[i] = (ll) invf[i + 1] * (i + 1) % mod; phi[1] = 1; for (int i = 2; i &lt;= n; ++i) &#123; if (!np[i]) &#123; p[++ptot] = i; phi[i] = i - 1; &#125; for (int j = 1; j &lt;= ptot &amp;&amp; i * p[j] &lt;= n; ++j) &#123; int x = i * p[j]; np[x] = true; if (i % p[j]) phi[x] = phi[i] * (p[j] - 1); else &#123; phi[x] = phi[i] * p[j]; break; &#125; &#125; &#125; int ans = 0; int g = gcd(m, n); for (int i = 1; i * i &lt;= g; ++i) &#123; if (g % i == 0) &#123; if (i * i == g) ans = (ans + (ll) f(m / i, (n - m) / i) * phi[i]) % mod; else ans = (ans + (ll) f(m / i, (n - m) / i) * phi[i] + (ll) f(m / (g / i), (n - m) / (g / i)) * phi[g / i]) % mod; &#125; &#125; cout &lt;&lt; (ll) ans * qpow(n, mod - 2) % mod; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+        <tag>容斥原理</tag>
+        <tag>群论</tag>
+        <tag>Burnside引理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LOJ6077 逆序对（生成函数，计数dp）]]></title>
     <url>%2FLOJ6077-%E9%80%86%E5%BA%8F%E5%AF%B9%EF%BC%88%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%EF%BC%8C%E8%AE%A1%E6%95%B0dp%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接LOJ 题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。 $1\le n, k\le 10^5$，$k\le \binom n 2$ 简要作法从小到大依次考虑将每个数插入排列，那么每个数 $i$ 都可以贡献 $0\dots i-1$ 个逆序对，所以答案的生成函数为 $(1 + x)(1 + x + x^2)\cdots(1+x+\cdots+x^{n-1})$。 上下同时乘上 $(1-x)^n$，即求：$$\frac{(1-x)(1-x^2)\cdots(1-x^n)}{(1-x)^n}$$（不约分是为了方便求。） 分母 $\frac{1}{(1-x)^n}=\sum\limits_{i\ge 0}\binom{n-1+i}{n-1}x^i$，是一个大家熟知的结论，可以利用 $(1+x+x^2+\cdots)^n$ 的组合意义说明。 分子的 $x^i$ 项系数的组合意义为：考虑从 $1,2,\ldots,n$ 中选若干个和为 $i$ 的数（每个数只能选一遍）的所有方案，若选了奇数个数贡献为 $-1$，若选了偶数个数贡献为 $1$。 这个东西可以用类似 LOJ6089 的方法求： 令 $f_{i,j}$ 表示选 $i$ 个数和为 $j$ 的方案数。 由于选择的数两两不同，第一维的大小是 $O(\sqrt k)$ 的。 转移有两种方式： 背包里的所有数加一。 背包里的所有数加一，并向背包中放入一个体积为 $1$ 的物品。 $$f_{i,j}=f_{i-1,j-i}+f_{i,j-i}$$ 但这样算可能会出现体积大于 $n$ 的物品。 具体来说，当 $j\ge n+1$ 时，会有 $f_{i-1,j-n-1}$ 种不合法的方案，需要减去。 计算完 dp 之后，分子的 $x^i$ 项系数即为 $\sum\limits_{j\ge0}(-1)^jf_{j,i}$ 最后把分子和分母卷积起来即可，总时间复杂度为 $O(n+k\sqrt k)$ 或 $O(n\log p+k\sqrt k)$（取决于计算组合数与逆元的方式）。 参考代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;cstdio&gt;#include &lt;cstring&gt;using namespace std;typedef long long ll;const int N = 100005;const int mod = 1e9 + 7;int n, k, f[2][N], cur, ans, fact[N &lt;&lt; 1], invf[N &lt;&lt; 1];int qpow(int x, int y)&#123; int out = 1; while (y) &#123; if (y &amp; 1) out = (ll) out * x % mod; x = (ll) x * x % mod; y &gt;&gt;= 1; &#125; return out;&#125;int c(int x, int y)&#123; return (ll) fact[x] * invf[y] % mod * invf[x - y] % mod;&#125;int main()&#123; scanf("%d%d", &amp;n, &amp;k); fact[0] = invf[0] = 1; for (int i = 1; i &lt;= n + k; ++i) &#123; fact[i] = (ll) fact[i - 1] * i % mod; invf[i] = qpow(fact[i], mod - 2); &#125; ans = c(n - 1 + k, n - 1); f[cur][0] = 1; for (int i = 1, sum = 1; sum &lt;= k; sum += (++i)) &#123; memset(f[cur ^= 1], 0, sizeof(int) * i); for (int j = i; j &lt;= k; ++j) &#123; f[cur][j] = (f[cur ^ 1][j - i] + f[cur][j - i]) % mod; if (j &gt;= n + 1) f[cur][j] = (f[cur][j] - f[cur ^ 1][j - n - 1] + mod) % mod; ans = (ans + (i &amp; 1 ? -1ll : 1ll) * f[cur][j] * c(n - 1 + k - j, n - 1) % mod + mod) % mod; &#125; &#125; printf("%d", ans); return 0;&#125;]]></content>
@@ -51,7 +65,7 @@
   <entry>
     <title><![CDATA[一些注意事项]]></title>
     <url>%2F%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%2F</url>
-    <content type="text"><![CDATA[—— 简单题不 sb 是什么水平？ —— 国家队水平。 sb 错误开 long long 时记得快读也要开 long long。 记得删调试信息，尤其是 cerr。 多测时要小心使用 memset。 operator 前面记得加返回值类型名。（dev c++ 不报错不警告） sb 想不到多次二分时想一想能不能用双指针。 计数 → 什么是重复的，什么是相同的。 最优化 → 什么是不优的，什么是不劣的。 要是怎么样就好了 → 能不能转化成这样。]]></content>
+    <content type="text"><![CDATA[—— 简单题不 sb 是什么水平？ —— 国家队水平。 sb 错误开 long long 时记得快读也要开 long long。 记得删调试信息，尤其是 cerr。 多测时要小心使用 memset。 operator 前面记得加返回值类型名。（dev c++ 不报错不警告） 跑的很快可能是因为被优化了，因此不要用空循环测运行用时。 （用于在线比赛）RE 可能是爆栈了。 sb 想不到多次二分时想一想能不能用双指针。 计数 → 什么是重复的，什么是相同的。要做到不重不漏 最优化 → 什么是不优的，什么是不劣的。 要是怎么样就好了 → 能不能转化成这样。 存在反例 → 反例能否特殊处理。 只用管大小而不关心具体值 → 从小到大、从大到小考虑 / 二分答案转成 01。]]></content>
       <categories>
         <category>其它</category>
       </categories>
@@ -769,7 +783,7 @@
   <entry>
     <title><![CDATA[好用的网站]]></title>
     <url>%2F%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99%2F</url>
-    <content type="text"><![CDATA[一些好用的网站。 $\text{图床}$ $\text{几何}$ $\text{图论}$ $\text{函数}$ $\text{找规律}$ $\text{矩阵运算}$ $\text{在线汇编编译器}$ $\mathrm{C++}$ $\LaTeX\text{公式大全}​$ $\LaTeX\text{公式奆全}$ $\text{.tex}$教程 $\text{OI Wiki}$ $\text{Wolfram Alpha}$ $\text{oier数据库}$]]></content>
+    <content type="text"><![CDATA[一些好用的网站。 图床 几何 图论 函数 找规律 矩阵运算 在线汇编编译器 C++ LaTeX 公式大全 LaTeX 公式奆全 .tex 教程 OI Wiki Wolfram Alpha OIerDb OI 中转站]]></content>
       <categories>
         <category>其它</category>
       </categories>
