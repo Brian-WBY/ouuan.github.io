@@ -1832,7 +1832,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #775da3;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 14px;
@@ -3129,9 +3129,11 @@ body {
   cursor: pointer;
 }
 .close:after {
+  color: "#222";
   content: "▼";
 }
 .open:after {
+  color: "#222";
   content: "▲";
 }
 .hitokoto-block {
