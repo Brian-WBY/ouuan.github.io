@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[gym102268D Dates（贪心，二分图匹配，线段树）]]></title>
+    <url>%2Fgym102268D-Dates%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%8C%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D%EF%BC%8C%E7%BA%BF%E6%AE%B5%E6%A0%91%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目链接CF 题意简述给你一张二分图：左边 $t$ 个位置，第 $i$ 个位置上有 $a_i$ 个点；右边 $n$ 个带权的点，第 $i$ 个点与位置在 $[l_i, r_i]$ 之间的所有左边的点有连边；匹配权值为匹配中右边点的权值之和；求最大权匹配。 $1\le n,t\le 3\cdot 10^5$，保证 $l_i\le l_{i+1}$, $r_i\le r_{i+1}$。 简要做法首先，将右边的点按权值从大到小排序，依次加入，看有没有完全匹配，有就选这个点。这样一定是最优的，好像可以用拟阵相关的理论证明，但我不太会.. 于是，问题转化成了如何判定是否存在完全匹配，而霍尔定理恰恰是用来做这件事的——考虑右边的点中被选择的那些，选择其一个子集，判断是否所有子集的邻域（即与其相邻的点构成的集合）大小都比子集本身大。 如果选择的子集中元素对应的区间的并集不是连续的，霍尔定理的条件成立等价于对于断点两边分别成立，所以只需要考虑子集对应的区间连续的情况。 又由于 $l_i\le l_{i+1}$, $r_i\le r_{i+1}$，只用考虑子集中的元素本身编号连续的情况。那么，霍尔定理的条件就可以表示为： $$\forall 1\le i&lt; j\le n,[i,j]\text{中被选择的右侧点个数}\le [l_i,r_j]\text{中左侧点数量}$$ 如果处理出 $a_{1..t}$ 的前缀和 $pre[i]=\sum_{j=1}^ia_j$，用 $p[i]$ 表示 $[1,i]$ 中被选择的右侧点个数，那么式子就变成了： $$\forall1\le i&lt; j\le n, p[j]-p[i-1]\le pre[r_j]-pre[l_i-1]$$ 也就是： $$\forall1\le i&lt; j\le n, pre[l_i-1]-p[i-1]\le pre[r_j]-p[j]$$ 所以，可以对每个元素 $i$ 维护 $pre[l_{i+1}-1]-p[i]$ 以及 $pre[r_j]-p[j]$。 $pre$ 是定值，考虑如何更新 $p$。事实上，往已选择的点中加入一个点，就是把一段后缀的 $p$ 加一。所以可以考虑用线段树维护。 并且，一段后缀加一（令这段后缀为 $[x..n]$）后，只有 $i&lt; x,j\ge x$ 的数对 $(i,j)$ 对应的大小关系发生改变，事实上只用判断 $i&lt;x$ 的 $pre[l_i-1]-p[i-1]$ 的最大值与 $j\ge x$ 的 $pre[r_j]-p[j]$ 的最小值的大小关系即可，同样可以使用线段树维护。 另一种判断方法，是在线段树上的每个节点处判断左儿子与右儿子有没有出现不满足霍尔定理条件的情况。 参考代码代码中使用了 segmenttree.h。 每次判断前缀与后缀的大小关系12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;algorithm&gt;#include "segmenttree.h"using namespace std;typedef long long ll;int read()&#123; int out = 0; char c; while (!isdigit(c = getchar())); for (; isdigit(c); c = getchar()) out = out * 10 + c - '0'; return out;&#125;const int N = 300010;const ll INF = 1e18;int n, m;ll pre[N], ans;struct Girl&#123; int l, r, p, id; bool operator&lt;(const Girl&amp; y) const &#123; return p &gt; y.p; &#125;&#125; g[N];struct Value&#123; ll mn, mx; Value(ll _mn = INF, ll _mx = -INF) &#123; mn = _mn; mx = _mx; &#125;&#125;;vector&lt;Value&gt; a;Value merge(Value x, Value y)&#123; return Value(min(x.mn, y.mn), max(x.mx, y.mx));&#125;void update(segmentTreeNode&lt;Value, int&gt;&amp; u, int x)&#123; u.val.mx += x; u.val.mn += x; u.tag += x;&#125;int main()&#123; n = read(); m = read(); for (int i = 1; i &lt;= m; ++i) pre[i] = pre[i - 1] + read(); a.resize(n + 1); for (int i = 1; i &lt;= n; ++i) &#123; g[i].l = read(); g[i].r = read(); g[i].p = read(); g[i].id = i; a[i].mn = pre[g[i].r]; a[i - 1].mx = pre[g[i].l - 1]; &#125; sort(g + 1, g + n + 1); segmentTree&lt;Value, int, merge, update&gt; t(0, n + 1, a, Value()); for (int i = 1; i &lt;= n; ++i) &#123; if (t.query(0, g[i].id).mx &gt;= t.query(g[i].id, n + 1).mn) continue; t.modify(g[i].id, n + 1, -1); ans += g[i].p; &#125; cout &lt;&lt; ans; return 0;&#125; 在线段树的每个节点处判断123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;algorithm&gt;#include "segmenttree.h"using namespace std;typedef long long ll;int read()&#123; int out = 0; char c; while (!isdigit(c = getchar())); for (; isdigit(c); c = getchar()) out = out * 10 + c - '0'; return out;&#125;const int N = 300010;const ll INF = 1e18;int n, m;ll pre[N], ans;struct Girl&#123; int l, r, p, id; bool operator&lt;(const Girl&amp; y) const &#123; return p &gt; y.p; &#125;&#125; g[N];struct Value&#123; ll mn, mx; bool inv; Value(ll _mn = INF, ll _mx = -INF, int _inv = false) &#123; mn = _mn; mx = _mx; inv = _inv; &#125;&#125;;vector&lt;Value&gt; a;Value merge(Value x, Value y)&#123; return Value(min(x.mn, y.mn), max(x.mx, y.mx), x.inv || y.inv || x.mx &gt; y.mn);&#125;void update(segmentTreeNode&lt;Value, int&gt;&amp; u, int x)&#123; u.val.mx += x; u.val.mn += x; u.tag += x;&#125;int main()&#123; n = read(); m = read(); for (int i = 1; i &lt;= m; ++i) pre[i] = pre[i - 1] + read(); a.resize(n + 1); for (int i = 1; i &lt;= n; ++i) &#123; g[i].l = read(); g[i].r = read(); g[i].p = read(); g[i].id = i; a[i].mn = pre[g[i].r]; a[i - 1].mx = pre[g[i].l - 1]; &#125; sort(g + 1, g + n + 1); segmentTree&lt;Value, int, merge, update&gt; t(0, n + 1, a, Value()); for (int i = 1; i &lt;= n; ++i) &#123; t.modify(g[i].id, n + 1, -1); if (t.query(0, n + 1).inv) t.modify(g[i].id, n + 1, 1); else ans += g[i].p; &#125; cout &lt;&lt; ans; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>数据结构</tag>
+        <tag>线段树</tag>
+        <tag>图论</tag>
+        <tag>二分图匹配</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CF878E Numbers on the blackboard（贪心，并查集）]]></title>
     <url>%2FCF878E-Numbers-on-the-blackboard%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%8C%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接CF 题意简述对于一个数列，每次操作可以将相邻的两个数 $x$ 和 $y$ 合并成一个数 $x+2y$，定义一个数列的权值为进行操作直至只剩一个数能得到的最大值。 多组询问，每次给定一个区间，求这个区间的权值。 数列值域 $-10^9\sim10^9$，数列长度和询问个数不超过 $10^5$。 简要做法先不考虑多组询问。 经过（并不）简单的推理，可以发现，设数列 $a_{1..n}$ 的权值为 $\sum_{i=1}^na_i2^{k_i}$，那么 $k_1=0$, $1\le k_i\le k_{i-1}+1(i\ge 2)$。 那么，最优方案中，$k_{2..n}$ 一定是一块一块从 $1$ 开始严格递增的。 如果我们已经知道了一个数列 $k_i$ 的构成，这时要在其末端加入一个数，那么可以得到贪心策略： 若加入的数是正数，与前一块合并。若合并后整块构成的等比数列之和仍为正数，继续合并。 否则结束合并过程。 这个合并的过程可以用并查集维护。 问题在于，如何判断一块的正负。可以对每块维护它的大小（块中的第 $i$ 个数与 $2^i$ 的乘积之和），合并时更新。但这样做可能会溢出，但可以发现，一旦一块的大小达到 $10^9$，一定会一直合并到最前面，所以大于 $10^9$ 的都可以视作 $10^9$；一旦前一块的长度超过 $30$ 且当前块大小为正，也一定会一直合并到最前面，也可以视作 $10^9$。 接下来考虑如何回答询问。 把询问离线下来，右端点相同的询问一起处理。处理一个询问之前先计算出 $a_{1..r}$ 的块，若 $l=1$ 答案就是所有块大小的和，否则的话答案会是若干块的答案之和加上一个块的后缀。因为取一个块的后缀，断点所在块一定不会分开（一块的真后缀一定为正），后面的块也不会合并到前面去。处理出模意义下块答案的前缀和，以及 $presum_i=\sum_{j=1}^i2^{i-1}a_i$，就可以快速回答询问了。 还有一个小问题：只有第一块的系数是从 $2^0=1$ 开始的。由于计算时第一块一定是那个后缀，计算后缀答案时从 $1$ 开始，计算整块答案时从 $2$ 开始即可。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;using namespace std;typedef long long ll;typedef pair&lt;int, int&gt; pii;const int N = 100010;const int mod = 1e9 + 7;int n, m, a[N], presum[N], inv2[N], f[N], len[N], sum[N], preans[N], out[N];vector&lt;pii&gt; q[N];int find(int x)&#123; return x == f[x] ? x : f[x] = find(f[x]);&#125;int calc(int l, int r)&#123; return (ll) (presum[r] - presum[l - 1] + mod) * inv2[l - 1] % mod;&#125;int main()&#123; scanf("%d%d", &amp;n, &amp;m); inv2[0] = 1; for (int i = 1, two = 1; i &lt;= n; ++i, two = two * 2 % mod) &#123; scanf("%d", a + i); inv2[i] = (ll) inv2[i - 1] * (mod + 1) / 2 % mod; presum[i] = (presum[i - 1] + (ll) two * a[i] % mod + mod) % mod; &#125; for (int i = 1; i &lt;= m; ++i) &#123; int l, r; scanf("%d%d", &amp;l, &amp;r); q[r].push_back(pii(l, i)); &#125; for (int i = 1; i &lt;= n; ++i) &#123; f[i] = i; len[i] = 1; sum[i] = a[i]; while (find(i) &gt; 1 &amp;&amp; sum[find(i)] &gt; 0) &#123; int x = find(i); int y = find(x - 1); if (len[y] &gt;= 30 || (((ll) sum[x]) &lt;&lt; len[y]) + sum[y] &gt;= 1e9) sum[y] = 1e9; else sum[y] += sum[x] &lt;&lt; len[y]; len[y] += len[x]; f[x] = y; &#125; preans[find(i)] = (preans[find(find(i) - 1)] + 2ll * calc(find(i), i)) % mod; for (int j = 0; j &lt; q[i].size(); ++j) &#123; int l = q[i][j].first; int id = q[i][j].second; out[id] = (0ll + preans[find(i)] - preans[find(l)] + mod + calc(l, find(l) + len[find(l)] - 1)) % mod; &#125; &#125; for (int i = 1; i &lt;= m; ++i) printf("%d\n", out[i]); return 0;&#125;]]></content>
@@ -85,8 +100,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>up and down</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -154,7 +169,7 @@
   <entry>
     <title><![CDATA[一些注意事项]]></title>
     <url>%2F%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%2F</url>
-    <content type="text"><![CDATA[—— 简单题不 sb 是什么水平？ —— 国家队水平。 sb 错误开 long long 时记得快读也要开 long long。 记得删调试信息，尤其是 cerr。 多测时要小心使用 memset。 operator 前面记得加返回值类型名。（dev c++ 不报错不警告） 跑的很快可能是因为被优化了，因此不要用空循环测运行用时。 （用于在线比赛）RE 可能是爆栈了。 sb 想不到多次二分时想一想能不能用双指针。 计数 → 什么是重复的，什么是相同的。要做到不重不漏 最优化 → 什么是不优的，什么是不劣的。 要是怎么样就好了 → 能不能转化成这样。 存在反例 → 反例能否特殊处理。 只用管大小而不关心具体值 → 从小到大、从大到小考虑 / 二分答案转成 01。]]></content>
+    <content type="text"><![CDATA[—— 简单题不 sb 是什么水平？ —— 国家队水平。 sb 错误开 long long 时记得快读也要开 long long。 记得删调试信息，尤其是 cerr。 多测时要小心使用 memset。 operator 前面记得加返回值类型名。（dev c++ 不报错不警告） 跑的很快可能是因为被优化了，因此不要用空循环测运行用时。 （用于在线比赛）RE 可能是爆栈了。 不要假根号分治（可能大于 / 小于根号的同样可以处理小于 / 大于根号的）。 sb 想不到多次二分时想一想能不能用双指针。 计数 → 什么是重复的，什么是相同的。要做到不重不漏 最优化 → 什么是不优的，什么是不劣的。 要是怎么样就好了 → 能不能转化成这样。 存在反例 → 反例能否特殊处理。 只用管大小而不关心具体值 → 从小到大、从大到小考虑 / 二分答案转成 01。]]></content>
       <categories>
         <category>其它</category>
       </categories>
@@ -592,8 +607,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>SAM</tag>
         <tag>后缀数组</tag>
+        <tag>SAM</tag>
       </tags>
   </entry>
   <entry>
@@ -731,8 +746,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>Codeforces</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -872,7 +887,7 @@
   <entry>
     <title><![CDATA[好用的网站]]></title>
     <url>%2F%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99%2F</url>
-    <content type="text"><![CDATA[一些好用的网站。 图床 几何 图论 函数 找规律 矩阵运算 在线汇编编译器 C++ LaTeX 公式大全 LaTeX 公式奆全 .tex 教程 OI Wiki Wolfram Alpha OIerDb OI 中转站]]></content>
+    <content type="text"><![CDATA[一些好用的网站。 图床 几何 图论 函数 找规律 矩阵运算 在线汇编编译器 C++ LaTeX 公式大全 LaTeX 公式奆全 .tex 教程 OI Wiki Wolfram Alpha OIerDb OI 中转站 线稿上色]]></content>
       <categories>
         <category>其它</category>
       </categories>
