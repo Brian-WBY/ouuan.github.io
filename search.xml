@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CF512D Fox And Dinner（二分图，最大流）]]></title>
+    <url>%2FCF512D-Fox-And-Dinner%EF%BC%88%E4%BA%8C%E5%88%86%E5%9B%BE%EF%BC%8C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目链接CF 题意简述给你 $n$ 个整数，需要将它们分成任意个至少包含 $3$ 个数的环，使得每相邻两个数加起来是一个质数。 判断是否有解，若有解输出任意一组解。 $3\le n\le 200$, 数的范围是 $[2,10^4]$。 简要做法首先，由于每个数都大于等于 $2$，加起来是质数的必要条件是一奇一偶。 所以，如果把数看成点，相加得到质数看成边，就得到了一张二分图。 而题目的要求可以看作是每个点都匹配两个点。因为所有点度数都为 $2$ 的简单无向图一定是一个至少包含 $3$ 个点的环。 所以可以这样建图：源点到奇数，容量为 $2$；奇数到与其之和为质数的偶数，容量为 $1$；偶数到汇点，容量为 $2$。 如果最大流为 $n$ 就有解。输出方案就和普通的网络流输出方案差不多（可以参考代码）。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;queue&gt;#include &lt;vector&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 210;const int W = 20010;int n, a[N], p[W], tot;bool np[W];struct Flow&#123; const int s = N - 2; const int t = N - 1; int head[N], nxt[N * N], to[N * N], edge[N * N], cnt; queue&lt;int&gt; q; bool vis[N]; int dep[N]; void add(int u, int v, int w) &#123; nxt[++cnt] = head[u]; head[u] = cnt; to[cnt] = v; edge[cnt] = w; &#125; void Add(int u, int v, int w) &#123; add(u, v, w); add(v, u, 0); &#125; bool bfs() &#123; memset(dep, -1, sizeof(dep)); dep[s] = 0; q.push(s); while (!q.empty()) &#123; int u = q.front(); q.pop(); for (int i = head[u]; i; i = nxt[i]) &#123; int v = to[i]; int w = edge[i]; if (w &gt; 0 &amp;&amp; dep[v] == -1) &#123; dep[v] = dep[u] + 1; q.push(v); &#125; &#125; &#125; return ~dep[t]; &#125; int dfs(int u, int flow) &#123; if (dep[u] == dep[t]) return u == t ? flow : 0; int out = 0; for (int i = head[u]; i &amp;&amp; flow - out; i = nxt[i]) &#123; int v = to[i]; int w = edge[i]; if (dep[v] == dep[u] + 1) &#123; int f = dfs(v, min(flow - out, w)); edge[i] -= f; edge[i ^ 1] += f; out += f; &#125; &#125; return out; &#125; int maxFlow() &#123; int out = 0; while (bfs()) out += dfs(s, N); return out; &#125; void init() &#123; cnt = 1; for (int i = 1; i &lt;= n; ++i) &#123; if (a[i] &amp; 1) Add(s, i, 2); else Add(i, t, 2); &#125; for (int i = 1; i &lt;= n; ++i) &#123; if (!(a[i] &amp; 1)) continue; for (int j = 1; j &lt;= n; ++j) &#123; if (np[a[i] + a[j]]) continue; Add(i, j, 1); &#125; &#125; &#125; vector&lt;int&gt; cycle(int u) &#123; vector&lt;int&gt; out(1, u); vis[u] = true; while (1) &#123; bool flag = false; for (int i = head[u]; i; i = nxt[i]) &#123; int v = to[i]; int w = edge[i]; if (((a[u] &amp; 1) ^ (w &gt; 0)) &amp;&amp; v &lt;= n &amp;&amp; !vis[v]) &#123; vis[v] = flag = true; out.push_back(v); u = v; break; &#125; &#125; if (!flag) break; &#125; return out; &#125; void output() &#123; vector&lt;vector&lt;int&gt; &gt; ans; for (int i = 1; i &lt;= n; ++i) if (!vis[i]) ans.push_back(cycle(i)); printf("%d\n", ans.size()); for (int i = 0; i &lt; ans.size(); ++i) &#123; printf("%d", ans[i].size()); for (int j = 0; j &lt; ans[i].size(); ++j) printf(" %d", ans[i][j]); puts(""); &#125; &#125;&#125; flow;int main()&#123; for (int i = 2; i &lt; W; ++i) &#123; if (!np[i]) p[++tot] = i; for (int j = 1; j &lt;= tot &amp;&amp; i * p[j] &lt; W; ++j) &#123; np[i * p[j]] = true; if (i % p[j] == 0) break; &#125; &#125; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; ++i) scanf("%d", a + i); flow.init(); if (flow.maxFlow() != n) &#123; puts("Impossible"); return 0; &#125; flow.output(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>二分图</tag>
+        <tag>网络流</tag>
+        <tag>最大流</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CF508D Tanya and Password（欧拉路径）]]></title>
+    <url>%2FCF508D-Tanya-and-Password%EF%BC%88%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目链接CF 题意简述有一个字符串 $S[1..n+2]$，告诉你 $\forall 1\le i\le n, S[i..i+2]$（所有长为 $3$ 的子串），求任意一个满足条件的 $S$。 $1\le n\le 2\cdot 10^5$，字符集为大小写字母 + 数字。 简要做法容易想到需要建图。 但是，如果把每个长为 $3$ 的子串看成点，前后缀匹配看成边，就做不下去了。 正确做法是把每个长为 $2$ 的子串看成点，长为 $3$ 的子串看成边。这样原问题就转化成了求有向图的欧拉路径。（不会这个的话建议自行搜索一下。） 如果每次 dfs 同一个点时都遍历所有出边，度数比较大就会挂。使用 vector 存边的话可以 pop_back() 或者记录一下已经遍历到了哪一条边，使用前向星的话可以像当前弧优化那样修改 head。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstdlib&gt;using namespace std;const int N = 200010;const int W = 62 * 62;int head[N], nxt[N], to[N], cnt;int n, ind[N], outd[N], tot;char s[N], ans[N];int charToInt(char x)&#123; if (isdigit(x)) return x - '0'; if (islower(x)) return x - 'a' + 10; return x - 'A' + 36;&#125;char intToChar(int x)&#123; if (x &lt; 10) return x + '0'; if (x &lt; 36) return x - 10 + 'a'; return x - 36 + 'A';&#125;int wordToInt(char x, char y)&#123; return charToInt(x) * 62 + charToInt(y);&#125;void add(int u, int v)&#123; nxt[++cnt] = head[u]; head[u] = cnt; to[cnt] = v;&#125;void fail()&#123; puts("NO"); exit(0);&#125;void dfs(int u)&#123; for (int&amp; i = head[u]; i; ) &#123; int v = to[i]; i = nxt[i]; dfs(v); &#125; ans[--tot] = intToChar(u % 62);&#125;int main()&#123; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; ++i) &#123; scanf("%s", s); int u = wordToInt(s[0], s[1]); int v = wordToInt(s[1], s[2]); ++outd[u]; ++ind[v]; add(u, v); &#125; int oneMoreIn = 0, oneMoreOut = 0; for (int i = 0; i &lt; W; ++i) &#123; if (ind[i] == outd[i]) continue; if (ind[i] == outd[i] + 1) &#123; if (oneMoreIn) fail(); oneMoreIn = i; &#125; else if (ind[i] + 1 == outd[i]) &#123; if (oneMoreOut) fail(); oneMoreOut = i; &#125; else fail(); &#125; if (!oneMoreOut) &#123; for (int i = 0; i &lt; W; ++i) &#123; if (outd[i]) &#123; oneMoreOut = i; break; &#125; &#125; &#125; tot = n + 2; dfs(oneMoreOut); ans[--tot] = intToChar(oneMoreOut / 62); if (!tot) printf("YES\n%s", ans); else puts("NO"); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>建图</tag>
+        <tag>欧拉路径</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[gym102268D Dates（贪心，二分图匹配，线段树）]]></title>
     <url>%2Fgym102268D-Dates%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%8C%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D%EF%BC%8C%E7%BA%BF%E6%AE%B5%E6%A0%91%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接CF 题意简述给你一张二分图：左边 $t$ 个位置，第 $i$ 个位置上有 $a_i$ 个点；右边 $n$ 个带权的点，第 $i$ 个点与位置在 $[l_i, r_i]$ 之间的所有左边的点有连边；匹配权值为匹配中右边点的权值之和；求最大权匹配。 $1\le n,t\le 3\cdot 10^5$，保证 $l_i\le l_{i+1}$, $r_i\le r_{i+1}$。 简要做法首先，将右边的点按权值从大到小排序，依次加入，看有没有完全匹配，有就选这个点。这样一定是最优的，好像可以用拟阵相关的理论证明，但我不太会.. 于是，问题转化成了如何判定是否存在完全匹配，而霍尔定理恰恰是用来做这件事的——考虑右边的点中被选择的那些，选择其一个子集，判断是否所有子集的邻域（即与其相邻的点构成的集合）大小都比子集本身大。 如果选择的子集中元素对应的区间的并集不是连续的，霍尔定理的条件成立等价于对于断点两边分别成立，所以只需要考虑子集对应的区间连续的情况。 又由于 $l_i\le l_{i+1}$, $r_i\le r_{i+1}$，只用考虑子集中的元素本身编号连续的情况。那么，霍尔定理的条件就可以表示为： $$\forall 1\le i&lt; j\le n,[i,j]\text{中被选择的右侧点个数}\le [l_i,r_j]\text{中左侧点数量}$$ 如果处理出 $a_{1..t}$ 的前缀和 $pre[i]=\sum_{j=1}^ia_j$，用 $p[i]$ 表示 $[1,i]$ 中被选择的右侧点个数，那么式子就变成了： $$\forall1\le i&lt; j\le n, p[j]-p[i-1]\le pre[r_j]-pre[l_i-1]$$ 也就是： $$\forall1\le i&lt; j\le n, pre[l_i-1]-p[i-1]\le pre[r_j]-p[j]$$ 所以，可以对每个元素 $i$ 维护 $pre[l_{i+1}-1]-p[i]$ 以及 $pre[r_j]-p[j]$。 $pre$ 是定值，考虑如何更新 $p$。事实上，往已选择的点中加入一个点，就是把一段后缀的 $p$ 加一。所以可以考虑用线段树维护。 并且，一段后缀加一（令这段后缀为 $[x..n]$）后，只有 $i&lt; x,j\ge x$ 的数对 $(i,j)$ 对应的大小关系发生改变，事实上只用判断 $i&lt;x$ 的 $pre[l_i-1]-p[i-1]$ 的最大值与 $j\ge x$ 的 $pre[r_j]-p[j]$ 的最小值的大小关系即可，同样可以使用线段树维护。 另一种判断方法，是在线段树上的每个节点处判断左儿子与右儿子有没有出现不满足霍尔定理条件的情况。 参考代码代码中使用了 segmenttree.h。 每次判断前缀与后缀的大小关系12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;algorithm&gt;#include "segmenttree.h"using namespace std;typedef long long ll;int read()&#123; int out = 0; char c; while (!isdigit(c = getchar())); for (; isdigit(c); c = getchar()) out = out * 10 + c - '0'; return out;&#125;const int N = 300010;const ll INF = 1e18;int n, m;ll pre[N], ans;struct Girl&#123; int l, r, p, id; bool operator&lt;(const Girl&amp; y) const &#123; return p &gt; y.p; &#125;&#125; g[N];struct Value&#123; ll mn, mx; Value(ll _mn = INF, ll _mx = -INF) &#123; mn = _mn; mx = _mx; &#125;&#125;;vector&lt;Value&gt; a;Value merge(Value x, Value y)&#123; return Value(min(x.mn, y.mn), max(x.mx, y.mx));&#125;void update(segmentTreeNode&lt;Value, int&gt;&amp; u, int x)&#123; u.val.mx += x; u.val.mn += x; u.tag += x;&#125;int main()&#123; n = read(); m = read(); for (int i = 1; i &lt;= m; ++i) pre[i] = pre[i - 1] + read(); a.resize(n + 1); for (int i = 1; i &lt;= n; ++i) &#123; g[i].l = read(); g[i].r = read(); g[i].p = read(); g[i].id = i; a[i].mn = pre[g[i].r]; a[i - 1].mx = pre[g[i].l - 1]; &#125; sort(g + 1, g + n + 1); segmentTree&lt;Value, int, merge, update&gt; t(0, n + 1, a, Value()); for (int i = 1; i &lt;= n; ++i) &#123; if (t.query(0, g[i].id).mx &gt;= t.query(g[i].id, n + 1).mn) continue; t.modify(g[i].id, n + 1, -1); ans += g[i].p; &#125; cout &lt;&lt; ans; return 0;&#125; 在线段树的每个节点处判断123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;algorithm&gt;#include "segmenttree.h"using namespace std;typedef long long ll;int read()&#123; int out = 0; char c; while (!isdigit(c = getchar())); for (; isdigit(c); c = getchar()) out = out * 10 + c - '0'; return out;&#125;const int N = 300010;const ll INF = 1e18;int n, m;ll pre[N], ans;struct Girl&#123; int l, r, p, id; bool operator&lt;(const Girl&amp; y) const &#123; return p &gt; y.p; &#125;&#125; g[N];struct Value&#123; ll mn, mx; bool inv; Value(ll _mn = INF, ll _mx = -INF, int _inv = false) &#123; mn = _mn; mx = _mx; inv = _inv; &#125;&#125;;vector&lt;Value&gt; a;Value merge(Value x, Value y)&#123; return Value(min(x.mn, y.mn), max(x.mx, y.mx), x.inv || y.inv || x.mx &gt; y.mn);&#125;void update(segmentTreeNode&lt;Value, int&gt;&amp; u, int x)&#123; u.val.mx += x; u.val.mn += x; u.tag += x;&#125;int main()&#123; n = read(); m = read(); for (int i = 1; i &lt;= m; ++i) pre[i] = pre[i - 1] + read(); a.resize(n + 1); for (int i = 1; i &lt;= n; ++i) &#123; g[i].l = read(); g[i].r = read(); g[i].p = read(); g[i].id = i; a[i].mn = pre[g[i].r]; a[i - 1].mx = pre[g[i].l - 1]; &#125; sort(g + 1, g + n + 1); segmentTree&lt;Value, int, merge, update&gt; t(0, n + 1, a, Value()); for (int i = 1; i &lt;= n; ++i) &#123; t.modify(g[i].id, n + 1, -1); if (t.query(0, n + 1).inv) t.modify(g[i].id, n + 1, 1); else ans += g[i].p; &#125; cout &lt;&lt; ans; return 0;&#125;]]></content>
@@ -9,9 +36,10 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>图论</tag>
         <tag>数据结构</tag>
         <tag>线段树</tag>
+        <tag>图论</tag>
+        <tag>二分图</tag>
         <tag>二分图匹配</tag>
       </tags>
   </entry>
@@ -100,8 +128,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>up and down</tag>
         <tag>并查集</tag>
+        <tag>up and down</tag>
       </tags>
   </entry>
   <entry>
@@ -169,7 +197,7 @@
   <entry>
     <title><![CDATA[一些注意事项]]></title>
     <url>%2F%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%2F</url>
-    <content type="text"><![CDATA[—— 简单题不 sb 是什么水平？ —— 国家队水平。 sb 错误开 long long 时记得快读也要开 long long。 记得删调试信息，尤其是 cerr。 多测时要小心使用 memset。 operator 前面记得加返回值类型名。（dev c++ 不报错不警告） 跑的很快可能是因为被优化了，因此不要用空循环测运行用时。 （用于在线比赛）RE 可能是爆栈了。 不要假根号分治（可能大于 / 小于根号的同样可以处理小于 / 大于根号的）。 sb 想不到多次二分时想一想能不能用双指针。 计数 → 什么是重复的，什么是相同的。要做到不重不漏 最优化 → 什么是不优的，什么是不劣的。 要是怎么样就好了 → 能不能转化成这样。 存在反例 → 反例能否特殊处理。 只用管大小而不关心具体值 → 从小到大、从大到小考虑 / 二分答案转成 01。 成双成对的元素，在一起怎么样，不在一起怎么样，经常可以用随机数异或来处理。 把整个序列分成若干段，每段求一个值再加起来求最值，暴力是 DP，经常可以用决策单调性优化。]]></content>
+    <content type="text"><![CDATA[—— 简单题不 sb 是什么水平？ —— 国家队水平。 sb 错误开 long long 时记得快读也要开 long long。 记得删调试信息，尤其是 cerr。 多测时要小心使用 memset。 operator 前面记得加返回值类型名。（dev c++ 不报错不警告） 跑的很快可能是因为被优化了，因此不要用空循环测运行用时。 （用于在线比赛）RE 可能是爆栈了。 不要假根号分治（可能大于 / 小于根号的同样可以处理小于 / 大于根号的）。 sb 想不到多次二分时想一想能不能用双指针。 计数 → 什么是重复的，什么是相同的。要做到不重不漏 最优化 → 什么是不优的，什么是不劣的。 要是怎么样就好了 → 能不能转化成这样。 存在反例 → 反例能否特殊处理。 只用管大小而不关心具体值 → 从小到大、从大到小考虑 / 二分答案转成 01。 成双成对的元素，在一起怎么样，不在一起怎么样，经常可以用随机数异或来处理。 把整个序列分成若干段，每段求一个值再加起来求最值，暴力是 DP，经常可以用决策单调性优化。 图论相关问题（包括树上问题）可以考虑点和边互相转化。]]></content>
       <categories>
         <category>其它</category>
       </categories>
@@ -497,8 +525,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>树状数组</tag>
+        <tag>数据结构</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
@@ -746,8 +774,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>AtCoder</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
