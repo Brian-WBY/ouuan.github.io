@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[CF512D Fox And Dinner（二分图，最大流）]]></title>
-    <url>%2FCF512D-Fox-And-Dinner%EF%BC%88%E4%BA%8C%E5%88%86%E5%9B%BE%EF%BC%8C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%89%2F</url>
+    <title><![CDATA[CF512C Fox And Dinner（二分图，最大流）]]></title>
+    <url>%2FCF512C-Fox-And-Dinner%EF%BC%88%E4%BA%8C%E5%88%86%E5%9B%BE%EF%BC%8C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目链接CF 题意简述给你 $n$ 个整数，需要将它们分成任意个至少包含 $3$ 个数的环，使得每相邻两个数加起来是一个质数。 判断是否有解，若有解输出任意一组解。 $3\le n\le 200$, 数的范围是 $[2,10^4]$。 简要做法首先，由于每个数都大于等于 $2$，加起来是质数的必要条件是一奇一偶。 所以，如果把数看成点，相加得到质数看成边，就得到了一张二分图。 而题目的要求可以看作是每个点都匹配两个点。因为所有点度数都为 $2$ 的简单无向图一定是一个至少包含 $3$ 个点的环。 所以可以这样建图：源点到奇数，容量为 $2$；奇数到与其之和为质数的偶数，容量为 $1$；偶数到汇点，容量为 $2$。 如果最大流为 $n$ 就有解。输出方案就和普通的网络流输出方案差不多（可以参考代码）。 参考代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;queue&gt;#include &lt;vector&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int N = 210;const int W = 20010;int n, a[N], p[W], tot;bool np[W];struct Flow&#123; const int s = N - 2; const int t = N - 1; int head[N], nxt[N * N], to[N * N], edge[N * N], cnt; queue&lt;int&gt; q; bool vis[N]; int dep[N]; void add(int u, int v, int w) &#123; nxt[++cnt] = head[u]; head[u] = cnt; to[cnt] = v; edge[cnt] = w; &#125; void Add(int u, int v, int w) &#123; add(u, v, w); add(v, u, 0); &#125; bool bfs() &#123; memset(dep, -1, sizeof(dep)); dep[s] = 0; q.push(s); while (!q.empty()) &#123; int u = q.front(); q.pop(); for (int i = head[u]; i; i = nxt[i]) &#123; int v = to[i]; int w = edge[i]; if (w &gt; 0 &amp;&amp; dep[v] == -1) &#123; dep[v] = dep[u] + 1; q.push(v); &#125; &#125; &#125; return ~dep[t]; &#125; int dfs(int u, int flow) &#123; if (dep[u] == dep[t]) return u == t ? flow : 0; int out = 0; for (int i = head[u]; i &amp;&amp; flow - out; i = nxt[i]) &#123; int v = to[i]; int w = edge[i]; if (dep[v] == dep[u] + 1) &#123; int f = dfs(v, min(flow - out, w)); edge[i] -= f; edge[i ^ 1] += f; out += f; &#125; &#125; return out; &#125; int maxFlow() &#123; int out = 0; while (bfs()) out += dfs(s, N); return out; &#125; void init() &#123; cnt = 1; for (int i = 1; i &lt;= n; ++i) &#123; if (a[i] &amp; 1) Add(s, i, 2); else Add(i, t, 2); &#125; for (int i = 1; i &lt;= n; ++i) &#123; if (!(a[i] &amp; 1)) continue; for (int j = 1; j &lt;= n; ++j) &#123; if (np[a[i] + a[j]]) continue; Add(i, j, 1); &#125; &#125; &#125; vector&lt;int&gt; cycle(int u) &#123; vector&lt;int&gt; out(1, u); vis[u] = true; while (1) &#123; bool flag = false; for (int i = head[u]; i; i = nxt[i]) &#123; int v = to[i]; int w = edge[i]; if (((a[u] &amp; 1) ^ (w &gt; 0)) &amp;&amp; v &lt;= n &amp;&amp; !vis[v]) &#123; vis[v] = flag = true; out.push_back(v); u = v; break; &#125; &#125; if (!flag) break; &#125; return out; &#125; void output() &#123; vector&lt;vector&lt;int&gt; &gt; ans; for (int i = 1; i &lt;= n; ++i) if (!vis[i]) ans.push_back(cycle(i)); printf("%d\n", ans.size()); for (int i = 0; i &lt; ans.size(); ++i) &#123; printf("%d", ans[i].size()); for (int j = 0; j &lt; ans[i].size(); ++j) printf(" %d", ans[i][j]); puts(""); &#125; &#125;&#125; flow;int main()&#123; for (int i = 2; i &lt; W; ++i) &#123; if (!np[i]) p[++tot] = i; for (int j = 1; j &lt;= tot &amp;&amp; i * p[j] &lt; W; ++j) &#123; np[i * p[j]] = true; if (i % p[j] == 0) break; &#125; &#125; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; ++i) scanf("%d", a + i); flow.init(); if (flow.maxFlow() != n) &#123; puts("Impossible"); return 0; &#125; flow.output(); return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
@@ -37,9 +37,9 @@
       <tags>
         <tag>贪心</tag>
         <tag>图论</tag>
+        <tag>二分图</tag>
         <tag>数据结构</tag>
         <tag>线段树</tag>
-        <tag>二分图</tag>
         <tag>二分图匹配</tag>
       </tags>
   </entry>
@@ -114,8 +114,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>容斥原理</tag>
         <tag>计数dp</tag>
+        <tag>容斥原理</tag>
         <tag>概率期望</tag>
         <tag>扩展 min-max 容斥</tag>
       </tags>
@@ -128,8 +128,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>up and down</tag>
         <tag>并查集</tag>
+        <tag>up and down</tag>
       </tags>
   </entry>
   <entry>
@@ -525,8 +525,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>树状数组</tag>
+        <tag>数据结构</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
@@ -586,8 +586,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>容斥原理</tag>
         <tag>计数dp</tag>
+        <tag>容斥原理</tag>
       </tags>
   </entry>
   <entry>
@@ -774,8 +774,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>AtCoder</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
