@@ -59,10 +59,10 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
-        <tag>数据结构</tag>
-        <tag>线段树</tag>
         <tag>图论</tag>
+        <tag>数据结构</tag>
+        <tag>贪心</tag>
+        <tag>线段树</tag>
         <tag>二分图</tag>
         <tag>二分图匹配</tag>
       </tags>
@@ -111,8 +111,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数据结构</tag>
+        <tag>贪心</tag>
         <tag>线段树</tag>
       </tags>
   </entry>
@@ -342,8 +342,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>线性基</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -549,8 +549,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>树状数组</tag>
+        <tag>数据结构</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
@@ -659,8 +659,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>SAM</tag>
         <tag>后缀数组</tag>
+        <tag>SAM</tag>
       </tags>
   </entry>
   <entry>
@@ -798,8 +798,8 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>AtCoder</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
