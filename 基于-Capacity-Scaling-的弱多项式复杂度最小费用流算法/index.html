@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="大多数人所使用的费用流算法 SSP（successive shortest path，即每次求出残量网络中 $s$ 到 $t$ 关于费用的最短路进行增广）是伪多项式复杂度的，最坏情况下复杂度为 $O(nmf)$，其中 $f$ 为最大流。已知有一种在点数为 $n$，边数为 $O(n^2)$，值域为 $O(2^{n/2})$ 时将其用时卡成 $O(2^{n/2}n^2\log n)$ 的构造方法。 本">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-28T09:17:42.812Z">
+<meta property="og:updated_time" content="2019-10-28T09:27:06.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 Capacity Scaling 的弱多项式复杂度最小费用流算法">
 <meta name="twitter:description" content="大多数人所使用的费用流算法 SSP（successive shortest path，即每次求出残量网络中 $s$ 到 $t$ 关于费用的最短路进行增广）是伪多项式复杂度的，最坏情况下复杂度为 $O(nmf)$，其中 $f$ 为最大流。已知有一种在点数为 $n$，边数为 $O(n^2)$，值域为 $O(2^{n/2})$ 时将其用时卡成 $O(2^{n/2}n^2\log n)$ 的构造方法。 本">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-28 17:17:42" itemprop="dateModified" datetime="2019-10-28T17:17:42+08:00">2019-10-28</time>
+                <time title="修改时间：2019-10-28 17:27:06" itemprop="dateModified" datetime="2019-10-28T17:27:06+08:00">2019-10-28</time>
               
             
           </span>
@@ -557,7 +557,7 @@
 <li><p>将原费用替换为 reduced cost 不影响环的总费用。</p>
 </li>
 </ol>
-<p>这两个性质都可以由 $C_p(u, v)+C_p(v, w)=p(u)+cost(u, v)+cost(v, w)+p(w)$（中间经过的点的势能相加后抵消）说明。</p>
+<p>这两个性质都可以由 $C_p(u, v)+C_p(v, w)=p(u)+cost(u, v)+cost(v, w)-p(w)$（中间经过的点的势能相加后抵消）说明。</p>
 <p>如果大家有了解过 Johnson 全源最短路径算法，里面也有类似的操作，用于保证边权非负，使得 Dijkstra 算法可以得到应用。在本文所介绍的最小费用流算法中也是一样，为了能够使用 Dijkstra 算法计算最短路，在过程中需要保证 reduced cost 非负。</p>
 <h2 id="capacity-scaling"><a href="#capacity-scaling" class="headerlink" title="capacity scaling"></a>capacity scaling</h2><p>（这个也不知道怎么翻译..）</p>
 <p>capacity scaling 从高到低考虑容量的最高若干位（比如容量为 $5$ ($101_2$)，第一次迭代时考虑最高一位，即 $1$ ($1_2$)，第二次迭代时考虑最高两位，即 $2$ ($10_2$)，第三次迭代时考虑最高三位，即 $5$ ($101_2$)），每次加入更低的位后更新答案。</p>
