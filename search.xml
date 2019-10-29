@@ -60,9 +60,9 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>图论</tag>
         <tag>数据结构</tag>
         <tag>线段树</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>二分图匹配</tag>
       </tags>
@@ -138,8 +138,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>容斥原理</tag>
         <tag>计数dp</tag>
+        <tag>容斥原理</tag>
         <tag>概率期望</tag>
         <tag>扩展 min-max 容斥</tag>
       </tags>
@@ -460,8 +460,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>AC自动机</tag>
         <tag>KMP</tag>
+        <tag>AC自动机</tag>
         <tag>矩阵乘法</tag>
       </tags>
   </entry>
@@ -549,8 +549,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>树状数组</tag>
         <tag>数据结构</tag>
+        <tag>树状数组</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
@@ -610,8 +610,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>容斥原理</tag>
         <tag>计数dp</tag>
+        <tag>容斥原理</tag>
       </tags>
   </entry>
   <entry>
