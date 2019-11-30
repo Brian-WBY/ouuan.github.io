@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="题目链接CF 题意简述有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。 $n\le 5\cdot 10^4$（实际上可以大很多）。">
+  <meta name="description" content="题目链接 CF  题意简述有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。  $n\le 5\cdot 10^4$ （实际上可以大很多）。">
 <meta name="keywords" content="贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF3D Least Cost Bracket Sequence（贪心）">
 <meta property="og:url" content="https://ouuan.github.io/CF3D-Least-Cost-Bracket-Sequence（贪心）/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="题目链接CF 题意简述有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。 $n\le 5\cdot 10^4$（实际上可以大很多）。">
+<meta property="og:description" content="题目链接 CF  题意简述有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。  $n\le 5\cdot 10^4$ （实际上可以大很多）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T14:09:55.334Z">
+<meta property="og:updated_time" content="2019-11-30T15:25:53.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF3D Least Cost Bracket Sequence（贪心）">
-<meta name="twitter:description" content="题目链接CF 题意简述有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。 $n\le 5\cdot 10^4$（实际上可以大很多）。">
+<meta name="twitter:description" content="题目链接 CF  题意简述有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。  $n\le 5\cdot 10^4$ （实际上可以大很多）。">
 
 
 
@@ -441,12 +441,24 @@
                 
               
 
-              <time title="创建时间：2019-10-16 21:50:44 / 修改时间：22:09:55" itemprop="dateCreated datePublished" datetime="2019-10-16T21:50:44+08:00">2019-10-16</time>
+              <time title="创建时间：2019-10-16 21:50:44" itemprop="dateCreated datePublished" datetime="2019-10-16T21:50:44+08:00">2019-10-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-30 23:25:53" itemprop="dateModified" datetime="2019-11-30T23:25:53+08:00">2019-11-30</time>
               
             
           </span>
@@ -504,19 +516,19 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://codeforces.com/contest/3/problem/D" target="_blank" rel="noopener">CF</a></p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p> <a href="https://codeforces.com/contest/3/problem/D" target="_blank" rel="noopener">CF</a> </p>
 <h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>有一个长为 $n$ 的括号序列，其中一些位置是问号，每个问号替换成左括号或替换成右括号各有给定的代价，判断是否能够构造出一个合法的括号序列，如果可以，求出最小代价。</p>
-<p>$n\le 5\cdot 10^4$（实际上可以大很多）。</p>
+<p> $n\le 5\cdot 10^4$ （实际上可以大很多）。</p>
 <a id="more"></a>
 <h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><p>考虑使用带反悔的贪心。</p>
-<p>如果用 $cnt[i]$ 表示 $\sum_{j=1}^i(-1)^{[a_i=’)’]}$（左括号比右括号多的个数），括号序列合法当且仅当 $\forall i,cnt[i]\ge 0$ 且 $cnt[n]=0$。</p>
+<p>如果用 $cnt[i]$ 表示 $\sum_{j=1}^i(-1)^{[a_i=’)’]}$ （左括号比右括号多的个数），括号序列合法当且仅当 $\forall i,cnt[i]\ge 0$ 且 $cnt[n]=0$ 。</p>
 <p>如果把右括号反悔成左括号，一定可以保证 $cnt[i]\ge 0$ 这个条件依然满足。</p>
-<p>但是，如果把左括号反悔成右括号，有可能造成本来 $cnt[i]\ge 0$ 的位置小于 $0$。</p>
-<p>并且，如果选择了多余的左括号，还会导致 $cnt[n]&gt;0$。</p>
+<p>但是，如果把左括号反悔成右括号，有可能造成本来 $cnt[i]\ge 0$ 的位置小于 $0$ 。</p>
+<p>并且，如果选择了多余的左括号，还会导致 $cnt[n]&gt;0$ 。</p>
 <p>如何解决这些问题呢？</p>
 <p>可以发现，如果初始时优先选择右括号，上述问题就都得到解决了。</p>
-<p>即，每次碰到问号都选右括号，并且将其标记为可以反悔为左括号。如果 $cnt[i]&lt;0$，就从可反悔的右括号里选反悔代价最小的改成左括号。这样的话，$cnt[i]\ge 0$ 不会因反悔而被破坏，$cnt[n]&gt;0$ 也不会在有解时发生。</p>
-<p>具体实现可以用堆（<code>priority_queue</code>）。</p>
+<p>即，每次碰到问号都选右括号，并且将其标记为可以反悔为左括号。如果 $cnt[i]&lt;0$ ，就从可反悔的右括号里选反悔代价最小的改成左括号。这样的话， $cnt[i]\ge 0$ 不会因反悔而被破坏， $cnt[n]&gt;0$ 也不会在有解时发生。</p>
+<p>具体实现可以用堆（ <code>priority_queue</code> ）。</p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50010</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line">priority_queue&lt;pii, <span class="built_in">vector</span>&lt;pii&gt;, greater&lt;pii&gt; &gt; q;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">    n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">'('</span>) ++cnt;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">')'</span>) --cnt;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> a, b;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            --cnt;</span><br><span class="line">            s[i] = <span class="string">')'</span>;</span><br><span class="line">            ans += b;</span><br><span class="line">            q.push(pii(a - b, i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (q.empty()) <span class="keyword">break</span>;</span><br><span class="line">            cnt += <span class="number">2</span>;</span><br><span class="line">            ans += q.top().first;</span><br><span class="line">            s[q.top().second] = <span class="string">'('</span>;</span><br><span class="line">            q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (cnt == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%I64d\n%s"</span>, ans, s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       

@@ -104,19 +104,19 @@
 
 
 
-  <meta name="description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^">
+  <meta name="description" content="题目链接 洛谷   AtCoder  题意简述给你初始串 $S_0$ 和目标串 $T$ ，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$ ，其中：  $S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$  求最少需要几次操作可以将当前串变为 $T$ 。">
 <meta name="keywords" content="贪心,实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AGC007F Shik and Copying String（贪心，实现）">
 <meta property="og:url" content="https://ouuan.github.io/AGC007F-Shik-and-Copying-String（贪心，实现）/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^">
+<meta property="og:description" content="题目链接 洛谷   AtCoder  题意简述给你初始串 $S_0$ 和目标串 $T$ ，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$ ，其中：  $S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$  求最少需要几次操作可以将当前串变为 $T$ 。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ouuan.github.io/AGC007F-Shik-and-Copying-String（贪心，实现）/zx.png">
-<meta property="og:updated_time" content="2019-08-18T09:37:44.593Z">
+<meta property="og:updated_time" content="2019-11-30T15:25:54.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AGC007F Shik and Copying String（贪心，实现）">
-<meta name="twitter:description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^">
+<meta name="twitter:description" content="题目链接 洛谷   AtCoder  题意简述给你初始串 $S_0$ 和目标串 $T$ ，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$ ，其中：  $S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$  求最少需要几次操作可以将当前串变为 $T$ 。">
 <meta name="twitter:image" content="https://ouuan.github.io/AGC007F-Shik-and-Copying-String（贪心，实现）/zx.png">
 
 
@@ -460,7 +460,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-18 17:37:44" itemprop="dateModified" datetime="2019-08-18T17:37:44+08:00">2019-08-18</time>
+                <time title="修改时间：2019-11-30 23:25:54" itemprop="dateModified" datetime="2019-11-30T23:25:54+08:00">2019-11-30</time>
               
             
           </span>
@@ -518,21 +518,21 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.luogu.org/problem/AT2173" target="_blank" rel="noopener">洛谷</a></p>
-<p><a href="https://atcoder.jp/contests/agc007/tasks/agc007_f" target="_blank" rel="noopener">AtCoder</a></p>
-<h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中：</p>
-<p>$$S_{i+1}[j]=\begin{cases}S_i[1]&amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;j&gt;1\end{cases}$$</p>
-<p>求最少需要几次操作可以将当前串变为 $T$。</p>
-<p>串长 $10^6​$。</p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p> <a href="https://www.luogu.org/problem/AT2173" target="_blank" rel="noopener">洛谷</a> </p>
+<p> <a href="https://atcoder.jp/contests/agc007/tasks/agc007_f" target="_blank" rel="noopener">AtCoder</a> </p>
+<h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你初始串 $S_0$ 和目标串 $T$ ，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$ ，其中：</p>
+<p> $S_{i+1}[j]=\begin{cases}S_i[1]&amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;j&gt;1\end{cases}$ </p>
+<p>求最少需要几次操作可以将当前串变为 $T$ 。</p>
+<p>串长 $10^6​$ 。</p>
 <a id="more"></a>
-<p>这题题解真的难写..之前觉得别人的题解写的不清楚，然而自己也写的不是很清楚…</p>
+<p>这题题解真的难写……之前觉得别人的题解写的不清楚，然而自己也写的不是很清楚……</p>
 <h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><p>首先，这个过程可以用折线表示：</p>
 <img src="/AGC007F-Shik-and-Copying-String（贪心，实现）/zx.png">
 <p>（如果您在色觉方面存在障碍，还请见谅。）</p>
 <p>可以发现，每条折线都尽量靠右是最优的，一旦画不下了，就加一行。</p>
 <p>现在问题变成了如何高效地维护这一贪心。</p>
-<p>当 $S_0=T$ 时，先特判掉，输出 $0​$。</p>
-<p>由于每次拐点都会往左下移动一格，我们可以用队列来维护当前折线的每个拐点（折线往右拐的点，也就是 $S_i[j]=S_i[j-1]$ 的 $j-1$ 这个点）（不包括最后一行的拐点），其中靠近队首表示靠下（离 $T$ 较近）的拐点，靠近队尾表示靠上（靠近 $S_0$）的拐点。</p>
+<p>当 $S_0=T$ 时，先特判掉，输出 $0​$ 。</p>
+<p>由于每次拐点都会往左下移动一格，我们可以用队列来维护当前折线的每个拐点（折线往右拐的点，也就是 $S_i[j]=S_i[j-1]$ 的 $j-1$ 这个点）（不包括最后一行的拐点），其中靠近队首表示靠下（离 $T$ 较近）的拐点，靠近队尾表示靠上（靠近 $S_0$ ）的拐点。</p>
 <p>详见代码（因为这题文字写出来不如代码好理解）：</p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, ans;</span><br><span class="line"><span class="built_in">string</span> s, t;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; s &gt;&gt; t;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (s == t) <span class="comment">// 特判两串相等</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> up = n - <span class="number">1</span>, down = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (down &gt;= <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (down &amp;&amp; t[down - <span class="number">1</span>] == t[down]) --down; <span class="comment">// 找到当前折线在最后一行最左的位置</span></span><br><span class="line">        <span class="keyword">while</span> (up &gt;= <span class="number">0</span> &amp;&amp; (up &gt; down || s[up] != t[down])) --up; <span class="comment">// 找到当前折线在第一行最左的位置</span></span><br><span class="line">        <span class="keyword">if</span> (up &lt; <span class="number">0</span>) <span class="comment">// 如果第一行没有对应的字符，输出无解</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty() &amp;&amp; q.front() - q.size() &gt;= down) q.pop(); <span class="comment">// 把当前折线不会碰到的部分弹出</span></span><br><span class="line">        <span class="keyword">if</span> (up != down) q.push(up); <span class="comment">// 如果当前折线真的是“折线”而不是竖直下来不拐弯，就把 S1 的拐点压入队列</span></span><br><span class="line">        ans = max(ans, (<span class="keyword">int</span>)q.size() + <span class="number">1</span>); <span class="comment">// 后文会解释为什么这样更新答案</span></span><br><span class="line">        --down;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>这个维护拐点的方式应该画画图就能明白。</p>
