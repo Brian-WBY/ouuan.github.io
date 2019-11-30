@@ -40,7 +40,7 @@
   <entry>
     <title><![CDATA[「NOI2013」树的计数]]></title>
     <url>%2F%E3%80%8CNOI2013%E3%80%8D%E6%A0%91%E7%9A%84%E8%AE%A1%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[我需要一个dfs序列、bfs序列的更舒服的定义方式。 ——vfk《四色的NOI》 题目链接UOJ 洛谷 题意简述给你 DFS 序和 BFS 序，求所有满足条件的有根树的平均高度。 点数不超过 $2\cdot 10^5$ 。 （先说句闲话：感觉题解标题括号内放知识点遇到这种题就没了..总不能写个差分上去，让这题看上去是差分裸题吧..） 简要做法本文中记题目给出的 DFS 序中的第 $i$ 个为 $dfs[i]$，BFS 序中的第 $i$ 个为 $bfs[i]$。和大多数人写 Tarjan 算法的习惯一样，记 $dfn[dfs[i]]=i$, $bfn[bfs[i]]=i$ 。 大体思路：将 BFS 序按节点的深度分成若干段。 每棵合法的树可以依定义映射到唯一的分段方案。并且，这是一个单射，即每个分段方案对应最多一棵树。或者说这是一个合法的树到合法的分段方案的一一映射。因为，若存在两棵不同的树有着相同的 BFS 序和分段方案，它们的 DFS 序一定不同。 在本文中，记 $d[i]=[bfs[i]\text{ 和 }bfs[i+1]\text{ 不在同一层}]$ ，那么，树的高度为 $1+\sum_{i=1}^{n-1}d[i]$ 。 下面给出分段方案合法的三个必要条件： $d[1]=1$，根必须自成一层。 $\forall 1\le i\le n-1\land dfn[bfs[i]]&gt;dfn[bfs[i+1]]$, $d[i]=1$ 。即：若 BFS 序相邻的两个节点 BFS 序靠后的那个 DFS 序反而小，则这两个节点不在同一层。证明：若在同一层，BFS 序靠后的 DFS 序肯定也靠后。 $\forall 1\le i\le n-1\land bfn[dfs[i]]&lt;bfn[dfs[i+1]]$, $\left(\sum\limits_{j=bfn[dfs[i]]}^{bfn[dfs[i+1]]-1}d[i]\right)\le 1$ 。即：若 DFS 序相邻的两个节点 DFS 序靠后的那个 BFS 序也靠后，则靠后的那个节点和靠前的那个节点在同一层或靠后的那个节点是靠前的那个节点的儿子（有直接连边的儿子）。 可以证明，这三个条件同时还是分段方案合法的充分条件。 前两个条件可以直接用，第三个条件通过差分就可以 $O(n)$ 解决。 $d$ 确定的点对答案的贡献为 $d$，否则可以证明贡献为 $0.5$ 。 先咕着，不会证这三个条件的充分性，不会证不确定的点贡献为 $0.5$（即每个条件 3 的段内最多只有一个不确定点），回家后在 vuq 问一问吧.. （尝试证明：） 上述三个条件的充分性考虑构造地证明，即在分段方案满足上述三个条件的前提下，构造出一棵同时满足 DFS 序、BFS 序和分段方案限制的树。 为了方便，下文中分别记上述三个条件为 “必要条件 $(1)$”、“必要条件 $(2)$”、“必要条件 $(3)$” 。 需要注意的是，下文中的 $dfs$、$bfn$ 等数组是类似于”输入“一样的存在，在得到证明之前，它们不代表构造出的这棵树的 DFS 序、BFS 序。 记 $h[i]=\sum_{j=1}^{bfn[i]-1}d[i]$ ，$fa[i][j]$ 表示点 $i$ 的祖先中深度为 $j$（令根的深度为 $0$）的那个（特别地，$fa[i][h[i]]=i$）。 构造一棵这样的树： 节点 $i$ 的深度为 $h[i]$ 。 $\forall 2\le i\le n, fa[dfs[i]][h[i]-1]=fa[dfs[i-1]][h[i]-1]$ 。 一个节点的孩子按它们的 $dfn$ 值从小到大排序。 这个构造是可以做到的，可以归纳地证明： 归纳步骤：第 $i$ ($i\ge 2$) 步时将点 $dfs[i]$ 加入树中，其父亲设为 $fa[dfs[i-1]][h[i]-1]$ 。 归纳假设：第 $i$ 步完成后，树上有 $dfs[1..i]$ 这些点，树的形态已确定，且节点 $i$ 的深度为 $h[i]$ 。 归纳基础：第 $1$ 步啥都没做，归纳假设显然成立。 归纳证明：由归纳假设可以得到，$dfs[i-1]$ 的所有祖先已经确定，且其深度为 $h[i-1]$ ；由必要条件 $(3)$ 可以得到，$h[i-1]\ge h[i]-1$，所以 $fa[dfs[i-1]][h[i]-1]$ 是良定义的；因此，归纳步骤可以完成。由于 $dfs[i]$ 的父亲确定了，树上所有点的父亲都确定了，树的形态就确定了；由于 $dfs[i]$ 的父亲深度为 $h[i]-1$，所以 $dfs[i]$ 的深度为 $h[i]$；因此，归纳假设得到证明。 上面的归纳证明了前两条构造条件，而“一个节点的孩子按它们的 $dfn$ 值从小到大排序”显然可以做到。 定义 $dfs’(i, j)$ 表示现在处于节点 $i$，已经访问了 $dfn$ 不超过 $j$ 的所有儿子，剩余的 DFS 序列。 参考代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;using namespace std;int n;vector&lt;int&gt; dfs, bfs, dfn, bfn, d, pre, tag;int main()&#123; scanf("%d", &amp;n); dfs.resize(n + 1, 0); bfs = dfn = bfn = d = pre = tag = dfs; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;dfs[i]); dfn[dfs[i]] = i; &#125; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;bfs[i]); bfn[bfs[i]] = i; &#125; d[1] = 1; for (int i = 1; i &lt; n; ++i) &#123; if (dfn[bfs[i]] &gt; dfn[bfs[i + 1]]) d[i] = 1; pre[i] = pre[i - 1] + d[i]; &#125; pre[n] = pre[n - 1]; for (int i = 1; i &lt; n; ++i) &#123; if (pre[bfn[dfs[i + 1]] - 1] &gt; pre[bfn[dfs[i]] - 1]) &#123; ++tag[bfn[dfs[i]]]; --tag[bfn[dfs[i + 1]]]; &#125; &#125; int cnt = 0; double ans = pre[n] + 1; for (int i = 1; i &lt; n; ++i) &#123; cnt += tag[i]; if (!cnt) ans += 0.5; &#125; printf("%.3lf", ans); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[我需要一个dfs序列、bfs序列的更舒服的定义方式。 ——vfk《四色的NOI》 题目链接UOJ 洛谷 题意简述给你 DFS 序和 BFS 序，求所有满足条件的有根树的平均高度。 点数不超过 $2\cdot 10^5$ 。 （先说句闲话：感觉题解标题括号内放知识点遇到这种题就没了..总不能写个差分上去，让这题看上去是差分裸题吧..） 简要做法本文中记题目给出的 DFS 序中的第 $i$ 个为 $dfs[i]$，BFS 序中的第 $i$ 个为 $bfs[i]$。和大多数人写 Tarjan 算法的习惯一样，记 $dfn[dfs[i]]=i$, $bfn[bfs[i]]=i$ 。 大体思路：将 BFS 序按节点的深度分成若干段。 每棵合法的树可以依定义映射到唯一的分段方案。并且，这是一个单射，即每个分段方案对应最多一棵树。或者说这是一个合法的树到合法的分段方案的一一映射。因为，若存在两棵不同的树有着相同的 BFS 序和分段方案，它们的 DFS 序一定不同。 在本文中，记 $d[i]=[bfs[i]\text{ 和 }bfs[i+1]\text{ 不在同一层}]$ ，那么，树的高度为 $1+\sum_{i=1}^{n-1}d[i]$ 。 下面给出分段方案合法的三个必要条件： $d[1]=1$，根必须自成一层。 $\forall 1\le i\le n-1\land dfn[bfs[i]]&gt;dfn[bfs[i+1]]$, $d[i]=1$ 。即：若 BFS 序相邻的两个节点 BFS 序靠后的那个 DFS 序反而小，则这两个节点不在同一层。证明：若在同一层，BFS 序靠后的 DFS 序肯定也靠后。 $\forall 1\le i\le n-1\land bfn[dfs[i]]&lt; bfn[dfs[i+1]]$, $\left(\sum\limits_{j=bfn[dfs[i]]}^{bfn[dfs[i+1]]-1}d[i]\right)\le 1$ 。即：若 DFS 序相邻的两个节点 DFS 序靠后的那个 BFS 序也靠后，则靠后的那个节点和靠前的那个节点在同一层或靠后的那个节点是靠前的那个节点的儿子（有直接连边的儿子）。 可以证明，这三个条件同时还是分段方案合法的充分条件。 前两个条件可以直接用，第三个条件通过差分就可以 $O(n)$ 解决。 $d$ 确定的点对答案的贡献为 $d$，否则可以证明贡献为 $0.5$ 。 上述三个条件的充分性这部分还在施工中。 施工中 考虑构造地证明，即在分段方案满足上述三个条件的前提下，构造出一棵同时满足 DFS 序、BFS 序和分段方案限制的树。 为了方便，下文中分别记上述三个条件为 “必要条件 $(1)$”、“必要条件 $(2)$”、“必要条件 $(3)$” 。 需要注意的是，下文中的 $dfs$、$bfn$ 等数组是类似于”输入“一样的存在，在得到证明之前，它们不代表构造出的这棵树的 DFS 序、BFS 序。 记 $h[i]=\sum_{j=1}^{bfn[i]-1}d[i]$ ，$fa[i][j]$ 表示点 $i$ 的祖先中深度为 $j$（令根的深度为 $0$）的那个（特别地，$fa[i][h[i]]=i$）。 构造一棵这样的树： 节点 $i$ 的深度为 $h[i]$ 。 $\forall 2\le i\le n, fa[dfs[i]][h[i]-1]=fa[dfs[i-1]][h[i]-1]$ 。 一个节点的孩子按它们的 $dfn$ 值从小到大排序。 这个构造是可以做到的，可以归纳地证明： 归纳步骤：第 $i$ ($i\ge 2$) 步时将点 $dfs[i]$ 加入树中，其父亲设为 $fa[dfs[i-1]][h[i]-1]$ 。 归纳假设：第 $i$ 步完成后，树上有 $dfs[1..i]$ 这些点，树的形态已确定，且节点 $i$ 的深度为 $h[i]$ 。 归纳基础：第 $1$ 步啥都没做，归纳假设显然成立。 归纳证明：由归纳假设可以得到，$dfs[i-1]$ 的所有祖先已经确定，且其深度为 $h[i-1]$ ；由必要条件 $(3)$ 可以得到，$h[i-1]\ge h[i]-1$，所以 $fa[dfs[i-1]][h[i]-1]$ 是良定义的；因此，归纳步骤可以完成。由于 $dfs[i]$ 的父亲确定了，树上所有点的父亲都确定了，树的形态就确定了；由于 $dfs[i]$ 的父亲深度为 $h[i]-1$，所以 $dfs[i]$ 的深度为 $h[i]$；因此，归纳假设得到证明。 上面的归纳证明了前两条构造条件，而“一个节点的孩子按它们的 $dfn$ 值从小到大排序”显然可以做到。 参考代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;using namespace std;int n;vector&lt;int&gt; dfs, bfs, dfn, bfn, d, pre, tag;int main()&#123; scanf("%d", &amp;n); dfs.resize(n + 1, 0); bfs = dfn = bfn = d = pre = tag = dfs; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;dfs[i]); dfn[dfs[i]] = i; &#125; for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;bfs[i]); bfn[bfs[i]] = i; &#125; d[1] = 1; for (int i = 1; i &lt; n; ++i) &#123; if (dfn[bfs[i]] &gt; dfn[bfs[i + 1]]) d[i] = 1; pre[i] = pre[i - 1] + d[i]; &#125; pre[n] = pre[n - 1]; for (int i = 1; i &lt; n; ++i) &#123; if (pre[bfn[dfs[i + 1]] - 1] &gt; pre[bfn[dfs[i]] - 1]) &#123; ++tag[bfn[dfs[i]]]; --tag[bfn[dfs[i + 1]]]; &#125; &#125; int cnt = 0; double ans = pre[n] + 1; for (int i = 1; i &lt; n; ++i) &#123; cnt += tag[i]; if (!cnt) ans += 0.5; &#125; printf("%.3lf", ans); return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
       </categories>
@@ -142,10 +142,10 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>贪心</tag>
         <tag>数据结构</tag>
         <tag>线段树</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>二分图匹配</tag>
       </tags>
@@ -235,8 +235,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>up and down</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -425,8 +425,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>线性基</tag>
         <tag>贪心</tag>
+        <tag>线性基</tag>
       </tags>
   </entry>
   <entry>
@@ -543,8 +543,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>AC自动机</tag>
         <tag>KMP</tag>
+        <tag>AC自动机</tag>
         <tag>矩阵乘法</tag>
       </tags>
   </entry>
@@ -632,8 +632,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>树状数组</tag>
         <tag>数据结构</tag>
+        <tag>树状数组</tag>
         <tag>树套树</tag>
       </tags>
   </entry>
