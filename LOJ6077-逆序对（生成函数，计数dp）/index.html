@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="题目链接 LOJ  题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。  $1\le n, k\le 10^5$ ， $k\le \binom n 2$">
+  <meta name="description" content="题目链接LOJ 题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。 $1\le n, k\le 10^5$，$k\le \binom n 2$">
 <meta name="keywords" content="组合数学,计数dp,生成函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LOJ6077 逆序对（生成函数，计数dp）">
 <meta property="og:url" content="https://ouuan.github.io/LOJ6077-逆序对（生成函数，计数dp）/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="题目链接 LOJ  题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。  $1\le n, k\le 10^5$ ， $k\le \binom n 2$">
+<meta property="og:description" content="题目链接LOJ 题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。 $1\le n, k\le 10^5$，$k\le \binom n 2$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-30T16:23:53.829Z">
+<meta property="og:updated_time" content="2019-12-01T10:12:19.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LOJ6077 逆序对（生成函数，计数dp）">
-<meta name="twitter:description" content="题目链接 LOJ  题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。  $1\le n, k\le 10^5$ ， $k\le \binom n 2$">
+<meta name="twitter:description" content="题目链接LOJ 题意简述求长度为 $n$ 逆序对数为 $k$ 的排列个数。 $1\le n, k\le 10^5$，$k\le \binom n 2$">
 
 
 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 00:23:53" itemprop="dateModified" datetime="2019-12-01T00:23:53+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-01 18:12:19" itemprop="dateModified" datetime="2019-12-01T18:12:19+08:00">2019-12-01</time>
               
             
           </span>
@@ -516,16 +516,14 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p> <a href="https://loj.ac/problem/6089" target="_blank" rel="noopener">LOJ</a> </p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://loj.ac/problem/6089" target="_blank" rel="noopener">LOJ</a></p>
 <h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>求长度为 $n$ 逆序对数为 $k$ 的排列个数。</p>
-<p> $1\le n, k\le 10^5$ ， $k\le \binom n 2$ </p>
+<p>$1\le n, k\le 10^5$，$k\le \binom n 2$</p>
 <a id="more"></a>
-<h2 id="简要作法"><a href="#简要作法" class="headerlink" title="简要作法"></a>简要作法</h2><p>从小到大依次考虑将每个数插入排列，那么每个数 $i$ 都可以贡献 $0\dots i-1$ 个逆序对，所以答案的生成函数为 $(1 + x)(1 + x + x^2)\cdots(1+x+\cdots+x^{n-1})$ 。</p>
-<p>上下同时乘上 $(1-x)^n$ ，即求：</p>
-<p>$$<br>\frac{(1-x)(1-x^2)\cdots(1-x^n)}{(1-x)^n}<br>$$</p>
-<p>（不约分是为了方便求。）</p>
-<p>分母 $\frac{1}{(1-x)^n}=\sum\limits_{i\ge 0}\binom{n-1+i}{n-1}x^i$ ，<del>是一个大家熟知的结论</del>，可以利用 $(1+x+x^2+\cdots)^n$ 的组合意义说明。</p>
-<p>分子的 $x^i$ 项系数的组合意义为：考虑从 $1,2,\ldots,n$ 中选若干个和为 $i$ 的数（每个数只能选一遍）的所有方案，若选了奇数个数贡献为 $-1$ ，若选了偶数个数贡献为 $1$ 。</p>
+<h2 id="简要作法"><a href="#简要作法" class="headerlink" title="简要作法"></a>简要作法</h2><p>从小到大依次考虑将每个数插入排列，那么每个数 $i$ 都可以贡献 $0\dots i-1$ 个逆序对，所以答案的生成函数为 $(1 + x)(1 + x + x^2)\cdots(1+x+\cdots+x^{n-1})$。</p>
+<p>上下同时乘上 $(1-x)^n$，即求：<br>$$<br>\frac{(1-x)(1-x^2)\cdots(1-x^n)}{(1-x)^n}<br>$$<br>（不约分是为了方便求。）</p>
+<p>分母 $\frac{1}{(1-x)^n}=\sum\limits_{i\ge 0}\binom{n-1+i}{n-1}x^i$，<del>是一个大家熟知的结论</del>，可以利用 $(1+x+x^2+\cdots)^n$ 的组合意义说明。</p>
+<p>分子的 $x^i$ 项系数的组合意义为：考虑从 $1,2,\ldots,n$ 中选若干个和为 $i$ 的数（每个数只能选一遍）的所有方案，若选了奇数个数贡献为 $-1$，若选了偶数个数贡献为 $1$。</p>
 <p>这个东西可以用类似 <a href="/LOJ6089-小Y的背包计数问题（根号分治，计数dp）">LOJ6089</a> 的方法求：</p>
 <p>令 $f_{i,j}$ 表示选 $i$ 个数和为 $j$ 的方案数。</p>
 <p>由于选择的数两两不同，第一维的大小是 $O(\sqrt k)$ 的。</p>
@@ -537,10 +535,9 @@
 <p>$$<br>f_{i,j}=f_{i-1,j-i}+f_{i,j-i}<br>$$</p>
 <p>但这样算可能会出现体积大于 $n$ 的物品。</p>
 <p>具体来说，当 $j\ge n+1$ 时，会有 $f_{i-1,j-n-1}$ 种不合法的方案，需要减去。</p>
-<p>计算完 dp 之后，分子的 $x^i$ 项系数即为 $\sum\limits_{j\ge0}(-1)^jf_{j,i}$ </p>
-<p>最后把分子和分母卷积起来即可，总时间复杂度为 $O(n+k\sqrt k)$ 或 $O(n\log p+k\sqrt k)$ （取决于计算组合数与逆元的方式）。</p>
+<p>计算完 dp 之后，分子的 $x^i$ 项系数即为 $\sum\limits_{j\ge0}(-1)^jf_{j,i}$</p>
+<p>最后把分子和分母卷积起来即可，总时间复杂度为 $O(n+k\sqrt k)$ 或 $O(n\log p+k\sqrt k)$（取决于计算组合数与逆元的方式）。</p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k, f[<span class="number">2</span>][N], cur, ans, fact[N &lt;&lt; <span class="number">1</span>], invf[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>) out = (ll) out * x % mod;</span><br><span class="line">        x = (ll) x * x % mod;</span><br><span class="line">        y &gt;&gt;= <span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (ll) fact[x] * invf[y] % mod * invf[x - y] % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line"></span><br><span class="line">    fact[<span class="number">0</span>] = invf[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n + k; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        fact[i] = (ll) fact[i - <span class="number">1</span>] * i % mod;</span><br><span class="line">        invf[i] = qpow(fact[i], mod - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ans = c(n - <span class="number">1</span> + k, n - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    f[cur][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, sum = <span class="number">1</span>; sum &lt;= k; sum += (++i))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(f[cur ^= <span class="number">1</span>], <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= k; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            f[cur][j] = (f[cur ^ <span class="number">1</span>][j - i] + f[cur][j - i]) % mod;</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= n + <span class="number">1</span>) f[cur][j] = (f[cur][j] - f[cur ^ <span class="number">1</span>][j - n - <span class="number">1</span>] + mod) % mod;</span><br><span class="line">            ans = (ans + (i &amp; <span class="number">1</span> ? <span class="number">-1l</span>l : <span class="number">1l</span>l) * f[cur][j] * c(n - <span class="number">1</span> + k - j, n - <span class="number">1</span>) % mod + mod) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, ans);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
     </div>
 

@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="题目链接 洛谷   darkbzoj  题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$ ，边数 $10^5$ 。">
+  <meta name="description" content="题目链接洛谷 darkbzoj 题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$，边数 $10^5$。">
 <meta name="keywords" content="线性基,图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ2115 [WC2011]最大XOR和路径（线性基，图论）">
 <meta property="og:url" content="https://ouuan.github.io/BZOJ2115-WC2011-最大XOR和路径（线性基，图论）/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="题目链接 洛谷   darkbzoj  题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$ ，边数 $10^5$ 。">
+<meta property="og:description" content="题目链接洛谷 darkbzoj 题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$，边数 $10^5$。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-30T16:23:53.795Z">
+<meta property="og:updated_time" content="2019-12-01T10:12:19.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ2115 [WC2011]最大XOR和路径（线性基，图论）">
-<meta name="twitter:description" content="题目链接 洛谷   darkbzoj  题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$ ，边数 $10^5$ 。">
+<meta name="twitter:description" content="题目链接洛谷 darkbzoj 题意简述给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。 点数 $5\times 10^4$，边数 $10^5$。">
 
 
 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 00:23:53" itemprop="dateModified" datetime="2019-12-01T00:23:53+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-01 18:12:19" itemprop="dateModified" datetime="2019-12-01T18:12:19+08:00">2019-12-01</time>
               
             
           </span>
@@ -516,10 +516,10 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p> <a href="https://www.luogu.org/problemnew/show/P4151" target="_blank" rel="noopener">洛谷</a> </p>
-<p> <a href="https://darkbzoj.tk/problem/2115" target="_blank" rel="noopener">darkbzoj</a> </p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.luogu.org/problemnew/show/P4151" target="_blank" rel="noopener">洛谷</a></p>
+<p><a href="https://darkbzoj.tk/problem/2115" target="_blank" rel="noopener">darkbzoj</a></p>
 <h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你一张带边权的无向图，求 $1$ 到 $n$ 的边权异或和最大的路径。</p>
-<p>点数 $5\times 10^4$ ，边数 $10^5$ 。</p>
+<p>点数 $5\times 10^4$，边数 $10^5$。</p>
 <a id="more"></a>
 <h2 id="简要做法"><a href="#简要做法" class="headerlink" title="简要做法"></a>简要做法</h2><p>我们先随便找一条从 $1$ 到 $n$ 的链，然后看能如何修改它。</p>
 <p>如果我们不走这条链，从某个位置分叉出去，为了回到这条链上，我们一定是从某条岔路走出去，走一个环，再沿着这条岔路走回来。由于边权异或，这条岔路就不会产生贡献。因此，最终答案可以表示为一条链 + 若干个环的异或和。这条链是可以随便选的，因为一条链可以异或若干个环得到另一条链。</p>
