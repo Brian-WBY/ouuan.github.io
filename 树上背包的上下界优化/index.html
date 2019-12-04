@@ -545,14 +545,14 @@
 <h2 id="形象的解释"><a href="#形象的解释" class="headerlink" title="形象的解释"></a>形象的解释</h2><p>每个点对都只会在 $lca$ 处合并一次，所以总的复杂度是 $O(n^2)$ 的。</p>
 <p>这个解释很简洁，需要自己意会一下..</p>
 <h2 id="严格？证明"><a href="#严格？证明" class="headerlink" title="严格？证明"></a>严格？证明</h2><p>令 $T_u$ 为处理子树 $u$ 的总用时，那么：</p>
-<p>$\begin{aligned}T_u&amp;=\left(\sum\limits_{\forall fa[v_i]=u}T_{v_i}\right)+t_u\\\\t_u&amp;=1+(1+siz[v_1])\times siz[v_1]+(1+siz[v_1]+siz[v_2])\times siz[v_2]+\cdots+siz[u]\times siz[v_k]\\&amp;=1+\sum\limits_{\forall fa[v_i]=u}siz[v_i]\times(siz[u]+1)\\&amp;=siz[u]^2\end{aligned}$</p>
+<p>$\begin{aligned}T_u&amp;=\left(\sum\limits_{\forall fa[v_i]=u}T_{v_i}\right)+t_u\\t_u&amp;=1+(1+siz[v_1])\times siz[v_1]+(1+siz[v_1]+siz[v_2])\times siz[v_2]+\cdots+siz[u]\times siz[v_k]\&amp;=1+\sum\limits_{\forall fa[v_i]=u}siz[v_i]\times(siz[u]+1)\&amp;=siz[u]^2\end{aligned}$</p>
 <p>对于叶子节点 $u$ ，$T(u)=1$ ，是 $O(siz[u]^2)$ 的。</p>
 <p>对于儿子都是叶子节点的节点 $u$，由于平方和小于和平方，$\sum\limits_{\forall fa[v_i]=u}T_{v_i}$ 也是 $O(siz[u]^2)$ 的。</p>
 <p>可以这样递归地说明，对于任意节点 $u$ ，$\sum\limits_{\forall fa[v_i]=u}T_{v_i}$ 都是 $O(siz[u]^2)$ 的。</p>
 <p>又因为 $t(u)$ 是 $O(siz[u]^2)$ 的，$T(u)$ 就是 $O(siz[u]^2)$ 的。</p>
 <p>所以解决整个问题就是 $O(n^2)$ 的。</p>
 <h2 id="严格！证明"><a href="#严格！证明" class="headerlink" title="严格！证明"></a>严格！证明</h2><p>枚举过程中还要对 $m$ 取 min ，所以应该是这样的：</p>
-<p>$\begin{aligned}t_u&amp;=1+\min(m,1+siz[v_1])\times \min(m,siz[v_1])+\min(m,1+siz[v_1]+siz[v_2])\times \min(m,siz[v_2])+\cdots+\min(m,siz[u])\times \min(m,siz[v_k])\\&amp;\le m\times siz[u]\end{aligned}$</p>
+<p>$\begin{aligned}t_u&amp;=1+\min(m,1+siz[v_1])\times \min(m,siz[v_1])+\min(m,1+siz[v_1]+siz[v_2])\times \min(m,siz[v_2])+\cdots+\min(m,siz[u])\times \min(m,siz[v_k])\&amp;\le m\times siz[u]\end{aligned}$</p>
 <p>所以，$t(u)$ 是 $O(\min(siz[u],m)\times siz[u])$ 的。</p>
 <p>对于 $siz[u]\le m$，$T(u)$ 是 $O(siz[u]^2)$ 的。</p>
 <p>对于 $siz[u]&gt;m$，$\sum\limits_{\forall fa[v_i]=u,siz[v_i]\le m}T_{v_i}$ 是 $O\left(\left(\sum\limits_{\forall fa[v_i]=u,siz[v_i]\le m}siz[v_i]\right)^2\right)$ 的；$\sum\limits_{\forall fa[v_i]=u,siz[v_i]&gt;m}T_{v_i}$ 是 $O\left(m\times\sum\limits_{\forall fa[v_i]=u,siz[v_i]&gt;m}siz[v_i]\right)$ 的；所以，$T(u)$ 是 $O(m\times siz[u])$ 的。</p>

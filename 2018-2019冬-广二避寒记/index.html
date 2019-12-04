@@ -711,13 +711,13 @@
 <p>正解半平面交。</p>
 <h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><p>线性同余找循环节海星。</p>
 <h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><p>给几个团，团内点连相同权值边，问点之间两两距离之和。</p>
-<p>以团内边权为点权求出团之间的最短路，然后 $dist(i,j)=\min\{d(x,y)|x\in S_i,y\in S_j\}$（$S_i$ 表示 $i$ 所在团的集合）。</p>
+<p>以团内边权为点权求出团之间的最短路，然后 $dist(i,j)=\min{d(x,y)|x\in S_i,y\in S_j}$（$S_i$ 表示 $i$ 所在团的集合）。</p>
 <p>具体实现要用到 FMT 里的一个小 trick ，然而题解里一笔带过，我看了一下午题解都没看明白…</p>
 <h2 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h2><p>那位女生 $rank1$ 了…</p>
 <p>然后今天才发现<a href="http://xsy.gdgzez.com.cn/JudgeOnline/" target="_blank" rel="noopener">广二 OJ 外网是能上的</a>..（当然注册不了账号QAQ）</p>
 <h1 id="Day-19"><a href="#Day-19" class="headerlink" title="Day 19"></a>Day 19</h1><p>今天搬的 ACM 原题？CF 权限 gym Orz</p>
 <p>题解给<a href="https://www.bilibili.com/video/av38542305?t=6000" target="_blank" rel="noopener">吉老师视频</a>，太灵性了..</p>
-<p>zjt 25（$rank 8$），myh 赛后五分钟提交 $15$ 快乐赛。</p>
+<p>zjt 25（$rank\ 8$），myh 赛后五分钟提交 $15$ 快乐赛。</p>
 <h2 id="T1-1"><a href="#T1-1" class="headerlink" title="T1"></a>T1</h2><p>dp，好像没啥不会的知识点，然而没做出来。</p>
 <h2 id="T2-1"><a href="#T2-1" class="headerlink" title="T2"></a>T2</h2><p>把排列当成坐标放在平面上，分类讨论求上升块？表示完全没听懂，讲的时候 myh 在不停地提问。</p>
 <p>黑科技听不懂，而这道题除了黑科技还要牛顿迭代…每场必有多项式的flag还是没倒.</p>
@@ -735,11 +735,11 @@
 <p>T3是个树上dp，部分分有个“与一条蛇同构”，然后：</p>
 <img src="/2018-2019冬-广二避寒记/nineheadsnake.jpg">
 <p>xswl</p>
-<p>尝试着按myh的提交记录刷题，第一题是个字符串哈希，第一眼还以为是AC自动机..然后一发mapT飞，unordered就过了。第二题是个裸的单点、子树加，单点询问，竟然写错了3遍…..第三题是个数位dp，愉快地卡住了….再不好好学数位dp感觉会出事_(:з」∠)_</p>
+<p>尝试着按myh的提交记录刷题，第一题是个字符串哈希，第一眼还以为是AC自动机..然后一发mapT飞，unordered就过了。第二题是个裸的单点、子树加，单点询问，竟然写错了3遍…..第三题是个数位dp，愉快地卡住了….再不好好学数位dp感觉会出事<em>(:з」∠)</em></p>
 <h1 id="Day-28"><a href="#Day-28" class="headerlink" title="Day 28"></a>Day 28</h1><p>T1是树上在线多组多路径询问颜色种类数和mex，一开始看到部分分还在想为什么没给树上莫队分，然后一想多条路径莫队复杂度肯定不对，看题解才知道正解树分块…bitset能在线搞定的事，为什么要离线排序呢？然后成功在赛后A掉了（广二膜你赛赛后首A_(:з」∠)_）大约就是预处理关键点之间的bitset，块内暴力跳，关键点之间已经预处理了。</p>
 <p>T2是道神仙题..好像从某外国比赛搬的，赛时0A，通过分治时判断左右一样来保证复杂度，没太听懂。</p>
 <p>T3：“点分治然后建虚树再点分治<strong>就好了！</strong>”（mdzz）“听说fzy有两个log做法？treap/Splay合并就行了！”（mdzz）</p>
-<p>然后<a href="https://codeforces.com/blog/entry/64343" target="_blank" rel="noopener">用bitset<0>水了点contribution</0></a>，达成成就：contribution比friends多。</p>
+<p>然后<a href="https://codeforces.com/blog/entry/64343" target="_blank" rel="noopener">用bitset&lt;0&gt;水了点contribution<!--0--></a>，达成成就：contribution比friends多。</p>
 <p>polygon真有意思！试着把一道题搞上去了。</p>
 <h1 id="Day-29-30"><a href="#Day-29-30" class="headerlink" title="Day 29-30"></a>Day 29-30</h1><p>稍微学了下莫比乌斯反演和杜教筛，感觉挺有意思的QAQ。</p>
 <p>比赛全场就我不会马拉车，然而三题暴力排名还不错…貌似只要打了点非无脑的暴力就能考的还行。（<del>A题就jxd了</del></p>

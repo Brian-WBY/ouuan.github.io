@@ -653,7 +653,7 @@
 <p>出考场听说斜率优化，以为是斜率优化预处理等待时间的连边然后跑最短路。</p>
 <p>看了题解才知道原来这题根本不用最短路，连 DAG 最短路都不用..</p>
 <p>把边按结束时间（$q_i$）排序，令 $f_i$ 表示走完第 $i$ 条边后还需要的烦躁值的最小值。</p>
-<p>$\begin{aligned}f_i&amp;=\min\limits_{p_j\ge q_i,x_j=y_i}\{A(p_j-q_i)^2+B(p_j-q_i)+C+q_j-q_i+f_j\}\\&amp;=\min\limits_{p_j\ge q_i,x_j=y_i}\{Ap_j^2+Bp_j+q_j+f_j-2Ap_jq_i\}+Aq_i^2-Bq_i+C-q_i\end{aligned}​$</p>
+<p>$\begin{aligned}f_i&amp;=\min\limits_{p_j\ge q_i,x_j=y_i}{A(p_j-q_i)^2+B(p_j-q_i)+C+q_j-q_i+f_j}\&amp;=\min\limits_{p_j\ge q_i,x_j=y_i}{Ap_j^2+Bp_j+q_j+f_j-2Ap_jq_i}+Aq_i^2-Bq_i+C-q_i\end{aligned}​$</p>
 <p>然后就可以斜率优化了。（因为转移有 $x_j=y_i$ 的限制，要开 $n$ 个双端队列，但<strong>不要开 deque</strong>，开大量 deque 是会 MLE 的。写法的话，用 vector 存，普通方法写就好了。）</p>
 <div><div class="fold_hider"><div class="close hider_title">参考代码</div></div><div class="fold">
 <p>按理来说题解里不应该包含模板，只不过这也不是什么官方题解，我就懒得换成正常写法了。</p>

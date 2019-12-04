@@ -619,8 +619,8 @@
 <p>证明：</p>
 <p>$i=0$ 时显然成立。</p>
 <p>假设已经证明了 $f_w[i-1][j][k]=wf_1[i-1][j][k]$，就可以归纳地证明 $f_w[i][j][k]=wf_1[i][j][k]$：</p>
-<p>$\begin{aligned}f_1[i][j][k]&amp;=\frac 1{j+k}f_2[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\\&amp;=\frac2{j+k}f_1[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\\&amp;=\frac{j+1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\end{aligned}$</p>
-<p>$\begin{aligned}f_w[i][j][k]&amp;=\frac w{j+k}f_{w+1}[i-1][j+1][k]+\frac{j-w}{j+k}f_w[i-1][j+1][k]+\frac k{j+k}f_w[i-1][j][k-1]\\&amp;=\frac{w(w+1)}{j+k}f_1[i-1][j+1][k]+\frac{w(j-w)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\\&amp;=\frac{w(j+1)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\\&amp;=wf_1[i][j][k]\end{aligned}$</p>
+<p>$\begin{aligned}f_1[i][j][k]&amp;=\frac 1{j+k}f_2[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\&amp;=\frac2{j+k}f_1[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\&amp;=\frac{j+1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\end{aligned}$</p>
+<p>$\begin{aligned}f_w[i][j][k]&amp;=\frac w{j+k}f_{w+1}[i-1][j+1][k]+\frac{j-w}{j+k}f_w[i-1][j+1][k]+\frac k{j+k}f_w[i-1][j][k-1]\&amp;=\frac{w(w+1)}{j+k}f_1[i-1][j+1][k]+\frac{w(j-w)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\&amp;=\frac{w(j+1)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\&amp;=wf_1[i][j][k]\end{aligned}$</p>
 <p>还有一个比较简单但不那么严谨的理解方式：每一步期望的增量都与期望成正比。（这里被 _rqy 喷了，出题人就是菜，这个证明写不严谨。）</p>
 <p>这样的话就只用计算 $f_1[i][j][k]$ 了。</p>
 </li>
@@ -629,10 +629,10 @@
 </ol>
 <p>令 $g’_1[i][j]$ 表示 $g_w[m-i-j][SA+i][SB-j]$，计算方式类似。</p>
 <p><strong>总结</strong></p>
-<p>$f’_1[i][j]=1 (i+j=m)$</p>
-<p>$f’_1[i][j]=\frac{SA+i+1}{SA+SB+i-j}f’_1[i+1][j]+\frac{SB-j}{SA+SB+i-j}f’_1[i][j+1] (i+j&lt;m)$</p>
-<p>$g’_1[i][j]=1 (i+j=m)$</p>
-<p>$g’_1[i][j]=\frac{SA+i}{SA+SB+i-j}g’_1[i+1][j]+\frac{SB-j-1}{SA+SB+i-j}g’_1[i][j+1] (i+j&lt;m)$</p>
+<p>$f’_1[i][j]=1\ (i+j=m)$</p>
+<p>$f’_1[i][j]=\frac{SA+i+1}{SA+SB+i-j}f’_1[i+1][j]+\frac{SB-j}{SA+SB+i-j}f’_1[i][j+1]\ (i+j&lt;m)$</p>
+<p>$g’_1[i][j]=1\ (i+j=m)$</p>
+<p>$g’_1[i][j]=\frac{SA+i}{SA+SB+i-j}g’_1[i+1][j]+\frac{SB-j-1}{SA+SB+i-j}g’_1[i][j+1]\ (i+j&lt;m)$</p>
 <p>“被喜欢的”位置答案是 $w_if’_1[0][0]$，“不被喜欢的”位置答案是 $w_ig’_1[0][0]$。</p>
 <p>如果每次去算逆元就是 $\mathcal O(n+m^2\log p)$，预处理出来就是 $\mathcal O(n+m^2+m\log p)$。</p>
 

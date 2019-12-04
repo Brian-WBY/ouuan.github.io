@@ -526,7 +526,7 @@
 <p>终点集合 $B$ ，也是有向无环图点集的一个子集，大小也为 $n$ 。</p>
 <p>一组 $A\rightarrow B$ 的不相交路径 $S$ ： $S_i$ 是一条从 $A_i$ 到 $B_{\sigma(S)_i}$ 的路径（ $\sigma(S)$ 是一个排列），对于任何 $i\ne j$ ， $S_i$ 和 $S_j$ 没有公共顶点。</p>
 <p> $N(\sigma)$ 表示排列 $\sigma$ 的逆序对个数。</p>
-<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>$$<br>M = \begin{bmatrix}e(A_1,B_1)&amp;e(A_1,B_2)&amp;\cdots&amp;e(A_1,B_n)\\<br>e(A_2,B_1)&amp;e(A_2,B_2)&amp;\cdots&amp;e(A_2,B_n)\\<br>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\<br>e(A_n,B_1)&amp;e(A_n,B_2)&amp;\cdots&amp;e(A_n,B_n)\end{bmatrix}<br>$$</p>
+<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>$$<br>M = \begin{bmatrix}e(A_1,B_1)&amp;e(A_1,B_2)&amp;\cdots&amp;e(A_1,B_n)\<br>e(A_2,B_1)&amp;e(A_2,B_2)&amp;\cdots&amp;e(A_2,B_n)\<br>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>e(A_n,B_1)&amp;e(A_n,B_2)&amp;\cdots&amp;e(A_n,B_n)\end{bmatrix}<br>$$</p>
 <p>$$<br>\det(M)=\sum\limits_{S:A\rightarrow B}(-1)^{N(\sigma(S))}\prod\limits_{i=1}^n \omega(S_i)<br>$$</p>
 <p>其中 $\sum\limits_{S:A\rightarrow B}$ 表示满足上文要求的 $A\rightarrow B$ 的每一组不相交路径 $S$ ，$\det$ 表示行列式。</p>
 <p>证明请参考 <a href="https://en.wikipedia.org/wiki/Lindström–Gessel–Viennot_lemma" target="_blank" rel="noopener">维基百科</a> 。</p>

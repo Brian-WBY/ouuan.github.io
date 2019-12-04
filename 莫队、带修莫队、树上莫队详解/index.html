@@ -644,11 +644,11 @@
 <li>将答案记录到 $out​$ 数组（离线后用于输出那个）时对 $lca(cu,cv)​$ （此时的 $cu,cv​$ 已更新为上一步中的 $tu,tv​$） 的 $vis​$ 取反并更新答案，记录完再改回来（因为 $lca​$ 处理比较麻烦，这样搞比较方便）。</li>
 </ul>
 <p>第二步证明如下：</p>
-<p>$\quad\,T(cu,cv) xor T(tu,tv)$</p>
-<p>$=[S(cu,root) xor S(cv,root)] xor [S(tu,root) xor S(tv,root)]$ （lca及以上相消）</p>
-<p>$=[S(cu,root) xor S(tu,root)] xor [S(cv,root) xor S(tv,root)]$ （交换律、结合律）</p>
-<p>$=T(cu,tu) xor T(cv,tv)$</p>
-<p>之所以要把 $T(cu,cv) xor T(tu,tv)$ 转化成 $T(cu,tu) xor T(cv,tv)$，是因为这样的话就能通过对询问排序来保证复杂度。排序方式就是以 $u$ 所在块编号为第一关键字，$v​$ 的编号为第二关键字排序。如果是带修莫队，就还要以时间为第三关键字。</p>
+<p>$\quad\,T(cu,cv)\ xor\ T(tu,tv)$</p>
+<p>$=[S(cu,root)\ xor\ S(cv,root)]\ xor\ [S(tu,root)\ xor\ S(tv,root)]$ （lca及以上相消）</p>
+<p>$=[S(cu,root)\ xor\ S(tu,root)]\ xor\ [S(cv,root)\ xor\ S(tv,root)]$ （交换律、结合律）</p>
+<p>$=T(cu,tu)\ xor\ T(cv,tv)$</p>
+<p>之所以要把 $T(cu,cv)\ xor\ T(tu,tv)$ 转化成 $T(cu,tu)\ xor\ T(cv,tv)$，是因为这样的话就能通过对询问排序来保证复杂度。排序方式就是以 $u$ 所在块编号为第一关键字，$v​$ 的编号为第二关键字排序。如果是带修莫队，就还要以时间为第三关键字。</p>
 <h2 id="关于单点修改"><a href="#关于单点修改" class="headerlink" title="关于单点修改"></a>关于单点修改</h2><p>树上莫队的单点修改和序列莫队类似，唯一不同就是，修改后是否更新答案通过 $vis$ 数组判断。</p>
 <h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>每块大小在 $[B,3B)​$，所以两点间路径长度也在 $[B,3B)​$，块内移动就是 $\mathcal O(B)​$ 的，然后就和序列莫队的复杂度分析类似了…</p>
 <h2 id="例题代码-2"><a href="#例题代码-2" class="headerlink" title="例题代码"></a>例题代码</h2><p><a href="http://uoj.ac/problem/58" target="_blank" rel="noopener">[WC2013]糖果公园</a></p>

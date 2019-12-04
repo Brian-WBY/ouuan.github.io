@@ -547,7 +547,7 @@
 <h1 id="后缀数组怎么求？"><a href="#后缀数组怎么求？" class="headerlink" title="后缀数组怎么求？"></a>后缀数组怎么求？</h1><h2 id="O-n-2-log-n-做法"><a href="#O-n-2-log-n-做法" class="headerlink" title="$O(n^2\log n)$ 做法"></a>$O(n^2\log n)$ 做法</h2><p>我相信这个做法大家还是能自己想到的..用string+sort就可以了。由于比较两个字符串是 $O(n)$ 的，所以排序是 $O(n^2\log n)$ 的。</p>
 <h2 id="O-n-log-2n-做法"><a href="#O-n-log-2n-做法" class="headerlink" title="$O(n\log^2n)$ 做法"></a>$O(n\log^2n)$ 做法</h2><p>这个做法要用到倍增的思想。</p>
 <p>先对每个长度为 $1$ 的子串（即每个字符）进行排序。</p>
-<p>假设我们已经知道了长度为 $w$ 的子串的排名 $rk_w[1..n]$（即，$rk_w[i]$ 表示 $s[i..\min(i+w-1,n)]$ 在 $\{s[x..\min(x+w-1,n)] | x\in\mathbb{N}\bigcap[1,n]\}$ 中的排名），那么，以 $rk_w[i]$ 为第一关键字， $rk_w[i+w]$ 为第二关键字（若 $i+w&gt;n$ 则令 $rk_w[i+w]$ 为 $-INF$）进行排序，就可以求出 $rk_{2w}[1..n]$。</p>
+<p>假设我们已经知道了长度为 $w$ 的子串的排名 $rk_w[1..n]$（即，$rk_w[i]$ 表示 $s[i..\min(i+w-1,n)]$ 在 ${s[x..\min(x+w-1,n)]\ |\ x\in\mathbb{N}\bigcap[1,n]}$ 中的排名），那么，以 $rk_w[i]$ 为第一关键字， $rk_w[i+w]$ 为第二关键字（若 $i+w&gt;n$ 则令 $rk_w[i+w]$ 为 $-INF$）进行排序，就可以求出 $rk_{2w}[1..n]$。</p>
 <p>倍增排序示意图：$^{[2]}$</p>
 <img src="/后缀数组学习笔记/bz.png">
 <p>如果用 <code>sort</code> 进行排序，复杂度就是 $O(n\log^2n)$ 的。</p>
@@ -601,7 +601,7 @@
 <h2 id="USACO07DEC-Best-Cow-Line-Gold"><a href="#USACO07DEC-Best-Cow-Line-Gold" class="headerlink" title="[USACO07DEC]Best Cow Line, Gold"></a>[USACO07DEC]Best Cow Line, Gold</h2><p><a href="https://www.luogu.org/problemnew/show/P2870" target="_blank" rel="noopener">洛谷</a></p>
 <p><a href="https://ouuan.github.io/P2870-USACO07DEC-Best-Cow-Line-Gold%EF%BC%88%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%EF%BC%89/">我的题解</a></p>
 <h1 id="height-数组"><a href="#height-数组" class="headerlink" title="$height$ 数组"></a>$height$ 数组</h1><p>后缀数组的题目往往是要用到 $height$ 数组的。</p>
-<h2 id="lcp（最长公共前缀）"><a href="#lcp（最长公共前缀）" class="headerlink" title="lcp（最长公共前缀）"></a>lcp（最长公共前缀）</h2><p>两个字符串 $S$ 和 $T$ 的 $lcp$ 就是最大的 $x$ 使得 $S_i=T_i (\forall 1\le i\le x)$ 。</p>
+<h2 id="lcp（最长公共前缀）"><a href="#lcp（最长公共前缀）" class="headerlink" title="lcp（最长公共前缀）"></a>lcp（最长公共前缀）</h2><p>两个字符串 $S$ 和 $T$ 的 $lcp$ 就是最大的 $x$ 使得 $S_i=T_i\ (\forall\ 1\le i\le x)$ 。</p>
 <p>下文中以 $lcp(i,j)$ 表示后缀 $i$ 和后缀 $j$ 的最长公共前缀（的长度）。</p>
 <h2 id="height-数组的定义"><a href="#height-数组的定义" class="headerlink" title="$height$ 数组的定义"></a>$height$ 数组的定义</h2><p>$height[i]=lcp(sa[i],sa[i-1])$，即第 $i$ 名的后缀与它前一名的后缀的最长公共前缀。</p>
 <h2 id="O-n-求-height-数组需要的一个引理"><a href="#O-n-求-height-数组需要的一个引理" class="headerlink" title="$O(n)$ 求 $height$ 数组需要的一个引理"></a>$O(n)$ 求 $height$ 数组需要的一个引理</h2><p>$height[rk[i]]\ge height[rk[i-1]]-1$</p>
@@ -619,7 +619,7 @@
 <h2 id="O-n-求-height-数组的代码实现"><a href="#O-n-求-height-数组的代码实现" class="headerlink" title="$O(n)$ 求 $height$ 数组的代码实现"></a>$O(n)$ 求 $height$ 数组的代码实现</h2><p>利用上面这个引理暴力求即可：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>,k=<span class="number">0</span>;i&lt;=n;++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (k) --k;</span><br><span class="line">    <span class="keyword">while</span> (s[i+k]==s[sa[rk[i]<span class="number">-1</span>]+k]) ++k;</span><br><span class="line">    ht[rk[i]]=k; <span class="comment">//height太长了缩写为ht</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><del>利用摊还分析/势能分析可以发现是O(n)的</del>，$k$ 不会超过 $n$，最多减 $n$ 次，所以最多加 $2n$ 次。</p>
-<h2 id="应用-height-数组需要的一个性质"><a href="#应用-height-数组需要的一个性质" class="headerlink" title="应用 $height$ 数组需要的一个性质"></a>应用 $height$ 数组需要的一个性质</h2><p>$lcp(sa[i],sa[j])=\min\{height[i+1..j]\}$</p>
+<h2 id="应用-height-数组需要的一个性质"><a href="#应用-height-数组需要的一个性质" class="headerlink" title="应用 $height$ 数组需要的一个性质"></a>应用 $height$ 数组需要的一个性质</h2><p>$lcp(sa[i],sa[j])=\min{height[i+1..j]}$</p>
 <p>感性理解：如果 $height$ 一直大于某个数，前这么多位就一直没变过；反之，由于后缀已经排好序了，不可能变了之后变回来。</p>
 <p>严格证明可以参考<a href="https://wenku.baidu.com/view/0dc03d2b1611cc7931b765ce0508763230127479.html" target="_blank" rel="noopener">[2004]后缀数组 by.徐智磊</a>。</p>
 <h2 id="height-数组的应用"><a href="#height-数组的应用" class="headerlink" title="$height$ 数组的应用"></a>$height$ 数组的应用</h2><p>$height$ 数组往往用来解决关于字符串公共部分的题目，通常需要和RMQ/单调栈等算法相结合。</p>

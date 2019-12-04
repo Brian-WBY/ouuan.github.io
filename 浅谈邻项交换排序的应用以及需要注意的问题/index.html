@@ -516,9 +516,7 @@
       
 
       
-        
-
-	<div class="row">
+        <div class="row">
     <embed src="浅谈邻项交换排序的应用以及需要注意的问题.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
@@ -552,7 +550,7 @@
 <h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>皇后有 $n$ 位大臣，每位大臣的左右手上面分别写上了一个正整数。恰逢国庆节来临，皇后决定为 $n$ 位大臣颁发奖金，其中第 $i$ 位大臣所获得的奖金数目为第 $i－1$ 位大臣所获得奖金数目与前 $i$ 位大臣左手上的数的和的较大值再加上第 $i$ 位大臣右手上的数。</p>
 <p>形式化地讲：我们设第 $i$ 位大臣左手上的正整数为 $a_i$ ，右手上的正整数为 $b_i$ ，</p>
 <p>则第 $i$ 位大臣获得的奖金数目为 $c_i$ 可以表达为：</p>
-<p>$$c_i=\begin{cases}a_1+b_1 &amp; i=1\\\max(c_{i-1},\sum\limits_{j=1}^ia_j)+b_i &amp; 2\le i\le n\end{cases}$$</p>
+<p>$$c_i=\begin{cases}a_1+b_1 &amp; i=1\\max(c_{i-1},\sum\limits_{j=1}^ia_j)+b_i &amp; 2\le i\le n\end{cases}$$</p>
 <p>当然，吝啬的皇后并不希望太多的奖金被发给大臣，所以她想请你来重新安排一下队伍的顺序，使得获得奖金最多的大臣，所获奖金数目尽可能的少。</p>
 <p>注意：重新安排队伍并不意味着一定要打乱顺序，我们允许不改变任何一位大臣的位置。</p>
 <h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含一个正整数 $T$ ，表示测试数据的组数。</p>
@@ -608,19 +606,19 @@
 </li>
 </ol>
 <p>上述做法的判断条件满足传递性，但不满足不可比性的传递性。</p>
-<h3 id="满足传递性的证明"><a href="#满足传递性的证明" class="headerlink" title="满足传递性的证明"></a>满足传递性的证明</h3><p>命题：$\forall \begin{cases}\min(a_i,b_j)&lt;\min(a_j,b_i)\\\min(a_j,b_k)&lt;\min(a_k,b_j)\end{cases}$，有 $\min(a_i,b_k)&lt;\min(a_k,b_i)$。</p>
+<h3 id="满足传递性的证明"><a href="#满足传递性的证明" class="headerlink" title="满足传递性的证明"></a>满足传递性的证明</h3><p>命题：$\forall \begin{cases}\min(a_i,b_j)&lt;\min(a_j,b_i)\\min(a_j,b_k)&lt;\min(a_k,b_j)\end{cases}$，有 $\min(a_i,b_k)&lt;\min(a_k,b_i)$。</p>
 <p>将上式拆解成逻辑式，即证：</p>
-<p>$\forall \begin{cases}\,(a_i&lt;a_j\lor b_j&lt;a_j)\land(a_i&lt;b_i\lor b_j&lt;b_i) \\\,(a_j&lt;a_k\lor b_k&lt;a_k)\land(a_j&lt;b_j\lor b_k&lt;b_j)\end{cases}$，有 $(a_i&lt;a_k\lor b_k&lt;a_k)\land(a_i&lt;b_i\lor b_k&lt;b_i)$。</p>
-<p>假设原命题不成立，即 $\exists\begin{cases}\,(a_i&lt;a_j\lor b_j&lt;a_j)\land(a_i&lt;b_i\lor b_j&lt;b_i)&amp;(1) \\\,(a_j&lt;a_k\lor b_k&lt;a_k)\land(a_j&lt;b_j\lor b_k&lt;b_j)&amp;(2) \\\,(a_i\ge a_k\land b_k\ge a_k)\lor(a_i\ge b_i\land b_k\ge b_i)&amp;(3)\end{cases}$</p>
+<p>$\forall \begin{cases}\,(a_i&lt;a_j\lor b_j&lt;a_j)\land(a_i&lt;b_i\lor b_j&lt;b_i) \\,(a_j&lt;a_k\lor b_k&lt;a_k)\land(a_j&lt;b_j\lor b_k&lt;b_j)\end{cases}$，有 $(a_i&lt;a_k\lor b_k&lt;a_k)\land(a_i&lt;b_i\lor b_k&lt;b_i)$。</p>
+<p>假设原命题不成立，即 $\exists\begin{cases}\,(a_i&lt;a_j\lor b_j&lt;a_j)\land(a_i&lt;b_i\lor b_j&lt;b_i)&amp;(1) \\,(a_j&lt;a_k\lor b_k&lt;a_k)\land(a_j&lt;b_j\lor b_k&lt;b_j)&amp;(2) \\,(a_i\ge a_k\land b_k\ge a_k)\lor(a_i\ge b_i\land b_k\ge b_i)&amp;(3)\end{cases}$</p>
 <p>分别讨论 $(3)$ 式成立的两种情况：</p>
 <p>若 $a_i\ge a_k\land b_k\ge a_k$，由 $(2)$ 式得 $a_j&lt;a_k$，进而推出 $a_j&lt;a_i$，再由 $(1)$ 式得 $b_j&lt;a_j$，再由 $(2)$ 式得到 $b_k&lt;b_j$，所以 $b_k&lt;b_j&lt;a_j&lt;a_k$，与 $b_k\ge a_k$ 矛盾，不成立。</p>
 <p>若 $a_i\ge b_i\land b_k\ge b_i$，与上面类似，由 $(1)$ 式得 $b_j&lt;b_i$，进而推出 $b_j&lt;b_k$，再由 $(2)$ 式得到 $a_j&lt;b_j$，再由 $(1)$ 式得到 $a_i&lt;a_j$，所以 $a_i&lt;a_j&lt;b_j&lt;b_i$，与 $a_i\ge b_i$ 矛盾，不成立。</p>
 <p>综上所述，假设不成立。</p>
 <p>所以，$P_{i,j}=\min(a_i,b_j)&lt;\min(a_j,b_i)$ 具有传递性。</p>
-<h3 id="不具有不可比性的传递性的证明"><a href="#不具有不可比性的传递性的证明" class="headerlink" title="不具有不可比性的传递性的证明"></a>不具有不可比性的传递性的证明</h3><p>命题：$\forall \begin{cases}\min(a_i,b_j)=\min(a_j,b_i)\\\min(a_j,b_k)=\min(a_k,b_j)\end{cases}$，有 $\min(a_i,b_k)=\min(a_k,b_i)$。</p>
+<h3 id="不具有不可比性的传递性的证明"><a href="#不具有不可比性的传递性的证明" class="headerlink" title="不具有不可比性的传递性的证明"></a>不具有不可比性的传递性的证明</h3><p>命题：$\forall \begin{cases}\min(a_i,b_j)=\min(a_j,b_i)\\min(a_j,b_k)=\min(a_k,b_j)\end{cases}$，有 $\min(a_i,b_k)=\min(a_k,b_i)$。</p>
 <p>很明显，当 $a_j=b_j$ 且都很小时存在反例，如：</p>
-<p>$$\begin{array}{c|c|c}&amp;a&amp;b\\i&amp;3&amp;5\\j&amp;1&amp;1\\k&amp;2&amp;7\end{array}$$</p>
-<p>$\begin{cases}\min(3,1)=\min(1,5)\\\min(1,7)=\min(2,1)\end{cases}$，但 $\min(3,7)\ne \min(2,5)$。</p>
+<p>$$\begin{array}{c|c|c}&amp;a&amp;b\i&amp;3&amp;5\j&amp;1&amp;1\k&amp;2&amp;7\end{array}$$</p>
+<p>$\begin{cases}\min(3,1)=\min(1,5)\\min(1,7)=\min(2,1)\end{cases}$，但 $\min(3,7)\ne \min(2,5)$。</p>
 <p>这样的反例还有很多，所以，$P_{i,j}=\min(a_i,b_j)&lt;\min(a_j,b_i)$ 不具有不可比性的传递性。</p>
 <h3 id="为何会错"><a href="#为何会错" class="headerlink" title="为何会错"></a>为何会错</h3><p>简单地说，$P_{i,j}=\min(a_i,b_j)&lt;\min(a_j,b_i)$ 不满足严格弱序，不能作为 <code>std::sort</code> 的比较函数。</p>
 <p>究其原因，“不具有不可比性的传递性”意味着：将序列中若干个不可比的相邻元素对（在这种比较方式下即 $\min(a_i,b_{i+1})=\min(a_{i+1},b_i)$ 的 $i$ 和 $i+1$）互换后，可能会出现前面的元素“大于”后面的元素（在这种比较方式下即出现 $\min(a_i,b_{i+1})&gt;\min(a_{i+1},b_i)$），从而使得原先的排列方式不是最优的。</p>
