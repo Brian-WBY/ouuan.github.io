@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="最近做了几道树上背包的题目，很多题目的数据范围都很小，但实际上树上背包有多种方式可以优化到 $O(nm)$ （$n$ 为节点数，$m$ 为体积的值域），比如先序遍历优化（何森《先序遍历用于优化树形背包问题》），求泛化物品的并（徐持衡《浅谈几类背包题》）……经过一番学习，觉得还是上下界优化理解起来最简单，也比较好写，适用范围广，唯一比其它做法复杂的地方就是复杂度分析。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-01T10:12:21.002Z">
+<meta property="og:updated_time" content="2019-12-04T18:44:46.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树上背包的上下界优化">
 <meta name="twitter:description" content="最近做了几道树上背包的题目，很多题目的数据范围都很小，但实际上树上背包有多种方式可以优化到 $O(nm)$ （$n$ 为节点数，$m$ 为体积的值域），比如先序遍历优化（何森《先序遍历用于优化树形背包问题》），求泛化物品的并（徐持衡《浅谈几类背包题》）……经过一番学习，觉得还是上下界优化理解起来最简单，也比较好写，适用范围广，唯一比其它做法复杂的地方就是复杂度分析。">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 18:12:21" itemprop="dateModified" datetime="2019-12-01T18:12:21+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-05 02:44:46" itemprop="dateModified" datetime="2019-12-05T02:44:46+08:00">2019-12-05</time>
               
             
           </span>
@@ -545,7 +545,7 @@
 <h2 id="形象的解释"><a href="#形象的解释" class="headerlink" title="形象的解释"></a>形象的解释</h2><p>每个点对都只会在 $lca$ 处合并一次，所以总的复杂度是 $O(n^2)$ 的。</p>
 <p>这个解释很简洁，需要自己意会一下..</p>
 <h2 id="严格？证明"><a href="#严格？证明" class="headerlink" title="严格？证明"></a>严格？证明</h2><p>令 $T_u$ 为处理子树 $u$ 的总用时，那么：</p>
-<p>$\begin{aligned}T_u&amp;=\left(\sum\limits_{\forall fa[v_i]=u}T_{v_i}\right)+t_u\\t_u&amp;=1+(1+siz[v_1])\times siz[v_1]+(1+siz[v_1]+siz[v_2])\times siz[v_2]+\cdots+siz[u]\times siz[v_k]\&amp;=1+\sum\limits_{\forall fa[v_i]=u}siz[v_i]\times(siz[u]+1)\&amp;=siz[u]^2\end{aligned}$</p>
+<p>$\begin{aligned}T_u&amp;=\left(\sum\limits_{\forall fa[v_i]=u}T_{v_i}\right)+t_u\\t_u&amp;=1+(1+siz[v_1])\times siz[v_1]+(1+siz[v_1]+siz[v_2])\times siz[v_2]+\cdots+siz[u]\times siz[v_k]\\&amp;=1+\sum\limits_{\forall fa[v_i]=u}siz[v_i]\times(siz[u]+1)\\&amp;=siz[u]^2\end{aligned}$</p>
 <p>对于叶子节点 $u$ ，$T(u)=1$ ，是 $O(siz[u]^2)$ 的。</p>
 <p>对于儿子都是叶子节点的节点 $u$，由于平方和小于和平方，$\sum\limits_{\forall fa[v_i]=u}T_{v_i}$ 也是 $O(siz[u]^2)$ 的。</p>
 <p>可以这样递归地说明，对于任意节点 $u$ ，$\sum\limits_{\forall fa[v_i]=u}T_{v_i}$ 都是 $O(siz[u]^2)$ 的。</p>

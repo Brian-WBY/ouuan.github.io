@@ -130,7 +130,7 @@
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/pic1.jpg">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/pic2.jpg">
 <meta property="og:image" content="https://ouuan.github.io/hexo博客搭建指北/refpic.jpg">
-<meta property="og:updated_time" content="2019-12-04T18:16:47.509Z">
+<meta property="og:updated_time" content="2019-12-04T18:43:03.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客搭建指北">
 <meta name="twitter:description" content="折腾了 $3$ 天终于把博客搭建好了…本文会简单介绍一下 hexo 博客的搭建，并选取一些我自己在配置博客的过程中遇到的问题，说明一下我的解决方案。 实际上，hexo 博客的搭建并不难，难搞的是美化，我在这个过程中遇到了很多问题，不可能在这篇博客中全部陈述出来，最重要的还是勤于百度。">
@@ -477,7 +477,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-05 02:16:47" itemprop="dateModified" datetime="2019-12-05T02:16:47+08:00">2019-12-05</time>
+                <time title="修改时间：2019-12-05 02:43:03" itemprop="dateModified" datetime="2019-12-05T02:43:03+08:00">2019-12-05</time>
               
             
           </span>
@@ -751,7 +751,7 @@
 </blockquote>
 <h3 id="启用-LaTeX"><a href="#启用-LaTeX" class="headerlink" title="启用 $\LaTeX$"></a>启用 $\LaTeX$</h3><p>在 <code>\themes\next\_config.yml</code>  中将 <code>mathjax</code> 设为 <code>true</code>，然后将 <code>per_page</code> 设为 <code>false</code> 或者在需要启用 <code>\LaTeX</code> 的博文开头加上 <code>mathjax: true</code> 。</p>
 <h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>由于hexo博客中即使是 <code>$$</code> 内的字符也会被当成 Markdown 渲染，类似于 <code>$f_{f_i}$</code>、<code>$a*b*c$</code>、<code>$[x,y](1&lt;x&lt;y&lt;2)$</code> 之类的，都会被错误地渲染。</p>
-<p>对于下划线，新版本的 <code>marked</code> 已经修复这一 bug（新版本的 hexo 或许已经不需要手动升级了），所以可以通过执行 <code>npm install --save marked</code> 和 <code>npm install --save hexo-renderer-marked</code> 解决。</p>
+<p>对于下划线，新版本的 <code>marked</code> 已经修复这一 bug（新版本的 hexo 或许已经不需要手动升级了），所以可以通过执行 <code>npm install --save marked</code> 和 <code>npm install --save hexo-renderer-marked</code> 解决。但同时，新版本的 <code>marked</code> 会将 <code>\</code> 用作转义，所以 <code>\\</code> 、 <code>\{</code> 之类的要改成 <code>\\\\</code> 、 <code>\\{</code> 。</p>
 <p>对于 <code>*</code>，建议使用 <code>$\cdot$</code> ($a\cdot b$，一般用于表示乘积) 或 <code>$\times$</code> （$n\times m$ 的矩阵，一般用于表示维度或者笛卡尔积）或 <code>$\ast$</code> （$\mathbb{N}^\ast$，一般用于上标或表示卷积） 代替。其实也可以使用 <code>$\*$</code> 来代替 <code>$\ast$</code> 。</p>
 <p>对于 <code>$[x,y](1&lt;x&lt;y&lt;2)$</code>，在它们之间加上空格，即 <code>$[x,y] (1&lt;x&lt;y&lt;2)$</code> 就好了。</p>
 <h2 id="博客的发布"><a href="#博客的发布" class="headerlink" title="博客的发布"></a>博客的发布</h2><p>其实前文提到过，依次输入以下三条命令即可：</p>

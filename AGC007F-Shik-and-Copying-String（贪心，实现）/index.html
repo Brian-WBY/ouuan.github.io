@@ -104,19 +104,19 @@
 
 
 
-  <meta name="description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^6">
+  <meta name="description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^">
 <meta name="keywords" content="贪心,实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AGC007F Shik and Copying String（贪心，实现）">
 <meta property="og:url" content="https://ouuan.github.io/AGC007F-Shik-and-Copying-String（贪心，实现）/index.html">
 <meta property="og:site_name" content="ouuan的博客">
-<meta property="og:description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^6">
+<meta property="og:description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ouuan.github.io/AGC007F-Shik-and-Copying-String（贪心，实现）/zx.png">
-<meta property="og:updated_time" content="2019-12-01T10:12:19.110Z">
+<meta property="og:updated_time" content="2019-12-04T18:47:15.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AGC007F Shik and Copying String（贪心，实现）">
-<meta name="twitter:description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^6">
+<meta name="twitter:description" content="题目链接洛谷 AtCoder 题意简述给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中： $$S_{i+1}[j]=\begin{cases}S_i[1]&amp;amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;amp;j&amp;gt;1\end{cases}$$ 求最少需要几次操作可以将当前串变为 $T$。 串长 $10^">
 <meta name="twitter:image" content="https://ouuan.github.io/AGC007F-Shik-and-Copying-String（贪心，实现）/zx.png">
 
 
@@ -460,7 +460,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 18:12:19" itemprop="dateModified" datetime="2019-12-01T18:12:19+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-05 02:47:15" itemprop="dateModified" datetime="2019-12-05T02:47:15+08:00">2019-12-05</time>
               
             
           </span>
@@ -521,7 +521,7 @@
         <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.luogu.org/problem/AT2173" target="_blank" rel="noopener">洛谷</a></p>
 <p><a href="https://atcoder.jp/contests/agc007/tasks/agc007_f" target="_blank" rel="noopener">AtCoder</a></p>
 <h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给你初始串 $S_0$ 和目标串 $T$，每一步操作可以将当前串 $S_i$ 变成 $S_{i+1}$，其中：</p>
-<p>$$S_{i+1}[j]=\begin{cases}S_i[1]&amp;j=1\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;j&gt;1\end{cases}$$</p>
+<p>$$S_{i+1}[j]=\begin{cases}S_i[1]&amp;j=1\\S_i[j]\text{ 或 }S_{i+1}[j-1]&amp;j&gt;1\end{cases}$$</p>
 <p>求最少需要几次操作可以将当前串变为 $T$。</p>
 <p>串长 $10^6​$。</p>
 <a id="more"></a>

@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://ouuan.github.io/Codeforces-Round-564-中文题解/tutorial2.png">
 <meta property="og:image" content="https://ouuan.github.io/Codeforces-Round-564-中文题解/tutorial3.png">
 <meta property="og:image" content="https://ouuan.github.io/Codeforces-Round-564-中文题解/pseudocode.png">
-<meta property="og:updated_time" content="2019-12-01T10:12:19.672Z">
+<meta property="og:updated_time" content="2019-12-04T18:48:18.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces Round #564 中文题解">
 <meta name="twitter:description" content="台前幕后 contest on CF">
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 18:12:19" itemprop="dateModified" datetime="2019-12-01T18:12:19+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-05 02:48:18" itemprop="dateModified" datetime="2019-12-05T02:48:18+08:00">2019-12-05</time>
               
             
           </span>
@@ -548,7 +548,7 @@
 <div><div class="fold_hider"><div class="close hider_title">题解</div></div><div class="fold">
 <ol>
 <li><p>$m\ge\left\lfloor\frac n 2\right\rfloor+1$</p>
-<p>$\because\begin{cases}|r_1-r_n|+|c_1-c_n|\ge n-1\|r_1-r_n|\le m-1\|c_1-c_n|\le m-1\end{cases}$</p>
+<p>$\because\begin{cases}|r_1-r_n|+|c_1-c_n|\ge n-1\\|r_1-r_n|\le m-1\\|c_1-c_n|\le m-1\end{cases}$</p>
 <p>$\therefore m-1+m-1\ge n-1$</p>
 <p>$\therefore m\ge\frac{n+1}2$</p>
 <p>$\because m\text{是整数}$</p>
@@ -619,8 +619,8 @@
 <p>证明：</p>
 <p>$i=0$ 时显然成立。</p>
 <p>假设已经证明了 $f_w[i-1][j][k]=wf_1[i-1][j][k]$，就可以归纳地证明 $f_w[i][j][k]=wf_1[i][j][k]$：</p>
-<p>$\begin{aligned}f_1[i][j][k]&amp;=\frac 1{j+k}f_2[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\&amp;=\frac2{j+k}f_1[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\&amp;=\frac{j+1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\end{aligned}$</p>
-<p>$\begin{aligned}f_w[i][j][k]&amp;=\frac w{j+k}f_{w+1}[i-1][j+1][k]+\frac{j-w}{j+k}f_w[i-1][j+1][k]+\frac k{j+k}f_w[i-1][j][k-1]\&amp;=\frac{w(w+1)}{j+k}f_1[i-1][j+1][k]+\frac{w(j-w)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\&amp;=\frac{w(j+1)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\&amp;=wf_1[i][j][k]\end{aligned}$</p>
+<p>$\begin{aligned}f_1[i][j][k]&amp;=\frac 1{j+k}f_2[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\\&amp;=\frac2{j+k}f_1[i-1][j+1][k]+\frac{j-1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\\&amp;=\frac{j+1}{j+k}f_1[i-1][j+1][k]+\frac k{j+k}f_1[i-1][j][k-1]\end{aligned}$</p>
+<p>$\begin{aligned}f_w[i][j][k]&amp;=\frac w{j+k}f_{w+1}[i-1][j+1][k]+\frac{j-w}{j+k}f_w[i-1][j+1][k]+\frac k{j+k}f_w[i-1][j][k-1]\\&amp;=\frac{w(w+1)}{j+k}f_1[i-1][j+1][k]+\frac{w(j-w)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\\&amp;=\frac{w(j+1)}{j+k}f_1[i-1][j+1][k]+\frac {wk}{j+k}f_1[i-1][j][k-1]\\&amp;=wf_1[i][j][k]\end{aligned}$</p>
 <p>还有一个比较简单但不那么严谨的理解方式：每一步期望的增量都与期望成正比。（这里被 _rqy 喷了，出题人就是菜，这个证明写不严谨。）</p>
 <p>这样的话就只用计算 $f_1[i][j][k]$ 了。</p>
 </li>

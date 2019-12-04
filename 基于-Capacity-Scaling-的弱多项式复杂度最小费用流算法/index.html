@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="ouuan的博客">
 <meta property="og:description" content="大多数人所使用的费用流算法，即每次求出残量网络中 $s$ 到 $t$ 关于费用的最短路进行增广（将 Dinic 最大流算法中的 BFS 改为 SPFA），是伪多项式复杂度的，最坏情况下复杂度为 $O(nmf)$，其中 $f$ 为最大流。已知有一种在点数为 $n$，边数为 $O(n^2)$，值域为 $O(2^{n/2})$ 时将其用时卡成关于 $n$ 的指数级复杂度的构造方法。 本文将介绍一种复杂度">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-01T10:12:20.812Z">
+<meta property="og:updated_time" content="2019-12-04T18:48:49.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 Capacity Scaling 的弱多项式复杂度最小费用流算法">
 <meta name="twitter:description" content="大多数人所使用的费用流算法，即每次求出残量网络中 $s$ 到 $t$ 关于费用的最短路进行增广（将 Dinic 最大流算法中的 BFS 改为 SPFA），是伪多项式复杂度的，最坏情况下复杂度为 $O(nmf)$，其中 $f$ 为最大流。已知有一种在点数为 $n$，边数为 $O(n^2)$，值域为 $O(2^{n/2})$ 时将其用时卡成关于 $n$ 的指数级复杂度的构造方法。 本文将介绍一种复杂度">
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 18:12:20" itemprop="dateModified" datetime="2019-12-01T18:12:20+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-05 02:48:49" itemprop="dateModified" datetime="2019-12-05T02:48:49+08:00">2019-12-05</time>
               
             
           </span>
@@ -569,22 +569,22 @@
 <p>为了优化常数，可以特判掉容量加一前该边已存在于残量网络的情况，直接跳过。</p>
 <p>令容量加一的这条边为 $(u, v)$，找负环可以先求出从 $v$ 出发以 reduced cost 为长度到每个点 $i$ 的最短路 $d(i)$（这个最短路不包括 $(u, v)$ 这条边， 由于当前维护的残量网络是容量加一之前的最小费用流，不存在负环，所以最短路是可以求的），判断 $d(u)+C_p(u, v)$ 是否小于 $0$ 即可。</p>
 <p>为了使用 Dijkstra 算法，还需要保证 reduced cost 非负，所以需要调整节点的势能。</p>
-<p>这里直接给出一种做法：求出上文所述的最短路 $d(i)$（若 $x$ 不可达就将 $d(x)$ 设为 $\max_{\text{节点 }i\text{ 可达}}{d(i)}+max(0, -C_p(u, v))$），然后将每个点 $i$ 的势能加上 $d(i)$（用 $p’(i)$ 表示节点 $i$ 更新后的势能）。</p>
+<p>这里直接给出一种做法：求出上文所述的最短路 $d(i)$（若 $x$ 不可达就将 $d(x)$ 设为 $\max_{\text{节点 }i\text{ 可达}}\{d(i)\}+max(0, -C_p(u, v))$），然后将每个点 $i$ 的势能加上 $d(i)$（用 $p’(i)$ 表示节点 $i$ 更新后的势能）。</p>
 <div><div class="fold_hider"><div class="close hider_title">这样调整后残量网络中的每一条边的 reduced cost 依然非负的证明：</div></div><div class="fold">
 <p>对于 $(u, v)$ 这条边，若 $u$ 不可达，那么：</p>
-<p>$$<br>\begin{aligned}<br>C_{p’}(u, v)<br>&amp;=p’(u)+cost(u, v)-p’(v)\<br>&amp;=p(u)+max(0, -C_p(u, v))+cost(u, v)-p(v)\<br>&amp;\ge p(u)-(p(u)+cost(u, v)-p(v))+cost(u, v)-p(v)\<br>&amp;=0<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>C_{p’}(u, v)<br>&amp;=p’(u)+cost(u, v)-p’(v)\\<br>&amp;=p(u)+max(0, -C_p(u, v))+cost(u, v)-p(v)\\<br>&amp;\ge p(u)-(p(u)+cost(u, v)-p(v))+cost(u, v)-p(v)\\<br>&amp;=0<br>\end{aligned}<br>$$</p>
 <p>若 $u$ 可达且 $(u, v)$ 这条边加入后产生了负环，负环会被增广，$(u, v)$ 这条边就不存在了。</p>
 <p>若 $u$ 可达且 $(u, v)$ 这条边加入后没有产生负环，即 $d(u)+C_p(u, v)\ge 0$，那么 $C_{p’}(u, v)=d(u)+C_p(u, v)-d(v)=d(u)+C_p(u, v)\ge 0$。</p>
 <p>capacity scaling 算法在初始时所有边容量均为 $0$（也就是说残量网络为空），所以可以在除 $(u, v)$ 外每条边的 reduced cost 均非负的基础上归纳证明。</p>
 <p>对于其它从 $u$ 可达的边 $(x, y)$，由于 $d(y)\le d(x)+C_p(x, y)$（最短路的性质），即 $d(y)\le d(x)+p(x)+cost(x, y)-p(y)$，所以 $p(x)+d(x)+cost(x, y)-(p(y)+d(y))\ge 0$，即 $p’(x)+cost(x, y)-p’(y)\ge 0$，也就是说 $u$ 可达的边 reduced cost 调整后非负。</p>
-<p>对于其它从 $u$ 可达与从 $u$ 不可达交界处的边 $(x, y)$（由于这条边不可达，一定是 $x$ 不可达 $y$ 可达），由于 $C_p(x, y)\ge 0$ 且 $d(x)=\max_{\text{节点 }i\text{ 可达}}{d(i)}+max(0, -C_p(u, v))\ge d(y)$，这样的边调整后 reduced cost 也非负。</p>
+<p>对于其它从 $u$ 可达与从 $u$ 不可达交界处的边 $(x, y)$（由于这条边不可达，一定是 $x$ 不可达 $y$ 可达），由于 $C_p(x, y)\ge 0$ 且 $d(x)=\max_{\text{节点 }i\text{ 可达}}\{d(i)\}+max(0, -C_p(u, v))\ge d(y)$，这样的边调整后 reduced cost 也非负。</p>
 <p>对于连接从 $u$ 不可达的两个点 $x$，$y$ 的边，$d(x)=d(y)$，调整后 reduced cost 也非负。</p>
 <p>综上所述，调整后残量网络中的每一条边的 reduced cost 依然非负。</p>
 
 </div></div>
 <p>进而我们还可以得出，上述流程结束后，残量网络中不存在负环，即上述流程可以计算出当前的最小费用流。</p>
 <h2 id="防止溢出"><a href="#防止溢出" class="headerlink" title="防止溢出"></a>防止溢出</h2><p>上一部分中给出的势能调整方式能够保证 reduced cost 非负，但在实际实现时会有势能太大从而溢出的风险。</p>
-<p>防止溢出的方法也很简单，新建一个点 $k$，从 $k$ 向所有点连长度为 $0$ 的边，求从 $k$ 出发以原费用（而非 reduced cost）为长度的最短路（由于更新后的残量网络是当前的最小费用流，不存在负环，新增的 $k$ 以及 $k$ 连向其它节点的边也不会带来新的负环，所以最短路是可以求的），以 $k$ 到 $i$ 的最短路作为调整后节点 $i$ 的势能。这样调整后，$C_p(x, y)=d(x)+cost(x, y)-d(y)\ge 0$（由最短路性质得到），并且每个节点的势能的值域不会超过 $[\min(0, (n-1)\min{cost(u, v)}), 0]$。</p>
+<p>防止溢出的方法也很简单，新建一个点 $k$，从 $k$ 向所有点连长度为 $0$ 的边，求从 $k$ 出发以原费用（而非 reduced cost）为长度的最短路（由于更新后的残量网络是当前的最小费用流，不存在负环，新增的 $k$ 以及 $k$ 连向其它节点的边也不会带来新的负环，所以最短路是可以求的），以 $k$ 到 $i$ 的最短路作为调整后节点 $i$ 的势能。这样调整后，$C_p(x, y)=d(x)+cost(x, y)-d(y)\ge 0$（由最短路性质得到），并且每个节点的势能的值域不会超过 $[\min(0, (n-1)\min\{cost(u, v)\}), 0]$。</p>
 <p>虽然是以原费用为长度，计算最短路时还是可以利用 reduced cost 来计算。由于只有从 $k$ 连出的边可能 reduced cost 为负，而 $k$ 又是第一个松弛的，所以这不会影响 Dijkstra 算法的正确性（当然，也可以为 $k$ 设置一个足够大的势能来保证从 $k$ 连出的边 reduced cost 也非负）。</p>
 <h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>若求的是最小费用最大流，首先通过加一条 $s$ 到 $t$ 的边转化为无源汇最小费用流。</p>
 <p>使用 capacity scaling，枚举考虑容量的最高 $k$ 位，每次迭代开始时将残量网络中每条边的容量以及答案乘二，然后枚举每条二进制中该位为 $1$ 的边，使其容量加一。</p>

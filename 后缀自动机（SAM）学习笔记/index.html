@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/triesam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/minsam.png">
 <meta property="og:image" content="https://ouuan.github.io/后缀自动机（SAM）学习笔记/parent.png">
-<meta property="og:updated_time" content="2019-12-01T10:12:20.682Z">
+<meta property="og:updated_time" content="2019-12-04T18:39:53.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀自动机（SAM）学习笔记">
 <meta name="twitter:description" content="后缀自动机是一种处理字符串问题的有力工具（废话），它的码量不比后缀数组大（实际代码难度不比后缀数组小，但也不难），处理问题时的思维难度往往比后缀数组小，复杂度更优秀。若字符集大小为 $|\Sigma|$，则：构建时间复杂度 $O(n|\Sigma|)$，转移时间复杂度 $O(1)$，空间复杂度 $O(n|\Sigma|)$ 或 构建时间复杂度 $O(n\log|\Sigma|)$，转移时间复杂度">
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 18:12:20" itemprop="dateModified" datetime="2019-12-01T18:12:20+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-05 02:39:53" itemprop="dateModified" datetime="2019-12-05T02:39:53+08:00">2019-12-05</time>
               
             
           </span>
@@ -548,14 +548,14 @@
 <p>如，串 “abaaabaa” 的一个 <strong>朴素SAM</strong>：</p>
 <img src="/后缀自动机（SAM）学习笔记/triesam.png">
 <h1 id="最简SAM"><a href="#最简SAM" class="headerlink" title="最简SAM"></a>最简SAM</h1><p>上文中的“朴素SAM”状态数是 $O(n^2)$ 的，而 <strong>最简SAM</strong> 的状态数和转移数（点数和边数）都是 $O(n)$ 的。</p>
-<h2 id="right-集合"><a href="#right-集合" class="headerlink" title="$right$ 集合"></a>$right$ 集合</h2><p>对于一个字符串 $t$，若它在 $s$ 中出现的位置集合为：${[l_1,r_1),[l_2,r_2),\cdots,[l_n,r_n)}$（下标从 $0$ 开始），那么定义 $right(t)$ 为 ${r_1,r_2,\cdots,r_n}$。</p>
-<p>如，又是串 “abaaabaa”，那么 $right(a)={1,3,4,5,7,8}$，$right(aa)={4,5,8}$，$right(aab)={6}$。</p>
+<h2 id="right-集合"><a href="#right-集合" class="headerlink" title="$right$ 集合"></a>$right$ 集合</h2><p>对于一个字符串 $t$，若它在 $s$ 中出现的位置集合为：$\{[l_1,r_1),[l_2,r_2),\cdots,[l_n,r_n)\}$（下标从 $0$ 开始），那么定义 $right(t)$ 为 $\{r_1,r_2,\cdots,r_n\}$。</p>
+<p>如，又是串 “abaaabaa”，那么 $right(a)=\{1,3,4,5,7,8\}$，$right(aa)=\{4,5,8\}$，$right(aab)=\{6\}$。</p>
 <p>在有的教程中，也称其为 $endpos$ 集合。</p>
 <h2 id="right-集合等价类"><a href="#right-集合等价类" class="headerlink" title="$right$ 集合等价类"></a>$right$ 集合等价类</h2><h3 id="right-集合等价类的定义"><a href="#right-集合等价类的定义" class="headerlink" title="$right$ 集合等价类的定义"></a>$right$ 集合等价类的定义</h3><p>$right$ 集合相等的字符串组成一个 <strong>$right$ 集合等价类</strong>。</p>
-<p>如，双是串 “abaaabaa”，那么 $right$ 集合为 ${4,8}$ 的字符串有 ${abaa,baa}$，这两个字符串组成一个 $right$ 集合等价类。</p>
+<p>如，双是串 “abaaabaa”，那么 $right$ 集合为 $\{4,8\}$ 的字符串有 $\{abaa,baa\}$，这两个字符串组成一个 $right$ 集合等价类。</p>
 <h3 id="right-集合等价类与最简SAM"><a href="#right-集合等价类与最简SAM" class="headerlink" title="$right$ 集合等价类与最简SAM"></a>$right$ 集合等价类与最简SAM</h3><p>我们定义 $reg(v)$ 表示 <strong>从状态 $v$ 开始能识别的字符串的集合</strong>。即：$t\in reg(v)$ 当且仅当 $\delta(v,t)\in F$（$F$ 为接受状态集合）。</p>
-<p>如果在 $t$ 的后面补上一个字符串 $s[r_i..n]$（$r_i\in right(t)$，$n$ 表示 $s$ 的长度），就得到了 $s$ 的一个后缀。所以，若 $right(t_1)=right(t_2)$，那么 $reg(SAM(t_1))=reg(SAM(t_2))={s[r_i..n]|r_i\in right(t_1)}$。</p>
-<p>对于每个状态 $v$，我们只关心 $reg(v)$，所以可以用SAM上的每一个状态去表示一个 $right$ 集合等价类，转移函数也相应地更改为对应的等价类（令 $f(v)$ 表示原状态 $v$ 对应的字符串的 $right$ 集合等价类在最简SAM中对应的状态，那么原来的转移函数 $\delta(u,c)=v$ 更改为 $\delta’(f(u),c)=f(v)$。可以证明，若 $right(u_1)=right(u_2)$，那么 $right(\delta(u_1,c))=right(\delta(u_2,c))$，因为 $right(\delta(u,c))={r_i|r_i\in right(u),s[r_i]=c}$）。</p>
+<p>如果在 $t$ 的后面补上一个字符串 $s[r_i..n]$（$r_i\in right(t)$，$n$ 表示 $s$ 的长度），就得到了 $s$ 的一个后缀。所以，若 $right(t_1)=right(t_2)$，那么 $reg(SAM(t_1))=reg(SAM(t_2))=\{s[r_i..n]|r_i\in right(t_1)\}$。</p>
+<p>对于每个状态 $v$，我们只关心 $reg(v)$，所以可以用SAM上的每一个状态去表示一个 $right$ 集合等价类，转移函数也相应地更改为对应的等价类（令 $f(v)$ 表示原状态 $v$ 对应的字符串的 $right$ 集合等价类在最简SAM中对应的状态，那么原来的转移函数 $\delta(u,c)=v$ 更改为 $\delta’(f(u),c)=f(v)$。可以证明，若 $right(u_1)=right(u_2)$，那么 $right(\delta(u_1,c))=right(\delta(u_2,c))$，因为 $right(\delta(u,c))=\{r_i|r_i\in right(u),s[r_i]=c\}$）。</p>
 <p>这样的SAM是状态数最少的，因为状态的 $reg$ 两两不同。这样的SAM若要和朴素SAM区分，可以叫做 <strong>最简SAM</strong>。但一般不加说明的SAM都指最简SAM。</p>
 <p>这样的SAM，从起始状态到某个状态可能有多条路径，每条路径都对应一个字符串，那么我们称这个状态 <strong>对应</strong> 着这些字符串。</p>
 <p>如，叒是串 “abaaabaa​” 的最简SAM：</p>
@@ -565,9 +565,9 @@
 <p>第一点（$v$ 中的任意一个字符串都是 $max(v)$ 的后缀）可以由 $right$ 集合的定义得到。</p>
 <p>第二点（且不是 $min(v)$ 的真后缀）可以由 $min(v)$ 的定义得到。</p>
 <p>第三点（$v$ 包含了所有这样的字符串）可以由一个引理证明：<strong>对于一个字符串 $t$ ，它的 $right$ 集合是它的任意一个后缀的 $right$ 集合的子集。</strong>这个引理很好证明，进而可以证明这条性质。</p>
-<p>如，叕是串 “abaaabaa”，$right$ 集合为 ${6}$ 的串有 ${aab,aaab,baaab,abaaab}$，若这个 $right$ 集合等价类对应状态 $v$，那么 $max(v)=abaaab$，$min(v)=aab$。</p>
+<p>如，叕是串 “abaaabaa”，$right$ 集合为 $\{6\}$ 的串有 $\{aab,aaab,baaab,abaaab\}$，若这个 $right$ 集合等价类对应状态 $v$，那么 $max(v)=abaaab$，$min(v)=aab$。</p>
 <p>这条性质说明 “aaab” 和 “baaab” 都属于这个 $right$ 集合等价类，且 “ab” 和 “b” 不属于这个 $right$ 集合等价类。</p>
-<p>证明第三点所用的引理说明，$right(aaab)\subseteq right(aab)\subseteq right(ab)\subseteq right(b)$，也就是 ${6}\subseteq{6}\subseteq{2,6}\subseteq{2,6}$ 。</p>
+<p>证明第三点所用的引理说明，$right(aaab)\subseteq right(aab)\subseteq right(ab)\subseteq right(b)$，也就是 $\{6\}\subseteq\{6\}\subseteq\{2,6\}\subseteq\{2,6\}$ 。</p>
 <h2 id="parent"><a href="#parent" class="headerlink" title="$parent$"></a>$parent$</h2><h3 id="parent-的定义"><a href="#parent-的定义" class="headerlink" title="$parent$ 的定义"></a>$parent$ 的定义</h3><p>$parent$ 有两种等价的定义（你也可以把其一视作定义，另一个视作性质）：</p>
 <h4 id="定义一"><a href="#定义一" class="headerlink" title="定义一"></a>定义一</h4><p>对于每个状态 $v$（除了起始状态），找到最长的一个字符串 $t$ 所对应的状态，使得 $right(v)\subsetneq right(t)$（注意是真子集；如果不存在这样的字符串就找起始状态），这样的状态就是 $parent(v)$。</p>
 <h4 id="定义二"><a href="#定义二" class="headerlink" title="定义二"></a>定义二</h4><p>对于每个状态 $v$（除了起始状态），$min(v)[1..n-1]$ 对应的状态（$n$ 表示 $min(v)$ 的长度，假定空串对应起始状态）就是 $parent(v)$。</p>
@@ -578,7 +578,7 @@
 <p>由定义一或定义二，由除起始状态外的状态都有且仅有一条出边并且 $parent$ 连接无环（$right$ 集合大小递增/对应字符串长度递减）可以说明。</p>
 <p>如，醊是串 “abaaabaa”，它的 $parent$ 树：（用 $max(v)$ 代表每个状态）</p>
 <img src="/后缀自动机（SAM）学习笔记/parent.png">
-<p>SAM上的接受状态就是包含 $r_i=n$（字符串长度）的一些 $right$ 集合等价类，也就是 $parent$ 树上 ${n}$ 对应的状态及其祖先。因此，可以通过 $parent$ 树确定SAM的接受状态集合。</p>
+<p>SAM上的接受状态就是包含 $r_i=n$（字符串长度）的一些 $right$ 集合等价类，也就是 $parent$ 树上 $\{n\}$ 对应的状态及其祖先。因此，可以通过 $parent$ 树确定SAM的接受状态集合。</p>
 <h2 id="最简SAM状态数为线性的证明"><a href="#最简SAM状态数为线性的证明" class="headerlink" title="最简SAM状态数为线性的证明"></a>最简SAM状态数为线性的证明</h2><p>每次把 $right$ 集合分成 $k$ 部分需要 $k$ 条边，最坏情况下每次都只分成两部分，总共要分成至多 $n$ 部分，所以状态数不会超过 $2n-1$（分 $n-1$ 次最多 $2n-2$ 条边，也就是 $2n-1$ 个点）。</p>
 <h2 id="最简SAM转移数为线性的证明"><a href="#最简SAM转移数为线性的证明" class="headerlink" title="最简SAM转移数为线性的证明"></a>最简SAM转移数为线性的证明</h2><p>考虑SAM的任意一个生成树，那么SAM上的边就会被分成树边和非树边。</p>
 <p>树边最多只有 $2n-2$ 条。</p>
@@ -587,9 +587,9 @@
 <p>因此，非树边数量不会超过后缀数量。总的边数就是 $O(n)$ 的。</p>
 <h2 id="最简SAM的线性构造"><a href="#最简SAM的线性构造" class="headerlink" title="最简SAM的线性构造"></a>最简SAM的线性构造</h2><p>SAM的线性构造可以在均摊 $O(1)$ 的时间复杂度内向SAM增加一个字符（从 $SAM_{s[0..i-1]}$ 变成 $SAM_{s[0..i]}$）。</p>
 <p>向SAM增加一个字符，就是在所有接受状态后增加一个字符。所以，我们需要考虑上一次插入时的最后一个状态（$last$）以及它在 $parent$ 树上的祖先（也就是所有接受状态）。</p>
-<p>加入一个字符 $x$ 时，我们先创建一个新状态 $np$，这个状态刚插入时代表 $right$ 集合 ${i}$（$i$ 表示这是插入的第 $i$ 个字符）。</p>
+<p>加入一个字符 $x$ 时，我们先创建一个新状态 $np$，这个状态刚插入时代表 $right$ 集合 $\{i\}$（$i$ 表示这是插入的第 $i$ 个字符）。</p>
 <p>一个引理：<strong>若一个状态有字符 $c$ 的转移，则它在 $parent$ 树上的祖先都有。</strong></p>
-<p>引理的证明：$right(\delta(v,c))={r_i|r_i\in right(v),s[r_i]=c}$，而 $right(v)\subsetneq right(parent(v))$。</p>
+<p>引理的证明：$right(\delta(v,c))=\{r_i|r_i\in right(v),s[r_i]=c\}$，而 $right(v)\subsetneq right(parent(v))$。</p>
 <p>因此，找到 $last$ 最深的有出边 $x$ 的祖先 $p$ 后，在其之上的祖先都有出边 $x$。</p>
 <p>对于在其之下的状态，直接向 $np$ 连边即可。</p>
 <p>接下来要分三种情况讨论：</p>
