@@ -446,8 +446,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>树形dp</tag>
         <tag>up and down</tag>
+        <tag>树形dp</tag>
       </tags>
   </entry>
   <entry>
@@ -799,8 +799,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>SAM</tag>
         <tag>后缀数组</tag>
+        <tag>SAM</tag>
       </tags>
   </entry>
   <entry>
